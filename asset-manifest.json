@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/nice-gadgets/static/js/main.6f5ebbd6.js",
+    "index.html": "/nice-gadgets/index.html",
+    "main.6f5ebbd6.js.map": "/nice-gadgets/static/js/main.6f5ebbd6.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.6f5ebbd6.js"
+  ]
+}
