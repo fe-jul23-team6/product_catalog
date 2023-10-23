@@ -1,0 +1,64 @@
+.button {
+  color: var(--primeTextColor);
+  width: 32px;
+  height: 32px;
+
+  &__pagination {
+    background-color: var(--secondaryBGColor);
+    &:hover {
+      background-color: var(--elementsColor);
+    }
+    &-active{
+      background-color: var(--primeAccentColor);
+    }
+  }
+
+  &__slider {
+    background-color: var(--thirdaryBgColor);
+    &:hover {
+      background-color: var(--iconsColor);
+    }
+    &-disabled{
+      color: var(--iconsColor);
+      background-color: var(--elementsColor);
+      border: 1px solid var(--iconsColor);
+    }
+  }
+
+  &__color {
+    background-color: var(--phoneColor1);
+    border: 2px solid var(--primeBgColor), 1px solid var(--elementsColor);
+    &:hover {
+      border: 2px solid var(--primeBgColor), 1px solid var(--secondaryTextColor);
+    }
+    &-active{
+      border: 2px solid var(--primeBgColor), 1px solid var(--primeTextColor);
+    }
+  }
+
+  &__favorite {
+    width: 40px;
+    height: 40px;
+    background-color: var(--thirdaryBgColor);
+    &:hover {
+      background-color: var(--iconsColor);
+    }
+    &-active {
+      background-color: var(--elementsColor);
+      color: var(--selectedFavoriteColor);
+      border: 1px solid var(--elementsColor);
+    }
+  }
+
+  &__main {
+    width: 100%;
+    height: 40px;
+    background-color: var(--primeAccentColor);
+    &:hover {
+      background-color: var(--secondaryAccentColor);
+    }
+    &-active{
+      background-color: var(--thirdaryBgColor);
+    }
+  }
+}
