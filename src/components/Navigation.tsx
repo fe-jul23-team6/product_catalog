@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = () => {
   return (
@@ -20,12 +20,6 @@ export const Navigation = () => {
               Accessories
             </NavLink>
       </nav>
-
-      <main className="section">
-        <div className="container">
-          <Outlet />
-        </div>
-      </main>
     </>
   );
 };

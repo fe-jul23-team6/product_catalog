@@ -1,0 +1,16 @@
+@import '../../styles/utils/reset';
+@import '../../styles/utils/variables';
+
+html {
+  background-color: black;
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+}
