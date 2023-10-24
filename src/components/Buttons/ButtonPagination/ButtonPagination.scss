@@ -1,0 +1,12 @@
+@import '../Button.scss';
+
+.pagination {
+  background-color: var(--secondaryBGColor);
+  &:hover {
+    background-color: var(--elementsColor);
+  }
+}
+
+.active{
+    background-color: var(--primeAccentColor);
+}

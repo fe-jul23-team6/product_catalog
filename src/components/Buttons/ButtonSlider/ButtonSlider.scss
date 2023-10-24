@@ -1,0 +1,31 @@
+@import '../Button.scss';
+
+.slider {
+  background-color: var(--thirdaryBgColor);
+
+  &-up {
+    background-image: url(../../../assets/img/icons/chevron-up_icon.svg);
+  }
+
+  &-down {
+    background-image: url(../../../assets/img/icons/chevron-down_icon.svg);
+  }
+
+  &-left {
+    background-image: url(../../../assets/img/icons/chevron-left_icon.svg);
+  }
+
+  &-right {
+    background-image: url(../../../assets/img/icons/chevron-right_icon.svg);
+  }
+
+  &:hover {
+    background-color: var(--iconsColor);
+  }
+}
+
+.disabled {
+  color: var(--iconsColor);
+  background-color: var(--elementsColor);
+  border: 1px solid var(--iconsColor);
+}

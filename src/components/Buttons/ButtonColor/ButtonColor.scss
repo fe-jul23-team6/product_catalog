@@ -1,0 +1,30 @@
+@import '../Button.scss';
+
+.color {
+  border-radius: 50%;
+  border: 2px solid var(--primeBgColor);
+  outline: 1px solid var(--elementsColor);
+  &:hover {
+    outline: 1px solid var(--secondaryTextColor);
+  }
+}
+
+.beige {
+  background-color: var(--phoneColor1);
+}
+
+.green {
+  background-color: var(--phoneColor2);
+}
+
+.grey {
+  background-color: var(--phoneColor3);
+}
+
+.white {
+  background-color: var(--phoneColor4);
+}
+
+.active{
+  outline: 1px solid var(--primeTextColor);
+}

@@ -1,0 +1,17 @@
+@import '../Button.scss';
+
+.favorite {
+  width: 40px;
+  height: 40px;
+  background-color: var(--thirdaryBgColor);
+  background-image: url(../../../assets/img/icons/favourites-default_icon.svg);
+  &:hover {
+    background-color: var(--iconsColor);
+  }
+}
+
+.active {
+  background-color: var(--elementsColor);
+  border: 1px solid var(--elementsColor);
+  background-image: url(../../../assets/img/icons/favourites-filled_icon.svg);
+}

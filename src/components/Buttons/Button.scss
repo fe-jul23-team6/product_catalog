@@ -1,0 +1,12 @@
+@import '../../styles/utils/reset';
+@import '../../styles/utils/variables';
+
+.button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--primeTextColor);
+  font-family: var(--font-family);
+  background-repeat: no-repeat;
+  background-position: center;
+}
