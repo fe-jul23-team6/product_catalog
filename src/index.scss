@@ -1,1 +1,6 @@
+@import 'styles/page.scss';
 @import 'styles/utils/variables.scss';
+@import 'styles/utils/mixins.scss';
+@import 'styles/utils/reset.scss';
+@import "components/Header/Header.module.scss";
+@import "components/Topbar/Topbar.module.scss";
