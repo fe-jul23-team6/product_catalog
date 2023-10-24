@@ -3,7 +3,7 @@ import { Topbar } from '../Topbar';
 export const Header = () => {
   return (
     <>
-      <header className="header">
+      <header className="header" id="header">
         <div className="container">
           <div className="header__content">
             <Topbar />
