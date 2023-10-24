@@ -1,5 +1,14 @@
-import './index.scss';
+import { Outlet } from 'react-router-dom';
+import { Navigation } from './components/Navigation';
 
 export const App = () => {
-  return <h1>Hello</h1>;
+  return (
+    <>
+    <Navigation />
+
+    <div>
+      <Outlet />
+    </div>
+    </>
+  );
 };
