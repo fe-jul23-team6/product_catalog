@@ -2,6 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import './index.scss';
 
 export const App = () => {
