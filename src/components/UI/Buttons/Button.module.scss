@@ -1,6 +1,3 @@
-@import './../../../styles/utils/reset';
-@import './../../../styles/utils/variables';
-
 .button {
   width: 32px;
   height: 32px;
@@ -17,7 +14,7 @@
     }
   }
 
-  &__activePagination {
+  &__active-pagination {
     background-color: var(--primeAccentColor);
   }
 
@@ -29,10 +26,26 @@
     }
   }
 
-  &__disabledSlider{
+  &__disabled-slider {
     color: var(--iconsColor);
     background-color: var(--elementsColor);
     border: 1px solid var(--iconsColor);
+  }
+
+  &__slider-icon-disabled {
+    fill: var(--iconsColor);
+  }
+
+  &__down {
+    transform: rotate(180deg);
+  }
+
+  &__left {
+    transform: rotate(-90deg);
+  }
+
+  &__right {
+    transform: rotate(90deg);
   }
 
   &__color {
@@ -61,24 +74,22 @@
     background-color: var(--phoneColor4);
   }
 
-  &__activeColor{
+  &__active-color {
     outline: 1px solid var(--primeTextColor);
   }
 
-  &__favorite {
+  &__favourite {
     width: 40px;
     height: 40px;
     background-color: var(--thirdaryBgColor);
-    background-image: url(../../../assets/img/icons/favourites-default_icon.svg);
     &:hover {
       background-color: var(--iconsColor);
     }
   }
 
-  &__activeFavorite {
+  &__active-favourite {
     background-color: var(--elementsColor);
     border: 1px solid var(--elementsColor);
-    background-image: url(../../../assets/img/icons/favourites-filled_icon.svg);
   }
 
   &__main {
@@ -90,43 +101,7 @@
     }
   }
 
-  &__activeMain{
+  &__active-main {
     background-color: var(--thirdaryBgColor);
-  }
-}
-
-.standard {
-  &--up {
-    background-image: url(../../../assets/img/icons/chevron-up_icon.svg);
-  }
-
-  &--down {
-    background-image: url(../../../assets/img/icons/chevron-down_icon.svg);
-  }
-
-  &--left {
-    background-image: url(../../../assets/img/icons/chevron-left_icon.svg);
-  }
-
-  &--right {
-    background-image: url(../../../assets/img/icons/chevron-right_icon.svg);
-  }
-}
-
-.disabled {
-  &--up {
-    background-image: url(../../../assets/img/icons/chevron-up-active_icon.svg);
-  }
-
-  &--down {
-    background-image: url(../../../assets/img/icons/chevron-down-active_icon.svg);
-  }
-
-  &--left {
-    background-image: url(../../../assets/img/icons/chevron-left-active_icon.svg);
-  }
-
-  &--right {
-    background-image: url(../../../assets/img/icons/chevron-right-active_icon.svg);
   }
 }

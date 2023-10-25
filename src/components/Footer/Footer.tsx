@@ -1,8 +1,7 @@
-import React from 'react';
-import './Footer.module.scss';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/img/logo.svg';
 import arrow from '../../assets/img/icons/chevron-up_icon.svg';
+import './Footer.module.scss';
 
 export const Footer = () => {
   const scrollToTop = () => {
