@@ -9,7 +9,6 @@ export const App = () => {
     <div className="page">
       <Header />
       <main className="page__body">
-
         <Outlet />
       </main>
       <Footer />

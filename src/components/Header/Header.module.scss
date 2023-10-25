@@ -14,9 +14,9 @@
     padding-block: 13px;
     margin-inline: 16px;
 
-    @include hover(transform, scale(1.2));
+    // @include hover(transform, scale(1.2));
 
-    &-size {
+    &__size {
       width: 64px;
       height: 22px;
     }
@@ -42,6 +42,7 @@
 
   &__icon {
     border-left: 1px solid var(--secondaryTextColor);
+    line-height: 100%;
     padding: 16px;
   }
 
@@ -81,7 +82,7 @@
       padding-block: 18px;
       margin-inline: 24px;
 
-      &-size {
+      &__size {
         width: 80px;
         height: 28px;
       }
