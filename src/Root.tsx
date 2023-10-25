@@ -3,7 +3,9 @@ import {
   HashRouter as Router,
   Routes,
 } from 'react-router-dom';
+
 import { Favourites } from 'pages/Favourites';
+import { BurgerMenu } from 'components/BurgerMenu';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { CatalogPage } from './pages/CatalogPage';
@@ -16,6 +18,7 @@ export const Root = () => (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
+        <Route path="/menu" element={<BurgerMenu />} />
         <Route path="phones">
           <Route index element={<CatalogPage />} />
           <Route path=":PhoneId" element={<ItemCardPage />} />

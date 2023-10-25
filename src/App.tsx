@@ -1,16 +1,17 @@
-// import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header';
-import { HomePage } from './pages/HomePage';
+import { Outlet } from 'react-router-dom';
+import { Footer } from 'components/Footer';
+import { Header } from './components/Header';
+
 import './index.scss';
 
 export const App = () => {
   return (
-    <html lang="en" className="page">
+    <div className="page">
       <Header />
-
-      <body className="page__body">
-        <HomePage />
-      </body>
-    </html>
+      <main className="page__body">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 };
