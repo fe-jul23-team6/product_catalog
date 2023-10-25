@@ -63,7 +63,7 @@ export const BurgerMenu = () => {
 
         <div className="menu__bottom-bar bottom-bar">
           <NavLink
-            to="/favorites"
+            to="/favourites"
             className="bottom-bar__link"
           >
             <img

@@ -4,7 +4,7 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { Favourites } from 'pages/Favourites';
+import { Favourites } from 'pages/FavouritesPage';
 import { BurgerMenu } from 'components/BurgerMenu';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
@@ -16,9 +16,9 @@ import { NotFoundPage } from './pages/NotFoundPage';
 export const Root = () => (
   <Router>
     <Routes>
+      <Route path="menu" element={<BurgerMenu />} />
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
-        <Route path="/menu" element={<BurgerMenu />} />
         <Route path="phones">
           <Route index element={<CatalogPage />} />
           <Route path=":PhoneId" element={<ItemCardPage />} />
