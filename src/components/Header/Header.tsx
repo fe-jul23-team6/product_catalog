@@ -1,9 +1,8 @@
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import logo from 'assets/img/logo.svg';
-import { ReactComponent as Heart }
-  from 'assets/img/icons/favourites-default_icon.svg';
-import { ReactComponent as Cart }
-  from 'assets/img/icons/shopping-bag_icon.svg';
+import { ReactComponent as Heart } from 'assets/img/icons/favourites-default_icon.svg';
+import { ReactComponent as Cart } from 'assets/img/icons/shopping-bag_icon.svg';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -15,7 +14,7 @@ export const Header = () => {
           className={styles.header__logo}
         >
           <img
-            className={styles.header__logo__size}
+            className={styles['header__logo-size']}
             src={logo}
             alt="Nice Gadgets logo"
           />
