@@ -1,0 +1,45 @@
+.pageNotFound {
+  display: flex;
+  align-items: center;
+  background-image: url('../../assets/img/404.svg');
+  background-size: 100% 100%;
+  min-height: 860px;
+  width: 100%;
+  height: 90vh;
+
+  &__textblock {
+    position: relative;
+    width: 40%;
+    margin-left: 2rem;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.32px;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    margin-bottom: 1rem;
+    margin-top: 0;
+
+    &_link {
+      border-bottom: 2px solid #2cd4d9;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (min-width: 321px) {
+  .pageNotFound {
+    &__title {
+      font-size: 48px;
+    }
+  }
+}
