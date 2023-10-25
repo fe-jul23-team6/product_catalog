@@ -11,7 +11,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__left}>
         <NavLink
-          to="http://localhost:3000/product_catalog#/"
+          to="/"
           className={styles.header__logo}
         >
           <img
