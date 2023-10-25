@@ -1,7 +1,9 @@
+import styles from '../../components/Header/Header.module.scss';
+
 export const HomePage = () => (
-  <div className="header__bottom">
+  <div className={styles.header__bottom}>
     <h1
-      className="header__title"
+      className={styles.header__title}
     >
       Welcome to Nice Gadgets store!
     </h1>
