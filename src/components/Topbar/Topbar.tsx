@@ -5,7 +5,7 @@ export const Topbar = () => {
     <div className="top-bar">
       <div className="top-bar__left">
         <a
-          href="#"
+          href="/"
           className="top-bar__logo"
         >
           <img
@@ -47,6 +47,7 @@ export const Topbar = () => {
             href="tel:+1 234 5555-55-55"
             className="icon icon--phone"
           >
+            __
           </a>
         </div>
 
@@ -54,6 +55,7 @@ export const Topbar = () => {
           href="#menu"
           className="icon icon--menu"
         >
+          __
         </a>
       </div>
     </div>

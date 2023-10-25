@@ -8,11 +8,11 @@ export const Header = () => {
           <div className="header__content">
             <Topbar />
             <div className="header__bottom">
-              <h1
+              {/* <h1
                 className="header__title"
               >
                 Welcome to Nice Gadgets store!
-              </h1>
+              </h1> */}
             </div>
           </div>
         </div>
