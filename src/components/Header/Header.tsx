@@ -4,23 +4,24 @@ import { ReactComponent as Heart }
   from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as Cart }
   from 'assets/img/icons/shopping-bag_icon.svg';
+import styles from './Header.module.scss';
 
 export const Header = () => {
   return (
-    <header className="header">
-      <div className="header__left">
-        <a
-          href="http://localhost:3000/product_catalog#/"
-          className="header__logo"
+    <header className={styles.header}>
+      <div className={styles.header__left}>
+        <NavLink
+          to="/"
+          className={styles.header__logo}
         >
           <img
-            className="header__logo-size"
+            className={styles.header__logo__size}
             src={logo}
             alt="Nice Gadgets logo"
           />
-        </a>
+        </NavLink>
 
-        <nav className="header__menu">
+        <nav className={styles.header__menu}>
           <NavLink to="/">
             Home
           </NavLink>
@@ -39,17 +40,17 @@ export const Header = () => {
         </nav>
       </div>
 
-      <div className="header__icons">
+      <div className={styles.header__icons}>
         <NavLink
-          to="/cart"
-          className="header__icon"
+          to="/favourites"
+          className={styles.header__icon}
         >
           <Heart />
         </NavLink>
 
         <NavLink
           to="/cart"
-          className="header__icon"
+          className={styles.header__icon}
         >
           <Cart />
         </NavLink>
