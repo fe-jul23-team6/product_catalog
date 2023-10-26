@@ -11,6 +11,7 @@ import { ReactComponent as HeartIconFilled }
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 
+import { ButtonType } from 'types';
 import styles from './Button.module.scss';
 
 type Props = {
@@ -21,14 +22,6 @@ type Props = {
   colorButtonColor?: string;
   chevronButtonType?: string;
 };
-
-export enum ButtonType {
-  Color = 'Color',
-  Slider = 'Slider',
-  Favourite = 'Favourite',
-  Main = 'Main',
-  Pagination = 'Pagination',
-}
 
 export const Button: React.FC<Props> = ({
   btnType,
