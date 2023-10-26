@@ -13,8 +13,11 @@
     display: flex;
     padding-block: 13px;
     margin-inline: 16px;
+    transition: transform 0.3s;
 
-    // @include hover(transform, scale(1.2));
+    &:hover {
+      transform: scale(1.2);
+    }
 
     &-size {
       width: 64px;
@@ -36,7 +39,7 @@
   }
 
   &__icons {
-    display: flex;
+    display: none;
     align-items: center;
   }
 
@@ -62,6 +65,14 @@
   .header {
     &__menu {
       display: flex;
+    }
+
+    &__icons {
+      display: flex;
+
+      &_burger {
+        display: none;
+      }
     }
 
     &__bottom {
