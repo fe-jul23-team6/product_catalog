@@ -1,26 +1,28 @@
 .page {
+  height: 100vh;
+  scroll-behavior: smooth;
   font-family: var(--font-family);
   color: #fff;
   font-size: var(--font-size);
   font-weight: 600;
   line-height: 150%;
   text-align: left;
-  scroll-behavior: smooth;
   background-color: var(--#{primeBgColor});
-  height: 100vh;
 
   &__body {
     min-width: 320px;
-    padding-inline: 16px;
+    padding: 25px 16px 64px;
     // &:has(.page__sidebar:target) {
     //   overflow: hidden;
     // }
-    @media (min-width: 321px) {
+
+    @media (min-width: 640px) {
       padding-inline: 24px;
     }
 
-    @media (min-width: 641px) {
+    @media (width: 1200px) {
       padding-inline: 32px;
+      padding-bottom: 80px;
     }
 
     @media (min-width: 1201px) {
