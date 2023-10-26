@@ -1,0 +1,109 @@
+.button {
+  width: 32px;
+  height: 32px;
+  color: var(--primeTextColor);
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  &__pagination {
+    background-color: var(--secondaryBGColor);
+
+    &:hover {
+      background-color: var(--elementsColor);
+    }
+  }
+
+  &__active-pagination {
+    background-color: var(--primeAccentColor);
+  }
+
+  &__slider {
+    background-color: var(--thirdaryBgColor);
+
+    &:hover {
+      background-color: var(--iconsColor);
+    }
+  }
+
+  &__disabled-slider {
+    color: var(--iconsColor);
+    background-color: var(--elementsColor);
+    border: 1px solid var(--iconsColor);
+  }
+
+  &__slider-icon-disabled {
+    fill: var(--iconsColor);
+  }
+
+  &__down {
+    transform: rotate(180deg);
+  }
+
+  &__left {
+    transform: rotate(-90deg);
+  }
+
+  &__right {
+    transform: rotate(90deg);
+  }
+
+  &__color {
+    border-radius: 50%;
+    border: 2px solid var(--primeBgColor);
+    outline: 1px solid var(--elementsColor);
+
+    &:hover {
+      outline: 1px solid var(--secondaryTextColor);
+    }
+  }
+
+  &__beige {
+    background-color: var(--phoneColor1);
+  }
+
+  &__green {
+    background-color: var(--phoneColor2);
+  }
+
+  &__grey {
+    background-color: var(--phoneColor3);
+  }
+
+  &__white {
+    background-color: var(--phoneColor4);
+  }
+
+  &__active-color {
+    outline: 1px solid var(--primeTextColor);
+  }
+
+  &__favourite {
+    width: 40px;
+    height: 40px;
+    background-color: var(--thirdaryBgColor);
+    &:hover {
+      background-color: var(--iconsColor);
+    }
+  }
+
+  &__active-favourite {
+    background-color: var(--elementsColor);
+    border: 1px solid var(--elementsColor);
+  }
+
+  &__main {
+    width: 100%;
+    height: 40px;
+    background-color: var(--primeAccentColor);
+    &:hover {
+      background-color: var(--secondaryAccentColor);
+    }
+  }
+
+  &__active-main {
+    background-color: var(--thirdaryBgColor);
+  }
+}

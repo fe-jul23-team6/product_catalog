@@ -4,7 +4,7 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { Favourites } from 'pages/FavouritesPage';
+import { FavouritesPage } from 'pages/FavouritesPage';
 import { BurgerMenu } from 'components/BurgerMenu';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
@@ -24,7 +24,7 @@ export const Root = () => (
           <Route path=":PhoneId" element={<ItemCardPage />} />
         </Route>
         <Route path="cart" element={<CartPage />} />
-        <Route path="favourites" element={<Favourites />} />
+        <Route path="favourites" element={<FavouritesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

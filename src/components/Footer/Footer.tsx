@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/img/logo.svg';
-import arrow from '../../assets/img/icons/chevron-up_icon.svg';
-import './Footer.module.scss';
+import logo from 'assets/img/logo.svg';
+import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg';
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -9,47 +10,48 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="footer__logo">
+    <footer className={styles.footer}>
+      <div className={styles.footer__logo}>
         <NavLink to="/">
           <img
             src={logo}
-            alt="Logo Nice Gadgets"
+            className={styles['top-bar__logo-img']}
+            alt="logo"
           />
         </NavLink>
       </div>
-      <div className="footer__nav nav">
+      <div className={`${styles.footer__nav} ${styles.nav}`}>
         <NavLink
           to="https://github.com/fe-jul23-team6/product_catalog"
-          className="nav__link"
+          className={styles.nav__link}
         >
           Github
         </NavLink>
         <NavLink
           to="/contacts"
-          className="nav__link"
+          className={styles.nav__link}
         >
           Contacts
         </NavLink>
         <NavLink
           to="/rights"
-          className="nav__link"
+          className={styles.nav__link}
         >
           Rights
         </NavLink>
       </div>
-      <div className="footer__scroll scroll">
+      <div className={`${styles.footer__scroll} ${styles.scroll}`}>
         <NavLink
           id="scroll_top"
           to="#"
           onClick={scrollToTop}
-          className="scroll__link"
+          className={styles.scroll__link}
         >
-          <span className="scroll__label">
+          <span className={styles.scroll__label}>
             Back to top
           </span>
-          <div className="scroll__block">
-            <img src={arrow} alt="arrow" className="scroll__img" />
+          <div className={styles.scroll__block}>
+            <ArrowSvg className={styles.scroll__img} />
           </div>
         </NavLink>
       </div>

@@ -1,0 +1,119 @@
+.menu {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 12px;
+  background-color: var(--#{primeBgColor});
+  text-transform: uppercase;
+
+  &__content {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  &__top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    margin-bottom: 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--secondaryTextColor);
+  }
+
+  &__nav {
+    padding-top: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__bottom-bar {
+    border-top: 1px solid var(--secondaryTextColor);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--#{primeBgColor});
+  }
+}
+
+.top-bar {
+
+  &__logo-link {
+    display: flex;
+    padding-block: 13px;
+    margin-inline: 16px;
+  }
+
+  &__logo-img {
+    width: 64px;
+    height: 22px;
+  }
+
+  &__close {
+    border-left: 1px solid var(--secondaryTextColor);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nav {
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__link {
+    position: relative;
+    color: var(--secondaryTextColor);
+
+    &--active {
+      color: var(--primeTextColor);
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primeTextColor);
+      }
+    }
+
+  }
+}
+
+.bottom-bar {
+
+  &__link {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--border-left {
+      border-left: 1px solid var(--secondaryTextColor);
+    }
+
+    &-img {
+      padding: 24px;
+    }
+  }
+}
