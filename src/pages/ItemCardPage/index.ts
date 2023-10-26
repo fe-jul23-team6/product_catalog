@@ -1,1 +1,1 @@
-export * from './ItemCardPage';
+export { ItemCardPage } from './ItemCardPage';

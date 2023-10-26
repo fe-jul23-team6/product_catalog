@@ -1,1 +1,1 @@
-export * from './BurgerMenu';
+export { BurgerMenu } from './BurgerMenu';
