@@ -16,11 +16,12 @@ import styles from './Button.module.scss';
 
 type Props = {
   btnType: keyof typeof ButtonType,
-  content?: string,
+  content?: string | React.ReactNode,
   isActive?: boolean,
   isDisabled?: boolean,
   colorButtonColor?: string;
   chevronButtonType?: string;
+  shevron?: boolean;
 };
 
 export const Button: React.FC<Props> = ({
@@ -30,6 +31,7 @@ export const Button: React.FC<Props> = ({
   isDisabled,
   colorButtonColor,
   chevronButtonType,
+  shevron,
 }) => {
   const color = btnType === ButtonType.Color;
   const favourite = btnType === ButtonType.Favourite;
@@ -63,16 +65,24 @@ export const Button: React.FC<Props> = ({
 
       {pagination && content}
 
-      {favourite && !isActive && (<HeartIcon />)}
+      {favourite && !isActive && (
+        <HeartIcon />
+      )}
 
-      {favourite && isActive && (<HeartIconFilled />)}
+      {favourite && isActive && (
+        <HeartIconFilled />
+      )}
 
-      {slider && (
+      {slider && shevron && (
         <ChevronIcon className={cn(
           { [styles['button__slider-icon-disabled']]: isDisabled },
           { [styles[`button__${chevronButtonType}`]]: chevronButtonType !== 'up' },
         )}
         />
+      )}
+
+      {slider && !shevron && (
+        content
       )}
     </button>
   );
