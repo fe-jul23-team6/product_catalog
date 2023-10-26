@@ -1,0 +1,13 @@
+.location {
+  display: flex;
+  gap: 8px;
+  line-height: 16px;
+  color: var(--secondaryTextColor);
+  font-size: 12px;
+  font-weight: 700;
+
+  &__chevron-right {
+    transform: rotate(90deg);
+    fill: var(--secondaryTextColor);
+  }
+}
