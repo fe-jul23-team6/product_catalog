@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import cn from 'classnames';
 
@@ -21,7 +22,7 @@ type Props = {
   chevronButtonType: string | null;
 };
 
-enum ButtonType {
+export enum ButtonType {
   Color = 'Color',
   Slider = 'Slider',
   Favourite = 'Favourite',

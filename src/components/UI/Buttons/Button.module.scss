@@ -3,8 +3,10 @@
   height: 32px;
   color: var(--primeTextColor);
   font-family: var(--font-family);
-  background-repeat: no-repeat;
-  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 
   &__pagination {
     background-color: var(--secondaryBGColor);
