@@ -1,6 +1,6 @@
-export * from './CartPage';
-export * from './FavouritesPage';
-export * from './HomePage';
-export * from './ItemCardPage';
-export * from './NotFoundPage';
-export * from './PhonesPage';
+export { CartPage } from './CartPage';
+export { FavouritesPage } from './FavouritesPage';
+export { HomePage } from './HomePage';
+export { ItemCardPage } from './ItemCardPage';
+export { NotFoundPage } from './NotFoundPage';
+export { PhonesPage } from './PhonesPage';
