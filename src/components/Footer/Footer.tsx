@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as LogoSvg } from 'assets/img/logo.svg';
+import logo from 'assets/img/logo.svg';
 import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg';
 import styles from './Footer.module.scss';
 
@@ -13,7 +13,11 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer__logo}>
         <NavLink to="/">
-          <LogoSvg />
+          <img
+            src={logo}
+            className={styles['top-bar__logo-img']}
+            alt="logo"
+          />
         </NavLink>
       </div>
       <div className={`${styles.footer__nav} ${styles.nav}`}>

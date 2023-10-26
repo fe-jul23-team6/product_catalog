@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button } from 'components/UI/Buttons';
+import { ButtonType } from 'components/UI/Buttons/Button';
 import styles from './Card.module.scss';
 // import { Phone } from 'types';
 
@@ -72,8 +73,24 @@ export const Card: React.FC = () => {
       </div>
 
       <div className={styles.card__buttons}>
-        <Button />
-        <Button />
+        <Button
+          btnType={ButtonType.Main}
+          content={null}
+          isActive={null}
+          isDisabled={null}
+          colorButtonColor={null}
+          chevronButtonType={null}
+        />
+        <div>
+          <Button
+            btnType={ButtonType.Favourite}
+            content={null}
+            isActive={null}
+            isDisabled={null}
+            colorButtonColor={null}
+            chevronButtonType={null}
+          />
+        </div>
       </div>
     </section>
   );
