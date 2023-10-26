@@ -1,59 +1,51 @@
-import logo from 'assets/img/logo.svg';
-import closeIcon from 'assets/img/icons/close_icon.svg';
-import favIcon from 'assets/img/icons/favourites-default_icon.svg';
-import cartIcon from 'assets/img/icons/shopping-bag_icon.svg';
-import './BurgerMenu.scss';
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
+import { ReactComponent as LogoSvg } from 'assets/img/logo.svg';
+import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
+import { ReactComponent as FavSvg } from 'assets/img/icons/favourites-default_icon.svg';
+import { ReactComponent as CartSvg } from 'assets/img/icons/shopping-bag_icon.svg';
+import styles from './BurgerMenu.module.scss';
 
 export const BurgerMenu = () => {
   return (
-    <aside className="menu" id="menu">
-      <div className="menu__content">
-        <div className="menu__top-bar top-bar">
-          <NavLink className="top-bar__logo-link" to="/">
-            <img className="top-bar__logo-img" src={logo} alt="logo" />
+    <aside className={styles.menu} id="menu">
+      <div className={styles.menu__content}>
+        <div className={`${styles['menu__top-bar']} ${styles['top-bar']}`}>
+          <NavLink className={styles['top-bar__logo-link']} to="/">
+            <LogoSvg className={styles['top-bar__logo-img']} />
           </NavLink>
 
-          <NavLink className="top-bar__close" to="/">
-            <img src={closeIcon} alt="close" />
+          <NavLink className={styles['top-bar__close']} to="/">
+            <CloseSvg />
           </NavLink>
         </div>
 
-        <div className="menu__list">
-          <div className="menu__nav nav">
-            <ul className="nav__list">
-              <li className="nav__item">
+        <div className={styles.menu__list}>
+          <div className={styles.menu__nav}>
+            <ul className={styles.nav__list}>
+              <li className={styles.nav__item}>
                 <NavLink
-                  className="nav__link nav__link--active"
+                  className={`${styles.nav__link} ${styles['nav__link--active']}`}
                   to="/"
                 >
                   Home
                 </NavLink>
               </li>
 
-              <li className="nav__item">
-                <NavLink
-                  className="nav__link"
-                  to="/phones"
-                >
+              <li className={styles.nav__item}>
+                <NavLink className={styles.nav__link} to="/phones">
                   Phones
                 </NavLink>
               </li>
 
-              <li className="nav__item">
-                <NavLink
-                  className="nav__link"
-                  to="/tablets"
-                >
+              <li className={styles.nav__item}>
+                <NavLink className={styles.nav__link} to="/tablets">
                   Tablets
                 </NavLink>
               </li>
 
-              <li className="nav__item">
-                <NavLink
-                  className="nav__link"
-                  to="/accessories"
-                >
+              <li className={styles.nav__item}>
+                <NavLink className={styles.nav__link} to="/accessories">
                   Accessories
                 </NavLink>
               </li>
@@ -61,27 +53,16 @@ export const BurgerMenu = () => {
           </div>
         </div>
 
-        <div className="menu__bottom-bar bottom-bar">
-          <NavLink
-            to="/favourites"
-            className="bottom-bar__link"
-          >
-            <img
-              className="bottom-bar__link-img"
-              src={favIcon}
-              alt="favourites"
-            />
+        <div className={styles['menu__bottom-bar']}>
+          <NavLink to="/favorites" className={styles['bottom-bar__link']}>
+            <FavSvg className={styles['bottom-bar__link-img']} />
           </NavLink>
 
           <NavLink
             to="/cart"
-            className="bottom-bar__link bottom-bar__link--border-left"
+            className={`${styles['bottom-bar__link']} ${styles['bottom-bar__link--border-left']}`}
           >
-            <img
-              className="bottom-bar__link-img"
-              src={cartIcon}
-              alt="cart icon"
-            />
+            <CartSvg className={styles['bottom-bar__link-img']} />
           </NavLink>
         </div>
       </div>
