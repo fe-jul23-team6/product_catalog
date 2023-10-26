@@ -22,7 +22,7 @@ const phone = {
   color: 'black',
   ram: '2GB',
   year: 2016,
-  image: 'public/img/phones/apple-iphone-7/black/00.jpg',
+  image: 'public/assets/img/phones/apple-iphone-7/black/00.jpg',
 };
 
 // export const Card: React.FC<Props> = ({ phone }) => {
@@ -75,20 +75,10 @@ export const Card: React.FC = () => {
       <div className={styles.card__buttons}>
         <Button
           btnType={ButtonType.Main}
-          content={null}
-          isActive={null}
-          isDisabled={null}
-          colorButtonColor={null}
-          chevronButtonType={null}
         />
         <div>
           <Button
             btnType={ButtonType.Favourite}
-            content={null}
-            isActive={null}
-            isDisabled={null}
-            colorButtonColor={null}
-            chevronButtonType={null}
           />
         </div>
       </div>

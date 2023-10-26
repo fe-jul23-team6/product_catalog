@@ -15,11 +15,11 @@ import styles from './Button.module.scss';
 
 type Props = {
   btnType: keyof typeof ButtonType,
-  content: string | null,
-  isActive: boolean | null,
-  isDisabled: boolean | null,
-  colorButtonColor: string | null;
-  chevronButtonType: string | null;
+  content?: string | null,
+  isActive?: boolean | null,
+  isDisabled?: boolean | null,
+  colorButtonColor?: string | null;
+  chevronButtonType?: string | null;
 };
 
 export enum ButtonType {
