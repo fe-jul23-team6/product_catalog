@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
-import logo from 'assets/img/logo.svg';
+import { ReactComponent as LogoSvg } from 'assets/img/logo.svg';
 import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
 import { ReactComponent as FavSvg } from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as CartSvg } from 'assets/img/icons/shopping-bag_icon.svg';
@@ -12,11 +12,7 @@ export const BurgerMenu = () => {
       <div className={styles.menu__content}>
         <div className={`${styles['menu__top-bar']} ${styles['top-bar']}`}>
           <NavLink className={styles['top-bar__logo-link']} to="/">
-            <img
-              src={logo}
-              className={styles['top-bar__logo-img']}
-              alt="logo"
-            />
+            <LogoSvg className={styles['top-bar__logo-img']} />
           </NavLink>
 
           <NavLink className={styles['top-bar__close']} to="/">

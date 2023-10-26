@@ -82,10 +82,9 @@
 
   &__link {
     position: relative;
-    color: var(--secondaryTextColor);
 
     &--active {
-      color: var(--primeTextColor);
+
       &::after {
         content: "";
         position: absolute;
