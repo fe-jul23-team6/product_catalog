@@ -75,20 +75,10 @@ export const Card: React.FC = () => {
       <div className={styles.card__buttons}>
         <Button
           btnType={ButtonType.Main}
-          content={null}
-          isActive={null}
-          isDisabled={null}
-          colorButtonColor={null}
-          chevronButtonType={null}
         />
         <div>
           <Button
             btnType={ButtonType.Favourite}
-            content={null}
-            isActive={null}
-            isDisabled={null}
-            colorButtonColor={null}
-            chevronButtonType={null}
           />
         </div>
       </div>
