@@ -1,1 +1,2 @@
-export { Phone } from './Phone';
+export type { Phone } from './Phone';
+export { ButtonType } from './ButtonType';
