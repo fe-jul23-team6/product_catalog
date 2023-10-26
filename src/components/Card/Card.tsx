@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ButtonType } from 'types';
 import { Button } from 'components/UI/Buttons';
 import styles from './Card.module.scss';
 // import { Phone } from 'types';
@@ -72,8 +73,14 @@ export const Card: React.FC = () => {
       </div>
 
       <div className={styles.card__buttons}>
-        <Button />
-        <Button />
+        <Button
+          btnType={ButtonType.Main}
+        />
+        <div>
+          <Button
+            btnType={ButtonType.Favourite}
+          />
+        </div>
       </div>
     </section>
   );

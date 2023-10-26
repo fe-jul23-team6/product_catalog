@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import cn from 'classnames';
 
@@ -10,24 +11,17 @@ import { ReactComponent as HeartIconFilled }
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 
+import { ButtonType } from 'types';
 import styles from './Button.module.scss';
 
 type Props = {
   btnType: keyof typeof ButtonType,
-  content: string | null,
-  isActive: boolean | null,
-  isDisabled: boolean | null,
-  colorButtonColor: string | null;
-  chevronButtonType: string | null;
+  content?: string,
+  isActive?: boolean,
+  isDisabled?: boolean,
+  colorButtonColor?: string;
+  chevronButtonType?: string;
 };
-
-enum ButtonType {
-  Color = 'Color',
-  Slider = 'Slider',
-  Favourite = 'Favourite',
-  Main = 'Main',
-  Pagination = 'Pagination',
-}
 
 export const Button: React.FC<Props> = ({
   btnType,

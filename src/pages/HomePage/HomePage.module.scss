@@ -1,0 +1,24 @@
+.home {
+  padding-top: -1px;
+
+  &__title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 800;
+    letter-spacing: -0.32px;
+
+    @media (min-width: 321px) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    padding-top: 7px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-top: 31px;
+  }
+}
+
