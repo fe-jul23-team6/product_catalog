@@ -7,11 +7,13 @@ import {
 import { FavouritesPage } from 'pages/FavouritesPage';
 import { BurgerMenu } from 'components/BurgerMenu';
 import { App } from './App';
-import { HomePage } from './pages/HomePage';
-import { CatalogPage } from './pages/CatalogPage';
-import { ItemCardPage } from './pages/ItemCardPage';
-import { CartPage } from './pages/CartPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import {
+  CartPage,
+  HomePage,
+  PhonesPage,
+  ItemCardPage,
+  NotFoundPage,
+} from './pages';
 
 export const Root = () => (
   <Router>
@@ -20,7 +22,7 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="phones">
-          <Route index element={<CatalogPage />} />
+          <Route index element={<PhonesPage />} />
           <Route path=":PhoneId" element={<ItemCardPage />} />
         </Route>
         <Route path="cart" element={<CartPage />} />
