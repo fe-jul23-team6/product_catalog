@@ -1,12 +1,12 @@
 .catalog-table {
   display: grid;
-  // grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px 16px;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(12, 1fr);
+    // grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    // grid-template-rows: repeat(auto-fit, minmax(120px, 1fr));
   }
 
   @media (min-width: 1200px) {

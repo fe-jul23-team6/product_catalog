@@ -22,9 +22,14 @@
     line-height: 21px;
   }
 
-  &__dropdowns {
+  &__dropdown-container {
     margin-bottom: 24px;
     display: flex;
+    justify-content: space-between;
     gap: 16px;
+  }
+
+  &__dropdowns {
+    flex: auto;
   }
 }
