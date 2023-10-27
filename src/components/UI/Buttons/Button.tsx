@@ -22,6 +22,7 @@ type Props = {
   colorButtonColor?: string;
   chevronButtonType?: string;
   shevron?: boolean;
+  onClick?: () => void;
 };
 
 export const Button: React.FC<Props> = ({
@@ -32,6 +33,7 @@ export const Button: React.FC<Props> = ({
   colorButtonColor,
   chevronButtonType,
   shevron,
+  onClick,
 }) => {
   const color = btnType === ButtonType.Color;
   const favourite = btnType === ButtonType.Favourite;
@@ -42,6 +44,7 @@ export const Button: React.FC<Props> = ({
   return (
     <button
       type="button"
+      onClick={onClick}
       className={cn(
         styles.button,
         { [styles.button__pagination]: pagination },
@@ -61,7 +64,9 @@ export const Button: React.FC<Props> = ({
         { [styles['button__disabled-slider']]: slider && isDisabled },
       )}
     >
-      {main && 'Add to cart'}
+
+      {main && !isActive && 'Add to cart'}
+      {main && isActive && 'Added to cart'}
 
       {pagination && content}
 
