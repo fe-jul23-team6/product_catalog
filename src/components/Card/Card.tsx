@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType, Phone } from 'types';
 import styles from './Card.module.scss';
@@ -13,7 +13,7 @@ export const Card: React.FC<Props> = ({ phone }) => {
     <section className={styles.card}>
       <img
         className={styles.card__img}
-        src={phone.image}
+        src={`${BASE_URL}/${phone.image}`}
         alt={phone.name}
       />
 
