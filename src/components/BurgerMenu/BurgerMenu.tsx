@@ -20,7 +20,7 @@ export const BurgerMenu = () => {
           </NavLink>
 
           <NavLink className={styles['top-bar__close']} to="/">
-            <CloseSvg />
+            <CloseSvg className={styles['top-bar__close-svg']} />
           </NavLink>
         </div>
 
