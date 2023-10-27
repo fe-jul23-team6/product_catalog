@@ -41,6 +41,10 @@
   &__icons {
     display: none;
     align-items: center;
+
+    &_burger {
+      line-height: 100%;
+    }
   }
 
   &__icon {
@@ -61,7 +65,7 @@
   }
 }
 
-@media (min-width: 550px) {
+@media (min-width: 321px) {
   .header {
     &__menu {
       display: flex;
@@ -86,7 +90,7 @@
   }
 }
 
-@media (min-width: 730px) {
+@media (min-width: 641px) {
   .header {
     &__logo {
       padding-block: 18px;

@@ -5,10 +5,13 @@ import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
 import { ReactComponent as FavSvg } from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as CartSvg } from 'assets/img/icons/shopping-bag_icon.svg';
 import styles from './BurgerMenu.module.scss';
+import '../../styles/page.scss';
 
 export const BurgerMenu = () => {
   return (
-    <aside className={styles.menu} id="menu">
+    <aside
+      className={`${styles.menu}`}
+    >
       <div className={styles.menu__content}>
         <div className={`${styles['menu__top-bar']} ${styles['top-bar']}`}>
           <NavLink className={styles['top-bar__logo-link']} to="/">
