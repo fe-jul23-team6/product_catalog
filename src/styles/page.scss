@@ -2,12 +2,12 @@
   height: 100vh;
   scroll-behavior: smooth;
   font-family: var(--font-family);
-  color: #fff;
+  color: var(--primeTextColor);
   font-size: var(--font-size);
   font-weight: 600;
   line-height: 150%;
   text-align: left;
-  background-color: var(--#{primeBgColor});
+  background-color: var(--primeBgColor);
 
   &__body {
     min-width: 320px;
@@ -20,12 +20,12 @@
       padding-inline: 24px;
     }
 
-    @media (width: 1200px) {
+    @media (min-width: 1200px) {
       padding-inline: 32px;
       padding-bottom: 80px;
     }
 
-    @media (min-width: 1201px) {
+    @media (min-width: 1440px) {
       padding-inline: 152px;
       max-width: 1440px;
       margin-inline: auto;

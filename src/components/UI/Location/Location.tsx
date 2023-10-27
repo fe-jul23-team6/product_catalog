@@ -11,11 +11,11 @@ import styles from './Location.module.scss';
 export const Location: React.FC = () => {
   return (
     <div className={styles.location}>
-      <span className="location__icon">
+      <span className={styles.location__icon}>
         <HomeIcon />
       </span>
 
-      <span className="location__icon">
+      <span className={styles.location__icon}>
         <ChevronIcon className={styles['location__chevron-right']} />
       </span>
 
