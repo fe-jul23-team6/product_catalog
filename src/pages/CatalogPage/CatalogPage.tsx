@@ -12,7 +12,7 @@ import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,6 @@ export const CatalogPage: React.FC = () => {
         <CatalogTable phones={phones} />
       )}
 
-      <></>
       <Outlet />
     </section>
   );
