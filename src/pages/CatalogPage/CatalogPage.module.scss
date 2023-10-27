@@ -22,9 +22,27 @@
     line-height: 21px;
   }
 
-  &__dropdowns {
+  &__dropdown-container {
+    width: 100%;
     margin-bottom: 24px;
     display: flex;
+    justify-content: space-between;
     gap: 16px;
+
+    @media(min-width: 640px) {
+      width: 60%;
+    }
+
+    @media(min-width: 768px) {
+      width: 45%;
+    }
+
+    @media(min-width: 1200px) {
+      width: 30%;
+    }
+  }
+
+  &__dropdowns {
+    flex: auto;
   }
 }

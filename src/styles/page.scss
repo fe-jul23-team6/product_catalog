@@ -3,7 +3,7 @@ html {
 }
 
 .page {
-  height: 100vh;
+  min-height: 100vh;
   scroll-behavior: smooth;
   font-family: var(--font-family);
   color: var(--primeTextColor);
@@ -13,14 +13,17 @@ html {
   text-align: left;
 
   &__body {
-    min-width: 320px;
     padding: 25px 16px 64px;
+    min-width: 320px;
+    min-height: 48vh;
+
     // &:has(.page__sidebar:target) {
     //   overflow: hidden;
     // }
 
     @media (min-width: 640px) {
       padding-inline: 24px;
+      min-height: 70vh;
     }
 
     @media (min-width: 1200px) {
@@ -31,6 +34,7 @@ html {
     @media (min-width: 1440px) {
       padding-inline: 152px;
       max-width: 1440px;
+      min-height: 80vh;
       margin-inline: auto;
     }
   }
