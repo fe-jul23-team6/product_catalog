@@ -6,6 +6,10 @@
   font-size: 12px;
   font-weight: 700;
 
+  &__icon {
+    line-height: 0px;
+  }
+
   &__chevron-right {
     transform: rotate(90deg);
     fill: var(--secondaryTextColor);

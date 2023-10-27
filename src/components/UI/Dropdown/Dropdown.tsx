@@ -1,22 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
-import styles from './Dropdown.module.scss';
+
 import { ReactComponent as Arrow }
-  from '../../../assets/img/icons/chevron-down-active_icon.svg';
+  from 'assets/img/icons/chevron-up_icon.svg';
+
+import styles from './Dropdown.module.scss';
 
 type Props = {
   title: string,
   description: string,
-  options: string[],
-  onItemSelected: (item: string) => void,
+  // options: string[],
+  // onItemSelected: (item: string) => void,
 };
+
+const options = ['1', '2', '3'];
 
 export const Dropdown: React.FC<Props> = ({
   title,
   description,
-  options,
-  onItemSelected,
+  // options,
+  // onItemSelected,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownTitle, setDropdownTitle] = useState(title);
@@ -43,7 +47,7 @@ export const Dropdown: React.FC<Props> = ({
 
   const handleItemClick = (item: string) => {
     setDropdownTitle(item);
-    onItemSelected(item);
+    // onItemSelected(item);
     setIsOpen(false);
   };
 
@@ -60,7 +64,7 @@ export const Dropdown: React.FC<Props> = ({
       >
         {dropdownTitle}
         <Arrow
-          className={classNames({ dropdown__img: isOpen })}
+          className={classNames({ [styles.dropdown__img]: !isOpen })}
         />
       </button>
       {isOpen && (
