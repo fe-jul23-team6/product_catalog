@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Phone } from 'types';
-import { ButtonType } from 'types';
+import { ButtonType, Phone } from 'types';
 import { Button } from 'components/UI/Buttons';
 import styles from './Card.module.scss';
 
