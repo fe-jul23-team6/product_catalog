@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../assets/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Mont-Regular';
+  src: url('../../assets/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../assets/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+
 :root {
   --primeTextColor: #f1f2f9;
   --secondaryTextColor: #75767f;
