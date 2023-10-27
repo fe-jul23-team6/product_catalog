@@ -6,7 +6,7 @@
   padding: 16px;
   width: 100%;
 
-  @media (min-width: 640px) {
+  @media (min-width: 550px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@
       max-width: 54px;
       max-height: 66px;
       display: flex;
-      justify-content: center; /* Center the image horizontally */
+      justify-content: center;
 
     }
   }
@@ -53,7 +53,7 @@
     justify-content: space-between;
     height: 32px;
 
-    @media (min-width: 640px) {
+    @media (min-width: 550px) {
       width: 190px;
     }
 
