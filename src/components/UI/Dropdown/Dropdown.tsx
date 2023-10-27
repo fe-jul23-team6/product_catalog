@@ -8,22 +8,18 @@ import { ReactComponent as Arrow }
 import styles from './Dropdown.module.scss';
 
 type Props = {
-  title: string,
   description: string,
-  // options: string[],
-  // onItemSelected: (item: string) => void,
+  options: string[],
+  onItemSelected?: (item: string) => void | null,
 };
 
-const options = ['1', '2', '3'];
-
 export const Dropdown: React.FC<Props> = ({
-  title,
   description,
-  // options,
-  // onItemSelected,
+  options = [],
+  onItemSelected = null,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownTitle, setDropdownTitle] = useState(title);
+  const [dropdownTitle, setDropdownTitle] = useState(options[0]);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -46,8 +42,11 @@ export const Dropdown: React.FC<Props> = ({
   };
 
   const handleItemClick = (item: string) => {
+    if (onItemSelected) {
+      onItemSelected(item);
+    }
+
     setDropdownTitle(item);
-    // onItemSelected(item);
     setIsOpen(false);
   };
 
