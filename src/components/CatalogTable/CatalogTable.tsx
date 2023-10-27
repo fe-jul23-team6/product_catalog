@@ -18,5 +18,3 @@ export const CatalogTable: React.FC<Props> = ({ phones }) => {
     </div>
   );
 };
-
-// (feat/create-catalog)
