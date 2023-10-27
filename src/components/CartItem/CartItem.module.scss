@@ -1,0 +1,15 @@
+.cart-item {
+  &__top {
+    display:flex;
+
+  }
+
+  &__img {
+    width: 100%;  // Adjust this to the desired width
+    height: auto;  // Maintain aspect ratio
+
+    &-container {
+      max-width: 66px;
+    }
+  }
+}
