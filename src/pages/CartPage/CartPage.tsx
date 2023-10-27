@@ -5,7 +5,7 @@ import { ReactComponent as ChevronIcon }
 import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../../components/CartItem';
 
-import './CartPage.scss';
+import styles from './CartPage.module.scss';
 
 type Props = {
   phone: Phone,
@@ -18,49 +18,49 @@ export const CartPage: React.FC<Props> = ({ phone }) => {
   };
 
   return (
-    <div className="cart">
-      <div className="cart__top">
-        <div className="cart__goback">
+    <div className={styles.cart}>
+      <div className={styles.cart__top}>
+        <div className={styles.cart__goback}>
           <button
             type="button"
-            className="cart__shevron"
+            className={styles.cart__chevron}
             onClick={goBack}
           >
             <ChevronIcon />
           </button>
           <button
             type="button"
-            className="cart__back"
+            className={styles.cart__back}
             onClick={goBack}
           >
             Back
           </button>
         </div>
 
-        <h1 className="cart__title">
+        <h1 className={styles.cart__title}>
           Cart
         </h1>
       </div>
 
-      <div className="cart__wrapper">
-        <div className="cart__content">
+      <div className={styles.cart__wrapper}>
+        <div className={styles.cart__content}>
           {[1, 2, 3].map((i) => (
-            <div className="cart__item">
-              <CartItem key={i} phone={phone} />
+            <div className={styles.cart__item} key={i}>
+              <CartItem phone={phone} />
             </div>
           ))}
         </div>
 
-        <div className="cart__checkout">
-          <h2 className="cart__total-price">
+        <div className={styles.cart__checkout}>
+          <h2 className={styles.cart__totalPrice}>
             $9999
           </h2>
-          <p className="cart__total">
+          <p className={styles.cart__total}>
             Total for 3 items
           </p>
 
           <button
-            className="cart__buy"
+            className={styles.cart__buy}
             type="button"
           >
             Checkout
