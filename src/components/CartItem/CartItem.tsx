@@ -1,16 +1,18 @@
-// import styles from './CartItem.module.scss';
 import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
-// import { ReactComponent as PlusSvg } from 'assets/img/icons/plus_icon.svg';
-// import { Button } from 'components/UI/Buttons';
-// import { ButtonType } from 'types';
-import image from '../../assets/img/phones/apple-iphone-11-pro/gold/00.jpg';
+import './CartItem.scss';
+import { ReactComponent as PlusSvg } from 'assets/img/icons/plus_icon.svg';
+import { ReactComponent as MinusSvg } from 'assets/img/icons/minus_icon.svg';
+import { useState } from 'react';
+import image from '../../assets/img/category-phones.png';
 
 export const CartItem = () => {
+  const [count, setCount] = useState(1);
+
   return (
     <div className="cart-item">
       <div className="cart-item__top">
-        <CloseSvg />
-        <div className="cart-item__img-container">
+        <CloseSvg className="cart-item__remove" />
+        <div className="cart-item__top-container">
           <img
             className="cart-item__img"
             src={image}
@@ -22,12 +24,37 @@ export const CartItem = () => {
         </h4>
       </div>
 
-      {/* <Button
-        btnType={ButtonType.Slider}
-        content={<PlusSvg />}
-      /> */}
+      <div className="cart-item__bottom">
+        <div className="cart-item__bottom--left">
+          <button
+            type="button"
+            className="cart-item__button"
+            onClick={(event) => {
+              event.preventDefault();
+              setCount((prevCount) => prevCount - 1);
+            }}
+          >
+            <MinusSvg />
+          </button>
 
+          <span>
+            {count}
+          </span>
+
+          <button
+            type="button"
+            className="cart-item__button"
+            onClick={(event) => {
+              event.preventDefault();
+              setCount((prevCount) => prevCount + 1);
+            }}
+          >
+            <PlusSvg />
+          </button>
+        </div>
+
+        <p className="cart-item__price">$1099</p>
+      </div>
     </div>
-
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import cn from 'classnames';
@@ -22,6 +23,7 @@ type Props = {
   colorButtonColor?: string;
   chevronButtonType?: string;
   shevron?: boolean;
+  onClick?: () => {};
 };
 
 export const Button: React.FC<Props> = ({
@@ -32,6 +34,7 @@ export const Button: React.FC<Props> = ({
   colorButtonColor,
   chevronButtonType,
   shevron,
+  onClick,
 }) => {
   const color = btnType === ButtonType.Color;
   const favourite = btnType === ButtonType.Favourite;

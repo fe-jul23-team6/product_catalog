@@ -1,0 +1,48 @@
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--secondaryBGColor);
+  padding: 16px;
+  max-width: 256px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-container {
+      background-color: white;
+      max-width: 66px;
+      max-height: 66px;
+      display: flex;
+      justify-content: center; /* Center the image horizontally */
+
+    }
+  }
+
+  &__remove {
+    fill: var(--iconsColor);
+    width: 49px;
+    height: 16px;
+    //dont even ask
+  }
+
+  &__img {
+    width: 66px;
+    object-fit: fill;
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 21px;
+
+    color: var(--primeTextColor);
+
+  }
+}
+
+
