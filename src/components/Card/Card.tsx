@@ -1,32 +1,14 @@
 import React from 'react';
 
-import { ButtonType } from 'types';
 import { Button } from 'components/UI/Buttons';
+import { ButtonType, Phone } from 'types';
 import styles from './Card.module.scss';
-// import { Phone } from 'types';
 
-// type Props = {
-//   phone: Phone,
-// };
-
-const phone = {
-  id: '1',
-  category: 'phones',
-  phoneId: 'apple-iphone-7-32gb-black',
-  itemId: 'apple-iphone-7-32gb-black',
-  name: 'Apple iPhone 7 32GB Black',
-  fullPrice: 400,
-  price: 375,
-  screen: '4.7" IPS',
-  capacity: '32GB',
-  color: 'black',
-  ram: '2GB',
-  year: 2016,
-  image: 'public/img/phones/apple-iphone-7/black/00.jpg',
+type Props = {
+  phone: Phone,
 };
 
-// export const Card: React.FC<Props> = ({ phone }) => {
-export const Card: React.FC = () => {
+export const Card: React.FC<Props> = ({ phone }) => {
   return (
     <section className={styles.card}>
       <img
