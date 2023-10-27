@@ -3,7 +3,7 @@ import './CartItem.scss';
 import { ReactComponent as PlusSvg } from 'assets/img/icons/plus_icon.svg';
 import { ReactComponent as MinusSvg } from 'assets/img/icons/minus_icon.svg';
 import { useState } from 'react';
-import image from '../../assets/img/category-phones.png';
+import { BASE_URL } from 'utils/fetchProducts';
 
 export const CartItem = () => {
   const [count, setCount] = useState(1);
@@ -15,7 +15,7 @@ export const CartItem = () => {
         <div className="cart-item__top-container">
           <img
             className="cart-item__img"
-            src={image}
+            src={`${BASE_URL}/img/phones/apple-iphone-11-pro/gold/01.jpg`}
             alt="product"
           />
         </div>

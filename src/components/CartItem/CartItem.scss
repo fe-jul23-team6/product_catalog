@@ -29,17 +29,16 @@
   }
 
   &__img {
-    width: 66px;
-    object-fit: fill;
+    width: 100%;
+    padding: 0 8px
   }
 
   &__title {
     font-family: var(--font-family);
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 200;
-    line-height: 21px;
-
+    line-height: 16px;
     color: var(--primeTextColor);
 
   }
