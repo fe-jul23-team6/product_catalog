@@ -16,6 +16,8 @@ export const CatalogPage: React.FC = () => {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getPhones()
       .then((phonesFromServer) => {
         setPhones(phonesFromServer);
@@ -39,16 +41,20 @@ export const CatalogPage: React.FC = () => {
 
       <p className={styles['catalog__items-count']}>95 models</p>
 
-      <div className={styles.catalog__dropdowns}>
-        <Dropdown
-          title="title"
-          description="Sort by"
-        />
+      <div className={styles['catalog__dropdown-container']}>
+        <div className={styles.catalog__dropdowns}>
+          <Dropdown
+            title="title"
+            description="Sort by"
+          />
+        </div>
 
-        <Dropdown
-          title="title"
-          description="Items on page"
-        />
+        <div className={styles.catalog__dropdowns}>
+          <Dropdown
+            title="title"
+            description="Items on page"
+          />
+        </div>
       </div>
 
       {isLoading && (<Loader />)}
