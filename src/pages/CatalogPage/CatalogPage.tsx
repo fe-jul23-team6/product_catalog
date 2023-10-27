@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
 
-import { getPhones } from 'services/products.service';
-import { Phone } from 'types';
 import { Loader } from 'components/UI/Loader';
 import { CatalogTable } from 'components/CatalogTable';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Location } from 'components/UI/Location';
+
+import { getPhones } from 'services/products.service';
+import { MESSAGES } from 'utils/constants';
+import { Phone } from 'types';
 import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
@@ -60,12 +62,12 @@ export const CatalogPage: React.FC = () => {
       {isLoading && (<Loader />)}
 
       {hasErrorMessage && (
-        <p>Something went wrong</p>
+        <p>{MESSAGES.NO_SERVER_RESPONSE}</p>
       )}
 
       {hasNoItemsOnServer && (
         <p>
-          There are no phones on the server
+          {MESSAGES.NO_PHONE}
         </p>
       )}
 

@@ -1,5 +1,6 @@
 .dropdown {
   display: block;
+  position: relative;
 
   &__selector {
     box-sizing: border-box;
@@ -45,7 +46,7 @@
 .option {
   position: absolute;
   z-index: 1;
-  width: 174px;
+  width: 100%;
   border: 1px solid var(--elementsColor);
   background: var(--primeBgColor);
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
