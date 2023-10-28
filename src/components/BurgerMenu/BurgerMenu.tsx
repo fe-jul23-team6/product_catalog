@@ -43,7 +43,7 @@ export const BurgerMenu: FC<Props> = ({ setMenuIsOpen }) => {
             to="#"
             className={styles['top-bar__close']}
           >
-            <CloseSvg />
+            <CloseSvg className={styles['top-bar__close-svg']} />
           </NavLink>
         </div>
 

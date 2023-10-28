@@ -64,6 +64,10 @@
     padding: 16px;
     display: flex;
     align-items: center;
+
+    &-svg {
+      fill: var(--secondaryTextColor);
+    }
   }
 }
 

@@ -43,7 +43,21 @@
     }
   }
 
-  &__dropdowns {
+  &__dropdown {
     flex: auto;
+
+    @media(min-width: 640px) {
+      &:first-child {
+        width: 58%;
+      }
+    }
+  }
+
+  &__pagination {
+    margin-top: 24px;
+
+    @media(min-width: 640px) {
+      margin-top: 40px;
+    }
   }
 }

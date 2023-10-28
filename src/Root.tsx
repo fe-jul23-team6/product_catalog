@@ -18,6 +18,12 @@ import {
   AccessoriesPage,
 } from './pages';
 
+// eslint-disable-next-line max-len
+const jsonData = '{"id":1,"category":"phones","phoneId":"apple-iphone-7-32gb-black","itemId":"apple-iphone-7-32gb-black","name":"Apple iPhone 7 32GB Black","fullPrice":400,"price":375,"screen":"4.7\' IPS","capacity":"32GB","color":"black","ram":"2GB","year":2016,"image":"img/phones/apple-iphone-7/black/00.jpg"}';
+
+const phone = JSON.parse(jsonData);
+// DO NOT DELETE YET, this is for local testing
+
 export const Root = () => (
   <Router>
     <Routes>
@@ -35,7 +41,7 @@ export const Root = () => (
           <Route index element={<AccessoriesPage />} />
           <Route path=":AccessoryId" element={<ItemCardPage />} />
         </Route>
-        <Route path="cart" element={<CartPage />} />
+        <Route path="cart" element={<CartPage phone={phone} />} />
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="rights" element={<RightsPage />} />
