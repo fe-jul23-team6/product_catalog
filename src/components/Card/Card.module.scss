@@ -7,10 +7,34 @@
   font-family: var(--font-family);
   font-size: 12px;
   font-weight: 700;
+  transition: transform 0.3s ease-in;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &__container {
+    height: 244px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+    @media(min-width: 640px) {
+      height: 310px;
+    }
+  }
+
+  &__img-container {
+    margin-bottom: 24px;
+  }
 
   &__img {
-    margin-bottom: 24px;
-    height: 196px;
+    margin: 0 auto;
+    min-height: 130px;
+    max-height: 196px;
+
+    display: block;
   }
 
   &__title {
