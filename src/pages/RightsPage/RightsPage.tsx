@@ -1,3 +1,6 @@
+import { PageTitle } from 'components/PageTitle';
+// import styles from './RightsPage.module.scss';
+
 export const RightsPage = () => (
-  <h1>Rights</h1>
+  <PageTitle title="Rights" />
 );

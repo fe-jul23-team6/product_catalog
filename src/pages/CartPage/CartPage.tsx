@@ -1,3 +1,6 @@
+import { PageTitle } from 'components/PageTitle';
+// import styles from './CartPage.module.scss';
+
 export const CartPage = () => (
-  <h1>Cart Page</h1>
+  <PageTitle title="Cart" />
 );
