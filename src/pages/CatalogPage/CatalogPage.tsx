@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Loader } from 'components/UI/Loader';
 import { CatalogTable } from 'components/CatalogTable';
+import { PageTitle } from 'components/PageTitle';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Location } from 'components/UI/Location';
 
@@ -39,7 +40,7 @@ export const CatalogPage: React.FC = () => {
     <section className={styles.catalog}>
       <Location />
 
-      <h1 className={styles.catalog__title}>Mobile phones</h1>
+      <PageTitle title="Mobile phones" />
 
       <p className={styles['catalog__items-count']}>95 models</p>
 

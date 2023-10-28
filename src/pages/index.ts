@@ -1,8 +1,11 @@
+export { HomePage } from './HomePage';
+export { FavouritesPage } from './FavouritesPage';
 export { CartPage } from './CartPage';
 export { CatalogPage } from './CatalogPage';
-export { ContactsPage } from './ContactsPage';
-export { FavouritesPage } from './FavouritesPage';
-export { HomePage } from './HomePage';
+export { PhonesPage } from './PhonesPage';
+export { TabletsPage } from './TabletsPage';
+export { AccessoriesPage } from './AccessoriesPage';
 export { ItemCardPage } from './ItemCardPage';
 export { NotFoundPage } from './NotFoundPage';
-export { PhonesPage } from './PhonesPage';
+export { ContactsPage } from './ContactsPage';
+export { RightsPage } from './RightsPage';

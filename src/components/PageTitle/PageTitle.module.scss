@@ -1,0 +1,23 @@
+.pageTitle {
+  padding-top: 24px;
+
+  &__header {
+    font-size: 32px;
+    font-style: normal;
+    line-height: 41px;
+    font-weight: 800;
+    letter-spacing: -0.32px;
+  }
+}
+
+@media (min-width: 640px) {
+  .pageTitle {
+    padding-top: 40px;
+
+    &__header {
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.48px;
+    }
+  }
+}
