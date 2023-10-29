@@ -1,8 +1,7 @@
 .menu {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  // height: 100vh;
 
   font-family: var(--font-family);
   font-weight: 800;
@@ -49,7 +48,6 @@
 }
 
 .top-bar {
-
   &__logo-link {
     display: flex;
     padding-block: 13px;
@@ -74,7 +72,6 @@
 }
 
 .nav {
-
   &__list {
     width: 100%;
     display: flex;
@@ -90,6 +87,7 @@
 
     &--active {
       color: var(--primeTextColor);
+
       &::after {
         content: "";
         position: absolute;
@@ -100,17 +98,16 @@
         background-color: var(--primeTextColor);
       }
     }
-
   }
 }
 
 .bottom-bar {
-
   &__link {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+
 
     &--border-left {
       border-left: 1px solid var(--secondaryTextColor);
@@ -118,6 +115,7 @@
 
     &-img {
       padding: 24px;
+      box-sizing: content-box;
     }
   }
 }

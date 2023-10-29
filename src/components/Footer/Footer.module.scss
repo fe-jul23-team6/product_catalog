@@ -1,9 +1,5 @@
 .footer {
   padding: 32px 16px;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
 
   display: flex;
   flex-direction: column;
@@ -18,15 +14,13 @@
   font-style: normal;
 
   @media (min-width: 640px) {
-    padding: 32px 24px;
+    padding-left: 32px;
+    padding-right: 33%;
     flex-direction: row;
   }
+
   @media (min-width: 1200px) {
-    padding: 32px;
-    // position: fixed;
-  }
-  @media (min-width: 1440px) {
-    padding: 32px 152px;
+    padding-right: 35%;
   }
 
   &__logo {
@@ -34,6 +28,7 @@
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
+
     @media (min-width: 640px) {
       align-items: flex-start;
       flex: 1 0 0;
@@ -49,13 +44,16 @@
 
   &__scroll {
     display: flex;
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.5rem;
     justify-content: center;
     align-items: center;
     align-self: stretch;
+
     @media (min-width: 640px) {
-      align-items: flex-end;
-      flex: 1 0 0;
-      justify-content: flex-end;
+      right: 32px;
+      bottom: 2.1rem;
     }
   }
 }

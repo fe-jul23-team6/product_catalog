@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   min-height: 860px;
-  height: 90vh;
+  margin-bottom: -40px;
 
   &__textblock {
     width: 100%;
@@ -36,7 +36,7 @@
   }
 }
 
-@media (min-width: 321px) {
+@media (min-width: 640px) {
   .pageNotFound {
     background-position: 40%;
     align-items: center;
@@ -53,8 +53,9 @@
   }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 1200px) {
   .pageNotFound {
     background-position: 65%;
+    margin-bottom: -50px;
   }
 }

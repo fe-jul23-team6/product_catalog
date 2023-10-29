@@ -4,6 +4,7 @@ import { Outlet, useSearchParams } from 'react-router-dom';
 
 import { Loader } from 'components/UI/Loader';
 import { CatalogTable } from 'components/CatalogTable';
+import { PageTitle } from 'components/PageTitle';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Location } from 'components/UI/Location';
 import { Pagination } from 'components/Pagination';
@@ -88,7 +89,7 @@ export const CatalogPage: React.FC = () => {
     <section className={styles.catalog}>
       <Location />
 
-      <h1 className={styles.catalog__title}>Mobile phones</h1>
+      <PageTitle title="Mobile phones" />
 
       {isLoading && (<Loader />)}
 

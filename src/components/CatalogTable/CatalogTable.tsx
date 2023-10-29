@@ -10,10 +10,10 @@ import { Phone } from 'types';
 import styles from './CatalogTable.module.scss';
 
 type Props = {
-  items: Phone[],
+  phones: Phone[],
 };
 
-export const CatalogTable: React.FC<Props> = ({ items }) => {
+export const CatalogTable: React.FC<Props> = ({ phones }) => {
   // const [searchParams] = useSearchParams();
   // const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
   // const perPage = Number(searchParams.get('perPage')) || phones.length;
@@ -29,15 +29,28 @@ export const CatalogTable: React.FC<Props> = ({ items }) => {
   // eslint-disable-next-line no-console
   // console.log(fromItem, toItem);
 
-  if (!items.length) {
+  const cartIdsString = localStorage.getItem('cartItemsIds');
+  const cartIds:string[] = cartIdsString
+    ? JSON.parse(cartIdsString)
+    : [];
+
+  if (!phones.length) {
     return null;
   }
 
   return (
     <div className={styles['catalog-table']}>
-      {items.map(item => (
-        <Card key={item.id} phone={item} />
-      ))}
+      {phones.map(phone => {
+        const isOrdered = cartIds.includes(phone.id);
+
+        return (
+          <Card
+            key={phone.id}
+            phone={phone}
+            isOrdered={isOrdered}
+          />
+        );
+      })}
     </div>
   );
 };

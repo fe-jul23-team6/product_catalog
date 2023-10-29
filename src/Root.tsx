@@ -4,16 +4,18 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { FavouritesPage } from 'pages/FavouritesPage';
-import { BurgerMenu } from 'components/BurgerMenu';
-import { ContactsPage } from 'pages/ContactsPage';
-import { CatalogPage } from 'pages/CatalogPage';
 import { App } from './App';
 import {
   CartPage,
   HomePage,
+  RightsPage,
+  TabletsPage,
+  CatalogPage,
+  ContactsPage,
   ItemCardPage,
   NotFoundPage,
+  FavouritesPage,
+  AccessoriesPage,
 } from './pages';
 
 // eslint-disable-next-line max-len
@@ -25,16 +27,24 @@ const phone = JSON.parse(jsonData);
 export const Root = () => (
   <Router>
     <Routes>
-      <Route path="menu" element={<BurgerMenu />} />
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="phones">
           <Route index element={<CatalogPage />} />
           <Route path=":PhoneId" element={<ItemCardPage />} />
         </Route>
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":TabletId" element={<ItemCardPage />} />
+        </Route>
+        <Route path="accessories">
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":AccessoryId" element={<ItemCardPage />} />
+        </Route>
         <Route path="cart" element={<CartPage phone={phone} />} />
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="contacts" element={<ContactsPage />} />
+        <Route path="rights" element={<RightsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
