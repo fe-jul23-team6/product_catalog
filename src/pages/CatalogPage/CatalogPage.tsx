@@ -8,16 +8,24 @@ import { Dropdown } from 'components/UI/Dropdown';
 import { Location } from 'components/UI/Location';
 import { Pagination } from 'components/Pagination';
 
+import {
+  DEFAULT_PAGE,
+  MESSAGES,
+  PAGE_SIZE_OPTIONS,
+  SORT_OPTION,
+} from 'utils/constants';
+
 import { getPhones } from 'services/products.service';
-import { MESSAGES, PAGE_SIZE_OPTIONS, SORT_OPTION } from 'utils/constants';
 import { Phone } from 'types';
 import styles from './CatalogPage.module.scss';
 
-const defaultPaginationValue = {
-  total: 1,
-  perPage: 1,
+//
+const testPaginationValue = {
+  total: 70,
+  perPage: 70,
   currentPage: 1,
 };
+//
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -40,17 +48,17 @@ export const CatalogPage: React.FC = () => {
   }, []);
 
   // const [paginationOption, setPaginationOption] = useState({
-  //   total: phones.length,
-  //   perPage: phones.length || 1,
-  //   currentPage: 1,
+  //   total: phones.length || 0,
+  //   perPage: phones.length || DEFAULT_PAGE,
+  //   currentPage: DEFAULT_PAGE,
   // });
 
-  const [paginationOption, setPaginationOption] = useState({
-    ...defaultPaginationValue,
-  });
+  // const [searchParams] = useSearchParams();
+  // const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
 
-  // eslint-disable-next-line no-console
-  console.log(paginationOption);
+  const [paginationOption, setPaginationOption] = useState({
+    ...testPaginationValue,
+  });
 
   const handleCurrentPage = (value: number) => setPaginationOption(
     (prevState) => {
@@ -61,6 +69,15 @@ export const CatalogPage: React.FC = () => {
     },
   );
 
+  // setPaginationOption(
+  //   (prevState) => {
+  //     return {
+  //       ...prevState,
+  //       currentPage: page,
+  //     };
+  //   },
+  // );
+
   // const fromItem = (paginationOption?.currentPage - 1)
   // * paginationOption.perPage + 1;
 
@@ -69,11 +86,15 @@ export const CatalogPage: React.FC = () => {
   // const toItem = Math.min(maxCountItem, defaultPaginationValue.total);
 
   const handleSetPaginationOption = (value: string) => {
+    const newPerPage = value === 'All'
+      ? paginationOption.total
+      : +value;
+
     setPaginationOption((prevState) => {
       return {
         ...prevState,
-        perPage: +value,
-        currentPage: defaultPaginationValue.currentPage,
+        perPage: newPerPage,
+        currentPage: DEFAULT_PAGE,
       };
     });
   };
@@ -87,25 +108,6 @@ export const CatalogPage: React.FC = () => {
 
       <h1 className={styles.catalog__title}>Mobile phones</h1>
 
-      <p className={styles['catalog__items-count']}>{`${phones.length} models`}</p>
-
-      <div className={styles['catalog__dropdown-container']}>
-        <div className={styles.catalog__dropdown}>
-          <Dropdown
-            description="Sort by"
-            options={SORT_OPTION}
-            onItemSelected={handleSetPaginationOption}
-          />
-        </div>
-
-        <div className={styles.catalog__dropdown}>
-          <Dropdown
-            description="Items on page"
-            options={PAGE_SIZE_OPTIONS}
-          />
-        </div>
-      </div>
-
       {isLoading && (<Loader />)}
 
       {hasErrorMessage && (
@@ -114,20 +116,41 @@ export const CatalogPage: React.FC = () => {
 
       {hasNoItemsOnServer && (
         <p>
-          {MESSAGES.NO_PHONE}
+          {MESSAGES.NO_PHONES}
         </p>
       )}
 
       {!!phones.length && (
-        <CatalogTable phones={phones} />
-      )}
+        <>
+          <p className={styles['catalog__items-count']}>{`${phones.length} models`}</p>
 
-      <div className={styles.catalog__pagination}>
-        <Pagination
-          paginationOption={paginationOption}
-          onPageChange={handleCurrentPage}
-        />
-      </div>
+          <div className={styles['catalog__dropdown-container']}>
+            <div className={styles.catalog__dropdown}>
+              <Dropdown
+                description="Sort by"
+                options={SORT_OPTION}
+              />
+            </div>
+
+            <div className={styles.catalog__dropdown}>
+              <Dropdown
+                description="Items on page"
+                options={PAGE_SIZE_OPTIONS}
+                onOptionSelected={handleSetPaginationOption}
+              />
+            </div>
+          </div>
+
+          <CatalogTable phones={phones} />
+
+          <div className={styles.catalog__pagination}>
+            <Pagination
+              paginationOption={paginationOption}
+              onPageChange={handleCurrentPage}
+            />
+          </div>
+        </>
+      )}
 
       <Outlet />
     </section>

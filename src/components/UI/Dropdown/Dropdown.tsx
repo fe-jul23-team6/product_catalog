@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from 'classnames';
 
 import { ReactComponent as Arrow }
@@ -10,13 +9,13 @@ import styles from './Dropdown.module.scss';
 type Props = {
   description: string,
   options: string[],
-  onItemSelected?: (item: string) => void | null,
+  onOptionSelected?: (option: string) => void,
 };
 
 export const Dropdown: React.FC<Props> = ({
   description,
   options = [],
-  onItemSelected = null,
+  onOptionSelected,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownTitle, setDropdownTitle] = useState(options[0]);
@@ -41,12 +40,12 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(prev => !prev);
   };
 
-  const handleItemClick = (item: string) => {
-    if (onItemSelected) {
-      onItemSelected(item);
+  const handleItemClick = (option: string) => {
+    if (typeof onOptionSelected !== 'undefined') {
+      onOptionSelected(option);
     }
 
-    setDropdownTitle(item);
+    setDropdownTitle(option);
     setIsOpen(false);
   };
 
@@ -68,14 +67,15 @@ export const Dropdown: React.FC<Props> = ({
       </button>
       {isOpen && (
         <ul className={classNames(styles.dropdown__option, styles.option)}>
-          {options.map(item => (
+          {options.map(option => (
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
             <li
+              key={option}
               data-value="option1"
               className={styles.option__item}
-              onClick={() => handleItemClick(item)}
+              onClick={() => handleItemClick(option)}
             >
-              {item}
+              {option}
             </li>
           ))}
         </ul>

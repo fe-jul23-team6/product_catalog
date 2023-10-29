@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button } from 'components/UI/Buttons';
 import { PaginationPage } from 'components/PaginationPage';
 
+import { DEFAULT_PAGE, VISIBLE_PAGES_COUNT } from 'utils/constants';
 import { getPages } from 'utils/helpers';
 import { PaginationOption } from 'types';
-import { Link } from 'react-router-dom';
 
 import styles from './Pagination.module.scss';
 
@@ -22,9 +23,21 @@ export const Pagination: React.FC<Props> = ({
 
   const pageCount = Math.ceil(total / perPage);
 
-  const pages = getPages(1, pageCount);
+  const maxFromPage = pageCount - VISIBLE_PAGES_COUNT + 1;
 
-  const isActivePrev = currentPage === 1;
+  let fromPage;
+
+  if (currentPage < 2) {
+    fromPage = currentPage;
+  } else if (currentPage >= 2 && currentPage <= maxFromPage) {
+    fromPage = currentPage - 1;
+  } else {
+    fromPage = maxFromPage;
+  }
+
+  const pages = getPages(fromPage, pageCount);
+
+  const isActivePrev = currentPage === DEFAULT_PAGE;
   const isActiveNext = currentPage === pageCount;
   const startVal = currentPage;
 
@@ -53,7 +66,7 @@ export const Pagination: React.FC<Props> = ({
         </Link>
       </li>
 
-      <ul className={styles.pagination}>
+      <ul className={styles.pagination__page}>
         {pages.map(page => (
           <PaginationPage
             key={page}

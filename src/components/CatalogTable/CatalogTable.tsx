@@ -3,6 +3,7 @@ import React from 'react';
 import { Card } from 'components/Card';
 
 import { Phone } from 'types';
+
 import styles from './CatalogTable.module.scss';
 
 type Props = {
@@ -10,6 +11,10 @@ type Props = {
 };
 
 export const CatalogTable: React.FC<Props> = ({ phones }) => {
+  if (!phones.length) {
+    return null;
+  }
+
   return (
     <div className={styles['catalog-table']}>
       {phones.map(phone => (

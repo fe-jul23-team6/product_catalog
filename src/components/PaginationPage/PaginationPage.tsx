@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 
 import { Button } from 'components/UI/Buttons';
+
+import styles from './PaginationPage.module.scss';
 
 type Props = {
   page: number,
@@ -14,12 +17,17 @@ export const PaginationPage: React.FC<Props> = ({
   selectedPage,
   onPageChange,
 }) => {
+  const isActive = selectedPage === page;
+
   return (
-    <li>
-      <Link to={`#${page}`} onClick={() => onPageChange(page)}>
+    <li className={cn(
+      { [styles['pagination-page__active']]: isActive },
+    )}
+    >
+      <Link to={`page=${page}`} onClick={() => onPageChange(page)}>
         <Button
           btnType="Pagination"
-          isActive={selectedPage === page}
+          isActive={isActive}
           content={page.toString()}
         />
       </Link>
