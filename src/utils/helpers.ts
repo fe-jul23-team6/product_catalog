@@ -1,4 +1,4 @@
-import { SearchParams } from 'types';
+import { Phone, SearchParams } from 'types';
 
 export function getPages(from: number, to: number): number[] {
   const pages = [];
@@ -8,6 +8,10 @@ export function getPages(from: number, to: number): number[] {
   }
 
   return pages;
+}
+
+export function getItems(from: number, to: number, items: Phone[]) {
+  return items.slice(from, (to - from + 2));
 }
 
 export function getSearchWith(

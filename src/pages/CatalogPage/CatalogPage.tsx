@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Outlet } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 
 import { Loader } from 'components/UI/Loader';
 import { CatalogTable } from 'components/CatalogTable';
@@ -15,16 +15,17 @@ import {
   SORT_OPTION,
 } from 'utils/constants';
 
+// import { getItems } from 'utils/helpers';
 import { getPhones } from 'services/products.service';
 import { Phone } from 'types';
 import styles from './CatalogPage.module.scss';
 
 //
-const testPaginationValue = {
-  total: 70,
-  perPage: 70,
-  currentPage: 1,
-};
+// const testPaginationValue = {
+//   total: 70,
+//   perPage: 70,
+//   currentPage: 1,
+// };
 //
 
 export const CatalogPage: React.FC = () => {
@@ -47,57 +48,38 @@ export const CatalogPage: React.FC = () => {
       });
   }, []);
 
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
+  const perPage = Number(searchParams.get('perPage')) || phones.length;
+
+  const fromItem = (page - 1) * perPage + 1;
+
+  const maxCountItem = page * perPage;
+
+  const toItem = Math.min(maxCountItem, phones.length);
+
+  // const items = getItems(fromItem, toItem, phones);
+
+  // eslint-disable-next-line no-console
+  console.log(fromItem, toItem);
+
   // const [paginationOption, setPaginationOption] = useState({
-  //   total: phones.length || 0,
-  //   perPage: phones.length || DEFAULT_PAGE,
-  //   currentPage: DEFAULT_PAGE,
+  //   ...testPaginationValue,
   // });
 
-  // const [searchParams] = useSearchParams();
-  // const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
+  // const handleSetPaginationOption = (value: string) => {
+  //   const newPerPage = value === 'All'
+  //     ? phones.length
+  //     : +value;
 
-  const [paginationOption, setPaginationOption] = useState({
-    ...testPaginationValue,
-  });
-
-  const handleCurrentPage = (value: number) => setPaginationOption(
-    (prevState) => {
-      return {
-        ...prevState,
-        currentPage: value,
-      };
-    },
-  );
-
-  // setPaginationOption(
-  //   (prevState) => {
+  //   setPaginationOption((prevState) => {
   //     return {
   //       ...prevState,
-  //       currentPage: page,
+  //       perPage: newPerPage,
+  //       currentPage: DEFAULT_PAGE,
   //     };
-  //   },
-  // );
-
-  // const fromItem = (paginationOption?.currentPage - 1)
-  // * paginationOption.perPage + 1;
-
-  // const maxCountItem = paginationOption?.currentPage * paginationOption.perPage;
-
-  // const toItem = Math.min(maxCountItem, defaultPaginationValue.total);
-
-  const handleSetPaginationOption = (value: string) => {
-    const newPerPage = value === 'All'
-      ? paginationOption.total
-      : +value;
-
-    setPaginationOption((prevState) => {
-      return {
-        ...prevState,
-        perPage: newPerPage,
-        currentPage: DEFAULT_PAGE,
-      };
-    });
-  };
+  //   });
+  // };
 
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer = !phones.length && !hasError && !isLoading;
@@ -136,17 +118,17 @@ export const CatalogPage: React.FC = () => {
               <Dropdown
                 description="Items on page"
                 options={PAGE_SIZE_OPTIONS}
-                onOptionSelected={handleSetPaginationOption}
+                // onOptionSelected={handleSetPaginationOption}
               />
             </div>
           </div>
 
-          <CatalogTable phones={phones} />
+          <CatalogTable items={phones} />
 
           <div className={styles.catalog__pagination}>
             <Pagination
-              paginationOption={paginationOption}
-              onPageChange={handleCurrentPage}
+              total={phones.length}
+              // paginationOption={paginationOption}
             />
           </div>
         </>

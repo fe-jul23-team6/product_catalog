@@ -1,34 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import cn from 'classnames';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import { Button } from 'components/UI/Buttons';
-
-import styles from './PaginationPage.module.scss';
+import { getSearchWith } from 'utils/helpers';
+import { DEFAULT_PAGE } from 'utils/constants';
 
 type Props = {
-  page: number,
-  selectedPage: number,
-  onPageChange: (value: number) => void,
+  pageNumber: string,
 };
 
 export const PaginationPage: React.FC<Props> = ({
-  page,
-  selectedPage,
-  onPageChange,
+  pageNumber,
 }) => {
-  const isActive = selectedPage === page;
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page') || '';
+  let isActive = page === pageNumber;
+  let searchPageValue: string | null = pageNumber;
+
+  if (Number(pageNumber) === DEFAULT_PAGE) {
+    searchPageValue = null;
+    isActive = !page;
+  }
 
   return (
-    <li className={cn(
-      { [styles['pagination-page__active']]: isActive },
-    )}
-    >
-      <Link to={`page=${page}`} onClick={() => onPageChange(page)}>
+    <li>
+      <Link
+        to={{
+          search: getSearchWith(searchParams, { page: searchPageValue }),
+        }}
+      >
         <Button
           btnType="Pagination"
           isActive={isActive}
-          content={page.toString()}
+          content={pageNumber}
         />
       </Link>
     </li>
