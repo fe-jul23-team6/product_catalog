@@ -13,15 +13,15 @@ import { ReactComponent as Burger }
 import styles from './Header.module.scss';
 
 type Props = {
-  menuIsOpen: boolean;
-  setMenuIsOpen: (menuIsOpen: boolean) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isMenuOpen: boolean) => void;
 };
 
-export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
+export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const [activeItem, setActiveItem] = useState(0);
 
   const toggleMenu = () => {
-    setMenuIsOpen(true);
+    setIsMenuOpen(true);
   };
 
   const handleIsActive = (index: number) => {
@@ -32,12 +32,16 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const storedIdsString = localStorage.getItem('cartItemsIds');
-      const storeItemCount: number | null = storedIdsString
-        ? JSON.parse(storedIdsString).length
+      const storedCart = localStorage.getItem('cartItems');
+      const currentCart: number[][] = storedCart
+        ? JSON.parse(storedCart)
         : null;
 
-      setCartItemCount(storeItemCount);
+      if (currentCart) {
+        const totalItemsInCart = currentCart.reduce((acc, item) => acc + item[1], 0);
+
+        setCartItemCount(totalItemsInCart);
+      }
     };
 
     window.addEventListener('storageChange', handleStorageChange);
@@ -48,12 +52,11 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
     };
   }, []);
 
-
   return (
-    menuIsOpen
+    isMenuOpen
       ? (
         <BurgerMenu
-          setMenuIsOpen={setMenuIsOpen}
+          setIsMenuOpen={setIsMenuOpen}
         />
       )
       : (
@@ -125,17 +128,18 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
               <Heart />
             </NavLink>
 
-
-        <NavLink
-          to="/cart"
-          className={styles.header__icon}
-        >
-          <Cart />
-          { !!cartItemCount
-          && <div className={styles.header__icon_cartcount}>{cartItemCount}</div> }
-        </NavLink>
-      </div>
-
+            <NavLink
+              to="/cart"
+              className={styles.header__icon}
+            >
+              <Cart />
+              { !!cartItemCount && (
+                <div className={styles.header__icon_cartcount}>
+                  {cartItemCount}
+                </div>
+              ) }
+            </NavLink>
+          </div>
 
           <div className={styles.header__icons_burger}>
             <NavLink
