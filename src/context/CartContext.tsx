@@ -18,7 +18,7 @@ export const CartContext = createContext<CartContextType>({
 });
 
 export const CartContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const cartLocalStorage = localStorage.getItem('cart');
+  const cartLocalStorage = localStorage.getItem('cartItems');
   const cartPurchases: number[][] = JSON.parse(cartLocalStorage || '[]');
   const cartData: number[] = cartPurchases.map(item => item[0]);
 

@@ -32,12 +32,16 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const storedIdsString = localStorage.getItem('cartItemsIds');
-      const storeItemCount: number | null = storedIdsString
-        ? JSON.parse(storedIdsString).length
+      const storedCart = localStorage.getItem('cartItems');
+      const currentCart: number[][] = storedCart
+        ? JSON.parse(storedCart)
         : null;
 
-      setCartItemCount(storeItemCount);
+      if (currentCart) {
+        const totalItemsInCart = currentCart.reduce((acc, item) => acc + item[1], 0);
+
+        setCartItemCount(totalItemsInCart);
+      }
     };
 
     window.addEventListener('storageChange', handleStorageChange);

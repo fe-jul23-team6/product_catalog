@@ -9,11 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from 'context/CartContext';
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
+import { LocalStorageCart } from 'types/LocalStorageCart';
 import { CartItem } from '../../components/CartItem';
 
 import styles from './CartPage.module.scss';
 
-type LocalStorageCart = [number, number][];
 // cartPurchases [[id of the phone, amount], ...]
 
 export const CartPage: React.FC = () => {
@@ -24,7 +24,7 @@ export const CartPage: React.FC = () => {
 
   const { cartPhonesIds, setCartPhonesIds } = useContext(CartContext);
 
-  const cartLocalStorage = localStorage.getItem('cart');
+  const cartLocalStorage = localStorage.getItem('cartItems');
   const [cartPurchases, setCartPurchases] = useState<LocalStorageCart>(
     cartLocalStorage
       ? JSON.parse(cartLocalStorage)
@@ -67,7 +67,8 @@ export const CartPage: React.FC = () => {
       const updatedLocalStorage: LocalStorageCart = cartPurchases
         .filter(val => val[0] !== id);
 
-      localStorage.setItem('cart', JSON.stringify(updatedLocalStorage));
+      localStorage.setItem('cartItems', JSON.stringify(updatedLocalStorage));
+      window.dispatchEvent(new Event('storageChange'));
 
       setCartItems(newCartItems);
       setCartPurchases(updatedLocalStorage);
@@ -96,7 +97,8 @@ export const CartPage: React.FC = () => {
           .filter(item => +item.id !== id));
       }
 
-      localStorage.setItem('cart', JSON.stringify(copy));
+      localStorage.setItem('cartItems', JSON.stringify(copy));
+      window.dispatchEvent(new Event('storageChange'));
 
       return copy;
     });
@@ -111,7 +113,8 @@ export const CartPage: React.FC = () => {
 
       copy[index][1] += 1;
 
-      localStorage.setItem('cart', JSON.stringify(copy));
+      localStorage.setItem('cartItems', JSON.stringify(copy));
+      window.dispatchEvent(new Event('storageChange'));
 
       return copy;
     });
@@ -120,14 +123,15 @@ export const CartPage: React.FC = () => {
   const handleCheckout = () => {
     setCartPhonesIds([]);
     setCartItems([]);
-    localStorage.setItem('cart', '[]');
+    localStorage.setItem('cartItems', '[]');
+    window.dispatchEvent(new Event('storageChange'));
   };
 
   useEffect(() => {
     loadData();
   }, []);
 
-  // localStorage.setItem('cart', '[[1,1],[2,1],[3,1],[25,1]]');
+  // localStorage.setItem('cart', '[[2,2],[15,1],[36,1],[63,1]]');
 
   return (
     <div className={styles.cart}>
