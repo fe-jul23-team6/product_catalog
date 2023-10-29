@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 /* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
+import { BurgerMenu } from 'components/BurgerMenu';
 import logo from 'assets/img/logo.svg';
+import classNames from 'classnames';
 import { ReactComponent as Heart }
   from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as Cart }
@@ -10,7 +12,22 @@ import { ReactComponent as Burger }
   from 'assets/img/icons/menu_icon.svg';
 import styles from './Header.module.scss';
 
-export const Header = () => {
+type Props = {
+  menuIsOpen: boolean;
+  setMenuIsOpen: (menuIsOpen: boolean) => void;
+};
+
+export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
+  const [activeItem, setActiveItem] = useState(0);
+
+  const toggleMenu = () => {
+    setMenuIsOpen(true);
+  };
+
+  const handleIsActive = (index: number) => {
+    setActiveItem(index);
+  };
+
   const [cartItemCount, setCartItemCount] = useState<number | null>(null);
 
   useEffect(() => {
@@ -31,46 +48,83 @@ export const Header = () => {
     };
   }, []);
 
+
   return (
-    <header className={styles.header}>
-      <div className={styles.header__left}>
-        <NavLink
-          to="/"
-          className={styles.header__logo}
-        >
-          <img
-            className={styles['header__logo-size']}
-            src={logo}
-            alt="Nice Gadgets logo"
-          />
-        </NavLink>
+    menuIsOpen
+      ? (
+        <BurgerMenu
+          setMenuIsOpen={setMenuIsOpen}
+        />
+      )
+      : (
+        <header className={styles.header}>
+          <div
+            className={styles.header__left}
+          >
+            <NavLink
+              to="/"
+              className={styles.header__logo}
+            >
+              <img
+                className={styles['header__logo-size']}
+                src={logo}
+                alt="Nice Gadgets logo"
+              />
+            </NavLink>
 
-        <nav className={styles.header__menu}>
-          <NavLink to="/">
-            Home
-          </NavLink>
+            <nav
+              className={styles.header__menu}
+            >
+              <NavLink
+                to="/"
+                className={classNames(styles.header__menu_link, {
+                  isActive: activeItem === 0,
+                })}
+                onClick={() => handleIsActive(0)}
+              >
+                Home
+              </NavLink>
 
-          <NavLink to="/phones">
-            Phones
-          </NavLink>
+              <NavLink
+                to="/phones"
+                className={classNames(styles.header__menu_link, {
+                  isActive: activeItem === 1,
+                })}
+                onClick={() => handleIsActive(1)}
+              >
+                Phones
+              </NavLink>
 
-          <NavLink to="/tablets">
-            Tablets
-          </NavLink>
+              <NavLink
+                to="/tablets"
+                className={classNames(styles.header__menu_link, {
+                  isActive: activeItem === 2,
+                })}
+                onClick={() => handleIsActive(2)}
+              >
+                Tablets
+              </NavLink>
 
-          <NavLink to="/accessories">
-            Accessories
-          </NavLink>
-        </nav>
-      </div>
+              <NavLink
+                to="/accessories"
+                className={classNames(styles.header__menu_link, {
+                  isActive: activeItem === 3,
+                })}
+                onClick={() => handleIsActive(3)}
+              >
+                Accessories
+              </NavLink>
+            </nav>
+          </div>
 
-      <div className={styles.header__icons}>
-        <NavLink
-          to="/favourites"
-          className={styles.header__icon}
-        >
-          <Heart />
-        </NavLink>
+          <div className={styles.header__icons}>
+            <NavLink
+              to="/favourites"
+              className={styles.header__icon}
+            >
+              <Heart />
+            </NavLink>
+
 
         <NavLink
           to="/cart"
@@ -82,14 +136,17 @@ export const Header = () => {
         </NavLink>
       </div>
 
-      <div className={styles.header__icons_burger}>
-        <NavLink
-          to="/menu"
-          className={styles.header__icon}
-        >
-          <Burger />
-        </NavLink>
-      </div>
-    </header>
+
+          <div className={styles.header__icons_burger}>
+            <NavLink
+              to="#"
+              onClick={toggleMenu}
+              className={styles.header__icon}
+            >
+              <Burger />
+            </NavLink>
+          </div>
+        </header>
+      )
   );
 };

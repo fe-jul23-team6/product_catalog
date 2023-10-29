@@ -42,7 +42,6 @@ export const Footer = () => {
       </div>
       <div className={`${styles.footer__scroll} ${styles.scroll}`}>
         <NavLink
-          id="scroll_top"
           to="#"
           onClick={scrollToTop}
           className={styles.scroll__link}

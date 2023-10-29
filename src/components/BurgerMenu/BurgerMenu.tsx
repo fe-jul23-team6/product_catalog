@@ -1,17 +1,37 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable max-len */
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from 'assets/img/logo.svg';
-import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
-import { ReactComponent as FavSvg } from 'assets/img/icons/favourites-default_icon.svg';
-import { ReactComponent as CartSvg } from 'assets/img/icons/shopping-bag_icon.svg';
+import { ReactComponent as CloseSvg }
+  from 'assets/img/icons/close_icon.svg';
+import { ReactComponent as FavSvg }
+  from 'assets/img/icons/favourites-default_icon.svg';
+import { ReactComponent as CartSvg }
+  from 'assets/img/icons/shopping-bag_icon.svg';
 import styles from './BurgerMenu.module.scss';
 
-export const BurgerMenu = () => {
+type Props = {
+  setMenuIsOpen: (menuIsOpen: boolean) => void;
+};
+
+export const BurgerMenu: FC<Props> = ({ setMenuIsOpen }) => {
+  const toggleMenu = () => {
+    setMenuIsOpen(false);
+  };
+
   return (
-    <aside className={styles.menu} id="menu">
+    <aside
+      onClick={toggleMenu}
+      className={styles.menu}
+    >
       <div className={styles.menu__content}>
         <div className={`${styles['menu__top-bar']} ${styles['top-bar']}`}>
-          <NavLink className={styles['top-bar__logo-link']} to="/">
+          <NavLink
+            to="/"
+            className={styles['top-bar__logo-link']}
+          >
             <img
               src={logo}
               className={styles['top-bar__logo-img']}
@@ -19,14 +39,19 @@ export const BurgerMenu = () => {
             />
           </NavLink>
 
-          <NavLink className={styles['top-bar__close']} to="/">
+          <NavLink
+            to="#"
+            className={styles['top-bar__close']}
+          >
             <CloseSvg className={styles['top-bar__close-svg']} />
           </NavLink>
         </div>
 
         <div className={styles.menu__list}>
           <div className={styles.menu__nav}>
-            <ul className={styles.nav__list}>
+            <ul
+              className={styles.nav__list}
+            >
               <li className={styles.nav__item}>
                 <NavLink
                   className={`${styles.nav__link} ${styles['nav__link--active']}`}
@@ -57,8 +82,10 @@ export const BurgerMenu = () => {
           </div>
         </div>
 
-        <div className={styles['menu__bottom-bar']}>
-          <NavLink to="/favorites" className={styles['bottom-bar__link']}>
+        <div
+          className={styles['menu__bottom-bar']}
+        >
+          <NavLink to="/favourites" className={styles['bottom-bar__link']}>
             <FavSvg className={styles['bottom-bar__link-img']} />
           </NavLink>
 

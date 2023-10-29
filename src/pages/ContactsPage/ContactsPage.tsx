@@ -1,3 +1,6 @@
+import { PageTitle } from 'components/PageTitle';
+// import styles from './ContactsPage.module.scss';
+
 export const ContactsPage = () => (
-  <h1>Contacts</h1>
+  <PageTitle title="Contacts" />
 );

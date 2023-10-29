@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import { PageTitle } from 'components/PageTitle';
 import { Phone } from 'types';
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
@@ -37,9 +38,7 @@ export const CartPage: React.FC<Props> = ({ phone }) => {
           </button>
         </div>
 
-        <h1 className={styles.cart__title}>
-          Cart
-        </h1>
+        <PageTitle title="Cart" />
       </div>
 
       <div className={styles.cart__wrapper}>

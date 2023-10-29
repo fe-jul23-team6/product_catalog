@@ -29,18 +29,73 @@
     display: none;
     justify-content: space-between;
     width: 329px;
-    color: var(--secondaryTextColor);
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
+    color: var(--secondaryTextColor);
     margin-inline: 16px;
+
+    &_link {
+      &:hover {
+        color: var(--primeTextColor);
+      }
+
+      &:active {
+        color: var(--primeTextColor);
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: var(--primeTextColor);
+        }
+      }
+
+      // &.isActive {
+      //   color: var(--primeTextColor);
+      //   position: relative;
+
+      //   &::after {
+      //     content: "";
+      //     position: absolute;
+      //     bottom: 0;
+      //     left: 0;
+      //     width: 100%;
+      //     height: 3px;
+      //     background-color: var(--primeTextColor);
+      //   }
+      // }
+    }
   }
+
+  // .isActive {
+  //   color: var(--primeTextColor);
+  //   position: relative;
+
+  //   &::after {
+  //     content: "";
+  //     position: absolute;
+  //     bottom: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 3px;
+  //     background-color: var(--primeTextColor);
+  //   }
+  // }
 
   &__icons {
     display: none;
     align-items: center;
+
+    &_burger {
+      line-height: 100%;
+    }
   }
 
   &__icon {
@@ -49,7 +104,7 @@
     padding: 16px;
     position: relative;
   }
-
+ 
   &__icon_cartcount {
     position: absolute;
     top: 17px;
@@ -75,10 +130,14 @@
   }
 }
 
-@media (min-width: 550px) {
+@media (min-width: 560px) {
   .header {
     &__menu {
       display: flex;
+
+      &_link {
+        padding-block: 19px;
+      }
     }
 
     &__icons {
@@ -88,19 +147,10 @@
         display: none;
       }
     }
-
-    &__bottom {
-      padding-block: 32px;
-    }
-
-    &__title {
-      font-size: 48px;
-      line-height: 56px;
-    }
   }
 }
 
-@media (min-width: 730px) {
+@media (min-width: 641px) {
   .header {
     &__logo {
       padding-block: 18px;
@@ -115,14 +165,14 @@
     &__menu {
       width: 425px;
       margin-inline: 24px;
+
+      &_link {
+        padding-block: 27px;
+      }
     }
 
     &__icon {
       padding: 24px;
-    }
-
-    &__bottom {
-      padding-block: 56px;
     }
   }
 }
