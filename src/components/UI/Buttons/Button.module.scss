@@ -6,12 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  
   transition: transform 0.3s ease-in;
 
   &:hover {
     transform: scale(1.03);
   }
 
+  &:hover:active {
+    background-color: var(--primeAccentColor);
+  }
 
   &__pagination {
     background-color: var(--secondaryBGColor);
@@ -37,6 +42,15 @@
     color: var(--iconsColor);
     background-color: var(--elementsColor);
     border: 1px solid var(--iconsColor);
+
+    &:hover {
+      transform: scale(1);
+      background-color: var(--elementsColor);
+    }
+
+    &:hover:active {
+      background-color: var(--elementsColor);
+    }
   }
 
   &__slider-icon-disabled {
