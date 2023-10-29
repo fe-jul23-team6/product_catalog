@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { CartContextProvider } from 'context/CartContext';
 import { Root } from './Root';
 import './index.scss';
 
@@ -8,7 +9,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
+  <CartContextProvider>
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>
+  </CartContextProvider>,
 );

@@ -6,15 +6,15 @@ import { Footer } from './components/Footer';
 import './index.scss';
 
 export const App = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="page">
       <Header
-        menuIsOpen={menuIsOpen}
-        setMenuIsOpen={setMenuIsOpen}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
       />
-      {!menuIsOpen
+      {!isMenuOpen
         && (
           <>
             <main className="page__body">

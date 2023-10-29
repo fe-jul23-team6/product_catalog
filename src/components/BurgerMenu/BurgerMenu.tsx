@@ -13,12 +13,12 @@ import { ReactComponent as CartSvg }
 import styles from './BurgerMenu.module.scss';
 
 type Props = {
-  setMenuIsOpen: (menuIsOpen: boolean) => void;
+  setIsMenuOpen: (isMenuOpen: boolean) => void;
 };
 
-export const BurgerMenu: FC<Props> = ({ setMenuIsOpen }) => {
+export const BurgerMenu: FC<Props> = ({ setIsMenuOpen }) => {
   const toggleMenu = () => {
-    setMenuIsOpen(false);
+    setIsMenuOpen(false);
   };
 
   return (
