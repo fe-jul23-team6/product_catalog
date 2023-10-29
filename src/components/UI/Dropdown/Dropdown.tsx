@@ -1,28 +1,53 @@
-import React, { useEffect, useRef, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React,
+{
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+
+import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { ReactComponent as Arrow }
   from 'assets/img/icons/chevron-up_icon.svg';
+
+import { getSearchWith } from 'utils/helpers';
 
 import styles from './Dropdown.module.scss';
 
 type Props = {
   description: string,
   options: string[],
-  onItemSelected?: (item: string) => void | null,
 };
 
 export const Dropdown: React.FC<Props> = ({
   description,
   options = [],
-  onItemSelected = null,
 }) => {
+  const [searchParams] = useSearchParams();
+
+  const isSort = description === 'Sort by';
+  const isItemsOnPage = description === 'Items on page';
+
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownTitle, setDropdownTitle] = useState(options[0]);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // if (isSort) {
+    //   getSearchWith(
+    //     searchParams,
+    //     { sort: dropdownTitle.toLowerCase() },
+    //   );
+    // }
+
+    // if (isItemsOnPage) {
+    //   getSearchWith(
+    //     searchParams,
+    //     { perPage: dropdownTitle.toLowerCase() },
+    //   );
+    // }
+
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current
         && !dropdownRef.current.contains(event.target as Node | null)) {
@@ -41,12 +66,8 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(prev => !prev);
   };
 
-  const handleItemClick = (item: string) => {
-    if (onItemSelected) {
-      onItemSelected(item);
-    }
-
-    setDropdownTitle(item);
+  const handleItemClick = (option: string) => {
+    setDropdownTitle(option);
     setIsOpen(false);
   };
 
@@ -68,14 +89,39 @@ export const Dropdown: React.FC<Props> = ({
       </button>
       {isOpen && (
         <ul className={classNames(styles.dropdown__option, styles.option)}>
-          {options.map(item => (
+          {options.map(option => (
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
             <li
+              key={option}
               data-value="option1"
               className={styles.option__item}
-              onClick={() => handleItemClick(item)}
+              onClick={() => handleItemClick(option)}
             >
-              {item}
+              {isItemsOnPage && (
+                <Link
+                  to={{
+                    search: getSearchWith(
+                      searchParams,
+                      { perPage: option },
+                    ),
+                  }}
+                >
+                  {option}
+                </Link>
+              )}
+
+              {isSort && (
+                <Link
+                  to={{
+                    search: getSearchWith(
+                      searchParams,
+                      { sort: option.toLowerCase() },
+                    ),
+                  }}
+                >
+                  {option}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

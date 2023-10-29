@@ -1,49 +1,70 @@
 import React from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import { Button } from 'components/UI/Buttons';
 import { PaginationPage } from 'components/PaginationPage';
 
-import { getPages } from 'utils/helpers';
-import { PaginationOption } from 'types';
-import { Link } from 'react-router-dom';
+import { DEFAULT_PAGE, VISIBLE_PAGES_COUNT } from 'utils/constants';
+import { getPages, getSearchWith } from 'utils/helpers';
+// import { PaginationOption } from 'types';
 
 import styles from './Pagination.module.scss';
 
 type Props = {
-  paginationOption: PaginationOption,
-  onPageChange: (value: number) => void,
+  total: number,
+  // paginationOption: PaginationOption,
 };
 
 export const Pagination: React.FC<Props> = ({
-  paginationOption,
-  onPageChange,
+  // paginationOption,
+  total,
 }) => {
-  const { total, perPage, currentPage } = paginationOption;
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
+  const perPage = Number(searchParams.get('perPage')) || total;
 
   const pageCount = Math.ceil(total / perPage);
 
-  const pages = getPages(1, pageCount);
+  const maxFromPage = pageCount - VISIBLE_PAGES_COUNT + 1;
 
-  const isActivePrev = currentPage === 1;
-  const isActiveNext = currentPage === pageCount;
-  const startVal = currentPage;
+  let fromPage;
 
-  const onNextPageHandler = () => {
-    if (currentPage < pageCount) {
-      onPageChange(startVal + 1);
+  if (page < DEFAULT_PAGE + 1) {
+    fromPage = DEFAULT_PAGE;
+  } else if (page >= DEFAULT_PAGE + 1 && page <= maxFromPage) {
+    fromPage = page - 1;
+  } else {
+    fromPage = maxFromPage;
+  }
+
+  const pages = getPages(fromPage, pageCount);
+
+  const isActivePrev = page === DEFAULT_PAGE;
+  const isActiveNext = page === pageCount;
+
+  const pageHandler = (direction: string) => {
+    if (direction === 'next' && page < pageCount) {
+      return (page + 1).toString();
     }
-  };
 
-  const onPrevPageHandler = () => {
-    if (currentPage > 1) {
-      onPageChange(startVal - 1);
+    if (direction === 'prev' && page > DEFAULT_PAGE + 1) {
+      return (page - 1).toString();
     }
+
+    return null;
   };
 
   return (
     <ul className={styles.pagination}>
-      <li className={styles['pagination__page-item']}>
-        <Link to={`#${currentPage - 1}`} onClick={onPrevPageHandler}>
+      <li>
+        <Link
+          to={{
+            search: getSearchWith(
+              searchParams,
+              { page: (pageHandler('prev')) },
+            ),
+          }}
+        >
           <Button
             btnType="Slider"
             chevronButtonType="left"
@@ -53,19 +74,24 @@ export const Pagination: React.FC<Props> = ({
         </Link>
       </li>
 
-      <ul className={styles.pagination}>
-        {pages.map(page => (
+      <ul className={styles.pagination__page}>
+        {pages.map(pageNumber => (
           <PaginationPage
-            key={page}
-            onPageChange={onPageChange}
-            page={page}
-            selectedPage={currentPage}
+            key={pageNumber}
+            pageNumber={pageNumber.toString()}
           />
         ))}
       </ul>
 
       <li>
-        <Link to={`#${currentPage + 1}`} onClick={onNextPageHandler}>
+        <Link
+          to={{
+            search: getSearchWith(
+              searchParams,
+              { page: (pageHandler('next')) },
+            ),
+          }}
+        >
           <Button
             btnType="Slider"
             chevronButtonType="right"
