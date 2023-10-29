@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType, Phone } from 'types';
@@ -6,9 +6,31 @@ import styles from './Card.module.scss';
 
 type Props = {
   phone: Phone,
+  isOrdered: boolean,
 };
 
-export const Card: React.FC<Props> = ({ phone }) => {
+export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
+  const [isAddedToCart, setIsAddedToCart] = useState(isOrdered);
+  const toggleItemToCart = () => {
+    const storedIdsString = localStorage.getItem('cartItemsIds');
+    const storedIds: string[] = storedIdsString
+      ? JSON.parse(storedIdsString)
+      : [];
+
+    if (!storedIds.includes(phone.id)) {
+      storedIds.push(phone.id);
+      setIsAddedToCart(true);
+    } else {
+      const index = storedIds.indexOf(phone.id);
+
+      storedIds.splice(index, 1);
+      setIsAddedToCart(false);
+    }
+
+    localStorage.setItem('cartItemsIds', JSON.stringify(storedIds));
+    window.dispatchEvent(new Event('storageChange'));
+  };
+
   return (
     <section className={styles.card}>
       <div className={styles.card__container}>
@@ -62,6 +84,8 @@ export const Card: React.FC<Props> = ({ phone }) => {
       <div className={styles.card__buttons}>
         <Button
           btnType={ButtonType.Main}
+          isActive={isAddedToCart}
+          onClick={toggleItemToCart}
         />
         <div>
           <Button

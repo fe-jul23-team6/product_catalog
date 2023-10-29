@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { FC, useState } from 'react';
+import { useEffect, useState } from 'react';
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import { BurgerMenu } from 'components/BurgerMenu';
 import logo from 'assets/img/logo.svg';
@@ -28,6 +27,27 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
   const handleIsActive = (index: number) => {
     setActiveItem(index);
   };
+
+  const [cartItemCount, setCartItemCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedIdsString = localStorage.getItem('cartItemsIds');
+      const storeItemCount: number | null = storedIdsString
+        ? JSON.parse(storedIdsString).length
+        : null;
+
+      setCartItemCount(storeItemCount);
+    };
+
+    window.addEventListener('storageChange', handleStorageChange);
+    handleStorageChange();
+
+    return () => {
+      window.removeEventListener('storageChange', handleStorageChange);
+    };
+  }, []);
+
 
   return (
     menuIsOpen
@@ -105,13 +125,17 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
               <Heart />
             </NavLink>
 
-            <NavLink
-              to="/cart"
-              className={styles.header__icon}
-            >
-              <Cart />
-            </NavLink>
-          </div>
+
+        <NavLink
+          to="/cart"
+          className={styles.header__icon}
+        >
+          <Cart />
+          { !!cartItemCount
+          && <div className={styles.header__icon_cartcount}>{cartItemCount}</div> }
+        </NavLink>
+      </div>
+
 
           <div className={styles.header__icons_burger}>
             <NavLink
