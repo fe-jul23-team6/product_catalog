@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 /* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import logo from 'assets/img/logo.svg';
@@ -10,6 +11,26 @@ import { ReactComponent as Burger }
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const [cartItemCount, setCartItemCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedIdsString = localStorage.getItem('cartItemsIds');
+      const storeItemCount: number | null = storedIdsString
+        ? JSON.parse(storedIdsString).length
+        : null;
+
+      setCartItemCount(storeItemCount);
+    };
+
+    window.addEventListener('storageChange', handleStorageChange);
+    handleStorageChange();
+
+    return () => {
+      window.removeEventListener('storageChange', handleStorageChange);
+    };
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -56,6 +77,8 @@ export const Header = () => {
           className={styles.header__icon}
         >
           <Cart />
+          { !!cartItemCount
+          && <div className={styles.header__icon_cartcount}>{cartItemCount}</div> }
         </NavLink>
       </div>
 

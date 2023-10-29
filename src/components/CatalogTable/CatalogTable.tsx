@@ -10,11 +10,24 @@ type Props = {
 };
 
 export const CatalogTable: React.FC<Props> = ({ phones }) => {
+  const cartIdsString = localStorage.getItem('cartItemsIds');
+  const cartIds:string[] = cartIdsString
+    ? JSON.parse(cartIdsString)
+    : [];
+
   return (
     <div className={styles['catalog-table']}>
-      {phones.map(phone => (
-        <Card key={phone.id} phone={phone} />
-      ))}
+      {phones.map(phone => {
+        const isOrdered = cartIds.includes(phone.id);
+
+        return (
+          <Card
+            key={phone.id}
+            phone={phone}
+            isOrdered={isOrdered}
+          />
+        );
+      })}
     </div>
   );
 };
