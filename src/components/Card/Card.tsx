@@ -33,26 +33,31 @@ export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
 
   return (
     <section className={styles.card}>
-      <img
-        className={styles.card__img}
-        src={`${BASE_URL}/${phone.image}`}
-        alt={phone.name}
-      />
+      <div className={styles.card__container}>
+        <div className={styles['card__img-container']}>
+          <img
+            className={styles.card__img}
+            src={`${BASE_URL}/${phone.image}`}
+            alt={phone.name}
+          />
 
-      <h2 className={styles.card__title}>
-        {phone.name}
-      </h2>
+        </div>
 
-      <p className={styles.card__price}>
-        <span>
-          $
-          {phone.price}
-        </span>
-        <span className={styles.card__previous}>
-          $
-          {phone.fullPrice}
-        </span>
-      </p>
+        <h2 className={styles.card__title}>
+          {phone.name}
+        </h2>
+
+        <p className={styles.card__price}>
+          <span>
+            $
+            {phone.price}
+          </span>
+          <span className={styles.card__previous}>
+            $
+            {phone.fullPrice}
+          </span>
+        </p>
+      </div>
 
       <hr className={styles.card__hr} />
 
