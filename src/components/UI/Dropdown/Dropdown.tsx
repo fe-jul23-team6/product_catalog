@@ -41,13 +41,6 @@ export const Dropdown: React.FC<Props> = ({
     //   );
     // }
 
-    // if (isItemsOnPage) {
-    //   getSearchWith(
-    //     searchParams,
-    //     { perPage: dropdownTitle.toLowerCase() },
-    //   );
-    // }
-
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current
         && !dropdownRef.current.contains(event.target as Node | null)) {
@@ -89,41 +82,49 @@ export const Dropdown: React.FC<Props> = ({
       </button>
       {isOpen && (
         <ul className={classNames(styles.dropdown__option, styles.option)}>
-          {options.map(option => (
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-            <li
-              key={option}
-              data-value="option1"
-              className={styles.option__item}
-              onClick={() => handleItemClick(option)}
-            >
-              {isItemsOnPage && (
-                <Link
-                  to={{
-                    search: getSearchWith(
-                      searchParams,
-                      { perPage: option },
-                    ),
-                  }}
-                >
-                  {option}
-                </Link>
-              )}
+          {options.map(option => {
+            let optionValue: string | null = option;
 
-              {isSort && (
-                <Link
-                  to={{
-                    search: getSearchWith(
-                      searchParams,
-                      { sort: option.toLowerCase() },
-                    ),
-                  }}
-                >
-                  {option}
-                </Link>
-              )}
-            </li>
-          ))}
+            if (option === 'All') {
+              optionValue = null;
+            }
+
+            return (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+              <li
+                key={option}
+                data-value="option1"
+                className={styles.option__item}
+                onClick={() => handleItemClick(option)}
+              >
+                {isItemsOnPage && (
+                  <Link
+                    to={{
+                      search: getSearchWith(
+                        searchParams,
+                        { perPage: optionValue },
+                      ),
+                    }}
+                  >
+                    {option}
+                  </Link>
+                )}
+
+                {isSort && (
+                  <Link
+                    to={{
+                      search: getSearchWith(
+                        searchParams,
+                        { sort: option.toLowerCase() },
+                      ),
+                    }}
+                  >
+                    {option}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

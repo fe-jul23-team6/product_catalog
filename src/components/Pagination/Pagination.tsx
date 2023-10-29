@@ -6,17 +6,14 @@ import { PaginationPage } from 'components/PaginationPage';
 
 import { DEFAULT_PAGE, VISIBLE_PAGES_COUNT } from 'utils/constants';
 import { getPages, getSearchWith } from 'utils/helpers';
-// import { PaginationOption } from 'types';
 
 import styles from './Pagination.module.scss';
 
 type Props = {
   total: number,
-  // paginationOption: PaginationOption,
 };
 
 export const Pagination: React.FC<Props> = ({
-  // paginationOption,
   total,
 }) => {
   const [searchParams] = useSearchParams();
