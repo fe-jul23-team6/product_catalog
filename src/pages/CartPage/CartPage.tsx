@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useEffect, useState } from 'react';
 import { PageTitle } from 'components/PageTitle';
 import { ReactComponent as ChevronIcon }
@@ -31,8 +28,8 @@ export const CartPage: React.FC = () => {
       : [[0, 0]],
   );
 
-  // all ids of the phones from locale storage, that are in the cart
-  const cartItemsIds = cartPurchases.map(purchase => purchase[0]);
+  // const initialIds = cartPurchases.map(item => item[0]);
+
   const [cartItems, setCartItems] = useState<Phone[]>([]);
 
   const totalAmount = cartPurchases.reduce((acc, amount) => acc + amount[1], 0);
@@ -42,15 +39,14 @@ export const CartPage: React.FC = () => {
     return acc + (phone.price * amount[1]);
   }, 0);
 
-  // отримуємо телефони з сервера за адресою адреса/products?ids=1,2,3
   const loadData = async () => {
-    if (cartItemsIds.length === 0) {
+    if (cartPhonesIds.length === 0) {
       setCartItems([]);
 
       return;
     }
 
-    const itemsFromServer:Phone[] = await getPhonesByIds(cartItemsIds);
+    const itemsFromServer:Phone[] = await getPhonesByIds(cartPhonesIds);
 
     setCartItems(itemsFromServer);
   };
@@ -80,8 +76,12 @@ export const CartPage: React.FC = () => {
   const handleCountMinus = (id: number) => {
     if (cartPhonesIds.includes(id)) {
       const data = cartPhonesIds.indexOf(id);
+
+      console.log(id);
+      console.log(data);
       const dataToSet = cartPhonesIds.filter((item, index) => index !== data);
 
+      console.log(dataToSet);
       setCartPhonesIds([...dataToSet]);
     }
 
@@ -163,9 +163,11 @@ export const CartPage: React.FC = () => {
             const count = currCount ? currCount[1] : 0;
 
             return (
-              <div className={styles.cart__item}>
+              <div
+                className={styles.cart__item}
+                key={phone.id}
+              >
                 <CartItem
-                  key={phone.id}
                   phone={phone}
                   onDelete={handleDelete}
                   count={count}

@@ -21,7 +21,6 @@ export const CatalogTable: React.FC<Props> = ({ phones }) => {
   // const maxCountItem = page * perPage;
   // const toItem = Math.min(maxCountItem, phones.length);
   // const items = getItems(fromItem, toItem, phones);
-  // eslint-disable-next-line no-console
   // console.log(fromItem, toItem);
 
   const checkInCart = (id: number) => {

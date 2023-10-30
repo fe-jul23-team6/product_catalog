@@ -2,7 +2,15 @@ import { client } from '../utils/fetchProducts';
 import { Phone } from '../types/Phone';
 
 export function getPhones() {
-  return client.getAll<Phone[]>('/products');
+  return client.getAll<Phone[]>('/products/?category=phones');
+}
+
+export function getTablets() {
+  return client.getAll<Phone[]>('/products/?category=tablets');
+}
+
+export function getAccessories() {
+  return client.getAll<Phone[]>('/products/?category=accessories');
 }
 
 interface PhonesWithPagination {
