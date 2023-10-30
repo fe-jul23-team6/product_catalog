@@ -10,6 +10,12 @@
 
   transition: transform 0.3s ease-in;
 
+  @media(min-width: 640px) {
+    &__high {
+      height: 100%;
+    }
+  }
+
   &:hover {
     transform: scale(1.03);
   }
