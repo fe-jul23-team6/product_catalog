@@ -1,19 +1,44 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { PageTitle } from 'components/PageTitle';
-import { getPhones } from 'services/products.service';
 import { SliderSmall } from 'components/SliderSmall';
+
 import { Phone } from 'types';
+import {
+  getPhones,
+  getTablets,
+  getAccessories,
+} from 'services/products.service';
+
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
+  const [phonesCount, setPhonesCount] = useState(0);
+  const [tabletsCount, setTabletsCount] = useState(0);
+  const [accessoriesCount, setAccessoriesCount] = useState(0);
+    
   const [newModels, setNewModels] = useState<Phone[]>([]);
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-    
-  const phonesCount = 95;
-  const tabletsCount = 24;
-  const accessoriesCount = 100;
+
+  useEffect(() => {
+    getPhones()
+      .then((phonesFromServer) => {
+        setPhonesCount(phonesFromServer.length);
+      });
+
+    getTablets()
+      .then((tabletsFromServer) => {
+        setTabletsCount(tabletsFromServer.length);
+      });
+
+    getAccessories()
+      .then((accessoriesFromServer) => {
+        setAccessoriesCount(accessoriesFromServer.length);
+      });
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -65,7 +90,10 @@ export const HomePage = () => {
       <div className={styles.home__categories}>
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['phone-bg']}`}>
-            <div className={`${styles['home__item-img']} ${styles['phone-img']}`} />
+            <Link
+              to="/phones"
+              className={`${styles['home__item-img']} ${styles['phone-img']}`}
+            />
           </div>
 
           <h3 className={styles['home__item-title']}>Mobile phones</h3>
@@ -75,7 +103,10 @@ export const HomePage = () => {
 
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['tablet-bg']}`}>
-            <div className={`${styles['home__item-img']} ${styles['tablet-img']}`} />
+            <Link
+              to="/tablets"
+              className={`${styles['home__item-img']} ${styles['tablet-img']}`}
+            />
           </div>
 
           <h3 className={styles['home__item-title']}>Tablets</h3>
@@ -85,7 +116,10 @@ export const HomePage = () => {
 
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['accessory-bg']}`}>
-            <div className={`${styles['home__item-img']} ${styles['accessory-img']}`} />
+            <Link
+              to="/tablets"
+              className={`${styles['home__item-img']} ${styles['accessory-img']}`}
+            />
           </div>
 
           <h3 className={styles['home__item-title']}>Accessories</h3>
