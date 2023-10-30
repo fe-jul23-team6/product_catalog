@@ -23,6 +23,7 @@ export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
+
   useEffect(() => {
     getPhones()
       .then((phonesFromServer) => {
@@ -72,7 +73,7 @@ export const HomePage = () => {
       <div className={styles['home__slider-available']}>
         {}
       </div>
-      
+
       <SliderSmall
         selectedPhones={newModels}
         isLoading={isLoading}

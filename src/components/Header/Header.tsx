@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 /* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import { BurgerMenu } from 'components/BurgerMenu';
@@ -10,6 +10,7 @@ import { ReactComponent as Cart }
   from 'assets/img/icons/shopping-bag_icon.svg';
 import { ReactComponent as Burger }
   from 'assets/img/icons/menu_icon.svg';
+import { ProductsContext } from 'context/ProductsContext';
 import styles from './Header.module.scss';
 
 type Props = {
@@ -28,31 +29,26 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
     setIsMenuOpen(true);
   };
 
+  const {
+    currentCart,
+    currentFavoritesIds,
+  } = useContext(ProductsContext);
+
   const [cartItemCount, setCartItemCount] = useState<number | null>(null);
   const [favItemCount, setFavItemCount] = useState<number | null>(null);
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const storedFavs = localStorage.getItem('favouritesIds');
-      const currentFavs: number[][] = storedFavs
-        ? JSON.parse(storedFavs)
-        : null;
-
-      const storedCart = localStorage.getItem('cartItems');
-      const currentCart: number[][] = storedCart
-        ? JSON.parse(storedCart)
-        : null;
-
       if (currentCart) {
-        const totalItemsInCart = currentCart.reduce((acc, item) => acc + item[1], 0);
+        const total = currentCart.reduce((acc, item) => acc + item[1], 0);
 
-        setCartItemCount(totalItemsInCart);
+        setCartItemCount(total);
       }
 
-      if (currentFavs) {
-        const totalItemsInFavs = currentFavs.length;
+      if (currentFavoritesIds) {
+        const total = currentFavoritesIds.length;
 
-        setFavItemCount(totalItemsInFavs);
+        setFavItemCount(total);
       }
     };
 
@@ -62,7 +58,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
     return () => {
       window.removeEventListener('storageChange', handleStorageChange);
     };
-  }, []);
+  }, [currentCart, currentFavoritesIds]);
 
   return (
     isMenuOpen
