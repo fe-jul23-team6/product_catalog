@@ -8,10 +8,16 @@ import styles from './Card.module.scss';
 type Props = {
   phone: Phone,
   isOrdered: boolean,
+  isFavourite: boolean,
 };
 
-export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
+export const Card: React.FC<Props> = ({
+  phone,
+  isOrdered = false,
+  isFavourite = false,
+}) => {
   const [isAddedToCart, setIsAddedToCart] = useState(isOrdered);
+  const [isAddedToFav, setIsAddedToFav] = useState(isFavourite);
 
   const toggleItemToCart = () => {
     const storedCart = localStorage.getItem('cartItems');
@@ -30,6 +36,26 @@ export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
     }
 
     localStorage.setItem('cartItems', JSON.stringify(currentCart));
+    window.dispatchEvent(new Event('storageChange'));
+  };
+
+  const toggleItemToFavourites = () => {
+    const storedFavouritesIds = localStorage.getItem('favouritesIds');
+    const storedIds: string[] = storedFavouritesIds
+      ? JSON.parse(storedFavouritesIds)
+      : [];
+
+    if (!storedIds.includes(phone.id)) {
+      storedIds.push(phone.id);
+      setIsAddedToFav(true);
+    } else {
+      const index = storedIds.indexOf(phone.id);
+
+      storedIds.splice(index, 1);
+      setIsAddedToFav(false);
+    }
+
+    localStorage.setItem('favouritesIds', JSON.stringify(storedIds));
     window.dispatchEvent(new Event('storageChange'));
   };
 
@@ -90,6 +116,8 @@ export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
         <div>
           <Button
             btnType={ButtonType.Favourite}
+            isActive={isAddedToFav}
+            onClick={toggleItemToFavourites}
           />
         </div>
       </div>
