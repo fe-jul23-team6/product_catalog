@@ -45,11 +45,8 @@ export const Button: React.FC<Props> = ({
   return (
     <button
       type="button"
-
       onClick={onClick}
-
       disabled={isDisabled}
-
       className={cn(
         styles.button,
         { [styles.button__pagination]: pagination },
