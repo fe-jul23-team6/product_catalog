@@ -1,19 +1,27 @@
 {
   "files": {
-    "main.css": "/product_catalog/static/css/main.0fe2a4ea.css",
-    "main.js": "/product_catalog/static/js/main.6ec6cd38.js",
+    "main.css": "/product_catalog/static/css/main.38a35137.css",
+    "main.js": "/product_catalog/static/js/main.080770f9.js",
+    "static/media/404.svg": "/product_catalog/static/media/404.f8b99bd3578de82595aa.svg",
     "static/media/logo.svg": "/product_catalog/static/media/logo.60452a9bbce10e5af2c113c33085de5e.svg",
+    "static/media/Mont-Regular.otf": "/product_catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
+    "static/media/Mont-SemiBold.otf": "/product_catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
+    "static/media/Mont-Bold.otf": "/product_catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
     "static/media/shopping-bag_icon.svg": "/product_catalog/static/media/shopping-bag_icon.6272ec9c84487608d8abe70a81521bbb.svg",
-    "static/media/favourites-default_icon.svg": "/product_catalog/static/media/favourites-default_icon.28f6088c83570782c6af97ed6ee84f70.svg",
-    "static/media/close_icon.svg": "/product_catalog/static/media/close_icon.c89cd55fcda471b596c2997cc48e5674.svg",
-    "static/media/menu_icon.svg": "/product_catalog/static/media/menu_icon.ccd1a9542b5bc584f2a1c0456d816ec9.svg",
+    "static/media/favourites-default_icon.svg": "/product_catalog/static/media/favourites-default_icon.0c7dcb4363cd062d1861cc3c60655e40.svg",
+    "static/media/home_icon.svg": "/product_catalog/static/media/home_icon.f34a6c3c66c2572264d07a3ca5cc2c66.svg",
+    "static/media/favourites-filled_icon.svg": "/product_catalog/static/media/favourites-filled_icon.b31aad0f0a24c44892256aa526256507.svg",
+    "static/media/close_icon.svg": "/product_catalog/static/media/close_icon.0192d33e1da5719aae10b7017aeab782.svg",
+    "static/media/menu_icon.svg": "/product_catalog/static/media/menu_icon.f0a06439907146e3af76d1463c8eff36.svg",
+    "static/media/plus_icon.svg": "/product_catalog/static/media/plus_icon.c351e150ea03d971537de782e7bd3630.svg",
     "static/media/chevron-up_icon.svg": "/product_catalog/static/media/chevron-up_icon.fd7411a037f3b36051ec3af8873c0b6c.svg",
+    "static/media/minus_icon.svg": "/product_catalog/static/media/minus_icon.0eab8a0278f654b73cc4372b163ddabd.svg",
     "index.html": "/product_catalog/index.html",
-    "main.0fe2a4ea.css.map": "/product_catalog/static/css/main.0fe2a4ea.css.map",
-    "main.6ec6cd38.js.map": "/product_catalog/static/js/main.6ec6cd38.js.map"
+    "main.38a35137.css.map": "/product_catalog/static/css/main.38a35137.css.map",
+    "main.080770f9.js.map": "/product_catalog/static/js/main.080770f9.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fe2a4ea.css",
-    "static/js/main.6ec6cd38.js"
+    "static/css/main.38a35137.css",
+    "static/js/main.080770f9.js"
   ]
 }
