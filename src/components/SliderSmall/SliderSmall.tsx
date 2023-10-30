@@ -35,6 +35,7 @@ export const SliderSmall: React.FC<Props> = ({
     ? JSON.parse(storedCart)
     : [];
   const cartItemsIds = currentCart.map(purchase => purchase[0]);
+  const storedFavs = localStorage.getItem('favouritesIds');
 
   return (
     <section className={styles.sliderSmall}>
@@ -87,6 +88,11 @@ export const SliderSmall: React.FC<Props> = ({
       >
         {selectedPhones.map(phone => {
           const isOrdered = cartItemsIds.includes(+phone.id);
+          let isFavourite = false;
+
+          if (storedFavs) {
+            isFavourite = storedFavs.includes(phone.id);
+          }
 
           return (
             <SwiperSlide style={{ width: '208px' }}>
@@ -94,6 +100,7 @@ export const SliderSmall: React.FC<Props> = ({
                 key={phone.id}
                 phone={phone}
                 isOrdered={isOrdered}
+                isFavourite={isFavourite}
               />
             </SwiperSlide>
           );
