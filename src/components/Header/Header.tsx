@@ -13,31 +13,35 @@ import { ReactComponent as Burger }
 import styles from './Header.module.scss';
 
 type Props = {
-  menuIsOpen: boolean;
-  setMenuIsOpen: (menuIsOpen: boolean) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isMenuOpen: boolean) => void;
 };
 
-export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
-  const [activeItem, setActiveItem] = useState(0);
+export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
+  const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
+    styles['header__menu-link'], {
+      [styles['is-active']]: isActive,
+    },
+  );
 
   const toggleMenu = () => {
-    setMenuIsOpen(true);
-  };
-
-  const handleIsActive = (index: number) => {
-    setActiveItem(index);
+    setIsMenuOpen(true);
   };
 
   const [cartItemCount, setCartItemCount] = useState<number | null>(null);
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const storedIdsString = localStorage.getItem('cartItemsIds');
-      const storeItemCount: number | null = storedIdsString
-        ? JSON.parse(storedIdsString).length
+      const storedCart = localStorage.getItem('cartItems');
+      const currentCart: number[][] = storedCart
+        ? JSON.parse(storedCart)
         : null;
 
-      setCartItemCount(storeItemCount);
+      if (currentCart) {
+        const totalItemsInCart = currentCart.reduce((acc, item) => acc + item[1], 0);
+
+        setCartItemCount(totalItemsInCart);
+      }
     };
 
     window.addEventListener('storageChange', handleStorageChange);
@@ -48,12 +52,11 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
     };
   }, []);
 
-
   return (
-    menuIsOpen
+    isMenuOpen
       ? (
         <BurgerMenu
-          setMenuIsOpen={setMenuIsOpen}
+          setIsMenuOpen={setIsMenuOpen}
         />
       )
       : (
@@ -77,40 +80,28 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
             >
               <NavLink
                 to="/"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 0,
-                })}
-                onClick={() => handleIsActive(0)}
+                className={getLinkClass}
               >
                 Home
               </NavLink>
 
               <NavLink
                 to="/phones"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 1,
-                })}
-                onClick={() => handleIsActive(1)}
+                className={getLinkClass}
               >
                 Phones
               </NavLink>
 
               <NavLink
                 to="/tablets"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 2,
-                })}
-                onClick={() => handleIsActive(2)}
+                className={getLinkClass}
               >
                 Tablets
               </NavLink>
 
               <NavLink
                 to="/accessories"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 3,
-                })}
-                onClick={() => handleIsActive(3)}
+                className={getLinkClass}
               >
                 Accessories
               </NavLink>
@@ -125,19 +116,20 @@ export const Header: FC<Props> = ({ menuIsOpen, setMenuIsOpen }) => {
               <Heart />
             </NavLink>
 
+            <NavLink
+              to="/cart"
+              className={styles.header__icon}
+            >
+              <Cart />
+              { !!cartItemCount && (
+                <div className={styles['header__icon-cartcount']}>
+                  {cartItemCount}
+                </div>
+              ) }
+            </NavLink>
+          </div>
 
-        <NavLink
-          to="/cart"
-          className={styles.header__icon}
-        >
-          <Cart />
-          { !!cartItemCount
-          && <div className={styles.header__icon_cartcount}>{cartItemCount}</div> }
-        </NavLink>
-      </div>
-
-
-          <div className={styles.header__icons_burger}>
+          <div className={styles['header__icons-burger']}>
             <NavLink
               to="#"
               onClick={toggleMenu}

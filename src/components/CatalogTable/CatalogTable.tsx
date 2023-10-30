@@ -29,10 +29,11 @@ export const CatalogTable: React.FC<Props> = ({ phones }) => {
   // eslint-disable-next-line no-console
   // console.log(fromItem, toItem);
 
-  const cartIdsString = localStorage.getItem('cartItemsIds');
-  const cartIds:string[] = cartIdsString
-    ? JSON.parse(cartIdsString)
+  const storedCart = localStorage.getItem('cartItems');
+  const currentCart: number[][] = storedCart
+    ? JSON.parse(storedCart)
     : [];
+  const cartItemsIds = currentCart.map(purchase => purchase[0]);
 
   if (!phones.length) {
     return null;
@@ -41,7 +42,7 @@ export const CatalogTable: React.FC<Props> = ({ phones }) => {
   return (
     <div className={styles['catalog-table']}>
       {phones.map(phone => {
-        const isOrdered = cartIds.includes(phone.id);
+        const isOrdered = cartItemsIds.includes(+phone.id);
 
         return (
           <Card
