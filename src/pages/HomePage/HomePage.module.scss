@@ -1,4 +1,5 @@
 .home {
+  max-width: 100%;
   margin-top: -24px;
 
   @media (min-width: 640px) {
@@ -63,6 +64,7 @@
   }
 
   &__categories {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -73,9 +75,25 @@
     }
   }
 
-  &__item-img {
+  &__category-item {
+    flex: 1 1 300px;
+  }
+
+  &__img-container {
     margin-bottom: 24px;
-    padding: 288px 288px 0 0;
+    overflow: hidden;
+  }
+
+  &__item-img {
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__item-title {
@@ -94,20 +112,31 @@
 
 .phone-bg {
   background: #6d6474;
+}
+
+.phone-img {
   background-image: url(../../assets/img/category-phone-bg.png);
   background-position: 8px 31px;
   background-size: 120%;
   background-repeat: no-repeat;
 }
+
 .tablet-bg {
   background-color: #9a9ba0;
+}
+
+.tablet-img {
   background-image: url(../../assets/img/category-tablets.png);
   background-position: 22px 21px;
   background-size: 145%;
   background-repeat: no-repeat;
 }
+
 .accessory-bg {
   background-color: #b74267;
+}
+
+.accessory-img {
   background-image: url(../../assets/img/accessory-bg.png);
   background-position: right bottom;
   background-size: 100%;
