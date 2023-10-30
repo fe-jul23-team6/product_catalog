@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-/* eslint-disable react/jsx-props-no-multi-spaces */
 /* eslint-disable max-len */
 import { NavLink, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -37,29 +36,45 @@ export const ItemCardPage = () => {
       });
   }, [PhoneId]);
 
-  const generateLinkByColor = (color: string) => {
-    const startIndex = phone?.id.indexOf(phone?.color);
+  const generateLinkInternal = (oldValue: string, newValue: string) => {
+    const startIndex = phone?.id.toLowerCase().indexOf(oldValue.toLowerCase());
     let newId = phone?.id;
 
     if (startIndex && startIndex !== -1) {
-      newId = phone?.id.slice(0, startIndex) + color
-        + phone?.id.slice(startIndex + phone?.color.length);
+      newId = phone?.id.slice(0, startIndex) + newValue
+        + phone?.id.slice(startIndex + oldValue.length);
     }
 
-    return `/phones/${newId}`;
+    return `/phones/${newId?.toLowerCase()}`;
+  };
+
+  const generateLinkByColor = (color: string) => {
+    if (!phone?.color) {
+      return `/phones/${PhoneId}`;
+    }
+
+    return generateLinkInternal(phone?.color, color);
+  };
+
+  const generateLinkByCapacity = (capacity: string) => {
+    if (!phone?.capacity) {
+      return `/phones/${PhoneId}`;
+    }
+
+    return generateLinkInternal(phone?.capacity, capacity);
   };
 
   const hasErrorMessage = hasError && !isLoading;
 
   return (
-    <div className={styles.card_page}>
+    <div>
       {isLoading && (<Loader />)}
 
       {hasErrorMessage && (
         <p>{MESSAGES.NO_SERVER_RESPONSE}</p>
       )}
 
-      {phone && (
+      {phone && !isLoading && !hasError && (
         <>
           <h1 className={styles.title}>
             {phone?.name}
@@ -105,8 +120,17 @@ export const ItemCardPage = () => {
                       className={styles.group__item}
                     >
                       <div className={styles.svgcontainer}>
-                        <div className={styles.innerrect} style={{ backgroundColor: PHONE_COLORS[color] }} />
-                        <div className={styles.outerrect} />
+                        <div
+                          className={styles.innerrect}
+                          style={{ backgroundColor: PHONE_COLORS[color] }}
+                        />
+                        <div
+                          className={cn(
+                            styles.outerrect,
+                            // eslint-disable-next-line @typescript-eslint/dot-notation
+                            { [styles['color__active']]: color === phone?.color },
+                          )}
+                        />
                       </div>
                     </NavLink>
                   ))}
@@ -116,13 +140,12 @@ export const ItemCardPage = () => {
                 <span className={styles.info}>Select capacity</span>
                 {phone?.capacityAvailable.map(capacityOption => (
                   <NavLink
-
+                    to={generateLinkByCapacity(capacityOption)}
                     className={cn(
                       styles.capacity__option,
                       // eslint-disable-next-line @typescript-eslint/dot-notation
                       { [styles['capacity__active']]: capacityOption === phone?.capacity },
                     )}
-                    to="/"
                   >
                     {capacityOption}
                   </NavLink>
@@ -136,8 +159,6 @@ export const ItemCardPage = () => {
               <div className={styles.buttons}>
                 <Button
                   btnType={ButtonType.Main}
-                // isActive={isAddedToCart}
-                // onClick={toggleItemToCart}
                 />
                 <div>
                   <Button
