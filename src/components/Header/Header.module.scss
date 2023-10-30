@@ -74,20 +74,6 @@
     line-height: 100%;
     padding: 16px;
     position: relative;
-
-    &-cartcount {
-      position: absolute;
-      top: 17px;
-      right: 17px;
-      width: 14px;
-      height: 14px;
-      background-color: #EB5757;
-      border-radius: 50%;
-      color: white;
-      text-align: center;
-      line-height: 15px;
-      font-size: 9px;
-    }
   }
 
 
@@ -129,6 +115,22 @@
         display: none;
       }
     }
+
+    &__icon {
+      &-cartcount {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 14px;
+        height: 14px;
+        background-color: #EB5757;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        line-height: 15px;
+        font-size: 9px;
+      }
+    }
   }
 }
 
@@ -155,6 +157,20 @@
 
     &__icon {
       padding: 24px;
+
+      &-cartcount {
+        position: absolute;
+        top: 17px;
+        right: 17px;
+        width: 14px;
+        height: 14px;
+        background-color: #EB5757;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        line-height: 15px;
+        font-size: 9px;
+      }
     }
   }
 }
