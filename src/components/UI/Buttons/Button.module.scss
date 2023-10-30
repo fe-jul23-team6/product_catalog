@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  
+
   transition: transform 0.3s ease-in;
 
   &:hover {
@@ -28,6 +28,10 @@
 
   &__active-pagination {
     background-color: var(--primeAccentColor);
+
+    &:hover {
+      background-color: var(--primeAccentColor);
+    }
   }
 
   &__slider {
@@ -111,6 +115,10 @@
   &__active-favourite {
     background-color: var(--elementsColor);
     border: 1px solid var(--elementsColor);
+
+    &:hover {
+      background-color: var(--elementsColor);
+    }
   }
 
   &__main {
