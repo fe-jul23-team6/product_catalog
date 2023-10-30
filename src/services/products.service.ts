@@ -5,7 +5,6 @@ export function getPhones() {
   return client.getAll<Phone[]>('/products');
 }
 
-
 interface PhonesWithPagination {
   count: number,
   rows: Phone[],
