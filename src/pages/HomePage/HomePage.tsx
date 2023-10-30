@@ -17,12 +17,11 @@ export const HomePage = () => {
   const [phonesCount, setPhonesCount] = useState(0);
   const [tabletsCount, setTabletsCount] = useState(0);
   const [accessoriesCount, setAccessoriesCount] = useState(0);
-    
+
   const [newModels, setNewModels] = useState<Phone[]>([]);
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-
 
   useEffect(() => {
     getPhones()
