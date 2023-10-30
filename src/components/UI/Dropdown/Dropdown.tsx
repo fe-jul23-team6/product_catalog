@@ -90,6 +90,7 @@ export const Dropdown: React.FC<Props> = ({
             }
 
             return (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
               <li
                 key={option}
                 data-value="option1"

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';

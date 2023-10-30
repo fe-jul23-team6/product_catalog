@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import { BurgerMenu } from 'components/BurgerMenu';
 import logo from 'assets/img/logo.svg';

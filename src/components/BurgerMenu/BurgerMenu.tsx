@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable max-len */
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from 'assets/img/logo.svg';

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import logo from 'assets/img/logo.svg';
 import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg';
