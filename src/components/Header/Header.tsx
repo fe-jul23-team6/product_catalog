@@ -18,14 +18,14 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
-  const [activeItem, setActiveItem] = useState(0);
+  const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
+    styles['header__menu-link'], {
+      [styles['is-active']]: isActive,
+    },
+  );
 
   const toggleMenu = () => {
     setIsMenuOpen(true);
-  };
-
-  const handleIsActive = (index: number) => {
-    setActiveItem(index);
   };
 
   const [cartItemCount, setCartItemCount] = useState<number | null>(null);
@@ -80,40 +80,28 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             >
               <NavLink
                 to="/"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 0,
-                })}
-                onClick={() => handleIsActive(0)}
+                className={getLinkClass}
               >
                 Home
               </NavLink>
 
               <NavLink
                 to="/phones"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 1,
-                })}
-                onClick={() => handleIsActive(1)}
+                className={getLinkClass}
               >
                 Phones
               </NavLink>
 
               <NavLink
                 to="/tablets"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 2,
-                })}
-                onClick={() => handleIsActive(2)}
+                className={getLinkClass}
               >
                 Tablets
               </NavLink>
 
               <NavLink
                 to="/accessories"
-                className={classNames(styles.header__menu_link, {
-                  isActive: activeItem === 3,
-                })}
-                onClick={() => handleIsActive(3)}
+                className={getLinkClass}
               >
                 Accessories
               </NavLink>
@@ -134,14 +122,14 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             >
               <Cart />
               { !!cartItemCount && (
-                <div className={styles.header__icon_cartcount}>
+                <div className={styles['header__icon-cartcount']}>
                   {cartItemCount}
                 </div>
               ) }
             </NavLink>
           </div>
 
-          <div className={styles.header__icons_burger}>
+          <div className={styles['header__icons-burger']}>
             <NavLink
               to="#"
               onClick={toggleMenu}
