@@ -30,6 +30,10 @@
 
   &__remove {
     fill: var(--iconsColor);
+
+    &-btn {
+      background: none;
+    }
   }
 
   &__img {

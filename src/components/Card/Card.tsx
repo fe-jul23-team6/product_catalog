@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';
@@ -11,23 +12,24 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(isOrdered);
+
   const toggleItemToCart = () => {
-    const storedIdsString = localStorage.getItem('cartItemsIds');
-    const storedIds: string[] = storedIdsString
-      ? JSON.parse(storedIdsString)
+    const storedCart = localStorage.getItem('cartItems');
+    const currentCart: number[][] = storedCart
+      ? JSON.parse(storedCart)
       : [];
 
-    if (!storedIds.includes(phone.id)) {
-      storedIds.push(phone.id);
+    const itemIndex = currentCart.findIndex(item => item[0] === +phone.id);
+
+    if (itemIndex === -1) {
+      currentCart.push([+phone.id, 1]);
       setIsAddedToCart(true);
     } else {
-      const index = storedIds.indexOf(phone.id);
-
-      storedIds.splice(index, 1);
+      currentCart.splice(itemIndex, 1);
       setIsAddedToCart(false);
     }
 
-    localStorage.setItem('cartItemsIds', JSON.stringify(storedIds));
+    localStorage.setItem('cartItems', JSON.stringify(currentCart));
     window.dispatchEvent(new Event('storageChange'));
   };
 
