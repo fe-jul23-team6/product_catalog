@@ -1,14 +1,146 @@
 .home {
+  max-width: 100%;
   margin-top: -24px;
-  margin-bottom: 24px;
 
   @media (min-width: 640px) {
     margin-top: -32px;
-    margin-bottom: 32px;
   }
 
   @media (min-width: 1200px) {
     margin-top: -8px;
-    margin-bottom: 56px;
   }
+
+  &__visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+  }
+
+  &__slider-available {
+    margin-top: 24px;
+
+    @media(min-width: 640px) {
+      margin-top: 32px;
+    }
+
+    @media(min-width: 1200px) {
+      margin-top: 56px;
+    }
+  }
+
+  &__subheader {
+    margin: 56px 0 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media(min-width: 640px) {
+      margin-top: 64px;
+    }
+
+    @media(min-width: 1200px) {
+      margin-top: 80;
+    }
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+
+  &__newmodels-btn-container {
+    margin-left: 22px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__categories {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @media(min-width: 640px) {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__category-item {
+    flex: 1 1 300px;
+  }
+
+  &__img-container {
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  &__item-img {
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__item-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__item-count {
+    color: var(--secondaryTextColor);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__slider-hotprices {}
+}
+
+.phone-bg {
+  background: #6d6474;
+}
+
+.phone-img {
+  background-image: url(../../assets/img/category-phone-bg.png);
+  background-position: 8px 31px;
+  background-size: 120%;
+  background-repeat: no-repeat;
+}
+
+.tablet-bg {
+  background-color: #9a9ba0;
+}
+
+.tablet-img {
+  background-image: url(../../assets/img/category-tablets.png);
+  background-position: 22px 21px;
+  background-size: 145%;
+  background-repeat: no-repeat;
+}
+
+.accessory-bg {
+  background-color: #b74267;
+}
+
+.accessory-img {
+  background-image: url(../../assets/img/accessory-bg.png);
+  background-position: right bottom;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
