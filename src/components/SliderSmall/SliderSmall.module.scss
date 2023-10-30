@@ -1,0 +1,38 @@
+.sliderSmall {
+  margin-top: 56px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &_title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+  }
+
+  // &__slider {
+  //   min-width: ;
+  // }
+}
+
+@media (min-width: 640px) {
+  .sliderSmall {
+    margin-top: 64px;
+
+    &__title {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .sliderSmall {
+    margin-top: 80px;
+  }
+}
