@@ -117,7 +117,7 @@ export const HomePage = () => {
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['accessory-bg']}`}>
             <Link
-              to="/tablets"
+              to="/accessories"
               className={`${styles['home__item-img']} ${styles['accessory-img']}`}
             />
           </div>
