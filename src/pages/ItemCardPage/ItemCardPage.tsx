@@ -1,212 +1,232 @@
-import { NavLink } from 'react-router-dom';
-import { ReactComponent as Color } from 'assets/img/icons/Color-Selected.svg';
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable react/jsx-props-no-multi-spaces */
+/* eslint-disable max-len */
+import { NavLink, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import cn from 'classnames';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType } from 'types';
+import { getPhoneById } from 'services/products.service';
+import { FullPhone } from 'types/FullPhone';
+import { Loader } from 'components/UI/Loader';
+import { MESSAGES, PHONE_COLORS } from 'utils/constants';
+import { BASE_URL } from 'utils/fetchProducts';
 import styles from './ItemCardPage.module.scss';
 
 export const ItemCardPage = () => {
+  const [phone, setPhone] = useState<FullPhone | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [displayImage, setDisplayImage] = useState('');
+
+  const { PhoneId = '' } = useParams();
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getPhoneById(PhoneId)
+      .then((phoneFromServer) => {
+        setPhone(phoneFromServer);
+        setDisplayImage(phoneFromServer.images[0]);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [PhoneId]);
+
+  const generateLinkByColor = (color: string) => {
+    const startIndex = phone?.id.indexOf(phone?.color);
+    let newId = phone?.id;
+
+    if (startIndex && startIndex !== -1) {
+      newId = phone?.id.slice(0, startIndex) + color
+        + phone?.id.slice(startIndex + phone?.color.length);
+    }
+
+    return `/phones/${newId}`;
+  };
+
+  const hasErrorMessage = hasError && !isLoading;
+
   return (
     <div className={styles.card_page}>
-      <h1 className={styles.title}>
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-      </h1>
-      <div className={styles.container_top}>
-        <div className={styles.photos}>
-          <img
-            className={styles.photos__main}
-            // eslint-disable-next-line max-len
-            src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_white_0_4.jpg/w_600"
-            alt="Apple iPhone 11 Pro Max 64GB Gold"
-          />
-          <div className={styles.photos__carousel}>
-            <img
-              className={styles.photos__carousel_item}
-              // eslint-disable-next-line max-len
-              src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_white_0_4.jpg/w_600"
-              alt="Apple iPhone 11 Pro Max 64GB Gold"
-            />
-            <img
-              className={styles.photos__carousel_item}
-              // eslint-disable-next-line max-len
-              src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_white_0_4.jpg/w_600"
-              alt="Apple iPhone 11 Pro Max 64GB Gold"
-            />
-            <img
-              className={styles.photos__carousel_item}
-              // eslint-disable-next-line max-len
-              src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_white_0_4.jpg/w_600"
-              alt="Apple iPhone 11 Pro Max 64GB Gold"
-            />
-            <img
-              className={styles.photos__carousel_item}
-              // eslint-disable-next-line max-len
-              src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_white_0_4.jpg/w_600"
-              alt="Apple iPhone 11 Pro Max 64GB Gold"
-            />
-            <img
-              className={styles.photos__carousel_item}
-              // eslint-disable-next-line max-len
-              src="https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_white_0_4.jpg/w_600"
-              alt="Apple iPhone 11 Pro Max 64GB Gold"
-            />
-          </div>
-        </div>
-        <section className={styles.params}>
-          <div className={styles.colors}>
-            <div className={styles.info}>
-              <span>Available colors</span>
-              <span className={styles.info__code}>ID: 802390</span>
+      {isLoading && (<Loader />)}
+
+      {hasErrorMessage && (
+        <p>{MESSAGES.NO_SERVER_RESPONSE}</p>
+      )}
+
+      {phone && (
+        <>
+          <h1 className={styles.title}>
+            {phone?.name}
+          </h1>
+          <div className={styles.container_top}>
+            <div className={styles.photos}>
+              <div className={styles.photos__main}>
+                <img
+                  className={styles.photos__img}
+                  src={`${BASE_URL}/${displayImage}`}
+                  alt={phone?.name}
+                />
+              </div>
+              <div className={styles.photos__carousel}>
+                {phone?.images.map(img => (
+                  <div className={styles.photos__carousel_item}>
+                    <img
+                      className={styles.photos__img}
+                      src={`${BASE_URL}/${img}`}
+                      alt={phone?.name}
+                      onClick={() => setDisplayImage(img)}
+                      role="button"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          setDisplayImage(img);
+                        }
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className={styles.group_colors}>
-              <a href="/" className={styles.group_colors__link}>
-                <Color />
-              </a>
-              <a href="/" className={styles.group_colors__link}>
-                <Color />
-              </a>
-              <a href="/" className={styles.group_colors__link}>
-                <Color />
-              </a>
-            </div>
-          </div>
-          <div className={styles.capacity}>
-            <span className={styles.info}>Select capacity</span>
-            <NavLink className={styles.capacity__option} to="/">
-              64 GB
-            </NavLink>
-            <NavLink
-              className={styles.capacity__option}
-              to="/"
-            >
-              256 GB
-            </NavLink>
-            <NavLink className={styles.capacity__option} to="/">
-              512 GB
-            </NavLink>
-          </div>
-          <div className={styles.price}>
-            <span className={styles.price__discount}>$799</span>
-            <span className={styles.price__full}>$1199</span>
+            <section className={styles.params}>
+              <div className={styles.colors}>
+                <div className={styles.info}>
+                  <span>Available colors</span>
+                  <span className={styles.info__code}>ID: 802390</span>
+                </div>
+                <div className={styles.group_colors}>
+                  {phone?.colorsAvailable.map(color => (
+                    <NavLink
+                      to={generateLinkByColor(color)}
+                      className={styles.group__item}
+                    >
+                      <div className={styles.svgcontainer}>
+                        <div className={styles.innerrect} style={{ backgroundColor: PHONE_COLORS[color] }} />
+                        <div className={styles.outerrect} />
+                      </div>
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.capacity}>
+                <span className={styles.info}>Select capacity</span>
+                {phone?.capacityAvailable.map(capacityOption => (
+                  <NavLink
+
+                    className={cn(
+                      styles.capacity__option,
+                      // eslint-disable-next-line @typescript-eslint/dot-notation
+                      { [styles['capacity__active']]: capacityOption === phone?.capacity },
+                    )}
+                    to="/"
+                  >
+                    {capacityOption}
+                  </NavLink>
+                ))}
+              </div>
+              <div className={styles.price}>
+                <span className={styles.price__discount}>{`$${phone?.priceDiscount}`}</span>
+                <span className={styles.price__full}>{`$${phone?.priceRegular}`}</span>
+              </div>
+
+              <div className={styles.buttons}>
+                <Button
+                  btnType={ButtonType.Main}
+                // isActive={isAddedToCart}
+                // onClick={toggleItemToCart}
+                />
+                <div>
+                  <Button
+                    btnType={ButtonType.Favourite}
+                  />
+                </div>
+              </div>
+              <div className={styles.data}>
+                <p className={styles.info}>
+                  <span>Screen</span>
+                  <span className={styles.values}>{phone?.screen}</span>
+                </p>
+                <p className={styles.info}>
+                  <span>Resolution</span>
+                  <span className={styles.values}>{phone?.resolution}</span>
+                </p>
+                <p className={styles.info}>
+                  <span>Processor</span>
+                  <span className={styles.values}>{phone?.processor}</span>
+                </p>
+                <p className={styles.info}>
+                  <span>RAM</span>
+                  <span className={styles.values}>{phone?.ram}</span>
+                </p>
+              </div>
+            </section>
           </div>
 
-          <div className={styles.buttons}>
-            <Button
-              btnType={ButtonType.Main}
-              // isActive={isAddedToCart}
-              // onClick={toggleItemToCart}
-            />
-            <div>
-              <Button
-                btnType={ButtonType.Favourite}
-              />
-            </div>
+          <div className={styles.container_bottom}>
+            <section className={styles.about}>
+              <span className={styles.about__title}>About</span>
+              {phone?.description.map(parag => (
+                <>
+                  <p className={styles.about__header}>
+                    {parag.title}
+                  </p>
+                  <p className={styles.about__content}>
+                    {parag.text.map(text => (
+                      <p>{text}</p>
+                    ))}
+                  </p>
+                </>
+              ))}
+            </section>
+
+            <section className={styles.technology}>
+              <span className={styles.technology__title}>Tech specs</span>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Screen</span>
+                <span className={styles.technology__value}>{phone?.screen}</span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Resolution</span>
+                <span className={styles.technology__value}>{phone?.resolution}</span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Processor</span>
+                <span className={styles.technology__value}>{phone?.processor}</span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>RAM</span>
+                <span className={styles.technology__value}>{phone?.ram}</span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Built in memory</span>
+                <span className={styles.technology__value}>{phone?.capacity}</span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Camera</span>
+                <span className={styles.technology__value}>
+                  {phone?.camera}
+                </span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Zoom</span>
+                <span className={styles.technology__value}>
+                  {phone?.zoom}
+                </span>
+              </p>
+              <p className={styles.technology__info}>
+                <span className={styles.technology__key}>Cell</span>
+                <span className={styles.technology__value}>
+                  {phone?.cell.join(', ')}
+                </span>
+              </p>
+            </section>
           </div>
-          <div className={styles.data}>
-            <p className={styles.info}>
-              <span>Screen</span>
-              <span className={styles.values}>6.5” OLED</span>
-            </p>
-            <p className={styles.info}>
-              <span>Resolution</span>
-              <span className={styles.values}>2688x1242</span>
-            </p>
-            <p className={styles.info}>
-              <span>Processor</span>
-              <span className={styles.values}>Apple A12 Bionic</span>
-            </p>
-            <p className={styles.info}>
-              <span>RAM</span>
-              <span className={styles.values}>3 GB</span>
-            </p>
-          </div>
-        </section>
-      </div>
-
-      <div className={styles.container_bottom}>
-        <section className={styles.about}>
-          <span className={styles.about__title}>About</span>
-          <p className={styles.about__header}>
-            And then there was Pro
-          </p>
-          <p className={styles.about__content}>
-            A transformative triple‑camera system that adds tons of capability
-            without complexity.
-            An unprecedented leap in battery life. And a mind‑blowing chip that
-            doubles down on machine learning and pushes the boundaries of what a
-            smartphone can do. Welcome to the first iPhone powerful enough to
-            be called Pro.
-          </p>
-
-          <p className={styles.about__header}>
-            Camera
-          </p>
-          <p className={styles.about__content}>
-            Meet the first triple‑camera system to combine cutting‑edge
-            technology with the legendary simplicity of iPhone. Capture
-            up to four times more scene. Get beautiful images in
-            drastically lower light. Shoot the highest‑quality video
-            in a smartphone — then edit with the same tools you love
-            for photos. You’ve never shot with anything like it.
-          </p>
-
-          <p className={styles.about__header}>
-            Shoot it. Flip it. Zoom it. Crop it. Cut it.
-            Light it. Tweak it. Love it.
-          </p>
-          <p className={styles.about__content}>
-            iPhone 11 Pro lets you capture videos that are beautifully
-            true to life, with greater detail and smoother motion.
-            Epic processing power means it can shoot 4K video with
-            extended dynamic range and cinematic video stabilization —
-            all at 60 fps. You get more creative control, too, with
-            four times more scene and powerful new editing tools
-            to play with.
-          </p>
-        </section>
-
-        <section className={styles.technology}>
-          <span className={styles.technology__title}>Tech specs</span>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Screen</span>
-            <span className={styles.technology__value}>6.5” OLED</span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Resolution</span>
-            <span className={styles.technology__value}>2688x1242</span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Processor</span>
-            <span className={styles.technology__value}>Apple A12 Bionic</span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>RAM</span>
-            <span className={styles.technology__value}>3 GB</span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Built in memory</span>
-            <span className={styles.technology__value}>64 GB</span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Camera</span>
-            <span className={styles.technology__value}>
-              12 Mp + 12 Mp + 12 Mp (Triple)
-            </span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Zoom</span>
-            <span className={styles.technology__value}>
-              Optical, 2x
-            </span>
-          </p>
-          <p className={styles.technology__info}>
-            <span className={styles.technology__key}>Cell</span>
-            <span className={styles.technology__value}>
-              GSM, LTE, UMTS
-            </span>
-          </p>
-        </section>
-      </div>
+        </>
+      )}
     </div>
-
   );
 };

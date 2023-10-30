@@ -38,6 +38,9 @@
 }
 .photos {
   margin: 16px 0 40px 0;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
 
   @media (min-width: 640px) {
     display: flex;
@@ -48,13 +51,23 @@
     margin-bottom: 16px;
     width: 288px;
     height: 288px;
-    background: #C4C4C4;
+    max-width: 100%;
+    text-align: center;
     @media (min-width: 1200px) {
       width: 442px;
       height: 442px;
     }
   }
+
+  &__img {
+    max-width: auto;
+    height: 100%;
+    display: inline-block;
+  }
+
   &__carousel {
+    display: flex;
+    flex-direction:row;
     @media (min-width: 640px) {
       display: flex;
       flex-direction:column;
@@ -69,6 +82,8 @@
     width: 50px;
     height: 50px;
     margin-right: 8px;
+    max-width: 100%;
+    text-align: center;
     @media (min-width: 640px) {
       margin-right: 16px;
       margin-bottom: 8px;
@@ -140,11 +155,10 @@
     // font-style: normal;
     // font-weight: 600;
     // line-height: 21px;
-
-    &-active{
-      background: #F1F2F9;
-      color: #0F1121;
-    }
+  }
+  &__active{
+    background: #F1F2F9;
+    color: #0F1121;
   }
 }
 
@@ -258,5 +272,34 @@
 
   &__value {
     color: #F1F2F9;
+    text-align: right;
   }
+}
+
+.svgcontainer {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.innerrect {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 28px;
+  height: 28px;
+  $customColor: #000; // Значение по умолчанию
+
+  background-color: var(--color, #{$customColor});
+  border: 2px solid #0F1121;
+  border-radius: 50%;
+}
+
+.outerrect {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #F1F2F9;
+  border-radius: 50%;
 }
