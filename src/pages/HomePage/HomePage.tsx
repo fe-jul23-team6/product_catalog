@@ -10,7 +10,7 @@ export const HomePage = () => {
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-    
+
   const phonesCount = 95;
   const tabletsCount = 24;
   const accessoriesCount = 100;
@@ -47,7 +47,7 @@ export const HomePage = () => {
       <div className={styles['home__slider-available']}>
         {}
       </div>
-      
+
       <SliderSmall
         selectedPhones={newModels}
         isLoading={isLoading}

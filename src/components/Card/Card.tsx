@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType, Phone } from 'types';
+import { ProductsContext } from 'context/ProductsContext';
 import styles from './Card.module.scss';
 
 type Props = {
@@ -19,44 +20,23 @@ export const Card: React.FC<Props> = ({
   const [isAddedToCart, setIsAddedToCart] = useState(isOrdered);
   const [isAddedToFav, setIsAddedToFav] = useState(isFavourite);
 
-  const toggleItemToCart = () => {
-    const storedCart = localStorage.getItem('cartItems');
-    const currentCart: number[][] = storedCart
-      ? JSON.parse(storedCart)
-      : [];
+  const {
+    toggleItemToCart,
+    toggleItemToFavourites,
+    checkInCart,
+    checkInFav,
+  } = useContext(ProductsContext);
 
-    const itemIndex = currentCart.findIndex(item => item[0] === +phone.id);
+  const handleToggleCart = (id: number) => {
+    toggleItemToCart(id);
 
-    if (itemIndex === -1) {
-      currentCart.push([+phone.id, 1]);
-      setIsAddedToCart(true);
-    } else {
-      currentCart.splice(itemIndex, 1);
-      setIsAddedToCart(false);
-    }
-
-    localStorage.setItem('cartItems', JSON.stringify(currentCart));
-    window.dispatchEvent(new Event('storageChange'));
+    setIsAddedToCart(checkInCart(id));
   };
 
-  const toggleItemToFavourites = () => {
-    const storedFavouritesIds = localStorage.getItem('favouritesIds');
-    const storedIds: string[] = storedFavouritesIds
-      ? JSON.parse(storedFavouritesIds)
-      : [];
+  const handleToggleFav = (id: number) => {
+    toggleItemToFavourites(id);
 
-    if (!storedIds.includes(phone.id)) {
-      storedIds.push(phone.id);
-      setIsAddedToFav(true);
-    } else {
-      const index = storedIds.indexOf(phone.id);
-
-      storedIds.splice(index, 1);
-      setIsAddedToFav(false);
-    }
-
-    localStorage.setItem('favouritesIds', JSON.stringify(storedIds));
-    window.dispatchEvent(new Event('storageChange'));
+    setIsAddedToFav(checkInFav(id));
   };
 
   return (
@@ -111,13 +91,17 @@ export const Card: React.FC<Props> = ({
         <Button
           btnType={ButtonType.Main}
           isActive={isAddedToCart}
-          onClick={toggleItemToCart}
+          onClick={() => {
+            handleToggleCart(+phone.id);
+          }}
         />
         <div>
           <Button
             btnType={ButtonType.Favourite}
             isActive={isAddedToFav}
-            onClick={toggleItemToFavourites}
+            onClick={() => {
+              handleToggleFav(+phone.id);
+            }}
           />
         </div>
       </div>

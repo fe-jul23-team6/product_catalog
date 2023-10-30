@@ -21,7 +21,7 @@
     white-space: nowrap !important;
   }
 
-  .__slider-available {
+  &__slider-available {
     margin-top: 24px;
 
     @media(min-width: 640px) {
@@ -90,8 +90,6 @@
     font-weight: 600;
     line-height: 21px;
   }
-
-  &__slider-hotprices {}
 }
 
 .phone-bg {
