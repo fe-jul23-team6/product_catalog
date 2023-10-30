@@ -14,13 +14,15 @@
   }
 
   &__container {
+    margin-bottom: 8px;
     height: 244px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    border-bottom: 1px solid var(--elementsColor);
 
-    @media(min-width: 640px) {
+    @media(min-width: 425px) {
       height: 310px;
     }
   }
@@ -31,10 +33,13 @@
 
   &__img {
     margin: 0 auto;
-    min-height: 130px;
-    max-height: 196px;
+    height: 130px;
     display: block;
     border-radius: 15px;
+
+    @media(min-width: 425px) {
+      height: 196px;
+    }
   }
 
   &__title {
@@ -60,13 +65,6 @@
     color: var(--secondaryTextColor);
     text-decoration: line-through;
     font-weight: 600;
-  }
-
-  &__hr {
-    margin-bottom: 8px;
-    height: 1px;
-    width: 100%;
-    background-color: var(--elementsColor);
   }
 
   &__info {

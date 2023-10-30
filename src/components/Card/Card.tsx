@@ -59,8 +59,6 @@ export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
         </p>
       </div>
 
-      <hr className={styles.card__hr} />
-
       <div className={styles.card__info}>
         <p className={styles.card__option}>
           <span className={styles.card__parameter}>Screen</span>
