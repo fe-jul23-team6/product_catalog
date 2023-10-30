@@ -1,0 +1,35 @@
+.location {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  &__icon-home {
+    max-width: 16px;
+    max-height: 16px;
+
+    &-link {
+      max-width: 16px;
+      max-height: 16px;
+    }
+  }
+
+  &__icon-chevron {
+    rotate: -90deg;
+  }
+}
+
+.selected-page {
+  &__paragraph {
+    font-family: 'Mont-SemiBold';
+    font-size: 12px;
+    line-height: 15px;
+
+    color: var(--secondaryTextColor);
+
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primeTextColor);
+    }
+  }
+}

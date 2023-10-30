@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-
 import { Link } from 'react-router-dom';
-import { PageTitle } from 'components/PageTitle';
-import { Button } from 'components/UI/Buttons';
 
+import { PageTitle } from 'components/PageTitle';
+import { SliderSmall } from 'components/SliderSmall';
+
+import { Phone } from 'types';
 import {
   getPhones,
   getTablets,
@@ -16,6 +17,11 @@ export const HomePage = () => {
   const [phonesCount, setPhonesCount] = useState(0);
   const [tabletsCount, setTabletsCount] = useState(0);
   const [accessoriesCount, setAccessoriesCount] = useState(0);
+    
+  const [newModels, setNewModels] = useState<Phone[]>([]);
+  const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     getPhones()
@@ -34,14 +40,26 @@ export const HomePage = () => {
       });
   }, []);
 
-  getPhones()
-    .then((phonesFromServer) => {
-      return phonesFromServer.length;
-    });
+  useEffect(() => {
+    setIsLoading(true);
 
-  // const phonesCount = 95;
-  // const tabletsCount = 24;
-  // const accessoriesCount = 100;
+    getPhones()
+      .then((phonesFromServer) => {
+        const newPhones = phonesFromServer.filter(({ year }) => year === 2022);
+        const mostReducedPhones = phonesFromServer.filter(
+          ({ fullPrice, price }) => (fullPrice - price) >= 100,
+        );
+
+        setNewModels(newPhones);
+        setMostReducedModels(mostReducedPhones);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <div className={styles.home}>
@@ -54,32 +72,14 @@ export const HomePage = () => {
       <div className={styles['home__slider-available']}>
         {}
       </div>
-
-      <div className={styles.home__subheader}>
-        <h2 className={styles.home__subtitle}>
-          Brand new models
-        </h2>
-
-        <div className={styles['home__newmodels-btn-container']}>
-          <Button
-            chevronButtonType="left"
-            btnType="Slider"
-            shevron
-            isDisabled
-          />
-
-          <Button
-            chevronButtonType="right"
-            btnType="Slider"
-            shevron
-            isDisabled
-          />
-        </div>
-      </div>
-
-      <div className={styles['home__slider-newmodels']}>
-        {}
-      </div>
+      
+      <SliderSmall
+        selectedPhones={newModels}
+        isLoading={isLoading}
+        hasError={hasError}
+        headerTitle="Brand new models"
+        moverClass="new"
+      />
 
       <div className={styles.home__subheader}>
         <h2 className={styles.home__subtitle}>
@@ -128,31 +128,13 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <div className={styles.home__subheader}>
-        <h2 className={styles.home__subtitle}>
-          Hot prices
-        </h2>
-
-        <div className={styles['home__newmodels-btn-container']}>
-          <Button
-            chevronButtonType="left"
-            btnType="Slider"
-            shevron
-            isDisabled
-          />
-
-          <Button
-            chevronButtonType="right"
-            btnType="Slider"
-            shevron
-            isDisabled
-          />
-        </div>
-      </div>
-
-      <div className={styles['home__slider-hotprices']}>
-        {}
-      </div>
+      <SliderSmall
+        selectedPhones={mostReducedModels}
+        isLoading={isLoading}
+        hasError={hasError}
+        headerTitle="Hot prices"
+        moverClass="hot"
+      />
     </div>
   );
 };

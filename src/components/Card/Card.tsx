@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';
@@ -7,27 +8,54 @@ import styles from './Card.module.scss';
 type Props = {
   phone: Phone,
   isOrdered: boolean,
+  isFavourite: boolean,
 };
 
-export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
+export const Card: React.FC<Props> = ({
+  phone,
+  isOrdered = false,
+  isFavourite = false,
+}) => {
   const [isAddedToCart, setIsAddedToCart] = useState(isOrdered);
+  const [isAddedToFav, setIsAddedToFav] = useState(isFavourite);
+
   const toggleItemToCart = () => {
-    const storedIdsString = localStorage.getItem('cartItemsIds');
-    const storedIds: string[] = storedIdsString
-      ? JSON.parse(storedIdsString)
+    const storedCart = localStorage.getItem('cartItems');
+    const currentCart: number[][] = storedCart
+      ? JSON.parse(storedCart)
+      : [];
+
+    const itemIndex = currentCart.findIndex(item => item[0] === +phone.id);
+
+    if (itemIndex === -1) {
+      currentCart.push([+phone.id, 1]);
+      setIsAddedToCart(true);
+    } else {
+      currentCart.splice(itemIndex, 1);
+      setIsAddedToCart(false);
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(currentCart));
+    window.dispatchEvent(new Event('storageChange'));
+  };
+
+  const toggleItemToFavourites = () => {
+    const storedFavouritesIds = localStorage.getItem('favouritesIds');
+    const storedIds: string[] = storedFavouritesIds
+      ? JSON.parse(storedFavouritesIds)
       : [];
 
     if (!storedIds.includes(phone.id)) {
       storedIds.push(phone.id);
-      setIsAddedToCart(true);
+      setIsAddedToFav(true);
     } else {
       const index = storedIds.indexOf(phone.id);
 
       storedIds.splice(index, 1);
-      setIsAddedToCart(false);
+      setIsAddedToFav(false);
     }
 
-    localStorage.setItem('cartItemsIds', JSON.stringify(storedIds));
+    localStorage.setItem('favouritesIds', JSON.stringify(storedIds));
     window.dispatchEvent(new Event('storageChange'));
   };
 
@@ -88,6 +116,8 @@ export const Card: React.FC<Props> = ({ phone, isOrdered = false }) => {
         <div>
           <Button
             btnType={ButtonType.Favourite}
+            isActive={isAddedToFav}
+            onClick={toggleItemToFavourites}
           />
         </div>
       </div>
