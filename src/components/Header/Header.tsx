@@ -29,9 +29,15 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   };
 
   const [cartItemCount, setCartItemCount] = useState<number | null>(null);
+  const [favItemCount, setFavItemCount] = useState<number | null>(null);
 
   useEffect(() => {
     const handleStorageChange = () => {
+      const storedFavs = localStorage.getItem('favouritesIds');
+      const currentFavs: number[][] = storedFavs
+        ? JSON.parse(storedFavs)
+        : null;
+
       const storedCart = localStorage.getItem('cartItems');
       const currentCart: number[][] = storedCart
         ? JSON.parse(storedCart)
@@ -41,6 +47,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         const totalItemsInCart = currentCart.reduce((acc, item) => acc + item[1], 0);
 
         setCartItemCount(totalItemsInCart);
+      }
+
+      if (currentFavs) {
+        const totalItemsInFavs = currentFavs.length;
+
+        setFavItemCount(totalItemsInFavs);
       }
     };
 
@@ -114,6 +126,11 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               className={styles.header__icon}
             >
               <Heart />
+              { !!favItemCount && (
+                <div className={styles['header__icon-count']}>
+                  {favItemCount}
+                </div>
+              ) }
             </NavLink>
 
             <NavLink
@@ -122,7 +139,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             >
               <Cart />
               { !!cartItemCount && (
-                <div className={styles['header__icon-cartcount']}>
+                <div className={styles['header__icon-count']}>
                   {cartItemCount}
                 </div>
               ) }
