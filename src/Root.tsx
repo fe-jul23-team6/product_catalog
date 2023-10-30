@@ -27,17 +27,17 @@ export const Root = () => (
 
         <Route path="phones">
           <Route index element={<CatalogPage />} />
-          <Route path=":PhoneId" element={<ItemCardPage />} />
+          <Route path=":phoneId" element={<ItemCardPage />} />
         </Route>
 
         <Route path="tablets">
           <Route index element={<TabletsPage />} />
-          <Route path=":TabletId" element={<ItemCardPage />} />
+          <Route path=":tabletId" element={<ItemCardPage />} />
         </Route>
 
         <Route path="accessories">
           <Route index element={<AccessoriesPage />} />
-          <Route path=":AccessoryId" element={<ItemCardPage />} />
+          <Route path=":accessoryId" element={<ItemCardPage />} />
         </Route>
 
         <Route path="cart" element={<CartPage />} />
