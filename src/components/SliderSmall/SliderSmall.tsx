@@ -94,6 +94,7 @@ export const SliderSmall: React.FC<Props> = ({
                 key={phone.id}
                 phone={phone}
                 isOrdered={isOrdered}
+                isFavourite={false}
               />
             </SwiperSlide>
           );

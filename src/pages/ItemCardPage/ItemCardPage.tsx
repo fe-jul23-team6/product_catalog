@@ -18,12 +18,12 @@ export const ItemCardPage = () => {
   const [hasError, setHasError] = useState(false);
   const [displayImage, setDisplayImage] = useState('');
 
-  const { PhoneId = '' } = useParams();
+  const { phoneId = '' } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
 
-    getPhoneById(PhoneId)
+    getPhoneById(phoneId)
       .then((phoneFromServer) => {
         setPhone(phoneFromServer);
         setDisplayImage(phoneFromServer.images[0]);
@@ -34,7 +34,7 @@ export const ItemCardPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [PhoneId]);
+  }, [phoneId]);
 
   const generateLinkInternal = (oldValue: string, newValue: string) => {
     const startIndex = phone?.id.toLowerCase().indexOf(oldValue.toLowerCase());
@@ -50,7 +50,7 @@ export const ItemCardPage = () => {
 
   const generateLinkByColor = (color: string) => {
     if (!phone?.color) {
-      return `/phones/${PhoneId}`;
+      return `/phones/${phoneId}`;
     }
 
     return generateLinkInternal(phone?.color, color);
@@ -58,7 +58,7 @@ export const ItemCardPage = () => {
 
   const generateLinkByCapacity = (capacity: string) => {
     if (!phone?.capacity) {
-      return `/phones/${PhoneId}`;
+      return `/phones/${phoneId}`;
     }
 
     return generateLinkInternal(phone?.capacity, capacity);
