@@ -31,10 +31,13 @@
 
   &__img {
     margin: 0 auto;
-    min-height: 130px;
-    max-height: 196px;
+    height: 145px;
     display: block;
     border-radius: 15px;
+
+    @media(min-width: 425px) {
+      height: 196px;
+    }
   }
 
   &__title {

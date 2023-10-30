@@ -15,4 +15,5 @@ function request<T>(
 
 export const client = {
   getAll: <T>(url: string) => request<T>(url),
+  getPhonesWithPagination: <T>(url: string) => request<T>(url),
 };

@@ -10,6 +10,7 @@ import { Location } from 'components/UI/Location';
 import { Pagination } from 'components/Pagination';
 
 import {
+  // DEFAULT_PAGE,
   MESSAGES,
   PAGE_SIZE_OPTIONS,
   SORT_OPTION,
@@ -21,8 +22,13 @@ import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [itemsCount] = useState(phones.length);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+
+  // const [searchParams] = useSearchParams();
+  // const page = searchParams.get('page') || DEFAULT_PAGE.toString();
+  // const perPage = searchParams.get('perPage') || (phones.length).toString();
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,6 +44,22 @@ export const CatalogPage: React.FC = () => {
         setIsLoading(false);
       });
   }, []);
+
+  // const getPaginatedItems = () => {
+  //   setIsLoading(true);
+
+  //   getPhonesPagination(perPage, page)
+  //     .then((dataFromServer) => {
+  //       setPhones(dataFromServer.rows);
+  //       setItemsCount(dataFromServer.count);
+  //     })
+  //     .catch(() => {
+  //       setHasError(true);
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // };
 
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer = !phones.length && !hasError && !isLoading;
@@ -62,7 +84,7 @@ export const CatalogPage: React.FC = () => {
 
       {!!phones.length && (
         <>
-          <p className={styles['catalog__items-count']}>{`${phones.length} models`}</p>
+          <p className={styles['catalog__items-count']}>{`${itemsCount} models`}</p>
 
           <div className={styles['catalog__dropdown-container']}>
             <div className={styles.catalog__dropdown}>
