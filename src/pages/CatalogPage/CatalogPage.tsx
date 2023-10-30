@@ -124,7 +124,7 @@ export const CatalogPage: React.FC = () => {
             </div>
           </div>
 
-          <CatalogTable items={phones} />
+          <CatalogTable phones={phones} />
 
           <div className={styles.catalog__pagination}>
             <Pagination

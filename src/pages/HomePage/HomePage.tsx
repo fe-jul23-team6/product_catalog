@@ -53,20 +53,32 @@ export const HomePage = () => {
 
       <div className={styles.home__categories}>
         <div className={styles['home__category-item']}>
-          <div className={`${styles['home__item-img']} ${styles['phone-bg']}`} />
+          <div className={`${styles['home__img-container']} ${styles['phone-bg']}`}>
+            <div className={`${styles['home__item-img']} ${styles['phone-img']}`} />
+          </div>
+
           <h3 className={styles['home__item-title']}>Mobile phones</h3>
+
           <p className={styles['home__item-count']}>{`${phonesCount} models`}</p>
         </div>
 
         <div className={styles['home__category-item']}>
-          <div className={`${styles['home__item-img']} ${styles['tablet-bg']}`} />
+          <div className={`${styles['home__img-container']} ${styles['tablet-bg']}`}>
+            <div className={`${styles['home__item-img']} ${styles['tablet-img']}`} />
+          </div>
+
           <h3 className={styles['home__item-title']}>Tablets</h3>
+
           <p className={styles['home__item-count']}>{`${tabletsCount} models`}</p>
         </div>
 
         <div className={styles['home__category-item']}>
-          <div className={`${styles['home__item-img']} ${styles['accessory-bg']}`} />
+          <div className={`${styles['home__img-container']} ${styles['accessory-bg']}`}>
+            <div className={`${styles['home__item-img']} ${styles['accessory-img']}`} />
+          </div>
+
           <h3 className={styles['home__item-title']}>Accessories</h3>
+
           <p className={styles['home__item-count']}>{`${accessoriesCount} models`}</p>
         </div>
       </div>
