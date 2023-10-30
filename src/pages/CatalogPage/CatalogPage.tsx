@@ -6,7 +6,6 @@ import { Loader } from 'components/UI/Loader';
 import { CatalogTable } from 'components/CatalogTable';
 import { PageTitle } from 'components/PageTitle';
 import { Dropdown } from 'components/UI/Dropdown';
-import { Location } from 'components/UI/Location';
 import { Pagination } from 'components/Pagination';
 
 import {
@@ -18,6 +17,7 @@ import {
 
 import { getPhones } from 'services/products.service';
 import { Phone } from 'types';
+import { PageLocation } from 'components/UI/PageLocation';
 import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
@@ -66,7 +66,7 @@ export const CatalogPage: React.FC = () => {
 
   return (
     <section className={styles.catalog}>
-      <Location />
+      <PageLocation to="/phones" text="Phones" />
 
       <PageTitle title="Mobile phones" />
 
