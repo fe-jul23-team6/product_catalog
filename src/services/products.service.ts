@@ -5,8 +5,8 @@ export function getPhones() {
   return client.getAll<Phone[]>('/products');
 }
 
-export function getPhoneById(id: string) {
-  return client.getAll<Phone>(`/products/${id}`);
+export function getPhoneById(phoneId: string) {
+  return client.getAll<Phone>(`/products/${phoneId}`);
 }
 
 export function getPhonesByIds(ids: number[]) {
