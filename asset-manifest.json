@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/product_catalog/static/css/main.8996b0a0.css",
-    "main.js": "/product_catalog/static/js/main.8d2352ad.js",
+    "main.js": "/product_catalog/static/js/main.2d9c1b06.js",
     "static/media/category-tablets.png": "/product_catalog/static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/404.svg": "/product_catalog/static/media/404.f8b99bd3578de82595aa.svg",
     "static/media/logo.svg": "/product_catalog/static/media/logo.60452a9bbce10e5af2c113c33085de5e.svg",
@@ -21,10 +21,10 @@
     "static/media/minus_icon.svg": "/product_catalog/static/media/minus_icon.0eab8a0278f654b73cc4372b163ddabd.svg",
     "index.html": "/product_catalog/index.html",
     "main.8996b0a0.css.map": "/product_catalog/static/css/main.8996b0a0.css.map",
-    "main.8d2352ad.js.map": "/product_catalog/static/js/main.8d2352ad.js.map"
+    "main.2d9c1b06.js.map": "/product_catalog/static/js/main.2d9c1b06.js.map"
   },
   "entrypoints": [
     "static/css/main.8996b0a0.css",
-    "static/js/main.8d2352ad.js"
+    "static/js/main.2d9c1b06.js"
   ]
 }
