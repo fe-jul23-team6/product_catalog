@@ -29,6 +29,14 @@
     align-items: flex-start;
     align-self: stretch;
 
+    &-img {
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
     @media (min-width: 640px) {
       align-items: flex-start;
       flex: 1 0 0;
