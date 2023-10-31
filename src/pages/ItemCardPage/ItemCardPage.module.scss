@@ -290,6 +290,7 @@
   width: 28px;
   height: 28px;
   $customColor: #000;
+  transition: 0.3s;
 
   background-color: var(--color, #{$customColor});
   border: 2px solid var(--primeBgColor);
@@ -297,7 +298,6 @@
 
   &:hover {
     transform: scale(1.2);
-    transition: 0.3s;
   }
 }
 

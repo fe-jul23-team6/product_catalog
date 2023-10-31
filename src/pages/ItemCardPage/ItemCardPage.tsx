@@ -11,6 +11,7 @@ import { Loader } from 'components/UI/Loader';
 import { MESSAGES, PHONE_COLORS } from 'utils/constants';
 import { BASE_URL } from 'utils/fetchProducts';
 import { ProductsContext } from 'context/ProductsContext';
+import { PageLocation } from 'components/UI/PageLocation';
 import styles from './ItemCardPage.module.scss';
 
 export const ItemCardPage = () => {
@@ -104,6 +105,7 @@ export const ItemCardPage = () => {
 
       {phone && !isLoading && !hasError && (
         <>
+          <PageLocation to="/phones" text="Phones" itemName={phone.name} />
           <h1 className={styles.title}>
             {phone?.name}
           </h1>

@@ -1,7 +1,7 @@
 .location {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 10px;
 
   &__icon-home {
     max-width: 16px;
@@ -14,7 +14,9 @@
   }
 
   &__icon-chevron {
-    rotate: -90deg;
+    display: flex;
+    justify-content: center;
+    rotate: 90deg;
   }
 }
 
@@ -23,9 +25,9 @@
     font-family: 'Mont-SemiBold';
     font-size: 12px;
     line-height: 15px;
+    transition: 0.3s;
 
     color: var(--secondaryTextColor);
-
     cursor: pointer;
 
     &:hover {
