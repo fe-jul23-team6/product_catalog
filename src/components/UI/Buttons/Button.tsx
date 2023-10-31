@@ -23,7 +23,7 @@ type Props = {
   colorButtonColor?: string;
   chevronButtonType?: string;
   high?: boolean,
-  shevron?: boolean;
+  chevron?: boolean;
   onClick?: () => void;
 };
 
@@ -34,7 +34,7 @@ export const Button: React.FC<Props> = ({
   isDisabled,
   colorButtonColor,
   chevronButtonType,
-  shevron,
+  chevron,
   high,
   onClick,
 }) => {
@@ -83,7 +83,7 @@ export const Button: React.FC<Props> = ({
         <HeartIconFilled />
       )}
 
-      {slider && shevron && (
+      {slider && chevron && (
         <ChevronIcon className={cn(
           { [styles['button__slider-icon-disabled']]: isDisabled },
           { [styles[`button__${chevronButtonType}`]]: chevronButtonType !== 'up' },
@@ -91,7 +91,7 @@ export const Button: React.FC<Props> = ({
         />
       )}
 
-      {slider && !shevron && (
+      {slider && !chevron && (
         content
       )}
     </button>

@@ -18,19 +18,33 @@
     border: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
-    clip: rect(0,0,0,0) !important;
+    clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
   }
 
-  &__slider-available {
+  &__sliderBig {
+    display: flex;
+    align-items: top;
     margin-top: 24px;
 
     @media(min-width: 640px) {
+      height: 189px;
       margin-top: 32px;
+      gap: 19px;
     }
 
     @media(min-width: 1200px) {
+      height: 400px;
       margin-top: 56px;
+      gap: 16px;
+    }
+  }
+
+  &__navButton {
+    display: none;
+
+    @media(min-width: 640px) {
+      display: flex;
     }
   }
 
@@ -68,6 +82,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
 
     @media(min-width: 640px) {
       flex-direction: row;
@@ -141,4 +156,21 @@
   background-position: right bottom;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.swiper-pagination-bullet {
+  padding: 5px;
+  color: var(--elementsColor);
+  width: 10px;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    color: var(--primeTextColor);
+  }
+
+  &__active {
+    color: var(--primeTextColor);
+  }
 }

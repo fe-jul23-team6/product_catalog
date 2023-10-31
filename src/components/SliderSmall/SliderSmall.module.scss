@@ -14,9 +14,9 @@
     }
   }
 
-  // &__slider {
-  //   min-width: ;
-  // }
+  &__slider {
+    min-width: 212px;
+  }
 }
 
 @media (min-width: 640px) {
@@ -27,6 +27,10 @@
       font-size: 32px;
       line-height: 41px;
       letter-spacing: -0.32px;
+    }
+
+    &__slider {
+      min-width: 237px;
     }
   }
 }

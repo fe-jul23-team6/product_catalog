@@ -59,7 +59,7 @@ export const SliderSmall: React.FC<Props> = ({
             <Button
               btnType="Slider"
               chevronButtonType="left"
-              shevron
+              chevron
             />
           </li>
 
@@ -67,7 +67,7 @@ export const SliderSmall: React.FC<Props> = ({
             <Button
               btnType="Slider"
               chevronButtonType="right"
-              shevron
+              chevron
             />
           </li>
         </ul>
@@ -84,14 +84,15 @@ export const SliderSmall: React.FC<Props> = ({
         }}
         spaceBetween={16}
         slidesPerView={4}
-        className={styles.sliderSmall__slider}
       >
         {selectedPhones.map(phone => {
           const isOrdered = checkInCart(+phone.id);
           const isFavourite = checkInFav(+phone.id);
 
           return (
-            <SwiperSlide style={{ width: '208px' }}>
+            <SwiperSlide
+              className={styles.sliderSmall__slider}
+            >
               <Card
                 key={phone.id}
                 phone={phone}

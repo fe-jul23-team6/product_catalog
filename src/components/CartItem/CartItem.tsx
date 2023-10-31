@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
 import { ReactComponent as PlusSvg } from 'assets/img/icons/plus_icon.svg';
 import { ReactComponent as MinusSvg } from 'assets/img/icons/minus_icon.svg';
@@ -30,16 +31,20 @@ export const CartItem: React.FC<Props> = ({
         >
           <CloseSvg className={styles['cart-item__remove']} />
         </button>
-        <div className={styles['cart-item__top-container']}>
-          <img
-            className={styles['cart-item__img']}
-            src={`${BASE_URL}/${phone.image}`}
-            alt={phone.name}
-          />
-        </div>
-        <h4 className={styles['cart-item__title']}>
-          {phone.name}
-        </h4>
+        <NavLink to={`/phones/${phone.itemId}`}>
+          <div className={styles['cart-item__top-container']}>
+            <img
+              className={styles['cart-item__img']}
+              src={`${BASE_URL}/${phone.image}`}
+              alt={phone.name}
+            />
+          </div>
+        </NavLink>
+        <NavLink to={`/phones/${phone.itemId}`}>
+          <h4 className={styles['cart-item__title']}>
+            {phone.name}
+          </h4>
+        </NavLink>
       </div>
 
       <div className={styles['cart-item__bottom']}>

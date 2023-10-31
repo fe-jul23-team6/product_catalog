@@ -74,7 +74,7 @@ export const Pagination: React.FC<Props> = ({
           <Button
             btnType="Slider"
             chevronButtonType="left"
-            shevron
+            chevron
             isDisabled={isActivePrev}
           />
         </Link>
@@ -101,7 +101,7 @@ export const Pagination: React.FC<Props> = ({
           <Button
             btnType="Slider"
             chevronButtonType="right"
-            shevron
+            chevron
             isDisabled={isActiveNext}
           />
         </Link>
