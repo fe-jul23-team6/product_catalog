@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { PageTitle } from 'components/PageTitle';
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
 import { ProductsContext } from 'context/ProductsContext';
@@ -25,8 +25,9 @@ export const CartPage: React.FC = () => {
     setCartItemsIds,
     cartItems,
     setCartItems,
-    isCartEmpty,
-    setIsCartEmpty,
+    handleDelete,
+    handleCountMinus,
+    handleCountPlus,
   } = useContext(ProductsContext);
 
   const totalAmount = currentCart.reduce((acc, amount) => acc + amount[1], 0);
@@ -39,7 +40,6 @@ export const CartPage: React.FC = () => {
   const loadData = async () => {
     if (cartItemsIds.length === 0) {
       setCartItems([]);
-      setIsCartEmpty(true);
 
       return;
     }
@@ -52,18 +52,13 @@ export const CartPage: React.FC = () => {
   const handleCheckout = () => {
     setCartItemsIds([]);
     setCartItems([]);
-    setIsCartEmpty(true);
     localStorage.setItem('cartItems', '[]');
     window.dispatchEvent(new Event('storageChange'));
   };
 
   useEffect(() => {
-    if (!currentCart) {
-      setIsCartEmpty(true);
-    }
-
     loadData();
-  }, [currentCart]);
+  }, []);
 
   return (
     <div className={styles.cart}>
@@ -88,70 +83,47 @@ export const CartPage: React.FC = () => {
         <PageTitle title="Cart" />
       </div>
 
-      {isCartEmpty
-        ? (
-          <div className={styles.cart__wrapper}>
-            <div className={styles.cart__checkout}>
-              <h4 className={styles['cart__title-empty']}>
-                Your cart is empty
-              </h4>
+      <div className={styles.cart__wrapper}>
+        <div className={styles.cart__content}>
+          {cartItems.map(phone => {
+            const currCount = currentCart.find(item => item[0] === +phone.id);
+            const count = currCount ? currCount[1] : 0;
 
-              <NavLink
-                to="/"
-                className={styles['cart__go-shopping']}
+            return (
+              <div
+                className={styles.cart__item}
+                key={phone.id}
               >
-                <button
-                  type="button"
-                  className={styles.cart__buy}
-                >
-                  Go Shopping!
-                </button>
-              </NavLink>
+                <CartItem
+                  phone={phone}
+                  onDelete={handleDelete}
+                  count={count}
+                  onCountMinus={handleCountMinus}
+                  onCountPlus={handleCountPlus}
+                />
+              </div>
+            );
+          })}
+        </div>
 
-            </div>
-          </div>
-        )
-        : (
-          <div className={styles.cart__wrapper}>
-            <div className={styles.cart__content}>
-              {cartItems.map(phone => {
-                const currCount = currentCart.find(item => item[0] === +phone.id);
-                const count = currCount ? currCount[1] : 0;
+        <div className={styles.cart__checkout}>
+          <h2 className={styles.cart__totalPrice}>
+            $
+            {totalCost}
+          </h2>
+          <p className={styles.cart__total}>
+            {`Total for ${totalAmount} items`}
+          </p>
 
-                return (
-                  <div
-                    className={styles.cart__item}
-                    key={phone.id}
-                  >
-                    <CartItem
-                      phone={phone}
-                      count={count}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className={styles.cart__checkout}>
-              <h2 className={styles.cart__totalPrice}>
-                $
-                {totalCost}
-              </h2>
-              <p className={styles.cart__total}>
-                {`Total for ${totalAmount} items`}
-              </p>
-
-              <button
-                className={styles.cart__buy}
-                type="button"
-                onClick={handleCheckout}
-              >
-                Checkout
-              </button>
-            </div>
-          </div>
-        )}
-
+          <button
+            className={styles.cart__buy}
+            type="button"
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
