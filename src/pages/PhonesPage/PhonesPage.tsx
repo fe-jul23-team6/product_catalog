@@ -8,7 +8,7 @@ export const PhonesPage: FC = () => {
   useEffect(() => {
     getPhones()
       .then((phonesFromServer) => {
-        setPhones(phonesFromServer);
+        setPhones(phonesFromServer.rows);
       });
   }, []);
 
