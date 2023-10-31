@@ -86,8 +86,11 @@
   }
 
   &__carousel_item {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    border: 1px solid var(--elementsColor);
+    border-radius: 3px;
     margin-right: 8px;
     max-width: 100%;
     text-align: center;
@@ -97,8 +100,8 @@
     }
     @media (min-width: 1200px) {
       margin-bottom: 16px;
-      width: 66px;
-      height: 66px;
+      width: 76px;
+      height: 76px;
     }
   }
 

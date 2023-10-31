@@ -1,5 +1,5 @@
 import { DataFromServer } from 'types';
-import { FullPhone } from 'types/FullPhone';
+import { FullPhoneWithId } from 'types/FullPhoneWithId';
 import { SortOption } from 'types/SortOption';
 import { Phone } from '../types/Phone';
 import { client } from '../utils/fetchProducts';
@@ -75,7 +75,7 @@ export function getAccessories(
 }
 
 export function getPhoneById(phoneId: string) {
-  return client.getAll<FullPhone>(`/products/${phoneId}`);
+  return client.getAll<FullPhoneWithId>(`/products/${phoneId}`);
 }
 
 export function getPhonesByIds(ids: number[]) {

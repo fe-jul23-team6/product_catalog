@@ -1,4 +1,4 @@
-export interface FullPhone {
+export interface FullPhoneData {
   id: string;
   namespaceId: string;
   name: string;

@@ -6,11 +6,11 @@ import classnames from 'classnames';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType } from 'types';
 import { getPhoneById } from 'services/products.service';
-import { FullPhone } from 'types/FullPhone';
 import { Loader } from 'components/UI/Loader';
 import { MESSAGES, PHONE_COLORS } from 'utils/constants';
 import { BASE_URL } from 'utils/fetchProducts';
 import { ProductsContext } from 'context/ProductsContext';
+import { FullPhoneData } from 'types/FullPhoneData';
 import { PageLocation } from 'components/UI/PageLocation';
 import styles from './ItemCardPage.module.scss';
 
@@ -24,26 +24,24 @@ export const ItemCardPage = () => {
 
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
-  const [phone, setPhone] = useState<FullPhone | null>(null);
+  const [phone, setPhone] = useState<FullPhoneData | null>(null);
+  const [phoneNumId, setPhoneNumId] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [displayImage, setDisplayImage] = useState('');
 
   const { phoneId = '' } = useParams();
 
-  // change placeholder to real itemId when database is ready
-  const placeholder = 1;
-  // its only to check functionality
-
   useEffect(() => {
     setIsLoading(true);
 
     getPhoneById(phoneId)
       .then((phoneFromServer) => {
-        setPhone(phoneFromServer);
-        setDisplayImage(phoneFromServer.images[0]);
-        setIsAddedToCart(checkInCart(placeholder));
-        setIsAddedToFav(checkInFav(placeholder));
+        setPhone(phoneFromServer.productInfo);
+        setPhoneNumId(phoneFromServer.id);
+        setDisplayImage(phoneFromServer.productInfo.images[0]);
+        setIsAddedToCart(checkInCart(phoneNumId));
+        setIsAddedToFav(checkInFav(phoneNumId));
       })
       .catch(() => {
         setHasError(true);
@@ -106,6 +104,7 @@ export const ItemCardPage = () => {
       {phone && !isLoading && !hasError && (
         <>
           <PageLocation to="/phones" text="Phones" itemName={phone.name} />
+
           <h1 className={styles.title}>
             {phone?.name}
           </h1>
@@ -191,7 +190,7 @@ export const ItemCardPage = () => {
                   btnType={ButtonType.Main}
                   isActive={isAddedToCart}
                   onClick={() => {
-                    handleToggleCart(placeholder);
+                    handleToggleCart(phoneNumId);
                   }}
                 />
                 <div>
@@ -199,7 +198,7 @@ export const ItemCardPage = () => {
                     btnType={ButtonType.Favourite}
                     isActive={isAddedToFav}
                     onClick={() => {
-                      handleToggleFav(placeholder);
+                      handleToggleFav(phoneNumId);
                     }}
                   />
                 </div>
