@@ -18,11 +18,13 @@ import styles from './Dropdown.module.scss';
 type Props = {
   description: string,
   options: string[],
+  query: string | null,
 };
 
 export const Dropdown: React.FC<Props> = ({
   description,
   options = [],
+  query = null,
 }) => {
   const [searchParams] = useSearchParams();
 
@@ -30,7 +32,7 @@ export const Dropdown: React.FC<Props> = ({
   const isItemsOnPage = description === 'Items on page';
 
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownTitle, setDropdownTitle] = useState(options[0]);
+  const [dropdownTitle, setDropdownTitle] = useState(query || options[0]);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
