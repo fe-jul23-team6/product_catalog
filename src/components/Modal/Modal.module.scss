@@ -1,0 +1,47 @@
+.modal {
+  width: 300px;
+  height: 190px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondaryBGColor);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.288);
+
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 190px;
+  }
+
+
+  &__title {
+    color: var(--primeTextColor);
+    text-align: center;
+    font-size: 36px;
+    line-height: 110%;
+  }
+
+  &__close {
+    fill: var(--primeTextColor);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: 0.3s;
+
+    &:hover {
+      fill: var(--secondaryTextColor);
+    }
+
+    &-icon {
+      width: 30px;
+      height: 30px;
+
+
+    }
+  }
+}

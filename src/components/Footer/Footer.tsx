@@ -15,7 +15,7 @@ export const Footer = () => {
         <NavLink to="/">
           <img
             src={logo}
-            className={styles['top-bar__logo-img']}
+            className={styles['footer__logo-img']}
             alt="logo"
           />
         </NavLink>
