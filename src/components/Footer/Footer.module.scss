@@ -101,6 +101,8 @@
     width: 32px;
     height: 32px;
     background: var(--thirdaryBgColor);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.781);
+    z-index: 100;
   }
 
   &__label {
