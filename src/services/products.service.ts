@@ -19,11 +19,6 @@ export function getProductsPagination(limit: string, page: string) {
   return client.getPhonesWithPagination<PhonesWithPagination>(`/products?limit=${limit}&page=${page}`);
 }
 
-// temporary function for tests
-// export function getProductsPagination(limit: string, page: string) {
-//   return client.getPhonesWithPagination<Phone[]>(`/products?limit=${limit}&page=${page}`);
-// }
-
 export function getPhoneById(phoneId: string) {
   return client.getAll<FullPhone>(`/products/${phoneId}`);
 }
@@ -32,6 +27,6 @@ export function getPhonesByIds(ids: number[]) {
   return client.getAll<Phone[]>(`/products?ids=${ids.join(',')}`);
 }
 
-const getProducts = (category: string) => {
-  return client.getAll<PhonesWithPagination>(`/products/?category=${category}`);
-};
+// export const getProducts = (category: string) => {
+//   return client.getAll<PhonesWithPagination>(`/products/?category=${category}`);
+// };
