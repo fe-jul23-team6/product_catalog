@@ -26,17 +26,17 @@ export const HomePage = () => {
   useEffect(() => {
     getPhones()
       .then((phonesFromServer) => {
-        setPhonesCount(phonesFromServer.length);
+        setPhonesCount(phonesFromServer.count);
       });
 
     getTablets()
       .then((tabletsFromServer) => {
-        setTabletsCount(tabletsFromServer.length);
+        setTabletsCount(tabletsFromServer.count);
       });
 
     getAccessories()
       .then((accessoriesFromServer) => {
-        setAccessoriesCount(accessoriesFromServer.length);
+        setAccessoriesCount(accessoriesFromServer.count);
       });
   }, []);
 
@@ -45,8 +45,8 @@ export const HomePage = () => {
 
     getPhones()
       .then((phonesFromServer) => {
-        const newPhones = phonesFromServer.filter(({ year }) => year === 2022);
-        const mostReducedPhones = phonesFromServer.filter(
+        const newPhones = phonesFromServer.rows.filter(({ year }) => year === 2022);
+        const mostReducedPhones = phonesFromServer.rows.filter(
           ({ fullPrice, price }) => (fullPrice - price) >= 100,
         );
 

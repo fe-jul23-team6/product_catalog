@@ -29,21 +29,21 @@ export const CatalogPage: React.FC = () => {
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
   const perPage = searchParams.get('perPage') || null;
 
-  useEffect(() => {
-    setIsLoading(true);
+  // useEffect(() => {
+  //   setIsLoading(true);
 
-    getPhones()
-      .then((phonesFromServer) => {
-        setPhones(phonesFromServer);
-        setItemsCount(phonesFromServer.length);
-      })
-      .catch(() => {
-        setHasError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+  //   getPhones()
+  //     .then((phonesFromServer) => {
+  //       setPhones(phonesFromServer.rows);
+  //       setItemsCount(phonesFromServer.count);
+  //     })
+  //     .catch(() => {
+  //       setHasError(true);
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
   const getItems = useCallback(() => {
     setIsLoading(true);
@@ -52,8 +52,8 @@ export const CatalogPage: React.FC = () => {
       getPhones()
         .then((dataFromServer) => {
           setIsLoading(false);
-          setPhones(dataFromServer);
-          setItemsCount(dataFromServer.length);
+          setPhones(dataFromServer.rows);
+          setItemsCount(dataFromServer.count);
         })
         .catch(() => {
           setHasError(true);
@@ -67,10 +67,10 @@ export const CatalogPage: React.FC = () => {
       getProductsPagination(perPage, page)
         .then((dataFromServer) => {
           setIsLoading(false);
-          setPhones(dataFromServer);
-          setItemsCount(dataFromServer.length);
-          // setPhones(dataFromServer.rows);
-          // setItemsCount(dataFromServer.count);
+          // setPhones(dataFromServer);
+          // setItemsCount(dataFromServer.length);
+          setPhones(dataFromServer.rows);
+          setItemsCount(dataFromServer.count);
         })
         .catch(() => {
           setHasError(true);
@@ -84,7 +84,6 @@ export const CatalogPage: React.FC = () => {
   useEffect(() => {
     getItems();
   }, [page, perPage]);
- perPage]);
 
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer = !itemsCount && !hasError && !isLoading;
