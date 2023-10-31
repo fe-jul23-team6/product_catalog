@@ -40,8 +40,6 @@ export const ItemCardPage = () => {
         setPhone(phoneFromServer.productInfo);
         setPhoneNumId(phoneFromServer.id);
         setDisplayImage(phoneFromServer.productInfo.images[0]);
-        setIsAddedToCart(checkInCart(phoneNumId));
-        setIsAddedToFav(checkInFav(phoneNumId));
       })
       .catch(() => {
         setHasError(true);
@@ -50,6 +48,11 @@ export const ItemCardPage = () => {
         setIsLoading(false);
       });
   }, [phoneId]);
+
+  useEffect(() => {
+    setIsAddedToCart(checkInCart(phoneNumId));
+    setIsAddedToFav(checkInFav(phoneNumId));
+  });
 
   const handleToggleCart = (id: number) => {
     toggleItemToCart(id);
