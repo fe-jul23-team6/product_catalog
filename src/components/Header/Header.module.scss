@@ -39,6 +39,7 @@
 
     &-link {
       position: relative;
+      transition: 0.3s;
 
       &:hover {
         color: var(--primeTextColor);
@@ -74,6 +75,11 @@
     line-height: 100%;
     padding: 16px;
     position: relative;
+    transition: 0.3s;
+
+    &--active {
+      background-color: #323542;
+    }
   }
 
 

@@ -25,6 +25,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
     },
   );
 
+  const getIconClass = ({ isActive }: { isActive: boolean }) => classNames(
+    styles.header__icon, {
+      [styles['header__icon--active']]: isActive,
+    },
+  );
+
   const toggleMenu = () => {
     setIsMenuOpen(true);
   };
@@ -119,7 +125,8 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           <div className={styles.header__icons}>
             <NavLink
               to="/favourites"
-              className={styles.header__icon}
+              className={getIconClass}
+
             >
               <Heart />
               { !!favItemCount && (
@@ -131,7 +138,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
 
             <NavLink
               to="/cart"
-              className={styles.header__icon}
+              className={getIconClass}
             >
               <Cart />
               { !!cartItemCount && (
@@ -146,7 +153,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             <NavLink
               to="#"
               onClick={toggleMenu}
-              className={styles.header__icon}
+              className={getIconClass}
             >
               <Burger />
             </NavLink>
