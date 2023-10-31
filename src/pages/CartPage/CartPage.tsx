@@ -25,9 +25,6 @@ export const CartPage: React.FC = () => {
     setCartItemsIds,
     cartItems,
     setCartItems,
-    handleDelete,
-    handleCountMinus,
-    handleCountPlus,
     isCartEmpty,
     setIsCartEmpty,
   } = useContext(ProductsContext);
@@ -66,7 +63,7 @@ export const CartPage: React.FC = () => {
     }
 
     loadData();
-  }, []);
+  }, [currentCart]);
 
   return (
     <div className={styles.cart}>
@@ -128,10 +125,7 @@ export const CartPage: React.FC = () => {
                   >
                     <CartItem
                       phone={phone}
-                      onDelete={handleDelete}
                       count={count}
-                      onCountMinus={handleCountMinus}
-                      onCountPlus={handleCountPlus}
                     />
                   </div>
                 );
