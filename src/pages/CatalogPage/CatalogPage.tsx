@@ -85,6 +85,7 @@ export const CatalogPage: React.FC = () => {
               <Dropdown
                 description="Sort by"
                 options={SORT_OPTION}
+                query={sort}
               />
             </div>
 
@@ -92,6 +93,7 @@ export const CatalogPage: React.FC = () => {
               <Dropdown
                 description="Items on page"
                 options={PAGE_SIZE_OPTIONS}
+                query={perPage}
               />
             </div>
           </div>
