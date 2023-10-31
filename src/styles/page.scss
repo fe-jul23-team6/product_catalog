@@ -12,10 +12,6 @@ html {
   line-height: 150%;
   text-align: left;
 
-  // &:has(.page__sidebar:target) {
-  //   overflow: hidden;
-  // }
-
   &__body {
     padding: 24px 16px 64px;
     min-width: 320px;
@@ -38,21 +34,4 @@ html {
       margin-inline: auto;
     }
   }
-
-  // &__sidebar {
-  //   position: fixed;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   opacity: 0;
-  //   transition: all 0.3s;
-  //   transform: translateX(-100%);
-  //   pointer-events: none;
-
-  //   &:target {
-  //     opacity: 1;
-  //     transform: translateX(0);
-  //     pointer-events: all;
-  //   }
-  // }
 }

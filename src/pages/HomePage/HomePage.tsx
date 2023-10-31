@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-import { getPhones } from 'services/products.service';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { getDiscountedPhones, getNewestPhones } from 'services/products.service';
 import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
 import { Button } from 'components/UI/Buttons';
@@ -25,17 +25,28 @@ export const HomePage = () => {
   const tabletsCount = 24;
   const accessoriesCount = 100;
 
+  const pagination = {
+    clickable: true,
+  };
+
   useEffect(() => {
     setIsLoading(true);
-
-    getPhones()
-      .then((phonesFromServer) => {
-        const newPhones = phonesFromServer.filter(({ year }) => year === 2022);
-        const mostReducedPhones = phonesFromServer.filter(
-          ({ fullPrice, price }) => (fullPrice - price) >= 100,
-        );
-
+    getNewestPhones()
+      .then((newPhones) => {
         setNewModels(newPhones);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getDiscountedPhones()
+      .then((mostReducedPhones) => {
         setMostReducedModels(mostReducedPhones);
       })
       .catch(() => {
@@ -55,60 +66,72 @@ export const HomePage = () => {
       />
 
       <section className={styles.home__sliderBig}>
-        <div className="button-prev">
-          <Button
-            btnType="Slider"
-            chevronButtonType="left"
-            shevron
-          />
+        <div className={styles.home__navButton}>
+          <div className="button-prev">
+            <Button
+              btnType="Slider"
+              chevronButtonType="left"
+              shevron
+              high
+            />
+          </div>
         </div>
 
         <Swiper
           loop
-          modules={[Navigation, Pagination]}
-          pagination={{
-            clickable: true,
+          modules={[Navigation, Pagination, Autoplay]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
           }}
+          pagination={pagination}
           navigation={{
             prevEl: '.button-prev',
             nextEl: '.button-next',
           }}
           slidesPerView={1}
+          className={styles['home__slide-width']}
         >
           <SwiperSlide>
             <img
+              width="100%"
               src={iPhone14Pro}
               alt="iPhone 14 Pro"
-              className={styles['header__logo-size']}
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
+              width="100%"
               src={iPhones}
               alt="iPhones"
-              className={styles['header__logo-size']}
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
+              width="100%"
               src={iTabs}
               alt="iTabs"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
+              width="100%"
               src={Accessories}
               alt="Apple Accessories"
             />
           </SwiperSlide>
         </Swiper>
 
-        <div className="button-next">
-          <Button
-            btnType="Slider"
-            chevronButtonType="right"
-            shevron
-          />
+        <div className={styles.home__navButton}>
+          <div className="button-next">
+            <Button
+              btnType="Slider"
+              chevronButtonType="right"
+              shevron
+              high
+            />
+          </div>
         </div>
       </section>
 

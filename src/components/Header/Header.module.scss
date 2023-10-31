@@ -62,9 +62,9 @@
 
   &__icons {
     display: none;
-    align-items: center;
 
     &-burger {
+      display: flex;
       line-height: 100%;
     }
   }
@@ -72,10 +72,10 @@
   &__icon {
     border-left: 1px solid var(--secondaryTextColor);
     line-height: 100%;
+    align-items: center;
     padding: 16px;
     position: relative;
   }
-
 
   &__bottom {
     padding-block: 24px;

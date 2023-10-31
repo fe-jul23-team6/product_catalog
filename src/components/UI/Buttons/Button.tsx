@@ -22,6 +22,7 @@ type Props = {
   isDisabled?: boolean,
   colorButtonColor?: string;
   chevronButtonType?: string;
+  high?: boolean;
   shevron?: boolean;
   onClick?: () => void;
 };
@@ -34,6 +35,7 @@ export const Button: React.FC<Props> = ({
   colorButtonColor,
   chevronButtonType,
   shevron,
+  high,
   onClick,
 }) => {
   const color = btnType === ButtonType.Color;
@@ -64,6 +66,7 @@ export const Button: React.FC<Props> = ({
 
         { [styles.button__slider]: slider },
         { [styles['button__disabled-slider']]: slider && isDisabled },
+        { [styles.button__high]: high },
       )}
     >
 

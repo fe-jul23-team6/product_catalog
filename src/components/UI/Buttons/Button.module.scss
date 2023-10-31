@@ -7,8 +7,20 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  
+
   transition: transform 0.3s ease-in;
+
+  @media(min-width: 640px) {
+    &__high {
+      height: 189px;
+    }
+  }
+
+  @media(min-width: 1200px) {
+    &__high {
+      height: 400px;
+    }
+  }
 
   &:hover {
     transform: scale(1.03);
