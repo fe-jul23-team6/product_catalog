@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { PageTitle } from 'components/PageTitle';
@@ -20,6 +21,7 @@ import {
 import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
+
 import 'swiper/scss';
 
 export const HomePage = () => {
