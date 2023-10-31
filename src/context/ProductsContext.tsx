@@ -26,6 +26,8 @@ type ProductsContextType = {
   toggleItemToFavourites: (id: number) => void;
   checkInCart: (id: number) => boolean;
   checkInFav: (id: number) => boolean;
+  isCartEmpty: boolean;
+  setIsCartEmpty: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 export const ProductsContext = createContext<ProductsContextType>({
@@ -42,9 +44,13 @@ export const ProductsContext = createContext<ProductsContextType>({
   toggleItemToFavourites: () => false,
   checkInCart: () => false,
   checkInFav: () => false,
+  isCartEmpty: false,
+  setIsCartEmpty: () => {},
 });
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
+
   const storedCart = localStorage.getItem('cartItems');
   const [currentCart, setCurrentCart] = useState<LocalStorageCart>(
     storedCart
@@ -173,6 +179,8 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     toggleItemToFavourites,
     checkInCart,
     checkInFav,
+    isCartEmpty,
+    setIsCartEmpty,
   };
 
   return (

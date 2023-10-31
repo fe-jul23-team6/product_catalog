@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { getDiscountedPhones, getNewestPhones } from 'services/products.service';
+import {
+  getDiscountedPhones, getNewestPhones,
+  getPhones,
+  getTablets,
+  getAccessories,
+} from 'services/products.service';
 import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
 import { Button } from 'components/UI/Buttons';
@@ -10,15 +16,11 @@ import iPhones from 'assets/img/banner-phones-dark.png';
 import iTabs from 'assets/img/banner-tablets-dark.jpg';
 import Accessories from 'assets/img/banner-accessories-dark.png';
 import { Phone } from 'types';
-import {
-  getPhones,
-  getTablets,
-  getAccessories,
-} from 'services/products.service';
 
 import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
+
 import 'swiper/scss';
 
 export const HomePage = () => {
@@ -94,7 +96,7 @@ export const HomePage = () => {
             <Button
               btnType="Slider"
               chevronButtonType="left"
-              shevron
+              chevron
               high
             />
           </div>
@@ -151,7 +153,7 @@ export const HomePage = () => {
             <Button
               btnType="Slider"
               chevronButtonType="right"
-              shevron
+              chevron
               high
             />
           </div>
