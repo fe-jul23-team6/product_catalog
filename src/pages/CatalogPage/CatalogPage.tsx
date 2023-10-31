@@ -27,7 +27,7 @@ export const CatalogPage: React.FC = () => {
 
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
-  const perPage = searchParams.get('perPage') || (phones.length).toString();
+  const perPage = searchParams.get('perPage') || null;
 
   useEffect(() => {
     setIsLoading(true);
@@ -48,7 +48,7 @@ export const CatalogPage: React.FC = () => {
   const getItems = useCallback(() => {
     setIsLoading(true);
 
-    if (!page && !perPage) {
+    if (!page || !perPage) {
       getPhones()
         .then((dataFromServer) => {
           setIsLoading(false);
@@ -63,12 +63,14 @@ export const CatalogPage: React.FC = () => {
         });
     }
 
-    if (page || perPage) {
+    if (page && perPage) {
       getProductsPagination(perPage, page)
         .then((dataFromServer) => {
           setIsLoading(false);
-          setPhones(dataFromServer.rows);
-          setItemsCount(dataFromServer.count);
+          setPhones(dataFromServer);
+          setItemsCount(dataFromServer.length);
+          // setPhones(dataFromServer.rows);
+          // setItemsCount(dataFromServer.count);
         })
         .catch(() => {
           setHasError(true);
@@ -79,12 +81,13 @@ export const CatalogPage: React.FC = () => {
     }
   }, [page, perPage]);
 
-  // useEffect(() => {
-  //   getItems();
-  // }, [page, perPage]);
+  useEffect(() => {
+    getItems();
+  }, [page, perPage]);
+ perPage]);
 
   const hasErrorMessage = hasError && !isLoading;
-  const hasNoItemsOnServer = !phones.length && !hasError && !isLoading;
+  const hasNoItemsOnServer = !itemsCount && !hasError && !isLoading;
 
   return (
     <section className={styles.catalog}>

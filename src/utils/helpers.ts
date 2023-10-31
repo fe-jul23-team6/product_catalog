@@ -26,12 +26,12 @@ export function getSearchWith(
     .forEach(([key, value]) => {
       if (value === null) {
         newParams.delete(key);
-        // } else if (Array.isArray(value)) {
-        //   newParams.delete(key);
+      } else if (Array.isArray(value)) {
+        newParams.delete(key);
 
-        //   value.forEach(part => {
-        //     newParams.append(key, part);
-        //   });
+        value.forEach(part => {
+          newParams.append(key, part);
+        });
       } else {
         newParams.set(key, value);
       }
