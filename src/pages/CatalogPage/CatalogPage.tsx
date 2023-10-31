@@ -17,6 +17,7 @@ import {
 
 import { getPhones, getProductsPagination } from 'services/products.service';
 import { Phone } from 'types';
+
 import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
