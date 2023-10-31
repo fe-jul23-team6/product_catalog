@@ -1,13 +1,8 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import {
-  getDiscountedPhones, getNewestPhones,
-  getPhones,
-  getTablets,
-  getAccessories,
-} from 'services/products.service';
 import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
 import { Button } from 'components/UI/Buttons';
@@ -16,7 +11,13 @@ import iPhones from 'assets/img/banner-phones-dark.png';
 import iTabs from 'assets/img/banner-tablets-dark.jpg';
 import Accessories from 'assets/img/banner-accessories-dark.png';
 import { Phone } from 'types';
-
+import {
+  getPhones,
+  getTablets,
+  getAccessories,
+  getNewestPhones,
+  getDiscountedPhones,
+} from 'services/products.service';
 import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
@@ -49,10 +50,6 @@ export const HomePage = () => {
         setAccessoriesCount(accessoriesFromServer.count);
       });
   }, []);
-
-  const pagination = {
-    clickable: true,
-  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -110,7 +107,11 @@ export const HomePage = () => {
             disableOnInteraction: true,
             pauseOnMouseEnter: true,
           }}
-          pagination={pagination}
+          pagination={{
+            clickable: true,
+            bulletClass: styles['swiper-pagination-bullet'],
+            bulletActiveClass: styles['swiper-pagination-bullet__active'],
+          }}
           navigation={{
             prevEl: '.button-prev',
             nextEl: '.button-next',
