@@ -17,11 +17,13 @@ import {
 
 import { getPhones, getProductsPagination } from 'services/products.service';
 import { Phone } from 'types';
+
 import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [itemsCount, setItemsCount] = useState(0);
+
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
