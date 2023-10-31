@@ -158,14 +158,19 @@
   background-repeat: no-repeat;
 }
 
-// .swiper-pagination-bullet {
-//   padding: 5px;
-//   color: var(--elementsColor);
-//   font-size: 36px;
-//   font-weight: 800;
-//   cursor: pointer;
+.swiper-pagination-bullet {
+  padding: 5px;
+  color: var(--elementsColor);
+  width: 10px;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 2;
 
-//   &:hover {
-//     color: var(--primeTextColor);
-//   }
-// }
+  &:hover {
+    color: var(--primeTextColor);
+  }
+
+  &__active {
+    color: var(--primeTextColor);
+  }
+}
