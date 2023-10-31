@@ -21,13 +21,29 @@ import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [itemsCount, setItemsCount] = useState(phones.length);
+  const [itemsCount, setItemsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
   const perPage = searchParams.get('perPage') || (phones.length).toString();
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getPhones()
+      .then((phonesFromServer) => {
+        setPhones(phonesFromServer);
+        setItemsCount(phonesFromServer.length);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   const getItems = useCallback(() => {
     setIsLoading(true);
@@ -63,24 +79,9 @@ export const CatalogPage: React.FC = () => {
     }
   }, [page, perPage]);
 
-  useEffect(() => {
-    getItems();
-  }, [page, perPage]);
-
   // useEffect(() => {
-  //   setIsLoading(true);
-
-  //   getPhones()
-  //     .then((phonesFromServer) => {
-  //       setPhones(phonesFromServer);
-  //     })
-  //     .catch(() => {
-  //       setHasError(true);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
+  //   getItems();
+  // }, [page, perPage]);
 
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer = !phones.length && !hasError && !isLoading;
