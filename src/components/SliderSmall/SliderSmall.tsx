@@ -59,7 +59,7 @@ export const SliderSmall: React.FC<Props> = ({
             <Button
               btnType="Slider"
               chevronButtonType="left"
-              shevron
+              chevron
             />
           </li>
 
@@ -67,7 +67,7 @@ export const SliderSmall: React.FC<Props> = ({
             <Button
               btnType="Slider"
               chevronButtonType="right"
-              shevron
+              chevron
             />
           </li>
         </ul>
