@@ -34,7 +34,7 @@ export const Footer = () => {
           Contacts
         </NavLink>
         <NavLink
-          to="/rights"
+          to="https://www.president.gov.ua/ua/documents/constitution/konstituciya-ukrayini-rozdil-ii"
           className={styles.nav__link}
         >
           Rights

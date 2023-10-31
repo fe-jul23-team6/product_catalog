@@ -26,6 +26,7 @@ export const PHONE_COLORS: Colors = {
   green: '#C8E7D8',
   midnightgreen: '#676E66',
   spacegray: '#62605F',
+  'space-gray': '#62605F',
   white: '#FBF7F2',
   purple: '#B49CD9',
   rosegold: '#EECFC8',

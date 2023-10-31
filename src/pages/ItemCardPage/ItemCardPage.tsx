@@ -75,6 +75,8 @@ export const ItemCardPage = () => {
         + phone?.id.slice(startIndex + oldValue.length);
     }
 
+    newId = newId?.replace(/ /g, '-');
+
     return `/phones/${newId?.toLowerCase()}`;
   };
 
@@ -111,6 +113,7 @@ export const ItemCardPage = () => {
           <h1 className={styles.title}>
             {phone?.name}
           </h1>
+
           <div className={styles.container_top}>
             <div className={styles.photos}>
               <div className={styles.photos__main}>
@@ -120,6 +123,7 @@ export const ItemCardPage = () => {
                   alt={phone?.name}
                 />
               </div>
+
               <div className={styles.photos__carousel}>
                 {phone?.images.map(img => (
                   <div className={styles.photos__carousel_item}>
@@ -139,12 +143,16 @@ export const ItemCardPage = () => {
                 ))}
               </div>
             </div>
+
             <section className={styles.params}>
               <div className={styles.colors}>
                 <div className={styles.info}>
                   <span>Available colors</span>
-                  <span className={styles.info__code}>ID: 802390</span>
+                  <span className={styles.info__code}>
+                    {`ID: 802${phoneNumId}`}
+                  </span>
                 </div>
+
                 <div className={styles.group_colors}>
                   {phone?.colorsAvailable.map(color => (
                     <NavLink
@@ -156,6 +164,7 @@ export const ItemCardPage = () => {
                           className={styles.innerrect}
                           style={{ backgroundColor: PHONE_COLORS[color] }}
                         />
+
                         <div
                           className={classnames(
                             styles.outerrect,
@@ -168,6 +177,7 @@ export const ItemCardPage = () => {
                   ))}
                 </div>
               </div>
+
               <div className={styles.capacity}>
                 <span className={styles.info}>Select capacity</span>
                 {phone?.capacityAvailable.map(capacityOption => (
@@ -183,6 +193,7 @@ export const ItemCardPage = () => {
                   </NavLink>
                 ))}
               </div>
+
               <div className={styles.price}>
                 <span className={styles.price__discount}>{`$${phone?.priceDiscount}`}</span>
                 <span className={styles.price__full}>{`$${phone?.priceRegular}`}</span>
@@ -196,6 +207,7 @@ export const ItemCardPage = () => {
                     handleToggleCart(phoneNumId);
                   }}
                 />
+
                 <div>
                   <Button
                     btnType={ButtonType.Favourite}
@@ -206,19 +218,23 @@ export const ItemCardPage = () => {
                   />
                 </div>
               </div>
+
               <div className={styles.data}>
                 <p className={styles.info}>
                   <span>Screen</span>
                   <span className={styles.values}>{phone?.screen}</span>
                 </p>
+
                 <p className={styles.info}>
                   <span>Resolution</span>
                   <span className={styles.values}>{phone?.resolution}</span>
                 </p>
+
                 <p className={styles.info}>
                   <span>Processor</span>
                   <span className={styles.values}>{phone?.processor}</span>
                 </p>
+
                 <p className={styles.info}>
                   <span>RAM</span>
                   <span className={styles.values}>{phone?.ram}</span>
@@ -235,6 +251,7 @@ export const ItemCardPage = () => {
                   <p className={styles.about__header}>
                     {parag.title}
                   </p>
+
                   <p className={styles.about__content}>
                     {parag.text.map(text => (
                       <p>{text}</p>
@@ -245,41 +262,77 @@ export const ItemCardPage = () => {
             </section>
 
             <section className={styles.technology}>
-              <span className={styles.technology__title}>Tech specs</span>
+              <span className={styles.technology__title}>
+                Tech specs
+              </span>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Screen</span>
-                <span className={styles.technology__value}>{phone?.screen}</span>
+                <span className={styles.technology__key}>
+                  Screen
+                </span>
+                <span className={styles.technology__value}>
+                  {phone?.screen}
+                </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Resolution</span>
-                <span className={styles.technology__value}>{phone?.resolution}</span>
+                <span className={styles.technology__key}>
+                  Resolution
+                </span>
+                <span className={styles.technology__value}>
+                  {phone?.resolution}
+                </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Processor</span>
-                <span className={styles.technology__value}>{phone?.processor}</span>
+                <span className={styles.technology__key}>
+                  Processor
+                </span>
+                <span className={styles.technology__value}>
+                  {phone?.processor}
+                </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>RAM</span>
-                <span className={styles.technology__value}>{phone?.ram}</span>
+                <span className={styles.technology__key}>
+                  RAM
+                </span>
+                <span className={styles.technology__value}>
+                  {phone?.ram}
+                </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Built in memory</span>
-                <span className={styles.technology__value}>{phone?.capacity}</span>
+                <span className={styles.technology__key}>
+                  Built in memory
+                </span>
+                <span className={styles.technology__value}>
+                  {phone?.capacity}
+                </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Camera</span>
+                <span className={styles.technology__key}>
+                  Camera
+                </span>
                 <span className={styles.technology__value}>
                   {phone?.camera}
                 </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Zoom</span>
+                <span className={styles.technology__key}>
+                  Zoom
+                </span>
                 <span className={styles.technology__value}>
                   {phone?.zoom}
                 </span>
               </p>
+
               <p className={styles.technology__info}>
-                <span className={styles.technology__key}>Cell</span>
+                <span className={styles.technology__key}>
+                  Cell
+                </span>
                 <span className={styles.technology__value}>
                   {phone?.cell.join(', ')}
                 </span>
