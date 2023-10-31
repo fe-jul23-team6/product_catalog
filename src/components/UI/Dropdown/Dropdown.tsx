@@ -34,13 +34,6 @@ export const Dropdown: React.FC<Props> = ({
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // if (isSort) {
-    //   getSearchWith(
-    //     searchParams,
-    //     { sort: dropdownTitle.toLowerCase() },
-    //   );
-    // }
-
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current
         && !dropdownRef.current.contains(event.target as Node | null)) {
@@ -99,6 +92,7 @@ export const Dropdown: React.FC<Props> = ({
               >
                 {isItemsOnPage && (
                   <Link
+                    className={styles.option__link}
                     to={{
                       search: getSearchWith(
                         searchParams,
@@ -112,6 +106,7 @@ export const Dropdown: React.FC<Props> = ({
 
                 {isSort && (
                   <Link
+                    className={styles.option__link}
                     to={{
                       search: getSearchWith(
                         searchParams,

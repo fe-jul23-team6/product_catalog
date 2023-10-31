@@ -1,3 +1,4 @@
+import { PhonesWithPagination } from 'types';
 import { FullPhone } from 'types/FullPhone';
 import { client } from '../utils/fetchProducts';
 import { Phone } from '../types/Phone';
@@ -14,12 +15,7 @@ export function getAccessories() {
   return client.getAll<Phone[]>('/products/?category=accessories');
 }
 
-interface PhonesWithPagination {
-  count: number,
-  rows: Phone[],
-}
-
-export function getPhonesPagination(limit: string, page: string) {
+export function getProductsPagination(limit: string, page: string) {
   return client.getPhonesWithPagination<PhonesWithPagination>(`/products?limit=${limit}&page=${page}`);
 }
 
@@ -30,3 +26,7 @@ export function getPhoneById(phoneId: string) {
 export function getPhonesByIds(ids: number[]) {
   return client.getAll<Phone[]>(`/products?ids=${ids.join(',')}`);
 }
+
+// const getProducts = (category: string) => {
+//   return client.getAll<Phone[]>(`/products/?category=${category}`);
+// };

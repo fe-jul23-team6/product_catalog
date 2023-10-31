@@ -55,12 +55,10 @@
 
   &__item {
     height: 32px;
-    flex-shrink: 0;
     color: var( --secondaryTextColor);
     padding: 0 12px;
     display: flex;
     align-items: center;
-    font-family: Mont;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
@@ -70,5 +68,10 @@
       background: var(--thirdaryBgColor);
       color: var(--primeTextColor);
     }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
   }
 }
