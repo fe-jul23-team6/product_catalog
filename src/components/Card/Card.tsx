@@ -4,6 +4,7 @@ import { BASE_URL } from 'utils/fetchProducts';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType, Phone } from 'types';
 import { ProductsContext } from 'context/ProductsContext';
+import { NavLink } from 'react-router-dom';
 import styles from './Card.module.scss';
 
 type Props = {
@@ -41,14 +42,16 @@ export const Card: React.FC<Props> = ({
 
   return (
     <section className={styles.card}>
-      <div className={styles.card__container}>
+      <NavLink
+        to={`/phones/${phone.itemId}`}
+        className={styles.card__container}
+      >
         <div className={styles['card__img-container']}>
           <img
             className={styles.card__img}
             src={`${BASE_URL}/${phone.image}`}
             alt={phone.name}
           />
-
         </div>
 
         <h2 className={styles.card__title}>
@@ -65,7 +68,7 @@ export const Card: React.FC<Props> = ({
             {phone.fullPrice}
           </span>
         </p>
-      </div>
+      </NavLink>
 
       <div className={styles.card__info}>
         <p className={styles.card__option}>
