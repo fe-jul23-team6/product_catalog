@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './PageLocation.scss';
 import { ReactComponent as HomeIcon }
   from 'assets/img/icons/home_icon.svg';
@@ -10,9 +10,12 @@ import { ReactComponent as ChevronIcon }
 interface Props {
   text: string
   to: string;
+  itemName?: string | undefined;
 }
 
-export const PageLocation: React.FC<Props> = ({ text, to }) => {
+export const PageLocation: React.FC<Props> = ({ text, to, itemName }) => {
+  const { phoneId, tabletId, accessoryId } = useParams();
+
   return (
     <div className="location">
       <div className="location__icon-home icon-home">
@@ -33,6 +36,18 @@ export const PageLocation: React.FC<Props> = ({ text, to }) => {
           {text}
         </Link>
       </div>
+
+      {(phoneId || tabletId || accessoryId) && (
+        <>
+          <div className="location__icon-chevron">
+            <ChevronIcon />
+          </div>
+
+          <p className="selected-page__paragraph">
+            {itemName}
+          </p>
+        </>
+      )}
     </div>
   );
 };
