@@ -6,6 +6,7 @@ import { getPhonesByIds } from 'services/products.service';
 import { Card } from 'components/Card';
 import { PageLocation } from 'components/UI/PageLocation';
 import { ProductsContext } from 'context/ProductsContext';
+import { MESSAGES } from 'utils/constants';
 import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage = () => {
@@ -19,7 +20,7 @@ export const FavouritesPage = () => {
   const [favourites, setFavourites] = useState<Phone[]>([]);
 
   const loadData = async () => {
-    if (currentFavoritesIds.length === 0) {
+    if (!currentFavoritesIds.length) {
       return;
     }
 
@@ -44,12 +45,18 @@ export const FavouritesPage = () => {
         <div className={styles.favourites__title}>
           <PageTitle title="Favourites" />
 
-          <p className={styles['items-on-page']}>
-            {`${favourites.length} items`}
-          </p>
+          {!favourites.length
+            ? (
+              <p>{MESSAGES.NO_ITEMS}</p>
+            )
+            : (
+              <p className={styles['items-on-page']}>
+                {`${favourites.length} items`}
+              </p>
+            )}
         </div>
 
-        {isLoading ? (
+        {isLoading && favourites.length ? (
           <Loader />
         ) : (
           <div className={styles.favourites__products}>
