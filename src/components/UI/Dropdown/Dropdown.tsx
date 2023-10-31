@@ -57,6 +57,16 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(false);
   };
 
+  const checkOptionValue = (option: string) => {
+    let optionValue: string | null = option;
+
+    if (option === 'All') {
+      optionValue = null;
+    }
+
+    return optionValue;
+  };
+
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
       <span className={styles.dropdown__desc}>{description}</span>
@@ -76,12 +86,6 @@ export const Dropdown: React.FC<Props> = ({
       {isOpen && (
         <ul className={classNames(styles.dropdown__option, styles.option)}>
           {options.map(option => {
-            let optionValue: string | null = option;
-
-            if (option === 'All') {
-              optionValue = null;
-            }
-
             return (
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
               <li
@@ -96,7 +100,7 @@ export const Dropdown: React.FC<Props> = ({
                     to={{
                       search: getSearchWith(
                         searchParams,
-                        { perPage: optionValue },
+                        { perPage: checkOptionValue(option) },
                       ),
                     }}
                   >

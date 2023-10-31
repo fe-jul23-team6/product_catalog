@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import { Button } from 'components/UI/Buttons';
@@ -16,9 +16,18 @@ type Props = {
 export const Pagination: React.FC<Props> = ({
   total,
 }) => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
   const perPage = Number(searchParams.get('perPage')) || total;
+
+  useEffect(() => {
+    setSearchParams(
+      getSearchWith(
+        searchParams,
+        { page: null },
+      ),
+    );
+  }, [perPage]);
 
   const pageCount = Math.ceil(total / perPage);
 

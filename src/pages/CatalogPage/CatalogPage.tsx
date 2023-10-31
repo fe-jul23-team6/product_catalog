@@ -29,26 +29,10 @@ export const CatalogPage: React.FC = () => {
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
   const perPage = searchParams.get('perPage') || null;
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-
-  //   getPhones()
-  //     .then((phonesFromServer) => {
-  //       setPhones(phonesFromServer.rows);
-  //       setItemsCount(phonesFromServer.count);
-  //     })
-  //     .catch(() => {
-  //       setHasError(true);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-
   const getItems = useCallback(() => {
     setIsLoading(true);
 
-    if (!page || !perPage) {
+    if (page === DEFAULT_PAGE.toString() && !perPage) {
       getPhones()
         .then((dataFromServer) => {
           setIsLoading(false);
@@ -67,8 +51,6 @@ export const CatalogPage: React.FC = () => {
       getProductsPagination(perPage, page)
         .then((dataFromServer) => {
           setIsLoading(false);
-          // setPhones(dataFromServer);
-          // setItemsCount(dataFromServer.length);
           setPhones(dataFromServer.rows);
           setItemsCount(dataFromServer.count);
         })
@@ -130,7 +112,7 @@ export const CatalogPage: React.FC = () => {
 
           <div className={styles.catalog__pagination}>
             <Pagination
-              total={phones.length}
+              total={itemsCount}
             />
           </div>
         </>
