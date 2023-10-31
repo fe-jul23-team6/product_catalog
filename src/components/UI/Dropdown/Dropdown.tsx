@@ -114,7 +114,7 @@ export const Dropdown: React.FC<Props> = ({
                     to={{
                       search: getSearchWith(
                         searchParams,
-                        { sort: option.toLowerCase() },
+                        { sort: option },
                       ),
                     }}
                   >

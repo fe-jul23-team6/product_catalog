@@ -1,6 +1,6 @@
 import { Phone } from './Phone';
 
-export interface PhonesWithPagination {
+export interface DataFromServer {
   count: number,
   rows: Phone[],
 }

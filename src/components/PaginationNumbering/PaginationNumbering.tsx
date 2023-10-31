@@ -9,7 +9,7 @@ type Props = {
   pageNumber: string,
 };
 
-export const PaginationPage: React.FC<Props> = ({
+export const PaginationNumbering: React.FC<Props> = ({
   pageNumber,
 }) => {
   const [searchParams] = useSearchParams();
