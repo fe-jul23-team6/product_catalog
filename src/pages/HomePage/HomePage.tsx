@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { getDiscountedPhones, getNewestPhones } from 'services/products.service';
 import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
-
+import { Button } from 'components/UI/Buttons';
+import iPhone14Pro from 'assets/img/banner-dark.png';
+import iPhones from 'assets/img/banner-phones-dark.png';
+import iTabs from 'assets/img/banner-tablets-dark.jpg';
+import Accessories from 'assets/img/banner-accessories-dark.png';
 import { Phone } from 'types';
 import {
   getPhones,
@@ -12,6 +17,9 @@ import {
 } from 'services/products.service';
 
 import styles from './HomePage.module.scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
+import 'swiper/scss';
 
 export const HomePage = () => {
   const [phonesCount, setPhonesCount] = useState(0);
@@ -40,17 +48,28 @@ export const HomePage = () => {
       });
   }, []);
 
+  const pagination = {
+    clickable: true,
+  };
+
   useEffect(() => {
     setIsLoading(true);
-
-    getPhones()
-      .then((phonesFromServer) => {
-        const newPhones = phonesFromServer.rows.filter(({ year }) => year === 2022);
-        const mostReducedPhones = phonesFromServer.rows.filter(
-          ({ fullPrice, price }) => (fullPrice - price) >= 100,
-        );
-
+    getNewestPhones()
+      .then((newPhones) => {
         setNewModels(newPhones);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getDiscountedPhones()
+      .then((mostReducedPhones) => {
         setMostReducedModels(mostReducedPhones);
       })
       .catch(() => {
@@ -69,9 +88,75 @@ export const HomePage = () => {
         title="Welcome to Nice Gadgets store!"
       />
 
-      <div className={styles['home__slider-available']}>
-        {}
-      </div>
+      <section className={styles.home__sliderBig}>
+        <div className={styles.home__navButton}>
+          <div className="button-prev">
+            <Button
+              btnType="Slider"
+              chevronButtonType="left"
+              shevron
+              high
+            />
+          </div>
+        </div>
+
+        <Swiper
+          loop
+          modules={[Navigation, Pagination, Autoplay]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={pagination}
+          navigation={{
+            prevEl: '.button-prev',
+            nextEl: '.button-next',
+          }}
+          slidesPerView={1}
+          className={styles['home__slide-width']}
+        >
+          <SwiperSlide>
+            <img
+              width="100%"
+              src={iPhone14Pro}
+              alt="iPhone 14 Pro"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              width="100%"
+              src={iPhones}
+              alt="iPhones"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              width="100%"
+              src={iTabs}
+              alt="iTabs"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              width="100%"
+              src={Accessories}
+              alt="Apple Accessories"
+            />
+          </SwiperSlide>
+        </Swiper>
+
+        <div className={styles.home__navButton}>
+          <div className="button-next">
+            <Button
+              btnType="Slider"
+              chevronButtonType="right"
+              shevron
+              high
+            />
+          </div>
+        </div>
+      </section>
 
       <SliderSmall
         selectedPhones={newModels}

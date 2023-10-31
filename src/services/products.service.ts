@@ -27,6 +27,14 @@ export function getPhonesByIds(ids: number[]) {
   return client.getAll<Phone[]>(`/products?ids=${ids.join(',')}`);
 }
 
+export function getNewestPhones() {
+  return client.getAll<Phone[]>('/products/new');
+}
+
+export function getDiscountedPhones() {
+  return client.getAll<Phone[]>('/products/discount');
+}
+
 // export const getProducts = (category: string) => {
 //   return client.getAll<PhonesWithPagination>(`/products/?category=${category}`);
 // };
