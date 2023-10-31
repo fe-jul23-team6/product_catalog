@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable max-len */
 import { NavLink, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import cn from 'classnames';
+import { useContext, useEffect, useState } from 'react';
+import classnames from 'classnames';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType } from 'types';
 import { getPhoneById } from 'services/products.service';
@@ -10,15 +10,29 @@ import { FullPhone } from 'types/FullPhone';
 import { Loader } from 'components/UI/Loader';
 import { MESSAGES, PHONE_COLORS } from 'utils/constants';
 import { BASE_URL } from 'utils/fetchProducts';
+import { ProductsContext } from 'context/ProductsContext';
 import styles from './ItemCardPage.module.scss';
 
 export const ItemCardPage = () => {
+  const {
+    toggleItemToCart,
+    toggleItemToFavourites,
+    checkInCart,
+    checkInFav,
+  } = useContext(ProductsContext);
+
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFav, setIsAddedToFav] = useState(false);
   const [phone, setPhone] = useState<FullPhone | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [displayImage, setDisplayImage] = useState('');
 
   const { phoneId = '' } = useParams();
+
+  // change placeholder to real itemId when database is ready
+  const placeholder = 1;
+  // its only to check functionality
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,6 +41,8 @@ export const ItemCardPage = () => {
       .then((phoneFromServer) => {
         setPhone(phoneFromServer);
         setDisplayImage(phoneFromServer.images[0]);
+        setIsAddedToCart(checkInCart(placeholder));
+        setIsAddedToFav(checkInFav(placeholder));
       })
       .catch(() => {
         setHasError(true);
@@ -35,6 +51,18 @@ export const ItemCardPage = () => {
         setIsLoading(false);
       });
   }, [phoneId]);
+
+  const handleToggleCart = (id: number) => {
+    toggleItemToCart(id);
+
+    setIsAddedToCart(checkInCart(id));
+  };
+
+  const handleToggleFav = (id: number) => {
+    toggleItemToFavourites(id);
+
+    setIsAddedToFav(checkInFav(id));
+  };
 
   const generateLinkInternal = (oldValue: string, newValue: string) => {
     const startIndex = phone?.id.toLowerCase().indexOf(oldValue.toLowerCase());
@@ -92,7 +120,7 @@ export const ItemCardPage = () => {
                 {phone?.images.map(img => (
                   <div className={styles.photos__carousel_item}>
                     <img
-                      className={styles.photos__img}
+                      className={`${styles.photos__img} ${styles['photos__img--small']}`}
                       src={`${BASE_URL}/${img}`}
                       alt={phone?.name}
                       onClick={() => setDisplayImage(img)}
@@ -125,7 +153,7 @@ export const ItemCardPage = () => {
                           style={{ backgroundColor: PHONE_COLORS[color] }}
                         />
                         <div
-                          className={cn(
+                          className={classnames(
                             styles.outerrect,
                             // eslint-disable-next-line @typescript-eslint/dot-notation
                             { [styles['color__active']]: color === phone?.color },
@@ -141,7 +169,7 @@ export const ItemCardPage = () => {
                 {phone?.capacityAvailable.map(capacityOption => (
                   <NavLink
                     to={generateLinkByCapacity(capacityOption)}
-                    className={cn(
+                    className={classnames(
                       styles.capacity__option,
                       // eslint-disable-next-line @typescript-eslint/dot-notation
                       { [styles['capacity__active']]: capacityOption === phone?.capacity },
@@ -159,10 +187,18 @@ export const ItemCardPage = () => {
               <div className={styles.buttons}>
                 <Button
                   btnType={ButtonType.Main}
+                  isActive={isAddedToCart}
+                  onClick={() => {
+                    handleToggleCart(placeholder);
+                  }}
                 />
                 <div>
                   <Button
                     btnType={ButtonType.Favourite}
+                    isActive={isAddedToFav}
+                    onClick={() => {
+                      handleToggleFav(placeholder);
+                    }}
                   />
                 </div>
               </div>
