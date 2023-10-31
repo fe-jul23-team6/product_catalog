@@ -16,10 +16,6 @@
     }
   }
 
-  &:hover {
-    transform: scale(1.03);
-  }
-
   &:hover:active {
     background-color: var(--primeAccentColor);
   }
@@ -117,6 +113,7 @@
     height: 40px;
     background-color: var(--thirdaryBgColor);
     border-radius: 2px;
+    transition: 0.3s;
     &:hover {
       background-color: var(--iconsColor);
     }
@@ -136,12 +133,16 @@
     height: 40px;
     background-color: var(--primeAccentColor);
     border-radius: 2px;
+    transition: 0.5s;
+
     &:hover {
       background-color: var(--secondaryAccentColor);
+
     }
   }
 
   &__active-main {
     background-color: var(--thirdaryBgColor);
+    transition: 0.5s;
   }
 }
