@@ -1,7 +1,3 @@
 export type SearchParams = {
-  [key: string]: string | null,
+  [key: string]: string | string[] | null,
 };
-
-// export type SearchParams = {
-//   [key: string]: string | string[] | null,
-// };

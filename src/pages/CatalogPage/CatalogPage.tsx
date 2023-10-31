@@ -21,18 +21,18 @@ import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [itemsCount, setItemsCount] = useState(phones.length);
+  const [itemsCount, setItemsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
-  const perPage = searchParams.get('perPage') || (phones.length).toString();
+  const perPage = searchParams.get('perPage') || null;
 
   const getItems = useCallback(() => {
     setIsLoading(true);
 
-    if (!page && !perPage) {
+    if (!page || !perPage) {
       getPhones()
         .then((dataFromServer) => {
           setIsLoading(false);
@@ -47,12 +47,14 @@ export const CatalogPage: React.FC = () => {
         });
     }
 
-    if (page || perPage) {
+    if (page && perPage) {
       getProductsPagination(perPage, page)
         .then((dataFromServer) => {
           setIsLoading(false);
-          setPhones(dataFromServer.rows);
-          setItemsCount(dataFromServer.count);
+          setPhones(dataFromServer);
+          setItemsCount(dataFromServer.length);
+          // setPhones(dataFromServer.rows);
+          // setItemsCount(dataFromServer.count);
         })
         .catch(() => {
           setHasError(true);
@@ -67,23 +69,8 @@ export const CatalogPage: React.FC = () => {
     getItems();
   }, [page, perPage]);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-
-  //   getPhones()
-  //     .then((phonesFromServer) => {
-  //       setPhones(phonesFromServer);
-  //     })
-  //     .catch(() => {
-  //       setHasError(true);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-
   const hasErrorMessage = hasError && !isLoading;
-  const hasNoItemsOnServer = !phones.length && !hasError && !isLoading;
+  const hasNoItemsOnServer = !itemsCount && !hasError && !isLoading;
 
   return (
     <section className={styles.catalog}>

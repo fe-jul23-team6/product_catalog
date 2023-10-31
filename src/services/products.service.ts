@@ -14,8 +14,13 @@ export function getAccessories() {
   return client.getAll<Phone[]>('/products/?category=accessories');
 }
 
+// export function getProductsPagination(limit: string, page: string) {
+//   return client.getPhonesWithPagination<PhonesWithPagination>(`/products?limit=${limit}&page=${page}`);
+// }
+
+// temporary function for tests
 export function getProductsPagination(limit: string, page: string) {
-  return client.getPhonesWithPagination<PhonesWithPagination>(`/products?limit=${limit}&page=${page}`);
+  return client.getPhonesWithPagination<Phone[]>(`/products?limit=${limit}&page=${page}`);
 }
 
 export function getPhoneById(phoneId: string) {
