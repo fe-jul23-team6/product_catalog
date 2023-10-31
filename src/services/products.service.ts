@@ -1,29 +1,26 @@
+import { PhonesWithPagination } from 'types';
+import { FullPhone } from 'types/FullPhone';
 import { client } from '../utils/fetchProducts';
 import { Phone } from '../types/Phone';
 
 export function getPhones() {
-  return client.getAll<Phone[]>('/products/?category=phones');
+  return client.getAll<PhonesWithPagination>('/products/?category=phones');
 }
 
 export function getTablets() {
-  return client.getAll<Phone[]>('/products/?category=tablets');
+  return client.getAll<PhonesWithPagination>('/products/?category=tablets');
 }
 
 export function getAccessories() {
-  return client.getAll<Phone[]>('/products/?category=accessories');
+  return client.getAll<PhonesWithPagination>('/products/?category=accessories');
 }
 
-interface PhonesWithPagination {
-  count: number,
-  rows: Phone[],
-}
-
-export function getPhonesPagination(limit: string, page: string) {
+export function getProductsPagination(limit: string, page: string) {
   return client.getPhonesWithPagination<PhonesWithPagination>(`/products?limit=${limit}&page=${page}`);
 }
 
 export function getPhoneById(phoneId: string) {
-  return client.getAll<Phone>(`/products/${phoneId}`);
+  return client.getAll<FullPhone>(`/products/${phoneId}`);
 }
 
 export function getPhonesByIds(ids: number[]) {
@@ -37,3 +34,7 @@ export function getNewestPhones() {
 export function getDiscountedPhones() {
   return client.getAll<Phone[]>('/products/discount');
 }
+
+// export const getProducts = (category: string) => {
+//   return client.getAll<PhonesWithPagination>(`/products/?category=${category}`);
+// };

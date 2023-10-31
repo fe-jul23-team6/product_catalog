@@ -10,20 +10,43 @@ import iPhones from 'assets/img/banner-phones-dark.png';
 import iTabs from 'assets/img/banner-tablets-dark.jpg';
 import Accessories from 'assets/img/banner-accessories-dark.png';
 import { Phone } from 'types';
+import {
+  getPhones,
+  getTablets,
+  getAccessories,
+} from 'services/products.service';
+
 import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss';
 
 export const HomePage = () => {
+  const [phonesCount, setPhonesCount] = useState(0);
+  const [tabletsCount, setTabletsCount] = useState(0);
+  const [accessoriesCount, setAccessoriesCount] = useState(0);
+
   const [newModels, setNewModels] = useState<Phone[]>([]);
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const phonesCount = 95;
-  const tabletsCount = 24;
-  const accessoriesCount = 100;
+  useEffect(() => {
+    getPhones()
+      .then((phonesFromServer) => {
+        setPhonesCount(phonesFromServer.count);
+      });
+
+    getTablets()
+      .then((tabletsFromServer) => {
+        setTabletsCount(tabletsFromServer.count);
+      });
+
+    getAccessories()
+      .then((accessoriesFromServer) => {
+        setAccessoriesCount(accessoriesFromServer.count);
+      });
+  }, []);
 
   const pagination = {
     clickable: true,
@@ -152,7 +175,10 @@ export const HomePage = () => {
       <div className={styles.home__categories}>
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['phone-bg']}`}>
-            <div className={`${styles['home__item-img']} ${styles['phone-img']}`} />
+            <Link
+              to="/phones"
+              className={`${styles['home__item-img']} ${styles['phone-img']}`}
+            />
           </div>
 
           <h3 className={styles['home__item-title']}>Mobile phones</h3>
@@ -162,7 +188,10 @@ export const HomePage = () => {
 
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['tablet-bg']}`}>
-            <div className={`${styles['home__item-img']} ${styles['tablet-img']}`} />
+            <Link
+              to="/tablets"
+              className={`${styles['home__item-img']} ${styles['tablet-img']}`}
+            />
           </div>
 
           <h3 className={styles['home__item-title']}>Tablets</h3>
@@ -172,7 +201,10 @@ export const HomePage = () => {
 
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['accessory-bg']}`}>
-            <div className={`${styles['home__item-img']} ${styles['accessory-img']}`} />
+            <Link
+              to="/accessories"
+              className={`${styles['home__item-img']} ${styles['accessory-img']}`}
+            />
           </div>
 
           <h3 className={styles['home__item-title']}>Accessories</h3>

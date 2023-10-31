@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Card } from 'components/Card';
@@ -6,6 +7,7 @@ import { Button } from 'components/UI/Buttons';
 import { Loader } from 'components/UI/Loader';
 import { Phone } from 'types';
 import { MESSAGES } from 'utils/constants';
+import { ProductsContext } from 'context/ProductsContext';
 import styles from './SliderSmall.module.scss';
 import arrowStyles from '../Pagination/Pagination.module.scss';
 import 'swiper/scss/navigation';
@@ -26,16 +28,14 @@ export const SliderSmall: React.FC<Props> = ({
   headerTitle,
   moverClass,
 }) => {
+  const {
+    checkInCart,
+    checkInFav,
+  } = useContext(ProductsContext);
+
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer
     = !selectedPhones.length && !hasError && !isLoading;
-
-  const storedCart = localStorage.getItem('cartItems');
-  const currentCart: number[][] = storedCart
-    ? JSON.parse(storedCart)
-    : [];
-  const cartItemsIds = currentCart.map(purchase => purchase[0]);
-  const storedFavs = localStorage.getItem('favouritesIds');
 
   return (
     <section className={styles.sliderSmall}>
@@ -59,7 +59,7 @@ export const SliderSmall: React.FC<Props> = ({
             <Button
               btnType="Slider"
               chevronButtonType="left"
-              shevron
+              chevron
             />
           </li>
 
@@ -67,7 +67,7 @@ export const SliderSmall: React.FC<Props> = ({
             <Button
               btnType="Slider"
               chevronButtonType="right"
-              shevron
+              chevron
             />
           </li>
         </ul>
@@ -86,12 +86,8 @@ export const SliderSmall: React.FC<Props> = ({
         slidesPerView={4}
       >
         {selectedPhones.map(phone => {
-          const isOrdered = cartItemsIds.includes(+phone.id);
-          let isFavourite = false;
-
-          if (storedFavs) {
-            isFavourite = storedFavs.includes(phone.id);
-          }
+          const isOrdered = checkInCart(+phone.id);
+          const isFavourite = checkInFav(+phone.id);
 
           return (
             <SwiperSlide

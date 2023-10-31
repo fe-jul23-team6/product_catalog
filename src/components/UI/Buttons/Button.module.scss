@@ -32,6 +32,7 @@
 
   &__pagination {
     background-color: var(--secondaryBGColor);
+    border-radius: 2px;
 
     &:hover {
       background-color: var(--elementsColor);
@@ -40,10 +41,15 @@
 
   &__active-pagination {
     background-color: var(--primeAccentColor);
+
+    &:hover {
+      background-color: var(--primeAccentColor);
+    }
   }
 
   &__slider {
     background-color: var(--thirdaryBgColor);
+    border-radius: 2px;
 
     &:hover {
       background-color: var(--iconsColor);
@@ -54,6 +60,7 @@
     color: var(--iconsColor);
     background-color: var(--elementsColor);
     border: 1px solid var(--iconsColor);
+    border-radius: 2px;
 
     &:hover {
       transform: scale(1);
@@ -115,6 +122,8 @@
     width: 40px;
     height: 40px;
     background-color: var(--thirdaryBgColor);
+    border-radius: 2px;
+    transition: 0.3s;
     &:hover {
       background-color: var(--iconsColor);
     }
@@ -123,18 +132,27 @@
   &__active-favourite {
     background-color: var(--elementsColor);
     border: 1px solid var(--elementsColor);
+
+    &:hover {
+      background-color: var(--elementsColor);
+    }
   }
 
   &__main {
     width: 100%;
     height: 40px;
     background-color: var(--primeAccentColor);
+    border-radius: 2px;
+    transition: 0.5s;
+
     &:hover {
       background-color: var(--secondaryAccentColor);
+
     }
   }
 
   &__active-main {
     background-color: var(--thirdaryBgColor);
+    transition: 0.5s;
   }
 }

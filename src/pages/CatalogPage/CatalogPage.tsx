@@ -1,68 +1,76 @@
-import React, { useEffect, useState } from 'react';
-
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Outlet, useSearchParams } from 'react-router-dom';
 
 import { Loader } from 'components/UI/Loader';
 import { CatalogTable } from 'components/CatalogTable';
 import { PageTitle } from 'components/PageTitle';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Pagination } from 'components/Pagination';
+import { PageLocation } from 'components/UI/PageLocation';
 
 import {
-  // DEFAULT_PAGE,
+  DEFAULT_PAGE,
   MESSAGES,
   PAGE_SIZE_OPTIONS,
   SORT_OPTION,
 } from 'utils/constants';
 
-import { getPhones } from 'services/products.service';
+import { getPhones, getProductsPagination } from 'services/products.service';
 import { Phone } from 'types';
-import { PageLocation } from 'components/UI/PageLocation';
+
 import styles from './CatalogPage.module.scss';
 
 export const CatalogPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [itemsCount] = useState(phones.length);
+  const [itemsCount, setItemsCount] = useState(0);
+
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  // const [searchParams] = useSearchParams();
-  // const page = searchParams.get('page') || DEFAULT_PAGE.toString();
-  // const perPage = searchParams.get('perPage') || (phones.length).toString();
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page') || DEFAULT_PAGE.toString();
+  const perPage = searchParams.get('perPage') || null;
 
-  useEffect(() => {
+  const getItems = useCallback(() => {
     setIsLoading(true);
 
-    getPhones()
-      .then((phonesFromServer) => {
-        setPhones(phonesFromServer);
-      })
-      .catch(() => {
-        setHasError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+    if (page === DEFAULT_PAGE.toString() && !perPage) {
+      getPhones()
+        .then((dataFromServer) => {
+          setIsLoading(false);
+          setPhones(dataFromServer.rows);
+          setItemsCount(dataFromServer.count);
+        })
+        .catch(() => {
+          setHasError(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
 
-  // const getPaginatedItems = () => {
-  //   setIsLoading(true);
+    if (page && perPage) {
+      getProductsPagination(perPage, page)
+        .then((dataFromServer) => {
+          setIsLoading(false);
+          setPhones(dataFromServer.rows);
+          setItemsCount(dataFromServer.count);
+        })
+        .catch(() => {
+          setHasError(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [page, perPage]);
 
-  //   getPhonesPagination(perPage, page)
-  //     .then((dataFromServer) => {
-  //       setPhones(dataFromServer.rows);
-  //       setItemsCount(dataFromServer.count);
-  //     })
-  //     .catch(() => {
-  //       setHasError(true);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // };
+  useEffect(() => {
+    getItems();
+  }, [page, perPage]);
 
   const hasErrorMessage = hasError && !isLoading;
-  const hasNoItemsOnServer = !phones.length && !hasError && !isLoading;
+  const hasNoItemsOnServer = !itemsCount && !hasError && !isLoading;
 
   return (
     <section className={styles.catalog}>
@@ -106,7 +114,7 @@ export const CatalogPage: React.FC = () => {
 
           <div className={styles.catalog__pagination}>
             <Pagination
-              total={phones.length}
+              total={itemsCount}
             />
           </div>
         </>

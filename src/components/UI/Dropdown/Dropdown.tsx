@@ -34,13 +34,6 @@ export const Dropdown: React.FC<Props> = ({
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // if (isSort) {
-    //   getSearchWith(
-    //     searchParams,
-    //     { sort: dropdownTitle.toLowerCase() },
-    //   );
-    // }
-
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current
         && !dropdownRef.current.contains(event.target as Node | null)) {
@@ -64,6 +57,16 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(false);
   };
 
+  const checkOptionValue = (option: string) => {
+    let optionValue: string | null = option;
+
+    if (option === 'All') {
+      optionValue = null;
+    }
+
+    return optionValue;
+  };
+
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
       <span className={styles.dropdown__desc}>{description}</span>
@@ -83,12 +86,6 @@ export const Dropdown: React.FC<Props> = ({
       {isOpen && (
         <ul className={classNames(styles.dropdown__option, styles.option)}>
           {options.map(option => {
-            let optionValue: string | null = option;
-
-            if (option === 'All') {
-              optionValue = null;
-            }
-
             return (
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
               <li
@@ -99,10 +96,11 @@ export const Dropdown: React.FC<Props> = ({
               >
                 {isItemsOnPage && (
                   <Link
+                    className={styles.option__link}
                     to={{
                       search: getSearchWith(
                         searchParams,
-                        { perPage: optionValue },
+                        { perPage: checkOptionValue(option) },
                       ),
                     }}
                   >
@@ -112,6 +110,7 @@ export const Dropdown: React.FC<Props> = ({
 
                 {isSort && (
                   <Link
+                    className={styles.option__link}
                     to={{
                       search: getSearchWith(
                         searchParams,
