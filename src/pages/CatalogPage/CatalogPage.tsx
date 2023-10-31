@@ -29,6 +29,22 @@ export const CatalogPage: React.FC = () => {
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
   const perPage = searchParams.get('perPage') || null;
 
+  useEffect(() => {
+    setIsLoading(true);
+
+    getPhones()
+      .then((phonesFromServer) => {
+        setPhones(phonesFromServer);
+        setItemsCount(phonesFromServer.length);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
   const getItems = useCallback(() => {
     setIsLoading(true);
 
@@ -68,6 +84,7 @@ export const CatalogPage: React.FC = () => {
   useEffect(() => {
     getItems();
   }, [page, perPage]);
+ perPage]);
 
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer = !itemsCount && !hasError && !isLoading;

@@ -1,4 +1,5 @@
 import { PhonesWithPagination } from 'types';
+import { FullPhone } from 'types/FullPhone';
 import { client } from '../utils/fetchProducts';
 import { Phone } from '../types/Phone';
 
@@ -24,7 +25,7 @@ export function getProductsPagination(limit: string, page: string) {
 }
 
 export function getPhoneById(phoneId: string) {
-  return client.getAll<Phone>(`/products/${phoneId}`);
+  return client.getAll<FullPhone>(`/products/${phoneId}`);
 }
 
 export function getPhonesByIds(ids: number[]) {
