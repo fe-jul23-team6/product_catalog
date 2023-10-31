@@ -5,10 +5,8 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
 import { Button } from 'components/UI/Buttons';
-import iPhone14Pro from 'assets/img/banner-dark.png';
-import iPhones from 'assets/img/banner-phones-dark.png';
-import iTabs from 'assets/img/banner-tablets-dark.jpg';
-import Accessories from 'assets/img/banner-accessories-dark.png';
+import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
+import { useWindowWidth } from 'utils/useWindowWidth';
 import { Phone } from 'types';
 import {
   getPhones,
@@ -20,7 +18,6 @@ import {
 import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-
 import 'swiper/scss';
 
 export const HomePage = () => {
@@ -78,6 +75,13 @@ export const HomePage = () => {
       });
   }, []);
 
+  const bannerSource = useWindowWidth() < 640 ? SQUARE_BANNERS : LONG_BANNERS;
+
+  const imageUrl1 = bannerSource.slide1;
+  const imageUrl2 = bannerSource.slide2;
+  const imageUrl3 = bannerSource.slide3;
+  const imageUrl4 = bannerSource.slide4;
+
   return (
     <div className={styles.home}>
       <h1 className={styles['home__visually-hidden']}>Product Catalog</h1>
@@ -116,33 +120,33 @@ export const HomePage = () => {
             nextEl: '.button-next',
           }}
           slidesPerView={1}
-          className={styles['home__slide-width']}
+          className={styles['home__sliderBig-swiper']}
         >
           <SwiperSlide>
             <img
-              width="100%"
-              src={iPhone14Pro}
+              width="97%"
+              src={imageUrl1}
               alt="iPhone 14 Pro"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              width="100%"
-              src={iPhones}
+              width="97%"
+              src={imageUrl2}
               alt="iPhones"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              width="100%"
-              src={iTabs}
+              width="97%"
+              src={imageUrl3}
               alt="iTabs"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              width="100%"
-              src={Accessories}
+              width="97%"
+              src={imageUrl4}
               alt="Apple Accessories"
             />
           </SwiperSlide>
