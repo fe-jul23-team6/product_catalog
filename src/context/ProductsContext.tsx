@@ -9,7 +9,7 @@ import { Phone } from 'types';
 import { LocalStorageCart } from 'types/LocalStorageCart';
 
 type ProductsProviderProps = {
-  children: ReactNode
+  children: ReactNode;
 };
 
 type ProductsContextType = {

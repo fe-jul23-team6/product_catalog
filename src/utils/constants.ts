@@ -29,3 +29,5 @@ export const PHONE_COLORS: Colors = {
   purple: '#D6D3DD',
   rosegold: '#EECFC8',
 };
+
+// export const LONG_BANNERS = 234;

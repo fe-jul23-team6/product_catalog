@@ -20,7 +20,6 @@ import {
 import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-
 import 'swiper/scss';
 
 export const HomePage = () => {
@@ -32,6 +31,7 @@ export const HomePage = () => {
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  // const [images, setImages] = useState([]);
 
   useEffect(() => {
     getPhones()
@@ -78,6 +78,17 @@ export const HomePage = () => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   const banners = [];
+
+  //   if (window.innerWidth < 640) {
+  //     banners = (['image1_small.jpg', 'image2_small.jpg', 'image3_small.jpg']);
+  //   }
+
+  //   setImages(banners);
+  //   ['image1_large.jpg', 'image2_large.jpg', 'image3_large.jpg']);
+  // }, []);
+
   return (
     <div className={styles.home}>
       <h1 className={styles['home__visually-hidden']}>Product Catalog</h1>
@@ -116,7 +127,7 @@ export const HomePage = () => {
             nextEl: '.button-next',
           }}
           slidesPerView={1}
-          className={styles['home__slide-width']}
+          className={styles['home__sliderBig-swiper']}
         >
           <SwiperSlide>
             <img
