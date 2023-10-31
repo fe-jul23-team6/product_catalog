@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/product_catalog/static/css/main.371779da.css",
-    "main.js": "/product_catalog/static/js/main.d54fcfae.js",
+    "main.css": "/product_catalog/static/css/main.464ae222.css",
+    "main.js": "/product_catalog/static/js/main.53f9e190.js",
     "static/media/category-tablets.png": "/product_catalog/static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/banner-phones-dark.png": "/product_catalog/static/media/banner-phones-dark.ddb9d1d0bd666d674a82.png",
     "static/media/404.svg": "/product_catalog/static/media/404.f8b99bd3578de82595aa.svg",
@@ -24,11 +24,11 @@
     "static/media/chevron-up_icon.svg": "/product_catalog/static/media/chevron-up_icon.fd7411a037f3b36051ec3af8873c0b6c.svg",
     "static/media/minus_icon.svg": "/product_catalog/static/media/minus_icon.0eab8a0278f654b73cc4372b163ddabd.svg",
     "index.html": "/product_catalog/index.html",
-    "main.371779da.css.map": "/product_catalog/static/css/main.371779da.css.map",
-    "main.d54fcfae.js.map": "/product_catalog/static/js/main.d54fcfae.js.map"
+    "main.464ae222.css.map": "/product_catalog/static/css/main.464ae222.css.map",
+    "main.53f9e190.js.map": "/product_catalog/static/js/main.53f9e190.js.map"
   },
   "entrypoints": [
-    "static/css/main.371779da.css",
-    "static/js/main.d54fcfae.js"
+    "static/css/main.464ae222.css",
+    "static/js/main.53f9e190.js"
   ]
 }
