@@ -5,10 +5,8 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
 import { Button } from 'components/UI/Buttons';
-import iPhone14Pro from 'assets/img/banner-dark.png';
-import iPhones from 'assets/img/banner-phones-dark.png';
-import iTabs from 'assets/img/banner-tablets-dark.jpg';
-import Accessories from 'assets/img/banner-accessories-dark.png';
+import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
+import { useWindowWidth } from 'utils/useWindowWidth';
 import { Phone } from 'types';
 import {
   getPhones,
@@ -31,7 +29,6 @@ export const HomePage = () => {
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  // const [images, setImages] = useState([]);
 
   useEffect(() => {
     getPhones()
@@ -78,16 +75,12 @@ export const HomePage = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   const banners = [];
+  const bannerSource = useWindowWidth() < 640 ? SQUARE_BANNERS : LONG_BANNERS;
 
-  //   if (window.innerWidth < 640) {
-  //     banners = (['image1_small.jpg', 'image2_small.jpg', 'image3_small.jpg']);
-  //   }
-
-  //   setImages(banners);
-  //   ['image1_large.jpg', 'image2_large.jpg', 'image3_large.jpg']);
-  // }, []);
+  const imageUrl1 = bannerSource.slide1;
+  const imageUrl2 = bannerSource.slide2;
+  const imageUrl3 = bannerSource.slide3;
+  const imageUrl4 = bannerSource.slide4;
 
   return (
     <div className={styles.home}>
@@ -131,29 +124,29 @@ export const HomePage = () => {
         >
           <SwiperSlide>
             <img
-              width="100%"
-              src={iPhone14Pro}
+              width="97%"
+              src={imageUrl1}
               alt="iPhone 14 Pro"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              width="100%"
-              src={iPhones}
+              width="97%"
+              src={imageUrl2}
               alt="iPhones"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              width="100%"
-              src={iTabs}
+              width="97%"
+              src={imageUrl3}
               alt="iTabs"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              width="100%"
-              src={Accessories}
+              width="97%"
+              src={imageUrl4}
               alt="Apple Accessories"
             />
           </SwiperSlide>

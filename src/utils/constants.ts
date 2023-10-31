@@ -1,5 +1,6 @@
 import { Colors } from 'types/Color';
 import { SortOption } from 'types/SortOption';
+import { BASE_URL } from './fetchProducts';
 
 export const MESSAGES = {
   NO_PHONES: 'There are no phones yet',
@@ -30,4 +31,16 @@ export const PHONE_COLORS: Colors = {
   rosegold: '#EECFC8',
 };
 
-// export const LONG_BANNERS = 234;
+export const LONG_BANNERS = {
+  slide1: `${BASE_URL}/img/rectangle/banner-dark.png`,
+  slide2: `${BASE_URL}/img/rectangle/banner-phones-dark.png`,
+  slide3: `${BASE_URL}/img/rectangle/banner-tablets-dark.jpg`,
+  slide4: `${BASE_URL}/img/rectangle/banner-accessories-dark.png`,
+};
+
+export const SQUARE_BANNERS = {
+  slide1: `${BASE_URL}/img/square/square-banner-dark.png`,
+  slide2: `${BASE_URL}/img/square/square-banner-phones-dark.png`,
+  slide3: `${BASE_URL}/img/square/square-banner-tablets-dark.jpg`,
+  slide4: `${BASE_URL}/img/square/square-banner-accessories-dark.png`,
+};
