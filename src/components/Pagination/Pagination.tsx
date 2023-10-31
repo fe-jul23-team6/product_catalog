@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import { Button } from 'components/UI/Buttons';
-import { PaginationPage } from 'components/PaginationPage';
+import { PaginationNumbering } from 'components/PaginationNumbering';
 
 import { DEFAULT_PAGE, VISIBLE_PAGES_COUNT } from 'utils/constants';
 import { getPages, getSearchWith } from 'utils/helpers';
@@ -82,7 +82,7 @@ export const Pagination: React.FC<Props> = ({
 
       <ul className={styles.pagination__page}>
         {pages.map(pageNumber => (
-          <PaginationPage
+          <PaginationNumbering
             key={pageNumber}
             pageNumber={pageNumber.toString()}
           />

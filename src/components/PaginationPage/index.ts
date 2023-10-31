@@ -1,1 +1,0 @@
-export { PaginationPage } from './PaginationPage';

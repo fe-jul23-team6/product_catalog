@@ -1,22 +1,77 @@
-import { PhonesWithPagination } from 'types';
+import { DataFromServer } from 'types';
 import { FullPhone } from 'types/FullPhone';
-import { client } from '../utils/fetchProducts';
+import { SortOption } from 'types/SortOption';
 import { Phone } from '../types/Phone';
+import { client } from '../utils/fetchProducts';
 
-export function getPhones() {
-  return client.getAll<PhonesWithPagination>('/products/?category=phones');
+export function getPhones(
+  sort: keyof typeof SortOption = 'Alphabetically',
+  page: string | null = null,
+  perPage: string | null = null,
+) {
+  let path = '/products/?category=phones';
+
+  console.log(sort);
+
+  if (sort === 'Newest') {
+    path += `&sortBy=${SortOption[sort]}&orderDir=DESC`;
+  } else {
+    path += `&sortBy=${SortOption[sort]}`;
+  }
+
+  if (page) {
+    path += `&page=${page}`;
+  }
+
+  if (perPage) {
+    path += `&limit=${perPage}`;
+  }
+
+  return client.getAll<DataFromServer>(path);
 }
 
-export function getTablets() {
-  return client.getAll<PhonesWithPagination>('/products/?category=tablets');
+export function getTablets(
+  sort: keyof typeof SortOption = 'Newest',
+  page: string | null = null,
+  perPage: string | null = null,
+) {
+  let path = '/products/?category=tablets';
+
+  if (sort) {
+    path += `&sort=${SortOption[sort]}`;
+  }
+
+  if (page) {
+    path += `&page=${page}`;
+  }
+
+  if (perPage) {
+    path += `&limit=${perPage}`;
+  }
+
+  return client.getAll<DataFromServer>(path);
 }
 
-export function getAccessories() {
-  return client.getAll<PhonesWithPagination>('/products/?category=accessories');
-}
+export function getAccessories(
+  sort: keyof typeof SortOption = 'Alphabetically',
+  page: string | null = null,
+  perPage: string | null = null,
+) {
+  let path = '/products/?category=accessories';
 
-export function getProductsPagination(limit: string, page: string) {
-  return client.getPhonesWithPagination<PhonesWithPagination>(`/products?limit=${limit}&page=${page}`);
+  if (sort) {
+    path += `&sort=${SortOption[sort]}`;
+  }
+
+  if (page) {
+    path += `&page=${page}`;
+  }
+
+  if (perPage) {
+    path += `&limit=${perPage}`;
+  }
+
+  return client.getAll<DataFromServer>(path);
 }
 
 export function getPhoneById(phoneId: string) {
@@ -26,7 +81,3 @@ export function getPhoneById(phoneId: string) {
 export function getPhonesByIds(ids: number[]) {
   return client.getAll<Phone[]>(`/products?ids=${ids.join(',')}`);
 }
-
-// export const getProducts = (category: string) => {
-//   return client.getAll<PhonesWithPagination>(`/products/?category=${category}`);
-// };

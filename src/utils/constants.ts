@@ -1,4 +1,5 @@
 import { Colors } from 'types/Color';
+import { SortOption } from 'types/SortOption';
 
 export const MESSAGES = {
   NO_PHONES: 'There are no phones yet',
@@ -8,10 +9,11 @@ export const MESSAGES = {
 };
 
 export const PAGE_SIZE_OPTIONS = ['All', '4', '8', '16'];
+export const VISIBLE_PAGES_COUNT = 4;
 export const SORT_OPTION = ['Newest', 'Alphabetically', 'Cheapest'];
 
-export const VISIBLE_PAGES_COUNT = 4;
 export const DEFAULT_PAGE = 1;
+export const DEFAULT_SORT_BY = 'Newest' as keyof typeof SortOption;
 
 export const PHONE_COLORS: Colors = {
   black: '#000000',

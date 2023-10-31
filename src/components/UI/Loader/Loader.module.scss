@@ -1,6 +1,7 @@
 .loader {
   display: flex;
   width: 100%;
+  position: relative;
   justify-content: center;
   align-items: center;
 
@@ -9,6 +10,7 @@
     width: 2em;
     height: 2em;
     margin: 1em auto;
+    position: absolute;
     border: 0.3em solid #ddd;
     border-left-color: #000;
     animation: load8 1.2s infinite linear;

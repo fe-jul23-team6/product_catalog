@@ -10,12 +10,14 @@ import { PageLocation } from 'components/UI/PageLocation';
 
 import {
   DEFAULT_PAGE,
+  DEFAULT_SORT_BY,
   MESSAGES,
   PAGE_SIZE_OPTIONS,
   SORT_OPTION,
 } from 'utils/constants';
 
-import { getPhones, getProductsPagination } from 'services/products.service';
+import { SortOption } from 'types/SortOption';
+import { getPhones } from 'services/products.service';
 import { Phone } from 'types';
 
 import styles from './CatalogPage.module.scss';
@@ -30,44 +32,28 @@ export const CatalogPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || DEFAULT_PAGE.toString();
   const perPage = searchParams.get('perPage') || null;
+  const sort = (searchParams.get('sort') || DEFAULT_SORT_BY) as keyof typeof SortOption;
 
   const getItems = useCallback(() => {
     setIsLoading(true);
 
-    if (page === DEFAULT_PAGE.toString() && !perPage) {
-      getPhones()
-        .then((dataFromServer) => {
-          setIsLoading(false);
-          setPhones(dataFromServer.rows);
-          setItemsCount(dataFromServer.count);
-        })
-        .catch(() => {
-          setHasError(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-
-    if (page && perPage) {
-      getProductsPagination(perPage, page)
-        .then((dataFromServer) => {
-          setIsLoading(false);
-          setPhones(dataFromServer.rows);
-          setItemsCount(dataFromServer.count);
-        })
-        .catch(() => {
-          setHasError(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, [page, perPage]);
+    getPhones(sort, page, perPage)
+      .then((dataFromServer) => {
+        setIsLoading(false);
+        setPhones(dataFromServer.rows);
+        setItemsCount(dataFromServer.count);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [page, perPage, sort]);
 
   useEffect(() => {
     getItems();
-  }, [page, perPage]);
+  }, [page, perPage, sort]);
 
   const hasErrorMessage = hasError && !isLoading;
   const hasNoItemsOnServer = !itemsCount && !hasError && !isLoading;
@@ -91,7 +77,7 @@ export const CatalogPage: React.FC = () => {
       )}
 
       {!!phones.length && (
-        <>
+        <section>
           <p className={styles['catalog__items-count']}>{`${itemsCount} models`}</p>
 
           <div className={styles['catalog__dropdown-container']}>
@@ -117,7 +103,7 @@ export const CatalogPage: React.FC = () => {
               total={itemsCount}
             />
           </div>
-        </>
+        </section>
       )}
 
       <Outlet />

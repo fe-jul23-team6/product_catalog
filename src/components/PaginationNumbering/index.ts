@@ -1,0 +1,1 @@
+export { PaginationNumbering } from './PaginationNumbering';
