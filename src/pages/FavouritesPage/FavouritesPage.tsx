@@ -1,54 +1,30 @@
 import { PageTitle } from 'components/PageTitle';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Loader } from 'components/UI/Loader';
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
 import { Card } from 'components/Card';
 import { PageLocation } from 'components/UI/PageLocation';
+import { ProductsContext } from 'context/ProductsContext';
 import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage = () => {
+  const {
+    checkInCart,
+    checkInFav,
+    currentFavoritesIds,
+  } = useContext(ProductsContext);
+
   const [isLoading, setIsLoading] = useState(false);
-  const storedFavourites = localStorage.getItem('favouritesIds');
-  const currentFavorites: number[] = JSON.parse(storedFavourites || '[]');
   const [favourites, setFavourites] = useState<Phone[]>([]);
 
-  // make one to check in local storage, add props
-  const checkInCart = (id: number) => {
-    const storedCart = localStorage.getItem('cartItems');
-    const currentCart: number[][] = storedCart
-      ? JSON.parse(storedCart)
-      : [];
-
-    const itemIndex = currentCart.findIndex(item => item[0] === id);
-
-    if (itemIndex === -1) {
-      return false;
-    }
-
-    return true;
-  };
-
-  const checkInFav = (id: number) => {
-    const storedFavs = localStorage.getItem('favouritesIds');
-    const currentFavs: number[] = storedFavs
-      ? JSON.parse(storedFavs)
-      : [];
-
-    if (!currentFavs.includes(id)) {
-      return false;
-    }
-
-    return true;
-  };
-
   const loadData = async () => {
-    if (currentFavorites.length === 0) {
+    if (currentFavoritesIds.length === 0) {
       return;
     }
 
     setIsLoading(true);
-    const favData = await getPhonesByIds(currentFavorites);
+    const favData = await getPhonesByIds(currentFavoritesIds);
 
     setIsLoading(false);
     setFavourites(favData);

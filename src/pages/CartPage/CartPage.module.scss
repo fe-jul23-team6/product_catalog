@@ -103,5 +103,16 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
+    border-radius: 2px;
+    transition: transform 0.3s ease-in;
+
+    &:hover {
+      background-color: var(--secondaryAccentColor);
+      transform: scale(1.03);
+    }
+
+    &:active {
+      background-color: var(--thirdaryBgColor);
+    }
   }
 }

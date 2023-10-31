@@ -17,7 +17,7 @@ export const HomePage = () => {
   const [phonesCount, setPhonesCount] = useState(0);
   const [tabletsCount, setTabletsCount] = useState(0);
   const [accessoriesCount, setAccessoriesCount] = useState(0);
-    
+
   const [newModels, setNewModels] = useState<Phone[]>([]);
   const [mostReducedModels, setMostReducedModels] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -72,7 +72,7 @@ export const HomePage = () => {
       <div className={styles['home__slider-available']}>
         {}
       </div>
-      
+
       <SliderSmall
         selectedPhones={newModels}
         isLoading={isLoading}
@@ -117,7 +117,7 @@ export const HomePage = () => {
         <div className={styles['home__category-item']}>
           <div className={`${styles['home__img-container']} ${styles['accessory-bg']}`}>
             <Link
-              to="/tablets"
+              to="/accessories"
               className={`${styles['home__item-img']} ${styles['accessory-img']}`}
             />
           </div>
