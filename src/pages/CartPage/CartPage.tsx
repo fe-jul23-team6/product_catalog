@@ -4,16 +4,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 
-import { CartItem, PageTitle } from 'components';
+import { CartItem, PageTitle, Modal } from 'components';
 import { ProductsContext } from 'context';
-import { Modal } from 'components';
 
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
-
 
 import styles from './CartPage.module.scss';
 
