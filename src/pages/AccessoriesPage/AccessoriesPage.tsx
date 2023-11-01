@@ -1,12 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 
-import { Loader } from 'components/UI/Loader';
-import { CatalogTable } from 'components/CatalogTable';
-import { PageTitle } from 'components/PageTitle';
-import { Dropdown } from 'components/UI/Dropdown';
-import { Pagination } from 'components/Pagination';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Dropdown, Loader, Breadcrumbs } from 'components/UI';
+import { CatalogTable, PageTitle, Pagination } from 'components';
+
 import {
   DEFAULT_PAGE,
   DEFAULT_SORT_BY,
@@ -14,9 +11,9 @@ import {
   PAGE_SIZE_OPTIONS,
   SORT_OPTION,
 } from 'utils/constants';
-import { SortOption } from 'types/SortOption';
+import { SortOption, Phone } from 'types';
 import { getAccessories } from 'services/products.service';
-import { Phone } from 'types';
+
 import styles from './AccessoriesPage.module.scss';
 
 export const AccessoriesPage = () => {
@@ -57,7 +54,7 @@ export const AccessoriesPage = () => {
 
   return (
     <section className={styles.catalog}>
-      <PageLocation to="/accessories" text="Accessories" />
+      <Breadcrumbs to="/accessories" text="Accessories" />
 
       <PageTitle title="Accessories" />
 

@@ -1,16 +1,18 @@
-import { useEffect, useState, useContext } from 'react';
-/* eslint-disable max-len */
-import { NavLink } from 'react-router-dom';
-import { BurgerMenu } from 'components/BurgerMenu';
-import logo from 'assets/img/logo.svg';
+import React, { useEffect, useState, useContext } from 'react';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
+
+import { BurgerMenu } from 'components';
+import { ProductsContext } from 'context';
+
+import logo from 'assets/img/logo.svg';
 import { ReactComponent as Heart }
   from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as Cart }
   from 'assets/img/icons/shopping-bag_icon.svg';
 import { ReactComponent as Burger }
   from 'assets/img/icons/menu_icon.svg';
-import { ProductsContext } from 'context/ProductsContext';
+
 import styles from './Header.module.scss';
 
 type Props = {

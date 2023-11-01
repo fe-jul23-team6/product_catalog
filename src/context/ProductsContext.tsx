@@ -14,8 +14,7 @@ type ProductsProviderProps = {
 
 type ProductsContextType = {
   currentCart: LocalStorageCart;
-  cartItemsIds: number[];
-  setCartItemsIds: (ids: number[]) => void;
+  setCurrentCart: React.Dispatch<React.SetStateAction<LocalStorageCart>>;
   cartItems: Phone[];
   setCartItems: (items: Phone[]) => void;
   currentFavoritesIds: number[],
@@ -32,8 +31,7 @@ type ProductsContextType = {
 
 export const ProductsContext = createContext<ProductsContextType>({
   currentCart: [],
-  cartItemsIds: [],
-  setCartItemsIds: () => {},
+  setCurrentCart: () => {},
   cartItems: [],
   setCartItems: () => {},
   currentFavoritesIds: [],
@@ -50,6 +48,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const [isCartEmpty, setIsCartEmpty] = useState(false);
+  const [cartItems, setCartItems] = useState<Phone[]>([]);
 
   const storedCart = localStorage.getItem('cartItems');
   const [currentCart, setCurrentCart] = useState<LocalStorageCart>(
@@ -57,19 +56,13 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
       ? JSON.parse(storedCart)
       : [],
   );
-  const itemsIds: number[] = currentCart.map(item => item[0]);
-
-  const [cartItemsIds, setCartItemsIds] = useState(itemsIds);
-  const [cartItems, setCartItems] = useState<Phone[]>([]);
 
   const storedFavouritesIds = localStorage.getItem('favouritesIds');
   const currentFavoritesIds: number[] = JSON.parse(storedFavouritesIds || '[]');
 
   const handleDelete = (id: number) => {
-    const updatedCartItemsIds = cartItemsIds.filter(item => item !== id);
     const updatedCart = currentCart.filter(val => val[0] !== id);
 
-    setCartItemsIds(updatedCartItemsIds);
     setCartItems(cartItems.filter(item => +item.id !== id));
     setCurrentCart(updatedCart);
 
@@ -78,14 +71,6 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
   };
 
   const handleCountMinus = (id: number) => {
-    if (cartItemsIds.includes(id)) {
-      const data = cartItemsIds.indexOf(id);
-
-      const dataToSet = cartItemsIds.filter((item, index) => index !== data);
-
-      setCartItemsIds([...dataToSet]);
-    }
-
     setCurrentCart(prevCart => {
       const index = prevCart.findIndex(cartValue => cartValue[0] === id);
       const copy: LocalStorageCart = [...prevCart];
@@ -106,8 +91,6 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
   };
 
   const handleCountPlus = (id: number) => {
-    setCartItemsIds(prevIds => [...prevIds, id]);
-
     setCurrentCart(prevCart => {
       const index = prevCart.findIndex(cartValue => cartValue[0] === id);
       const copy: LocalStorageCart = [...prevCart];
@@ -167,8 +150,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
 
   const value = {
     currentCart,
-    cartItemsIds,
-    setCartItemsIds,
+    setCurrentCart,
     cartItems,
     setCartItems,
     currentFavoritesIds,

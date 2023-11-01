@@ -1,12 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 
-import { Loader } from 'components/UI/Loader';
-import { CatalogTable } from 'components/CatalogTable';
-import { PageTitle } from 'components/PageTitle';
-import { Dropdown } from 'components/UI/Dropdown';
-import { Pagination } from 'components/Pagination';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Dropdown, Loader, Breadcrumbs } from 'components/UI';
+import { CatalogTable, PageTitle, Pagination } from 'components';
+
 import {
   DEFAULT_PAGE,
   DEFAULT_SORT_BY,
@@ -14,9 +11,9 @@ import {
   PAGE_SIZE_OPTIONS,
   SORT_OPTION,
 } from 'utils/constants';
-import { SortOption } from 'types/SortOption';
+import { SortOption, Phone } from 'types';
 import { getTablets } from 'services/products.service';
-import { Phone } from 'types';
+
 import styles from './TabletsPage.module.scss';
 
 export const TabletsPage = () => {
@@ -57,7 +54,7 @@ export const TabletsPage = () => {
 
   return (
     <section className={styles.catalog}>
-      <PageLocation to="/tablets" text="Tablets" />
+      <Breadcrumbs to="/tablets" text="Tablets" />
 
       <PageTitle title="Tablets" />
 

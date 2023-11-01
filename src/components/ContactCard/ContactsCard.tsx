@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-import { ContactsDataType } from 'types/ContactsDataType';
+import { ContactsDataType } from 'types';
 import styles from './ContactsCard.module.scss';
 
 interface Props {

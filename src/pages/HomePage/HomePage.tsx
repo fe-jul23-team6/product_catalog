@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { PageTitle } from 'components/PageTitle';
-import { SliderSmall } from 'components/SliderSmall';
-import { Button } from 'components/UI/Buttons';
-import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
-import { useWindowWidth } from 'utils/useWindowWidth';
-import { Phone } from 'types';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { PageTitle, SliderSmall } from 'components';
+import { Button } from 'components/UI';
+
 import {
   getPhones,
   getTablets,
@@ -15,10 +13,14 @@ import {
   getNewestPhones,
   getDiscountedPhones,
 } from 'services/products.service';
-import styles from './HomePage.module.scss';
+import { Phone } from 'types';
+import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
+import { useWindowWidth } from 'hooks/useWindowWidth';
+
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [phonesCount, setPhonesCount] = useState(0);

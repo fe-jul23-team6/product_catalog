@@ -1,21 +1,20 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-/* eslint-disable max-len */
-import { NavLink, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
 import classnames from 'classnames';
-import { Button } from 'components/UI/Buttons';
-import { ButtonType, Phone } from 'types';
+
+import { Button, Loader, Breadcrumbs } from 'components/UI';
+import { SliderSmall } from 'components';
+import { ProductsContext } from 'context';
+
+import { ButtonType, FullPhoneData, Phone } from 'types';
 import {
   getPhoneById,
   getRecommendedProducts,
 } from 'services/products.service';
-import { Loader } from 'components/UI/Loader';
 import { MESSAGES, PHONE_COLORS } from 'utils/constants';
 import { BASE_URL } from 'utils/fetchProducts';
-import { ProductsContext } from 'context/ProductsContext';
-import { FullPhoneData } from 'types/FullPhoneData';
-import { PageLocation } from 'components/UI/PageLocation';
-import { SliderSmall } from 'components/SliderSmall';
+
 import styles from './ItemCardPage.module.scss';
 
 export const ItemCardPage = () => {
@@ -72,7 +71,7 @@ export const ItemCardPage = () => {
   useEffect(() => {
     setIsAddedToCart(checkInCart(phoneNumId));
     setIsAddedToFav(checkInFav(phoneNumId));
-  });
+  }, []);
 
   const handleToggleCart = (id: number) => {
     toggleItemToCart(id);
@@ -128,7 +127,7 @@ export const ItemCardPage = () => {
 
       {phone && !isLoading && !hasError && (
         <>
-          <PageLocation to="/phones" text="Phones" itemName={phone.name} />
+          <Breadcrumbs to="/phones" text="Phones" itemName={phone.name} />
 
           <h1 className={styles.title}>
             {phone?.name}
@@ -205,8 +204,7 @@ export const ItemCardPage = () => {
                     to={generateLinkByCapacity(capacityOption)}
                     className={classnames(
                       styles.capacity__option,
-                      // eslint-disable-next-line @typescript-eslint/dot-notation
-                      { [styles['capacity__active']]: capacityOption === phone?.capacity },
+                      { [styles.capacity__active]: capacityOption === phone?.capacity },
                     )}
                   >
                     {capacityOption}

@@ -8,7 +8,7 @@ export const contactsData = [
   {
     photo: DianaPhoto,
     name: 'Diana Honcharova',
-    position: 'Full-stack Developer',
+    position: 'Team-Lead | Full-stack Developer',
     linkedIn: 'https://www.linkedin.com/in/diana-honcharova-08a2131a7',
     gitHub: 'https://github.com/polinavafik',
     telegram: 'https://t.me/polinavafik',

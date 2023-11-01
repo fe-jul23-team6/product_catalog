@@ -1,14 +1,14 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { PageTitle } from 'components/PageTitle';
-import { PageLocation } from 'components/UI/PageLocation';
-import { ContactsCard } from 'components/ContactCard';
+import { ContactsCard, PageTitle } from 'components';
+import { Breadcrumbs } from 'components/UI';
+
 import { contactsData } from 'utils/contactsData';
+
 import styles from './ContactsPage.module.scss';
 
 export const ContactsPage = () => {
   return (
     <div className={styles.contacts}>
-      <PageLocation to="/contacts" text="Contacts" />
+      <Breadcrumbs to="/contacts" text="Contacts" />
 
       <PageTitle title="Contacts" />
 
@@ -20,6 +20,5 @@ export const ContactsPage = () => {
         </div>
       </div>
     </div>
-
   );
 };

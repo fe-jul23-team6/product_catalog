@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import { Button } from 'components/UI/Buttons';
+import { Button } from 'components/UI/Button';
 import { PaginationNumbering } from 'components/PaginationNumbering';
 
 import { DEFAULT_PAGE, VISIBLE_PAGES_COUNT } from 'utils/constants';
@@ -19,15 +19,6 @@ export const Pagination: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
   const perPage = Number(searchParams.get('perPage')) || total;
-
-  // React.memo(
-  //   setSearchParams(
-  //     getSearchWith(
-  //       searchParams,
-  //       { page: null },
-  //     ),
-  //   )
-  // )
 
   useEffect(() => {
     setSearchParams(
