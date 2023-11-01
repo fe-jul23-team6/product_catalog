@@ -1,14 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import cn from 'classnames';
 
 import { ReactComponent as HeartIcon }
   from 'assets/img/icons/favourites-default_icon.svg';
-
 import { ReactComponent as HeartIconFilled }
   from 'assets/img/icons/favourites-filled_icon.svg';
-
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 

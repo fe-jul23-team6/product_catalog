@@ -1,6 +1,8 @@
+import React from 'react';
+
 import { ReactComponent as Close }
   from 'assets/img/icons/close_icon.svg';
-import { useState } from 'react';
+
 import styles from './Modal.module.scss';
 
 type Props = {
