@@ -22,6 +22,7 @@ export const CartPage: React.FC = () => {
 
   const {
     currentCart,
+    setCurrentCart,
     cartItems,
     setCartItems,
     handleDelete,
@@ -59,6 +60,7 @@ export const CartPage: React.FC = () => {
     setIsModalOpen(true);
     setIsCartEmpty(true);
     setCartItems([]);
+    setCurrentCart([]);
     localStorage.setItem('cartItems', '[]');
     window.dispatchEvent(new Event('storageChange'));
   };

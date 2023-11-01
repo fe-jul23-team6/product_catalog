@@ -14,8 +14,7 @@ type ProductsProviderProps = {
 
 type ProductsContextType = {
   currentCart: LocalStorageCart;
-  // cartItemsIds: number[];
-  // setCartItemsIds: (ids: number[]) => void;
+  setCurrentCart: React.Dispatch<React.SetStateAction<LocalStorageCart>>;
   cartItems: Phone[];
   setCartItems: (items: Phone[]) => void;
   currentFavoritesIds: number[],
@@ -32,6 +31,7 @@ type ProductsContextType = {
 
 export const ProductsContext = createContext<ProductsContextType>({
   currentCart: [],
+  setCurrentCart: () => {},
   cartItems: [],
   setCartItems: () => {},
   currentFavoritesIds: [],
@@ -150,6 +150,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
 
   const value = {
     currentCart,
+    setCurrentCart,
     cartItems,
     setCartItems,
     currentFavoritesIds,
