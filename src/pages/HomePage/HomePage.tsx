@@ -30,6 +30,13 @@ export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
+  const bannerSource = useWindowWidth() < 640 ? SQUARE_BANNERS : LONG_BANNERS;
+
+  const imageUrl1 = bannerSource.slide1;
+  const imageUrl2 = bannerSource.slide2;
+  const imageUrl3 = bannerSource.slide3;
+  const imageUrl4 = bannerSource.slide4;
+
   useEffect(() => {
     getPhones()
       .then((phonesFromServer) => {
@@ -74,13 +81,6 @@ export const HomePage = () => {
         setIsLoading(false);
       });
   }, []);
-
-  const bannerSource = useWindowWidth() < 640 ? SQUARE_BANNERS : LONG_BANNERS;
-
-  const imageUrl1 = bannerSource.slide1;
-  const imageUrl2 = bannerSource.slide2;
-  const imageUrl3 = bannerSource.slide3;
-  const imageUrl4 = bannerSource.slide4;
 
   return (
     <div className={styles.home}>

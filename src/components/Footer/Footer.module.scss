@@ -59,6 +59,14 @@
     align-items: center;
     align-self: stretch;
 
+    &:hover {
+      text-shadow: 1px 4px 16px rgba(241, 242, 249, 0.4);
+    }
+
+    &:active {
+      text-shadow: 1px 4px 16px rgba(241, 242, 249, 0.64);
+    }
+
     @media (min-width: 640px) {
       right: 32px;
       bottom: 2.1rem;
