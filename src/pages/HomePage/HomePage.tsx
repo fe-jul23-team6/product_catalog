@@ -6,7 +6,7 @@ import { PageTitle } from 'components/PageTitle';
 import { SliderSmall } from 'components/SliderSmall';
 import { Button } from 'components/UI/Buttons';
 import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
-import { useWindowWidth } from 'utils/useWindowWidth';
+import { useWindowWidth } from 'hooks/useWindowWidth';
 import { Phone } from 'types';
 import {
   getPhones,
