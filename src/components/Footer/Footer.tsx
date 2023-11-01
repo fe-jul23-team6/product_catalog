@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import logo from 'assets/img/logo.svg';
 import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg';
-
+import { BackToTopArrow } from 'components/BackToTopArrow';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -42,17 +42,20 @@ export const Footer = () => {
           Rights
         </NavLink>
       </div>
-      <div className={`${styles.footer__scroll} ${styles.scroll}`}>
+
+      <BackToTopArrow />
+
+      <div className={styles.footer__scroll}>
         <NavLink
           to="#"
           onClick={scrollToTop}
-          className={styles.scroll__link}
+          className={styles.footer__scroll_link}
         >
-          <span className={styles.scroll__label}>
+          <span className={styles.footer__scroll_label}>
             Back to top
           </span>
-          <div className={styles.scroll__block}>
-            <ArrowSvg className={styles.scroll__img} />
+          <div className={styles.footer__scroll_block}>
+            <ArrowSvg className={styles.footer__scroll_img} />
           </div>
         </NavLink>
       </div>
