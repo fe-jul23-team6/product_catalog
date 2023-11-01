@@ -1,12 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 
-import { Loader } from 'components/UI/Loader';
-import { CatalogTable } from 'components/CatalogTable';
-import { PageTitle } from 'components/PageTitle';
-import { Dropdown } from 'components/UI/Dropdown';
-import { Pagination } from 'components/Pagination';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Dropdown, Loader, PageLocation } from 'components/UI';
+import { CatalogTable, PageTitle, Pagination } from 'components';
 
 import {
   DEFAULT_PAGE,

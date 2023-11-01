@@ -1,10 +1,12 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+
 import { ReactComponent as HomeIcon }
   from 'assets/img/icons/home_icon.svg';
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
+
 import styles from './PageLocation.module.scss';
 
 interface Props {

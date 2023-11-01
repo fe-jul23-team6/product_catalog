@@ -1,12 +1,8 @@
 import React from 'react';
-// import { useSearchParams } from 'react-router-dom';
 
-import { Card } from 'components/Card';
+import { Card } from 'components';
 
 import { Phone } from 'types';
-// import { DEFAULT_PAGE } from 'utils/constants';
-// import { getItems } from 'utils/helpers';
-
 import styles from './CatalogTable.module.scss';
 
 type Props = {
@@ -14,15 +10,6 @@ type Props = {
 };
 
 export const CatalogTable: React.FC<Props> = ({ phones }) => {
-  // const [searchParams] = useSearchParams();
-  // const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
-  // const perPage = Number(searchParams.get('perPage')) || phones.length;
-  // const fromItem = (page - 1) * perPage + 1;
-  // const maxCountItem = page * perPage;
-  // const toItem = Math.min(maxCountItem, phones.length);
-  // const items = getItems(fromItem, toItem, phones);
-  // console.log(fromItem, toItem);
-
   const checkInCart = (id: number) => {
     const storedCart = localStorage.getItem('cartItems');
     const currentCart: number[][] = storedCart
@@ -58,8 +45,8 @@ export const CatalogTable: React.FC<Props> = ({ phones }) => {
           <Card
             key={phone.id}
             phone={phone}
-            isOrdered={checkInCart(+phone.id)}
-            isFavourite={checkInFav(+phone.id)}
+            isOrdered={checkInCart(Number(phone.id))}
+            isFavourite={checkInFav(Number(phone.id))}
           />
         );
       })}

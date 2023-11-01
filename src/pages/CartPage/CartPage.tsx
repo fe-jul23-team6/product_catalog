@@ -1,15 +1,14 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useEffect } from 'react';
-import { PageTitle } from 'components/PageTitle';
+import { useNavigate } from 'react-router-dom';
+
+import { CartItem, PageTitle } from 'components';
+import { ProductsContext } from 'context';
+
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
-import { useNavigate } from 'react-router-dom';
+
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
-import { ProductsContext } from 'context/ProductsContext';
-import { CartItem } from '../../components/CartItem';
 
 import styles from './CartPage.module.scss';
 

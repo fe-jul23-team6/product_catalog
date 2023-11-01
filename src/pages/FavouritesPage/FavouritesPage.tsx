@@ -1,12 +1,13 @@
-import { PageTitle } from 'components/PageTitle';
 import { useState, useEffect, useContext } from 'react';
-import { Loader } from 'components/UI/Loader';
+
+import { Card, PageTitle } from 'components';
+import { Loader, PageLocation } from 'components/UI';
+import { ProductsContext } from 'context';
+
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
-import { Card } from 'components/Card';
-import { PageLocation } from 'components/UI/PageLocation';
-import { ProductsContext } from 'context/ProductsContext';
 import { MESSAGES } from 'utils/constants';
+
 import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage = () => {
