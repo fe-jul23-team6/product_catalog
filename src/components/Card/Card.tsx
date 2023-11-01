@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { BASE_URL } from 'utils/fetchProducts';
-import { Button } from 'components/UI/Buttons';
-import { ButtonType, Phone } from 'types';
-import { ProductsContext } from 'context/ProductsContext';
 import { NavLink } from 'react-router-dom';
+
+import { BASE_URL } from 'utils/fetchProducts';
+import { ButtonType, Phone } from 'types';
+
+import { ProductsContext } from 'context';
+import { Button } from 'components/UI';
+
 import styles from './Card.module.scss';
 
 type Props = {

@@ -2,16 +2,18 @@
 import { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { Card } from 'components/Card';
-import { Button } from 'components/UI/Buttons';
-import { Loader } from 'components/UI/Loader';
+
+import { ProductsContext } from 'context';
+import { Card } from 'components';
+import { Button, Loader } from 'components/UI';
+
 import { Phone } from 'types';
 import { MESSAGES } from 'utils/constants';
-import { ProductsContext } from 'context/ProductsContext';
-import styles from './SliderSmall.module.scss';
+
 import arrowStyles from '../Pagination/Pagination.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
+import styles from './SliderSmall.module.scss';
 
 type Props = {
   selectedPhones: Phone[],
@@ -103,8 +105,6 @@ export const SliderSmall: React.FC<Props> = ({
           );
         })}
       </Swiper>
-
     </section>
-
   );
 };
