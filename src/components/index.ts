@@ -1,11 +1,11 @@
-export { BurgerMenu } from './BurgerMenu';
 export { Card } from './Card';
-export { CartItem } from './CartItem';
-export { CatalogTable } from './CatalogTable';
-export { ContactsCard } from './ContactCard';
+export { Modal } from './Modal';
 export { Footer } from './Footer';
 export { Header } from './Header';
-export { Modal } from './Modal';
+export { CartItem } from './CartItem';
 export { PageTitle } from './PageTitle';
-export { SliderSmall } from './SliderSmall';
+export { BurgerMenu } from './BurgerMenu';
 export { Pagination } from './Pagination';
+export { SliderSmall } from './SliderSmall';
+export { ContactsCard } from './ContactCard';
+export { CatalogTable } from './CatalogTable';
