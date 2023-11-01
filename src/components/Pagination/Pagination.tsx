@@ -20,29 +20,29 @@ export const Pagination: React.FC<Props> = ({
   const page = Number(searchParams.get('page')) || DEFAULT_PAGE;
   const perPage = Number(searchParams.get('perPage')) || total;
 
-  // React.memo(
+  // useEffect(() => {
   //   setSearchParams(
   //     getSearchWith(
   //       searchParams,
   //       { page: null },
   //     ),
-  //   )
-  // )
-
-  useEffect(() => {
-    setSearchParams(
-      getSearchWith(
-        searchParams,
-        { page: null },
-      ),
-    );
-  }, [perPage]);
+  //   );
+  // }, [perPage]);
 
   const pageCount = Math.ceil(total / perPage);
 
   const maxFromPage = pageCount - VISIBLE_PAGES_COUNT + 1;
 
   let fromPage;
+
+  if (page > pageCount) {
+    setSearchParams(
+      getSearchWith(
+        searchParams,
+        { page: null },
+      ),
+    );
+  }
 
   if (page < DEFAULT_PAGE + 1) {
     fromPage = DEFAULT_PAGE;
