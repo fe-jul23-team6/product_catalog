@@ -4,14 +4,19 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Button } from 'components/UI/Buttons';
-import { ButtonType } from 'types';
-import { getPhoneById } from 'services/products.service';
+import { ButtonType, Phone } from 'types';
+import {
+  getPhones,
+  getPhoneById,
+  // getRecommendedPhones,
+} from 'services/products.service';
 import { Loader } from 'components/UI/Loader';
 import { MESSAGES, PHONE_COLORS } from 'utils/constants';
 import { BASE_URL } from 'utils/fetchProducts';
 import { ProductsContext } from 'context/ProductsContext';
 import { FullPhoneData } from 'types/FullPhoneData';
 import { PageLocation } from 'components/UI/PageLocation';
+import { SliderSmall } from 'components/SliderSmall';
 import styles from './ItemCardPage.module.scss';
 
 export const ItemCardPage = () => {
@@ -29,6 +34,7 @@ export const ItemCardPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [displayImage, setDisplayImage] = useState('');
+  const [recommendedPhones, setRecommendedPhones] = useState<Phone[]>([]);
 
   const { phoneId = '' } = useParams();
 
@@ -48,6 +54,29 @@ export const ItemCardPage = () => {
         setIsLoading(false);
       });
   }, [phoneId]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getPhones()
+      .then((phones) => {
+        let similarPhones: Phone[] = [];
+
+        if (phone) {
+          similarPhones = phones.rows.filter(
+            ({ price }) => Math.abs(phone.priceDiscount - price) <= 100,
+          );
+          console.log(similarPhones);
+        }
+
+        setRecommendedPhones(similarPhones);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [phone]);
 
   useEffect(() => {
     setIsAddedToCart(checkInCart(phoneNumId));
@@ -339,6 +368,14 @@ export const ItemCardPage = () => {
               </p>
             </section>
           </div>
+
+          <SliderSmall
+            selectedPhones={recommendedPhones}
+            isLoading={isLoading}
+            hasError={hasError}
+            headerTitle="You may also like"
+            moverClass="also"
+          />
         </>
       )}
     </div>

@@ -89,3 +89,7 @@ export function getNewestPhones() {
 export function getDiscountedPhones() {
   return client.getAll<Phone[]>('/products/discount');
 }
+
+// export function getRecommendedPhones(phoneId: string) {
+//   return client.getAll<Phone[]>(`/products/${phoneId}/recommended`);
+// }
