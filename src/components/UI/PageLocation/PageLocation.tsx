@@ -28,8 +28,8 @@ export const PageLocation: React.FC<Props> = ({ text, to, itemName }) => {
         <ChevronIcon />
       </div>
 
-      <div className={styles['location__selected-page']}>
-        <Link to={to} className={styles['location__selected-page-paragraph']}>
+      <div className={`${styles['location__selected-page']} ${styles['selected-page']}`}>
+        <Link to={to} className={styles['selected-page__paragraph']}>
           {text}
         </Link>
       </div>
@@ -40,7 +40,7 @@ export const PageLocation: React.FC<Props> = ({ text, to, itemName }) => {
             <ChevronIcon />
           </div>
 
-          <p className={styles['location__selected-page-paragraph']}>
+          <p className={styles['selected-page__paragraph']}>
             {itemName}
           </p>
         </>
