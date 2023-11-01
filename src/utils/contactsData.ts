@@ -25,7 +25,7 @@ export const contactsData = [
   },
   {
     photo: OlyaPhoto,
-    name: 'Olga Katiushyna',
+    name: 'Olya Katiushyna',
     position: 'Full-stack Developer',
     linkedIn: 'https://www.linkedin.com/in/ola-katiushyna-katolista/',
     gitHub: 'https://github.com/KatOlista',
