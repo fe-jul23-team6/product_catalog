@@ -90,6 +90,6 @@ export function getDiscountedPhones() {
   return client.getAll<Phone[]>('/products/discount');
 }
 
-// export function getRecommendedPhones(phoneId: string) {
-//   return client.getAll<Phone[]>(`/products/${phoneId}/recommended`);
-// }
+export function getRecommendedProducts(phoneId: string) {
+  return client.getAll<Phone[]>(`/products/${phoneId}/recommended`);
+}

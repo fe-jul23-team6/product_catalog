@@ -6,9 +6,8 @@ import classnames from 'classnames';
 import { Button } from 'components/UI/Buttons';
 import { ButtonType, Phone } from 'types';
 import {
-  getPhones,
   getPhoneById,
-  // getRecommendedPhones,
+  getRecommendedProducts,
 } from 'services/products.service';
 import { Loader } from 'components/UI/Loader';
 import { MESSAGES, PHONE_COLORS } from 'utils/constants';
@@ -57,17 +56,9 @@ export const ItemCardPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getPhones()
-      .then((phones) => {
-        let similarPhones: Phone[] = [];
 
-        if (phone) {
-          similarPhones = phones.rows.filter(
-            ({ price }) => Math.abs(phone.priceDiscount - price) <= 100,
-          );
-          console.log(similarPhones);
-        }
-
+    getRecommendedProducts(phoneId)
+      .then((similarPhones) => {
         setRecommendedPhones(similarPhones);
       })
       .catch(() => {
@@ -76,7 +67,7 @@ export const ItemCardPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [phone]);
+  }, [phoneId]);
 
   useEffect(() => {
     setIsAddedToCart(checkInCart(phoneNumId));
