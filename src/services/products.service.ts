@@ -11,8 +11,6 @@ export function getPhones(
 ) {
   let path = '/products/?category=phones';
 
-  console.log(sort);
-
   if (sort === 'Newest') {
     path += `&sortBy=${SortOption[sort]}&orderDir=DESC`;
   } else {
