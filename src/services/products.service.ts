@@ -37,8 +37,10 @@ export function getTablets(
 ) {
   let path = '/products/?category=tablets';
 
-  if (sort) {
-    path += `&sort=${SortOption[sort]}`;
+  if (sort === 'Newest') {
+    path += `&sortBy=${SortOption[sort]}&orderDir=DESC`;
+  } else {
+    path += `&sortBy=${SortOption[sort]}`;
   }
 
   if (page) {
@@ -59,8 +61,10 @@ export function getAccessories(
 ) {
   let path = '/products/?category=accessories';
 
-  if (sort) {
-    path += `&sort=${SortOption[sort]}`;
+  if (sort === 'Newest') {
+    path += `&sortBy=${SortOption[sort]}&orderDir=DESC`;
+  } else {
+    path += `&sortBy=${SortOption[sort]}`;
   }
 
   if (page) {
