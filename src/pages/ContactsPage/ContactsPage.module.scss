@@ -1,0 +1,21 @@
+.contacts {
+
+  &__wrapper {
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  &__content {
+    max-width: 850px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 40px;
+    gap: 50px;
+  }
+}
+
+
