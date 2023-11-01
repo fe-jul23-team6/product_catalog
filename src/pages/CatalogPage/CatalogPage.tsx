@@ -6,7 +6,7 @@ import { CatalogTable } from 'components/CatalogTable';
 import { PageTitle } from 'components/PageTitle';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Pagination } from 'components/Pagination';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Breadcrumbs } from 'components/UI/Breadcrumbs';
 
 import {
   DEFAULT_PAGE,
@@ -60,7 +60,7 @@ export const CatalogPage: React.FC = () => {
 
   return (
     <section className={styles.catalog}>
-      <PageLocation to="/phones" text="Phones" />
+      <Breadcrumbs to="/phones" text="Phones" />
 
       <PageTitle title="Mobile phones" />
 

@@ -6,7 +6,7 @@ import { CatalogTable } from 'components/CatalogTable';
 import { PageTitle } from 'components/PageTitle';
 import { Dropdown } from 'components/UI/Dropdown';
 import { Pagination } from 'components/Pagination';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Breadcrumbs } from 'components/UI/Breadcrumbs';
 import {
   DEFAULT_PAGE,
   DEFAULT_SORT_BY,
@@ -57,7 +57,7 @@ export const TabletsPage = () => {
 
   return (
     <section className={styles.catalog}>
-      <PageLocation to="/tablets" text="Tablets" />
+      <Breadcrumbs to="/tablets" text="Tablets" />
 
       <PageTitle title="Tablets" />
 

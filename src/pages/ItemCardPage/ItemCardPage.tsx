@@ -14,7 +14,7 @@ import { MESSAGES, PHONE_COLORS } from 'utils/constants';
 import { BASE_URL } from 'utils/fetchProducts';
 import { ProductsContext } from 'context/ProductsContext';
 import { FullPhoneData } from 'types/FullPhoneData';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Breadcrumbs } from 'components/UI/Breadcrumbs';
 import { SliderSmall } from 'components/SliderSmall';
 import styles from './ItemCardPage.module.scss';
 
@@ -128,7 +128,7 @@ export const ItemCardPage = () => {
 
       {phone && !isLoading && !hasError && (
         <>
-          <PageLocation to="/phones" text="Phones" itemName={phone.name} />
+          <Breadcrumbs to="/phones" text="Phones" itemName={phone.name} />
 
           <h1 className={styles.title}>
             {phone?.name}

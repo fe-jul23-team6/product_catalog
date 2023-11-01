@@ -4,7 +4,7 @@ import { Loader } from 'components/UI/Loader';
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
 import { Card } from 'components/Card';
-import { PageLocation } from 'components/UI/PageLocation';
+import { Breadcrumbs } from 'components/UI/Breadcrumbs';
 import { ProductsContext } from 'context/ProductsContext';
 import { MESSAGES } from 'utils/constants';
 import styles from './FavouritesPage.module.scss';
@@ -39,7 +39,7 @@ export const FavouritesPage = () => {
     <div className={styles.favourites}>
       <div className={styles.favourites__container}>
         <div className={styles.favourites__path}>
-          <PageLocation to="/favourites" text="Favourites" />
+          <Breadcrumbs to="/favourites" text="Favourites" />
         </div>
 
         <div className={styles.favourites__title}>

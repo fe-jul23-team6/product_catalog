@@ -5,7 +5,7 @@ import { ReactComponent as HomeIcon }
   from 'assets/img/icons/home_icon.svg';
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
-import styles from './PageLocation.module.scss';
+import styles from './Breadcrumbs.module.scss';
 
 interface Props {
   text: string
@@ -13,7 +13,7 @@ interface Props {
   itemName?: string | undefined;
 }
 
-export const PageLocation: React.FC<Props> = ({ text, to, itemName }) => {
+export const Breadcrumbs: React.FC<Props> = ({ text, to, itemName }) => {
   const { phoneId, tabletId, accessoryId } = useParams();
 
   return (
