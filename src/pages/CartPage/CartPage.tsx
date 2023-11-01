@@ -1,14 +1,15 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PageTitle } from 'components/PageTitle';
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { Phone } from 'types';
 import { getPhonesByIds } from 'services/products.service';
 import { ProductsContext } from 'context/ProductsContext';
+import { Modal } from 'components/Modal';
 import { CartItem } from '../../components/CartItem';
 
 import styles from './CartPage.module.scss';
@@ -21,14 +22,17 @@ export const CartPage: React.FC = () => {
 
   const {
     currentCart,
-    cartItemsIds,
-    setCartItemsIds,
+    setCurrentCart,
     cartItems,
     setCartItems,
     handleDelete,
     handleCountMinus,
     handleCountPlus,
+    isCartEmpty,
+    setIsCartEmpty,
   } = useContext(ProductsContext);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalAmount = currentCart.reduce((acc, amount) => acc + amount[1], 0);
   const totalCost = cartItems.reduce((acc, phone) => {
@@ -38,92 +42,135 @@ export const CartPage: React.FC = () => {
   }, 0);
 
   const loadData = async () => {
-    if (cartItemsIds.length === 0) {
+    if (currentCart.length === 0) {
       setCartItems([]);
+      setIsCartEmpty(true);
 
       return;
     }
 
-    const itemsFromServer:Phone[] = await getPhonesByIds(cartItemsIds);
+    const currentCartIds = currentCart.map(item => item[0]);
+    const itemsFromServer:Phone[] = await getPhonesByIds(currentCartIds);
 
+    setIsCartEmpty(false);
     setCartItems(itemsFromServer);
   };
 
   const handleCheckout = () => {
-    setCartItemsIds([]);
+    setIsModalOpen(true);
+    setIsCartEmpty(true);
     setCartItems([]);
+    setCurrentCart([]);
     localStorage.setItem('cartItems', '[]');
     window.dispatchEvent(new Event('storageChange'));
   };
 
   useEffect(() => {
+    if (!currentCart) {
+      setIsCartEmpty(true);
+    }
+
     loadData();
   }, []);
 
   return (
-    <div className={styles.cart}>
-      <div className={styles.cart__top}>
-        <div className={styles.cart__goback}>
-          <button
-            type="button"
-            className={styles.cart__chevron}
-            onClick={goBack}
-          >
-            <ChevronIcon />
-          </button>
-          <button
-            type="button"
-            className={styles.cart__back}
-            onClick={goBack}
-          >
-            Back
-          </button>
+    <>
+      <div className={`${styles.cart} ${isModalOpen ? styles.blur : ''}`}>
+        <div className={styles.cart__top}>
+          <div className={styles.cart__goback}>
+            <button
+              type="button"
+              className={styles.cart__chevron}
+              onClick={goBack}
+            >
+              <ChevronIcon />
+            </button>
+            <button
+              type="button"
+              className={styles.cart__back}
+              onClick={goBack}
+            >
+              Back
+            </button>
+          </div>
+
+          <PageTitle title="Cart" />
         </div>
 
-        <PageTitle title="Cart" />
-      </div>
+        {isCartEmpty
+          ? (
+            <div className={styles.cart__wrapper}>
+              <div className={styles.cart__checkout}>
+                <h4 className={styles['cart__title-empty']}>
+                  Your cart is empty
+                </h4>
 
-      <div className={styles.cart__wrapper}>
-        <div className={styles.cart__content}>
-          {cartItems.map(phone => {
-            const currCount = currentCart.find(item => item[0] === +phone.id);
-            const count = currCount ? currCount[1] : 0;
+                <NavLink
+                  to="/"
+                  className={styles['cart__go-shopping']}
+                >
+                  <button
+                    type="button"
+                    className={styles.cart__buy}
+                  >
+                    Go Shopping!
+                  </button>
+                </NavLink>
 
-            return (
-              <div
-                className={styles.cart__item}
-                key={phone.id}
-              >
-                <CartItem
-                  phone={phone}
-                  onDelete={handleDelete}
-                  count={count}
-                  onCountMinus={handleCountMinus}
-                  onCountPlus={handleCountPlus}
-                />
               </div>
-            );
-          })}
-        </div>
+            </div>
+          )
+          : (
+            <div className={styles.cart__wrapper}>
+              <div className={styles.cart__content}>
+                {cartItems.map(phone => {
+                  const currCount = currentCart.find(item => item[0] === +phone.id);
+                  const count = currCount ? currCount[1] : 0;
 
-        <div className={styles.cart__checkout}>
-          <h2 className={styles.cart__totalPrice}>
-            $
-            {totalCost}
-          </h2>
-          <p className={styles.cart__total}>
-            {`Total for ${totalAmount} items`}
-          </p>
+                  return (
+                    <div
+                      className={styles.cart__item}
+                      key={phone.id}
+                    >
+                      <CartItem
+                        phone={phone}
+                        onDelete={handleDelete}
+                        count={count}
+                        onCountMinus={handleCountMinus}
+                        onCountPlus={handleCountPlus}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
 
-          <button
-            className={styles.cart__buy}
-            type="button"
-            onClick={handleCheckout}
-          >
-            Checkout
-          </button>
-        </div>
+              <div className={styles.cart__checkout}>
+                <h2 className={styles.cart__totalPrice}>
+                  $
+                  {totalCost}
+                </h2>
+                <p className={styles.cart__total}>
+                  {`Total for ${totalAmount} items`}
+                </p>
+
+                <button
+                  className={styles.cart__buy}
+                  type="button"
+                  onClick={handleCheckout}
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          )}
       </div>
-    </div>
+
+      {isModalOpen && (
+        <div className="modal">
+          <Modal setIsOpen={setIsModalOpen} />
+        </div>
+      )}
+    </>
+
   );
 };
