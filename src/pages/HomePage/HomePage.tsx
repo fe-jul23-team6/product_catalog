@@ -88,9 +88,11 @@ export const HomePage = () => {
     <div className={styles.home}>
       <h1 className={styles['home__visually-hidden']}>Product Catalog</h1>
 
-      <PageTitle
-        title="Welcome to Nice Gadgets store!"
-      />
+      <div className={styles.home__wrapper}>
+        <PageTitle
+          title="Welcome to Nice Gadgets store!"
+        />
+      </div>
 
       <section className={styles.home__sliderBig}>
         <div className={`${styles.home__navButton} button-prev`}>
