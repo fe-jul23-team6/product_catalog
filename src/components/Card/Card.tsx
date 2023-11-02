@@ -45,7 +45,7 @@ export const Card: React.FC<Props> = ({
   return (
     <section className={styles.card}>
       <NavLink
-        to={`/phones/${phone.itemId}`}
+        to={`./${phone.itemId}`}
         className={styles.card__container}
       >
         <div className={styles['card__img-container']}>

@@ -56,7 +56,7 @@ export const CatalogPage: React.FC = () => {
 
   return (
     <section className={styles.catalog}>
-      <Breadcrumbs to="/phones" text="Phones" />
+      <Breadcrumbs />
 
       <PageTitle title="Mobile phones" />
 

@@ -41,7 +41,7 @@ export const FavouritesPage = () => {
     <div className={styles.favourites}>
       <div className={styles.favourites__container}>
         <div className={styles.favourites__path}>
-          <Breadcrumbs to="/favourites" text="Favourites" />
+          <Breadcrumbs />
         </div>
 
         <div className={styles.favourites__title}>

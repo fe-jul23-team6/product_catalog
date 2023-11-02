@@ -54,7 +54,7 @@ export const TabletsPage = () => {
 
   return (
     <section className={styles.catalog}>
-      <Breadcrumbs to="/tablets" text="Tablets" />
+      <Breadcrumbs />
 
       <PageTitle title="Tablets" />
 

@@ -23,6 +23,7 @@ export const ItemCardPage = () => {
     toggleItemToFavourites,
     checkInCart,
     checkInFav,
+    setCurrentProductName,
   } = useContext(ProductsContext);
 
   const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -34,16 +35,17 @@ export const ItemCardPage = () => {
   const [displayImage, setDisplayImage] = useState('');
   const [recommendedPhones, setRecommendedPhones] = useState<Phone[]>([]);
 
-  const { phoneId = '' } = useParams();
+  const { productId = '' } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
 
-    getPhoneById(phoneId)
+    getPhoneById(productId)
       .then((phoneFromServer) => {
         setPhone(phoneFromServer.productInfo);
         setPhoneNumId(phoneFromServer.id);
         setDisplayImage(phoneFromServer.productInfo.images[0]);
+        setCurrentProductName(phoneFromServer.productInfo.name);
       })
       .catch(() => {
         setHasError(true);
@@ -51,12 +53,12 @@ export const ItemCardPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [phoneId]);
+  }, [productId]);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getRecommendedProducts(phoneId)
+    getRecommendedProducts(productId)
       .then((similarPhones) => {
         setRecommendedPhones(similarPhones);
       })
@@ -66,7 +68,7 @@ export const ItemCardPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [phoneId]);
+  }, [productId]);
 
   useEffect(() => {
     setIsAddedToCart(checkInCart(phoneNumId));
@@ -96,12 +98,12 @@ export const ItemCardPage = () => {
 
     newId = newId?.replace(/ /g, '-');
 
-    return `/phones/${newId?.toLowerCase()}`;
+    return `../${newId?.toLowerCase()}`;
   };
 
   const generateLinkByColor = (color: string) => {
     if (!phone?.color) {
-      return `/phones/${phoneId}`;
+      return `../${productId}`;
     }
 
     return generateLinkInternal(phone?.color, color);
@@ -109,7 +111,7 @@ export const ItemCardPage = () => {
 
   const generateLinkByCapacity = (capacity: string) => {
     if (!phone?.capacity) {
-      return `/phones/${phoneId}`;
+      return `../${productId}`;
     }
 
     return generateLinkInternal(phone?.capacity, capacity);
@@ -127,7 +129,7 @@ export const ItemCardPage = () => {
 
       {phone && !isLoading && !hasError && (
         <>
-          <Breadcrumbs to="/phones" text="Phones" itemName={phone.name} />
+          <Breadcrumbs />
 
           <h1 className={styles.title}>
             {phone?.name}
