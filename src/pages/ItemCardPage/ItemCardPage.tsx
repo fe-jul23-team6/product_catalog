@@ -71,7 +71,7 @@ export const ItemCardPage = () => {
   useEffect(() => {
     setIsAddedToCart(checkInCart(phoneNumId));
     setIsAddedToFav(checkInFav(phoneNumId));
-  }, []);
+  });
 
   const handleToggleCart = (id: number) => {
     toggleItemToCart(id);
