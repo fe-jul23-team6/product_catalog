@@ -89,7 +89,9 @@ export const HomePage = () => {
       <h1 className={styles['home__visually-hidden']}>Product Catalog</h1>
 
       <div className={styles.home__wrapper}>
-        <h1>Welcome to Nice Gadgets store!</h1>
+        <PageTitle
+          title="Welcome to Nice Gadgets store!"
+        />
       </div>
 
       <section className={styles.home__sliderBig}>
