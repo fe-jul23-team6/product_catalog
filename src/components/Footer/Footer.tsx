@@ -6,7 +6,7 @@ import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg
 import { BackToTopArrow } from 'components/BackToTopArrow';
 import styles from './Footer.module.scss';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
