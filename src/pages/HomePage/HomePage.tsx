@@ -93,15 +93,13 @@ export const HomePage = () => {
       />
 
       <section className={styles.home__sliderBig}>
-        <div className={styles.home__navButton}>
-          <div className="button-prev">
-            <Button
-              btnType="Slider"
-              chevronButtonType="left"
-              chevron
-              high
-            />
-          </div>
+        <div className={`${styles.home__navButton} button-prev`}>
+          <Button
+            btnType="Slider"
+            chevronButtonType="left"
+            chevron
+            high
+          />
         </div>
 
         <Swiper
@@ -154,15 +152,13 @@ export const HomePage = () => {
           </SwiperSlide>
         </Swiper>
 
-        <div className={styles.home__navButton}>
-          <div className="button-next">
-            <Button
-              btnType="Slider"
-              chevronButtonType="right"
-              chevron
-              high
-            />
-          </div>
+        <div className={`${styles.home__navButton} button-next`}>
+          <Button
+            btnType="Slider"
+            chevronButtonType="right"
+            chevron
+            high
+          />
         </div>
       </section>
 

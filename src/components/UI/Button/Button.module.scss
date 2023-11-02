@@ -12,13 +12,25 @@
 
   @media(min-width: 640px) {
     &__high {
-      height: 197px;
+      height: 92%;
+    }
+  }
+
+  @media(min-width: 768px) {
+    &__high {
+      height: 94%;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    &__high {
+      height: 95%;
     }
   }
 
   @media(min-width: 1200px) {
     &__high {
-      height: 400px;
+      height: 96%;
     }
   }
 

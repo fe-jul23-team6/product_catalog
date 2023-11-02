@@ -93,6 +93,7 @@ export const SliderSmall: React.FC<Props> = ({
 
           return (
             <SwiperSlide
+              key={phone.id}
               className={styles.sliderSmall__slider}
             >
               <Card
