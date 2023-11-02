@@ -1,10 +1,11 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 
-import { CartItem, PageTitle, Modal } from 'components';
+import {
+  CartItem, PageTitle, Modal, SuccessBuy,
+} from 'components';
 import { ProductsContext } from 'context';
 
 import { ReactComponent as ChevronIcon }
@@ -57,7 +58,8 @@ export const CartPage: React.FC = () => {
     setCartItems(itemsFromServer);
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = (event: any) => {
+    event.stopPropagation();
     setIsModalOpen(true);
     setIsCartEmpty(true);
     setCartItems([]);
@@ -166,11 +168,8 @@ export const CartPage: React.FC = () => {
           )}
       </div>
 
-      {isModalOpen && (
-        <div className="modal">
-          <Modal setIsOpen={setIsModalOpen} />
-        </div>
-      )}
+      <SuccessBuy setIsOpen={setIsModalOpen} isModalOpen={isModalOpen} />
+
     </>
 
   );
