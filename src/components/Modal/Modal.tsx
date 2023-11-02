@@ -1,8 +1,9 @@
-import ModalWindow, { Props } from 'react-modal';
-import './Modal.scss';
-import { useClickOutside } from 'hooks';
 import { useRef } from 'react';
-import classNames from 'classnames';
+import ModalWindow, { Props } from 'react-modal';
+
+import { useClickOutside } from 'hooks';
+
+import './Modal.scss';
 
 ModalWindow.setAppElement('#root');
 

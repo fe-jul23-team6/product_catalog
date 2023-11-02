@@ -1,13 +1,16 @@
 import { useState, useEffect, useContext } from 'react';
 
-import { Card, PageTitle } from 'components';
-import { Loader, Breadcrumbs } from 'components/UI';
+import {
+  Card,
+  Loader,
+  PageTitle,
+  Breadcrumbs,
+} from 'components';
+import { MESSAGES } from 'utils';
 import { ProductsContext } from 'context';
+import { getPhonesByIds } from 'services';
 
 import { Phone } from 'types';
-import { getPhonesByIds } from 'services/products.service';
-
-import { MESSAGES } from 'utils/constants';
 
 import styles from './FavouritesPage.module.scss';
 

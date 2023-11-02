@@ -1,6 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg';
 import styles from './BackToTopArrow.module.scss';
 

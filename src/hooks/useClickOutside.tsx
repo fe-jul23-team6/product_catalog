@@ -1,8 +1,11 @@
-import React, { RefObject } from 'react';
+import { RefObject, useEffect } from 'react';
 
 type ClickOutsideCallback = () => void;
 
-export const useClickOutside = (ref: RefObject<HTMLElement>, callback: ClickOutsideCallback) => {
+export const useClickOutside = (
+  ref: RefObject<HTMLElement>,
+  callback: ClickOutsideCallback,
+) => {
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as Node)) {
       callback();
@@ -10,7 +13,7 @@ export const useClickOutside = (ref: RefObject<HTMLElement>, callback: ClickOuts
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('click', handleClick);
 
     return () => {

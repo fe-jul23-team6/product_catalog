@@ -3,6 +3,7 @@ import React from 'react';
 import { Card } from 'components';
 
 import { Phone } from 'types';
+
 import styles from './CatalogTable.module.scss';
 
 type Props = {

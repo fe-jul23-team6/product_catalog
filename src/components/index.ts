@@ -1,3 +1,4 @@
+export * from './UI';
 export { Card } from './Card';
 export { Modal } from './Modal';
 export { SuccessBuy } from './SuccessBuy';
@@ -10,3 +11,4 @@ export { Pagination } from './Pagination';
 export { SliderSmall } from './SliderSmall';
 export { ContactsCard } from './ContactCard';
 export { CatalogTable } from './CatalogTable';
+export { BackToTopArrow } from './BackToTopArrow';

@@ -9,6 +9,7 @@ import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 
 import { ButtonType } from 'types';
+
 import styles from './Button.module.scss';
 
 type Props = {

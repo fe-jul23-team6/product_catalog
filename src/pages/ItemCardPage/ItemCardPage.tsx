@@ -3,17 +3,21 @@ import { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import classnames from 'classnames';
 
-import { Button, Loader, Breadcrumbs } from 'components/UI';
-import { SliderSmall } from 'components';
+import {
+  Button,
+  Loader,
+  SliderSmall,
+  Breadcrumbs,
+} from 'components';
 import { ProductsContext } from 'context';
+import { BASE_URL, MESSAGES, PHONE_COLORS } from 'utils';
 
-import { ButtonType, FullPhoneData, Phone } from 'types';
 import {
   getPhoneById,
   getRecommendedProducts,
-} from 'services/products.service';
-import { MESSAGES, PHONE_COLORS } from 'utils/constants';
-import { BASE_URL } from 'utils/fetchProducts';
+} from 'services';
+
+import { ButtonType, FullPhoneData, Phone } from 'types';
 
 import styles from './ItemCardPage.module.scss';
 

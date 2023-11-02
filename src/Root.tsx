@@ -1,23 +1,23 @@
 import {
-  Navigate,
   Route,
-  HashRouter as Router,
   Routes,
+  Navigate,
+  HashRouter as Router,
 } from 'react-router-dom';
 
-import { App } from './App';
+import { App } from 'App';
 import {
   CartPage,
   HomePage,
   RightsPage,
   TabletsPage,
-  CatalogPage,
+  PhonesPage,
   ContactsPage,
   ItemCardPage,
   NotFoundPage,
   FavouritesPage,
   AccessoriesPage,
-} from './pages';
+} from 'pages';
 
 export const Root = () => (
   <Router>
@@ -26,7 +26,7 @@ export const Root = () => (
         <Route index element={<HomePage />} />
 
         <Route path="phones">
-          <Route index element={<CatalogPage />} />
+          <Route index element={<PhonesPage />} />
           <Route path=":productId" element={<ItemCardPage />} />
         </Route>
 

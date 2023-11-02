@@ -3,8 +3,8 @@ import React from 'react';
 import { ReactComponent as Close }
   from 'assets/img/icons/close_icon.svg';
 
-import { SuccessCheck } from 'components/UI';
-import { Modal } from 'components/Modal';
+import { Modal, SuccessCheck } from 'components';
+
 import styles from './SuccessBuy.module.scss';
 
 type Props = {

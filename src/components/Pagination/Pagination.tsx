@@ -1,13 +1,18 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import { Button } from 'components/UI/Button';
-import { PaginationNumbering } from 'components/PaginationNumbering';
+import { Button } from 'components';
 
-import { DEFAULT_PAGE, VISIBLE_PAGES_COUNT } from 'utils/constants';
-import { getPages, getSearchWith } from 'utils/helpers';
+import {
+  getPages,
+  getSearchWith,
+  DEFAULT_PAGE,
+  VISIBLE_PAGES_COUNT,
+} from 'utils';
 
 import styles from './Pagination.module.scss';
+
+import { PaginationNumbering } from './PaginationNumbering';
 
 type Props = {
   total: number,

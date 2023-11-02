@@ -16,7 +16,6 @@ const paths = [
   { label: 'Accessories', url: '/accessories' },
   { label: 'Contacts', url: '/contacts' },
   { label: 'Favourites', url: '/favourites' },
-
 ];
 
 export const Breadcrumbs: React.FC = () => {

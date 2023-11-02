@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable max-len */
 import {
-  createContext,
-  ReactNode,
   useState,
+  ReactNode,
+  createContext,
 } from 'react';
-import { Phone } from 'types';
-import { LocalStorageCart } from 'types/LocalStorageCart';
+
+import { Phone, LocalStorageCart } from 'types';
 
 type ProductsProviderProps = {
   children: ReactNode;

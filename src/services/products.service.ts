@@ -1,8 +1,11 @@
-import { DataFromServer } from 'types';
-import { FullPhoneWithId } from 'types/FullPhoneWithId';
-import { SortOption } from 'types/SortOption';
-import { Phone } from '../types/Phone';
-import { client } from '../utils/fetchProducts';
+import { client } from 'utils';
+
+import {
+  Phone,
+  SortOption,
+  DataFromServer,
+  FullPhoneWithId,
+} from 'types';
 
 export function getPhones(
   sort: keyof typeof SortOption = 'Alphabetically',

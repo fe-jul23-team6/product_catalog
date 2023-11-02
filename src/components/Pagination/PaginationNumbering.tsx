@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import { Button } from 'components/UI/Button';
-import { getSearchWith } from 'utils/helpers';
-import { DEFAULT_PAGE } from 'utils/constants';
+import { Button } from 'components';
+import { getSearchWith, DEFAULT_PAGE } from 'utils';
 
 type Props = {
   pageNumber: string,

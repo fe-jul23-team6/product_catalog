@@ -1,5 +1,5 @@
-import { Colors } from 'types/Color';
-import { SortOption } from 'types/SortOption';
+import { Colors, SortOption } from 'types';
+
 import { BASE_URL } from './fetchProducts';
 
 export const MESSAGES = {

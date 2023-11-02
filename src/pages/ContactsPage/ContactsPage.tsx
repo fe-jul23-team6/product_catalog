@@ -1,7 +1,5 @@
-import { ContactsCard, PageTitle } from 'components';
-import { Breadcrumbs } from 'components/UI';
-
-import { contactsData } from 'utils/contactsData';
+import { Breadcrumbs, ContactsCard, PageTitle } from 'components';
+import { contactsData } from 'utils';
 
 import styles from './ContactsPage.module.scss';
 

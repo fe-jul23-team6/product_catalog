@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 
 import {
-  CartItem, PageTitle, Modal, SuccessBuy,
+  CartItem, PageTitle, SuccessBuy,
 } from 'components';
 import { ProductsContext } from 'context';
 
@@ -12,7 +12,7 @@ import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 
 import { Phone } from 'types';
-import { getPhonesByIds } from 'services/products.service';
+import { getPhonesByIds } from 'services';
 
 import styles from './CartPage.module.scss';
 
@@ -169,8 +169,6 @@ export const CartPage: React.FC = () => {
       </div>
 
       <SuccessBuy setIsOpen={setIsModalOpen} isModalOpen={isModalOpen} />
-
     </>
-
   );
 };
