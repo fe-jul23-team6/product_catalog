@@ -22,6 +22,55 @@
     white-space: nowrap !important;
   }
 
+  &__wrapper {
+    padding-top: 24px;
+    text-align: left;
+
+    h1 {
+      font-size: 32px;
+      font-style: normal;
+      line-height: 41px;
+      font-weight: 800;
+      letter-spacing: -0.32px;
+      background: linear-gradient(90deg, var(--primeTextColor) 0%, var(--primeAccentColor) 50%, var(--primeBgColor) 100%);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-text 1.5s linear;
+      display: inline-block;
+
+      @media (min-width: 640px) {
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -0.48px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      padding-top: 40px;
+    }
+  }
+
+  @keyframes gradient-text {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      margin-left: -100%;
+      width: 200px;
+    }
+
+    100% {
+      margin-left: 100%;
+    }
+
+  }
+
   &__sliderBig {
     display: flex;
     text-align: center;
