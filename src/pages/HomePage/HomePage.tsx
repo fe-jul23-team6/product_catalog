@@ -15,7 +15,7 @@ import {
 } from 'services/products.service';
 import { Phone } from 'types';
 import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
-import { useWindowWidth } from 'hooks/useWindowWidth';
+import { useWindowWidth } from 'hooks';
 
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
