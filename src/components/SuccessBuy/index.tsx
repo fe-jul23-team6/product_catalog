@@ -1,0 +1,1 @@
+export { SuccessBuy } from './SuccessBuy';

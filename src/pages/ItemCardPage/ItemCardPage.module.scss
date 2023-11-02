@@ -129,7 +129,7 @@
 
 .group_colors {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
   border-bottom: 1px solid var(--elementsColor);
   padding-bottom: 24px;
@@ -164,7 +164,7 @@
 
 .price {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 32px;
   gap: 8px;
