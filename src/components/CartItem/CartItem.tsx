@@ -34,7 +34,7 @@ export const CartItem: React.FC<Props> = ({
         >
           <CloseSvg className={styles['cart-item__remove']} />
         </button>
-        <NavLink to={`/phones/${phone.itemId}`}>
+        <NavLink to={`/${phone.category}/${phone.itemId}`}>
           <div className={styles['cart-item__top-container']}>
             <img
               className={styles['cart-item__img']}
@@ -43,7 +43,7 @@ export const CartItem: React.FC<Props> = ({
             />
           </div>
         </NavLink>
-        <NavLink to={`/phones/${phone.itemId}`}>
+        <NavLink to={`/${phone.category}/${phone.itemId}`}>
           <h4 className={styles['cart-item__title']}>
             {phone.name}
           </h4>

@@ -8,7 +8,7 @@ import styles from './ContactsPage.module.scss';
 export const ContactsPage = () => {
   return (
     <div className={styles.contacts}>
-      <Breadcrumbs to="/contacts" text="Contacts" />
+      <Breadcrumbs />
 
       <PageTitle title="Contacts" />
 

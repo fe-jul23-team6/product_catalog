@@ -26,7 +26,9 @@ type ProductsContextType = {
   checkInCart: (id: number) => boolean;
   checkInFav: (id: number) => boolean;
   isCartEmpty: boolean;
-  setIsCartEmpty: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCartEmpty: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentProductName: (name: string) => void;
+  currentProductName: string
 };
 
 export const ProductsContext = createContext<ProductsContextType>({
@@ -44,11 +46,14 @@ export const ProductsContext = createContext<ProductsContextType>({
   checkInFav: () => false,
   isCartEmpty: false,
   setIsCartEmpty: () => {},
+  setCurrentProductName: () => {},
+  currentProductName: '',
 });
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const [isCartEmpty, setIsCartEmpty] = useState(false);
   const [cartItems, setCartItems] = useState<Phone[]>([]);
+  const [currentProductName, setCurrentProductName] = useState('');
 
   const storedCart = localStorage.getItem('cartItems');
   const [currentCart, setCurrentCart] = useState<LocalStorageCart>(
@@ -163,6 +168,8 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     checkInFav,
     isCartEmpty,
     setIsCartEmpty,
+    setCurrentProductName,
+    currentProductName,
   };
 
   return (
