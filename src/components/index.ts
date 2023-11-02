@@ -1,5 +1,6 @@
 export { Card } from './Card';
 export { Modal } from './Modal';
+export { SuccessBuy } from './SuccessBuy';
 export { Footer } from './Footer';
 export { Header } from './Header';
 export { CartItem } from './CartItem';

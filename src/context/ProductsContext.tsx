@@ -57,6 +57,9 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
       : [],
   );
 
+  console.log(cartItems);
+  console.log(currentCart);
+
   const storedFavouritesIds = localStorage.getItem('favouritesIds');
   const currentFavoritesIds: number[] = JSON.parse(storedFavouritesIds || '[]');
 
@@ -141,11 +144,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
   };
 
   const checkInFav = (id: number) => {
-    if (!currentFavoritesIds.includes(id)) {
-      return false;
-    }
-
-    return true;
+    return currentFavoritesIds.includes(id);
   };
 
   const value = {

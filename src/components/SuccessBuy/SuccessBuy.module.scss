@@ -1,0 +1,86 @@
+.success {
+  background-color: var(--secondaryBGColor);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.288);
+  color: var(--primeTextColor);
+  font-family: var(--font-family);
+
+  text-align: center;
+
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 60px 30px;
+  }
+
+  &__title {
+    font-size: 30px;
+    padding: 10px 0;;
+    line-height: 110%;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 110%;
+  }
+
+  &__message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__secret {
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.5s;
+
+    padding: 5px 50px;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 500% 500%;
+    color: white;
+    font-family: var(--font-family);
+    animation: gradient 5s ease infinite;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      transform: scale(1.2);
+      transition: 0.1s;
+    }
+  }
+
+  &__close {
+    fill: var(--primeTextColor);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: 0.3s;
+
+    &:hover {
+      fill: var(--secondaryTextColor);
+    }
+
+    &-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

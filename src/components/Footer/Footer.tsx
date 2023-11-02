@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
           Contacts
         </NavLink>
         <NavLink
-          to="https://www.president.gov.ua/ua/documents/constitution/konstituciya-ukrayini-rozdil-ii"
+          to="/rights"
           className={styles.nav__link}
         >
           Rights

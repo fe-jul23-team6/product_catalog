@@ -15,22 +15,23 @@ html {
   &__body {
     padding: 24px 16px 64px;
     min-width: 320px;
-    min-height: 48vh;
+    min-height: 75vh;
 
     @media (min-width: 640px) {
       padding-inline: 24px;
-      min-height: 70vh;
+      min-height: 80vh;
     }
 
     @media (min-width: 1200px) {
       padding-inline: 32px;
       padding-bottom: 80px;
+      min-height: 85vh;
     }
 
     @media (min-width: 1440px) {
       padding-inline: 152px;
       max-width: 1440px;
-      min-height: 80vh;
+      min-height: 88vh;
       margin-inline: auto;
     }
   }
