@@ -10,6 +10,7 @@ import { ReactComponent as FavSvg }
   from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as CartSvg }
   from 'assets/img/icons/shopping-bag_icon.svg';
+import classNames from 'classnames';
 import styles from './BurgerMenu.module.scss';
 
 type Props = {
@@ -17,6 +18,12 @@ type Props = {
 };
 
 export const BurgerMenu: FC<Props> = ({ setIsMenuOpen }) => {
+  const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
+    styles.nav__link, {
+      [styles['nav__link--active']]: isActive,
+    },
+  );
+
   const toggleMenu = () => {
     setIsMenuOpen(false);
   };
@@ -48,13 +55,13 @@ export const BurgerMenu: FC<Props> = ({ setIsMenuOpen }) => {
         </div>
 
         <div className={styles.menu__list}>
-          <div className={styles.menu__nav}>
+          <nav className={styles.menu__nav}>
             <ul
               className={styles.nav__list}
             >
               <li className={styles.nav__item}>
                 <NavLink
-                  className={`${styles.nav__link} ${styles['nav__link--active']}`}
+                  className={getLinkClass}
                   to="/"
                 >
                   Home
@@ -62,24 +69,33 @@ export const BurgerMenu: FC<Props> = ({ setIsMenuOpen }) => {
               </li>
 
               <li className={styles.nav__item}>
-                <NavLink className={styles.nav__link} to="/phones">
+                <NavLink
+                  className={getLinkClass}
+                  to="/phones"
+                >
                   Phones
                 </NavLink>
               </li>
 
               <li className={styles.nav__item}>
-                <NavLink className={styles.nav__link} to="/tablets">
+                <NavLink
+                  className={getLinkClass}
+                  to="/tablets"
+                >
                   Tablets
                 </NavLink>
               </li>
 
               <li className={styles.nav__item}>
-                <NavLink className={styles.nav__link} to="/accessories">
+                <NavLink
+                  className={getLinkClass}
+                  to="/accessories"
+                >
                   Accessories
                 </NavLink>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
 
         <div
