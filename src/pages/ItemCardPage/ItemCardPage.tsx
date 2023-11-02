@@ -39,7 +39,7 @@ export const ItemCardPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-
+    window.scrollTo(0, 0);
     getPhoneById(productId)
       .then((phoneFromServer) => {
         setPhone(phoneFromServer.productInfo);
