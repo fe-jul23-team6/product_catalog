@@ -31,7 +31,7 @@ export const Pagination: React.FC<Props> = ({
 
   const pageCount = Math.ceil(total / perPage);
 
-  const maxFromPage = pageCount - VISIBLE_PAGES_COUNT + 1;
+  const maxFromPage = Math.max(1, (pageCount - VISIBLE_PAGES_COUNT + 1));
 
   let fromPage;
 
