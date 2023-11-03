@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -125,32 +125,40 @@ export const HomePage = () => {
           className={styles['home__sliderBig-swiper']}
         >
           <SwiperSlide>
-            <img
-              width="97%"
-              src={imageUrl1}
-              alt="iPhone 14 Pro"
-            />
+            <NavLink to="/phones">
+              <img
+                width="97%"
+                src={imageUrl1}
+                alt="iPhone 14 Pro"
+              />
+            </NavLink>
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              width="97%"
-              src={imageUrl2}
-              alt="iPhones"
-            />
+            <NavLink to="/phones">
+              <img
+                width="97%"
+                src={imageUrl2}
+                alt="iPhones"
+              />
+            </NavLink>
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              width="97%"
-              src={imageUrl3}
-              alt="iTabs"
-            />
+            <NavLink to="/tablets">
+              <img
+                width="97%"
+                src={imageUrl3}
+                alt="iTabs"
+              />
+            </NavLink>
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              width="97%"
-              src={imageUrl4}
-              alt="Apple Accessories"
-            />
+            <NavLink to="/accessories">
+              <img
+                width="97%"
+                src={imageUrl4}
+                alt="Apple Accessories"
+              />
+            </NavLink>
           </SwiperSlide>
         </Swiper>
 
