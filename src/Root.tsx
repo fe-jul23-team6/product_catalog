@@ -9,8 +9,8 @@ import {
   CartPage,
   HomePage,
   RightsPage,
+  PhonesPage,
   TabletsPage,
-  CatalogPage,
   ContactsPage,
   ItemCardPage,
   NotFoundPage,
@@ -26,7 +26,7 @@ export const Root = () => (
         <Route index element={<HomePage />} />
 
         <Route path="phones">
-          <Route index element={<CatalogPage />} />
+          <Route index element={<PhonesPage />} />
           <Route path=":productId" element={<ItemCardPage />} />
         </Route>
 
