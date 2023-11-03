@@ -7,6 +7,12 @@
     line-height: 41px;
     font-weight: 800;
     letter-spacing: -0.32px;
+    background: linear-gradient(90deg, var(--primeTextColor) 0%, var(--primeAccentColor) 50%, var(--primeBgColor) 100%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
   }
 }
 
