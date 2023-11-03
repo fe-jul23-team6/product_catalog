@@ -1,18 +1,26 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 
-import { Dropdown, Loader, Breadcrumbs } from 'components/UI';
-import { CatalogTable, PageTitle, Pagination } from 'components';
+import {
+  Loader,
+  Dropdown,
+  PageTitle,
+  Pagination,
+  Breadcrumbs,
+  CatalogTable,
+} from 'components';
 
 import {
+  MESSAGES,
+  SORT_OPTION,
   DEFAULT_PAGE,
   DEFAULT_SORT_BY,
-  MESSAGES,
   PAGE_SIZE_OPTIONS,
-  SORT_OPTION,
-} from 'utils/constants';
-import { SortOption, Phone } from 'types';
-import { getAccessories } from 'services/products.service';
+} from 'utils';
+
+import { getAccessories } from 'services';
+
+import { Phone, SortOption } from 'types';
 
 import styles from './AccessoriesPage.module.scss';
 

@@ -1,18 +1,19 @@
 import { useContext } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { Card, Button, Loader } from 'components';
 import { ProductsContext } from 'context';
-import { Card } from 'components';
-import { Button, Loader } from 'components/UI';
+import { MESSAGES } from 'utils';
 
 import { Phone } from 'types';
-import { MESSAGES } from 'utils/constants';
 
 import arrowStyles from '../Pagination/Pagination.module.scss';
+import styles from './SliderSmall.module.scss';
+
 import 'swiper/scss/navigation';
 import 'swiper/scss';
-import styles from './SliderSmall.module.scss';
 
 type Props = {
   selectedPhones: Phone[],

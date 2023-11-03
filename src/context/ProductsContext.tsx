@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable max-len */
 import {
-  createContext,
-  ReactNode,
   useState,
+  ReactNode,
+  createContext,
 } from 'react';
-import { Phone } from 'types';
-import { LocalStorageCart } from 'types/LocalStorageCart';
+
+import { Phone, LocalStorageCart } from 'types';
 
 type ProductsProviderProps = {
   children: ReactNode;
@@ -61,9 +59,6 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
       ? JSON.parse(storedCart)
       : [],
   );
-
-  console.log(cartItems);
-  console.log(currentCart);
 
   const storedFavouritesIds = localStorage.getItem('favouritesIds');
   const currentFavoritesIds: number[] = JSON.parse(storedFavouritesIds || '[]');

@@ -1,17 +1,18 @@
-import ModalWindow, { Props } from 'react-modal';
-import './Modal.scss';
-import { useClickOutside } from 'hooks';
 import { useRef } from 'react';
-import classNames from 'classnames';
+import ModalWindow, { Props } from 'react-modal';
+
+import { useClickOutside } from 'hooks';
+
+import './Modal.scss';
 
 ModalWindow.setAppElement('#root');
 
-interface ModalProps extends Props {
+type ModalProps = Props & {
   toggleModal?: (isOpen: boolean) => void;
   customClassName?: string;
   children: React.ReactNode;
   contentClassName?: string;
-}
+};
 
 const customStyles = {
   overlay: {
@@ -32,7 +33,7 @@ const customStyles = {
   },
 };
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
   children,
   isOpen = false,
   closeTimeoutMS = 200,
@@ -65,6 +66,3 @@ const Modal: React.FC<ModalProps> = ({
     </ModalWindow>
   );
 };
-
-export { Modal };
-export type { ModalProps };

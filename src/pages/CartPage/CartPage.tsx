@@ -1,18 +1,14 @@
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 
-import {
-  CartItem, PageTitle, Modal, SuccessBuy,
-} from 'components';
+import { CartItem, PageTitle, SuccessBuy } from 'components';
 import { ProductsContext } from 'context';
+import { getPhonesByIds } from 'services';
 
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
 
 import { Phone } from 'types';
-import { getPhonesByIds } from 'services/products.service';
 
 import styles from './CartPage.module.scss';
 
@@ -23,15 +19,15 @@ export const CartPage: React.FC = () => {
   };
 
   const {
-    currentCart,
-    setCurrentCart,
     cartItems,
-    setCartItems,
-    handleDelete,
-    handleCountMinus,
-    handleCountPlus,
+    currentCart,
     isCartEmpty,
+    handleDelete,
+    setCartItems,
+    setCurrentCart,
     setIsCartEmpty,
+    handleCountPlus,
+    handleCountMinus,
   } = useContext(ProductsContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,7 +54,7 @@ export const CartPage: React.FC = () => {
     setCartItems(itemsFromServer);
   };
 
-  const handleCheckout = (event: any) => {
+  const handleCheckout = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.stopPropagation();
     setIsModalOpen(true);
     setIsCartEmpty(true);
@@ -169,7 +165,6 @@ export const CartPage: React.FC = () => {
       </div>
 
       <SuccessBuy setIsOpen={setIsModalOpen} isModalOpen={isModalOpen} />
-
     </>
 
   );

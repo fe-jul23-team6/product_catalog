@@ -3,17 +3,22 @@ import { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import classnames from 'classnames';
 
-import { Button, Loader, Breadcrumbs } from 'components/UI';
-import { SliderSmall } from 'components';
-import { ProductsContext } from 'context';
+import {
+  Loader,
+  Button,
+  SliderSmall,
+  Breadcrumbs,
+} from 'components';
 
-import { ButtonType, FullPhoneData, Phone } from 'types';
 import {
   getPhoneById,
   getRecommendedProducts,
-} from 'services/products.service';
-import { MESSAGES, PHONE_COLORS } from 'utils/constants';
-import { BASE_URL } from 'utils/fetchProducts';
+} from 'services';
+
+import { ProductsContext } from 'context';
+import { BASE_URL, MESSAGES, PHONE_COLORS } from 'utils';
+
+import { ButtonType, FullPhoneData, Phone } from 'types';
 
 import styles from './ItemCardPage.module.scss';
 
@@ -189,8 +194,7 @@ export const ItemCardPage = () => {
                         <div
                           className={classnames(
                             styles.outerrect,
-                            // eslint-disable-next-line @typescript-eslint/dot-notation
-                            { [styles['color__active']]: color === phone?.color },
+                            { [styles.color__active]: color === phone?.color },
                           )}
                         />
                       </div>

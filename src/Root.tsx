@@ -1,11 +1,10 @@
 import {
-  Navigate,
   Route,
-  HashRouter as Router,
   Routes,
+  Navigate,
+  HashRouter as Router,
 } from 'react-router-dom';
 
-import { App } from './App';
 import {
   CartPage,
   HomePage,
@@ -18,6 +17,7 @@ import {
   FavouritesPage,
   AccessoriesPage,
 } from './pages';
+import { App } from './App';
 
 export const Root = () => (
   <Router>

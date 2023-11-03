@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { BurgerMenu } from 'components';
 import { ProductsContext } from 'context';

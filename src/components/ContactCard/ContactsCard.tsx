@@ -1,4 +1,5 @@
 import { ContactsDataType } from 'types';
+
 import styles from './ContactsCard.module.scss';
 
 interface Props {

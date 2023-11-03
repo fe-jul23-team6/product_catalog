@@ -1,8 +1,10 @@
-import { FC, useEffect, useState } from 'react';
-import { getPhones } from 'services/products.service';
+import { useEffect, useState } from 'react';
+
+import { getPhones } from 'services';
+
 import { Phone } from 'types';
 
-export const PhonesPage: FC = () => {
+export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
 
   useEffect(() => {

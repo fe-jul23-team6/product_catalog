@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
-import { PageTitle, SliderSmall } from 'components';
-import { Button } from 'components/UI';
-
+import { Button, PageTitle, SliderSmall } from 'components';
+import { LONG_BANNERS, SQUARE_BANNERS } from 'utils';
+import { useWindowWidth } from 'hooks';
 import {
   getPhones,
   getTablets,
   getAccessories,
   getNewestPhones,
   getDiscountedPhones,
-} from 'services/products.service';
-import { Phone } from 'types';
-import { LONG_BANNERS, SQUARE_BANNERS } from 'utils/constants';
-import { useWindowWidth } from 'hooks';
+} from 'services';
 
+import { Phone } from 'types';
+
+import styles from './HomePage.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss';
-import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [phonesCount, setPhonesCount] = useState(0);

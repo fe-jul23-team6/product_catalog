@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { ReactComponent as CloseSvg } from 'assets/img/icons/close_icon.svg';
 import { ReactComponent as PlusSvg } from 'assets/img/icons/plus_icon.svg';
 import { ReactComponent as MinusSvg } from 'assets/img/icons/minus_icon.svg';
 
-import { BASE_URL } from 'utils/fetchProducts';
+import { BASE_URL } from 'utils';
+
 import { Phone } from 'types';
 
 import styles from './CartItem.module.scss';

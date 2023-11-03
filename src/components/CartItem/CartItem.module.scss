@@ -24,7 +24,6 @@
       max-height: 66px;
       display: flex;
       justify-content: center;
-
     }
   }
 
@@ -33,6 +32,7 @@
 
     &-btn {
       background: none;
+      cursor: pointer;
     }
   }
 
@@ -48,7 +48,6 @@
     line-height: 16px;
     color: var(--primeTextColor);
     margin: 0;
-
   }
 
   &__bottom {
@@ -72,6 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     width: 32px;
     height: 32px;

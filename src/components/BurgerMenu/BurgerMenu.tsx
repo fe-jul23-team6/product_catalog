@@ -1,23 +1,21 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable max-len */
-import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+
 import logo from 'assets/img/logo.svg';
 import { ReactComponent as CloseSvg }
   from 'assets/img/icons/close_icon.svg';
-import { ReactComponent as FavSvg }
-  from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as CartSvg }
   from 'assets/img/icons/shopping-bag_icon.svg';
-import classNames from 'classnames';
+import { ReactComponent as FavSvg }
+  from 'assets/img/icons/favourites-default_icon.svg';
+
 import styles from './BurgerMenu.module.scss';
 
 type Props = {
   setIsMenuOpen: (isMenuOpen: boolean) => void;
 };
 
-export const BurgerMenu: FC<Props> = ({ setIsMenuOpen }) => {
+export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
     styles.nav__link, {
       [styles['nav__link--active']]: isActive,

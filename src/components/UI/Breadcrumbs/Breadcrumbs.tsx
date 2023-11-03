@@ -1,11 +1,11 @@
-/* eslint-disable react/require-default-props */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon }
   from 'assets/img/icons/home_icon.svg';
 import { ReactComponent as ChevronIcon }
   from 'assets/img/icons/chevron-up_icon.svg';
+
 import { ProductsContext } from 'context';
 
 import styles from './Breadcrumbs.module.scss';
@@ -16,7 +16,6 @@ const paths = [
   { label: 'Accessories', url: '/accessories' },
   { label: 'Contacts', url: '/contacts' },
   { label: 'Favourites', url: '/favourites' },
-
 ];
 
 export const Breadcrumbs: React.FC = () => {
@@ -41,7 +40,6 @@ export const Breadcrumbs: React.FC = () => {
         let linkName = paths.find(x => x.url === routeTo)?.label || name;
 
         if (productId && routeTo.indexOf(productId) > 0) {
-          console.log(routeTo, productId);
           linkName = currentProductName;
         }
 
@@ -52,7 +50,10 @@ export const Breadcrumbs: React.FC = () => {
             </div>
 
             <div className={`${styles['location__selected-page']} ${styles['selected-page']}`}>
-              <Link to={routeTo} className={styles['selected-page__paragraph']}>
+              <Link
+                to={routeTo}
+                className={styles['selected-page__paragraph']}
+              >
                 {linkName}
               </Link>
             </div>

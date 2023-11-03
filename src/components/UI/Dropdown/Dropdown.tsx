@@ -1,17 +1,11 @@
-import React,
-{
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-
+import { useRef, useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { ReactComponent as Arrow }
   from 'assets/img/icons/chevron-up_icon.svg';
 
-import { getSearchWith } from 'utils/helpers';
+import { getSearchWith } from 'utils';
 
 import styles from './Dropdown.module.scss';
 
