@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import { PaginationNumbering } from 'components/PaginationNumbering';
-import { Button } from 'components';
 import {
   getPages,
   getSearchWith,
   DEFAULT_PAGE,
   VISIBLE_PAGES_COUNT,
 } from 'utils';
+import { Button } from 'components';
+import { PaginationNumbering } from './PaginationNumbering';
 
 import styles from './Pagination.module.scss';
 
