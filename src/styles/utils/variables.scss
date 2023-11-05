@@ -17,6 +17,15 @@
 }
 
 :root {
+  --font-family: 'Mont', sans-serif;
+  --font-size: 14px;
+
+  --desktopUW-min-width: 1200px;
+  --desktop-min-width: 640px;
+  --tablet-min-width: 320px;
+}
+
+:root[data-theme='dark'] {
   --primeTextColor: #f1f2f9;
   --secondaryTextColor: #75767f;
 
@@ -34,11 +43,24 @@
   --phoneColor2: #5f7170;
   --phoneColor3: #4c4c4c;
   --phoneColor4: #f0f0f0;
+}
 
-  --font-family: 'Mont', sans-serif;
-  --font-size: 14px;
+:root[data-theme='light'] {
+  --primeTextColor: #0f0f11;
+  --secondaryTextColor: #89939a;
 
-  --desktopUW-min-width: 1200px;
-  --desktop-min-width: 640px;
-  --tablet-min-width: 320px;
+  --primeAccentColor: #905bff;
+  --secondaryAccentColor: #a378ff;
+  --selectedFavoriteColor: #eb5757;
+
+  --primeBgColor: #fafbfc;
+  --secondaryBGColor: #ffffff;
+  --thirdaryBgColor: #ffffff;
+  --elementsColor: #e2e6e9;
+  --iconsColor: #b4bdc3;
+
+  --phoneColor1: #fcdbc1;
+  --phoneColor2: #5f7170;
+  --phoneColor3: #4c4c4c;
+  --phoneColor4: #f0f0f0;
 }
