@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -6,6 +6,7 @@ import { BurgerMenu } from 'components';
 import { ProductsContext } from 'context';
 
 import logo from 'assets/img/logo.svg';
+import logolight from 'assets/img/logo-light.svg';
 import { ReactComponent as Heart }
   from 'assets/img/icons/favourites-default_icon.svg';
 import { ReactComponent as Cart }
@@ -18,9 +19,16 @@ import styles from './Header.module.scss';
 type Props = {
   isMenuOpen: boolean;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
+  theme: string;
+  setTheme: (theme: string) => void;
 };
 
-export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
+export const Header: React.FC<Props> = ({
+  isMenuOpen,
+  setIsMenuOpen,
+  theme,
+  setTheme,
+}) => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
     styles['header__menu-link'], {
       [styles['is-active']]: isActive,
@@ -35,6 +43,14 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   const toggleMenu = () => {
     setIsMenuOpen(true);
+  };
+
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
   };
 
   const {
@@ -86,7 +102,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             >
               <img
                 className={styles['header__logo-size']}
-                src={logo}
+                src={theme === 'dark' ? logo : logolight}
                 alt="Nice Gadgets logo"
               />
             </NavLink>
@@ -125,40 +141,54 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           </div>
 
           <div className={styles.header__icons}>
-            <NavLink
-              to="/favourites"
-              className={getIconClass}
+            <div className={styles['header__icons-theme']}>
+              <NavLink
+                to="#"
+                onClick={toggleTheme}
+                className={classNames(
+                  styles['header__icons-theme-icon'], {
+                    [styles['header__icons-theme-icon-light']]: theme === 'light',
+                  },
+                )}
+              />
+            </div>
 
-            >
-              <Heart />
-              { !!favItemCount && (
-                <div className={styles['header__icon-count']}>
-                  {favItemCount}
-                </div>
-              ) }
-            </NavLink>
+            <div className={styles.header__disappearing_icons}>
+              <NavLink
+                to="/favourites"
+                className={getIconClass}
 
-            <NavLink
-              to="/cart"
-              className={getIconClass}
-            >
-              <Cart />
-              { !!cartItemCount && (
-                <div className={styles['header__icon-count']}>
-                  {cartItemCount}
-                </div>
-              ) }
-            </NavLink>
-          </div>
+              >
+                <Heart />
+                {!!favItemCount && (
+                  <div className={styles['header__icon-count']}>
+                    {favItemCount}
+                  </div>
+                )}
+              </NavLink>
 
-          <div className={styles['header__icons-burger']}>
-            <NavLink
-              to="#"
-              onClick={toggleMenu}
-              className={getIconClass}
-            >
-              <Burger />
-            </NavLink>
+              <NavLink
+                to="/cart"
+                className={getIconClass}
+              >
+                <Cart />
+                {!!cartItemCount && (
+                  <div className={styles['header__icon-count']}>
+                    {cartItemCount}
+                  </div>
+                )}
+              </NavLink>
+            </div>
+
+            <div className={styles['header__icons-burger']}>
+              <NavLink
+                to="#"
+                onClick={toggleMenu}
+                className={getIconClass}
+              >
+                <Burger />
+              </NavLink>
+            </div>
           </div>
         </header>
       )

@@ -1,13 +1,18 @@
 import { NavLink } from 'react-router-dom';
 
 import logo from 'assets/img/logo.svg';
+import logolight from 'assets/img/logo-light.svg';
 import { ReactComponent as ArrowSvg } from 'assets/img/icons/chevron-up_icon.svg';
 
 import { BackToTopArrow } from 'components';
 
 import styles from './Footer.module.scss';
 
-export const Footer: React.FC = () => {
+type Props = {
+  theme: string;
+};
+
+export const Footer: React.FC<Props> = ({ theme }) => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -17,7 +22,7 @@ export const Footer: React.FC = () => {
       <div className={styles.footer__logo}>
         <NavLink to="/">
           <img
-            src={logo}
+            src={theme === 'dark' ? logo : logolight}
             className={styles['footer__logo-img']}
             alt="logo"
           />

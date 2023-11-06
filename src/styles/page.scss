@@ -1,5 +1,6 @@
 html {
   background-color: var(--primeBgColor);
+  transition: background-color 0.3s linear;
 }
 
 .page {
@@ -11,6 +12,7 @@ html {
   font-weight: 600;
   line-height: 150%;
   text-align: left;
+  transition: color 0.6s linear;
 
   &__body {
     padding: 24px 16px 64px;
