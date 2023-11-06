@@ -11,6 +11,7 @@ import { ReactComponent as ChevronIcon }
 import { ButtonType } from 'types';
 
 import styles from './Button.module.scss';
+import { ModalBtnAnimate } from '../ModalBtnAnimate';
 
 type Props = {
   btnType: keyof typeof ButtonType,
@@ -22,6 +23,7 @@ type Props = {
   high?: boolean,
   chevron?: boolean;
   onClick?: () => void;
+  hasModale?: boolean,
 };
 
 export const Button: React.FC<Props> = ({
@@ -33,6 +35,7 @@ export const Button: React.FC<Props> = ({
   chevronButtonType,
   chevron,
   high,
+  hasModale,
   onClick,
 }) => {
   const color = btnType === ButtonType.Color;
@@ -68,6 +71,9 @@ export const Button: React.FC<Props> = ({
     >
 
       {main && !isActive && 'Add to cart'}
+      {main && hasModale && (
+        <ModalBtnAnimate />
+      )}
       {main && isActive && 'Added to cart'}
 
       {pagination && content}
