@@ -12,3 +12,4 @@ export { SliderSmall } from './SliderSmall';
 export { ContactsCard } from './ContactCard';
 export { CatalogTable } from './CatalogTable';
 export { BackToTopArrow } from './BackToTopArrow';
+export { ModalAnimeAddToCart } from './ModalAnimeAddToCart';

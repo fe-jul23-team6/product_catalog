@@ -1,0 +1,30 @@
+.animate {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation: cart 2s linear;
+
+  &__active {
+    display: block;
+    position: absolute;
+  }
+}
+
+@keyframes cart {
+  0% {
+    left: 0;
+  }
+  45% {
+    fill: #f1f2f9;
+    left: 50%;
+  }
+  55% {
+    left: 50%;
+    fill: red;
+  }
+  100% {
+    left: 93%;
+    fill: red;
+  }
+}

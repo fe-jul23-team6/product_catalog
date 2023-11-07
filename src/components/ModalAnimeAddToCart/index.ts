@@ -1,0 +1,1 @@
+export { ModalAnimeAddToCart } from './ModalAnimeAddToCart';

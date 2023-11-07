@@ -1,6 +1,7 @@
 .card {
   padding: 32px;
   display: flex;
+  position: relative;
   flex-direction: column;
   background-color: var(--secondaryBGColor);
   color: var(--primeTextColor);

@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { ProductsContext } from 'context';
-import { Button } from 'components';
+import { Button, ModalAnimeAddToCart } from 'components';
 import { BASE_URL } from 'utils';
 
 import { ButtonType, Phone } from 'types';
@@ -22,15 +22,19 @@ export const Card: React.FC<Props> = ({
 }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(isOrdered);
   const [isAddedToFav, setIsAddedToFav] = useState(isFavourite);
+  const [hasModale, setHasModale] = useState(false);
 
   const {
     toggleItemToCart,
     toggleItemToFavourites,
     checkInCart,
     checkInFav,
+    currentCart,
   } = useContext(ProductsContext);
 
   const handleToggleCart = (id: number) => {
+    setHasModale(!checkInCart(id));
+
     toggleItemToCart(id);
 
     setIsAddedToCart(checkInCart(id));
@@ -54,6 +58,13 @@ export const Card: React.FC<Props> = ({
             src={`${BASE_URL}/${phone.image}`}
             alt={phone.name}
           />
+
+          {hasModale && (
+            <ModalAnimeAddToCart
+              hasModale={hasModale}
+              itemImg={phone.image}
+            />
+          )}
         </div>
 
         <h2 className={styles.card__title}>
@@ -96,6 +107,7 @@ export const Card: React.FC<Props> = ({
         <Button
           btnType={ButtonType.Main}
           isActive={isAddedToCart}
+          hasModale={hasModale}
           onClick={() => {
             handleToggleCart(+phone.id);
           }}
