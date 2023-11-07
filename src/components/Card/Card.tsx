@@ -29,11 +29,13 @@ export const Card: React.FC<Props> = ({
     toggleItemToFavourites,
     checkInCart,
     checkInFav,
+    currentCart,
   } = useContext(ProductsContext);
 
   const handleToggleCart = (id: number) => {
+    setHasModale(!checkInCart(id));
+
     toggleItemToCart(id);
-    setHasModale(!hasModale);
 
     setIsAddedToCart(checkInCart(id));
   };
