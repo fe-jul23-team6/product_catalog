@@ -21,10 +21,10 @@
   }
   55% {
     left: 50%;
-    fill: red;
+    fill: var(--primeAccentColor);
   }
   100% {
     left: 93%;
-    fill: red;
+    fill: var(--primeAccentColor);
   }
 }
