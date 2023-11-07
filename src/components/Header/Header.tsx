@@ -88,6 +88,7 @@ export const Header: React.FC<Props> = ({
     isMenuOpen
       ? (
         <BurgerMenu
+          theme={theme}
           setIsMenuOpen={setIsMenuOpen}
         />
       )

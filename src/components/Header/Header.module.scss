@@ -124,7 +124,7 @@
     transition: 0.3s;
 
     &--active {
-      background-color: #323542;
+      background-color: var(--primeBgColor);
     }
   }
 
