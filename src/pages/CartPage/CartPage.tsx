@@ -40,7 +40,7 @@ export const CartPage: React.FC = () => {
   }, 0);
 
   const loadData = async () => {
-    if (currentCart.length === 0) {
+    if (!currentCart.length) {
       setCartItems([]);
       setIsCartEmpty(true);
 
@@ -65,10 +65,12 @@ export const CartPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!currentCart) {
+    if (!currentCart.length) {
       setIsCartEmpty(true);
     }
+  }, [currentCart.length]);
 
+  useEffect(() => {
     loadData();
   }, []);
 
