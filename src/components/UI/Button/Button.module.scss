@@ -160,12 +160,11 @@
 
     &:hover {
       background-color: var(--secondaryAccentColor);
-
     }
   }
 
   &__active-main {
-    background-color: var(--thirdaryBgColor);
+    background-color: var(--elementsColor);
     transition: 0.5s;
   }
 }

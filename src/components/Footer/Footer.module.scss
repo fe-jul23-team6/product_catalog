@@ -64,6 +64,16 @@
       align-items: flex-end;
       flex: 1 0 0;
       justify-content: flex-end;
+
+      &_block {
+        &:hover {
+          background-color: var(--iconsColor) !important;
+        }
+
+        &:hover:active {
+          background-color: var(--primeAccentColor) !important;
+        }
+      }
     }
 
     &_link {
@@ -84,7 +94,15 @@
       display: inline-block;
       width: 32px;
       height: 32px;
-      background: var(--thirdaryBgColor);
+      background-color: var(--thirdaryBgColor);
+
+      &:hover {
+        background-color: var(--iconsColor) !important;
+      }
+
+      &:hover:active {
+        background-color: var(--primeAccentColor) !important;
+      }
     }
 
     &_img {
