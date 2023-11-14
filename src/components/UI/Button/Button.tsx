@@ -11,7 +11,6 @@ import { ReactComponent as ChevronIcon }
 import { ButtonType } from 'types';
 
 import styles from './Button.module.scss';
-import { ModalBtnAnimate } from '../ModalBtnAnimate';
 
 type Props = {
   btnType: keyof typeof ButtonType,
@@ -71,9 +70,6 @@ export const Button: React.FC<Props> = ({
     >
 
       {main && !isActive && 'Add to cart'}
-      {main && hasModale && (
-        <ModalBtnAnimate />
-      )}
       {main && isActive && 'Added to cart'}
 
       {pagination && content}
