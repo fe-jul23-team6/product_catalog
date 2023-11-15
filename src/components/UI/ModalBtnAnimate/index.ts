@@ -1,1 +1,0 @@
-export { ModalBtnAnimate } from './ModalBtnAnimate';
