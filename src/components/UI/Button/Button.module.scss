@@ -1,14 +1,14 @@
 .button {
   width: 32px;
   height: 32px;
-  color: var(--primeTextColor);
+  color: var(--phoneColor4);
   font-family: var(--font-family);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
-  transition: transform 0.3s ease-in;
+  transition: transform 0.3s ease-in, background-color 0.1s ease-in;
 
   @media(min-width: 640px) {
     &__high {
@@ -45,6 +45,8 @@
   &__pagination {
     background-color: var(--secondaryBGColor);
     border-radius: 2px;
+    border: 1px solid rgba(63, 63, 63, 0.2);
+    color: var(--primeTextColor);
 
     &:hover {
       background-color: var(--elementsColor);
@@ -53,8 +55,15 @@
 
   &__active-pagination {
     background-color: var(--primeAccentColor);
+    color: #f1f2f9;
+    cursor: default;
 
     &:hover {
+      transform: scale(1);
+      background-color: var(--primeAccentColor);
+    }
+
+    &:hover:active {
       background-color: var(--primeAccentColor);
     }
   }
@@ -62,6 +71,7 @@
   &__slider {
     background-color: var(--thirdaryBgColor);
     border-radius: 2px;
+    border: 1px solid rgba(63, 63, 63, 0.2);
 
     &:hover {
       background-color: var(--iconsColor);
@@ -69,10 +79,10 @@
   }
 
   &__disabled-slider {
-    color: var(--iconsColor);
     background-color: var(--elementsColor);
-    border: 1px solid var(--iconsColor);
+    border: 1px solid rgba(63, 63, 63, 0.1);
     border-radius: 2px;
+    cursor: default;
 
     &:hover {
       transform: scale(1);
@@ -85,7 +95,7 @@
   }
 
   &__slider-icon-disabled {
-    fill: var(--iconsColor);
+    fill: var(--secondaryBGColor);
   }
 
   &__down {
@@ -136,17 +146,19 @@
     background-color: var(--thirdaryBgColor);
     border-radius: 2px;
     transition: 0.3s;
+    border: 1px solid rgba(63, 63, 63, 0.2);
+
     &:hover {
       background-color: var(--iconsColor);
+      fill: var(--primeBgColor);
     }
   }
 
   &__active-favourite {
-    background-color: var(--elementsColor);
-    border: 1px solid var(--elementsColor);
+    border: 1px solid rgba(63, 63, 63, 0.2);
 
     &:hover {
-      background-color: var(--elementsColor);
+      background-color: var(--iconsColor);
     }
   }
 
@@ -165,5 +177,6 @@
   &__active-main {
     background-color: var(--elementsColor);
     transition: 0.5s;
+    color: var(--primeTextColor);
   }
 }

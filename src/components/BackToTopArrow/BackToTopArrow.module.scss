@@ -27,10 +27,15 @@
   }
 
   &__block {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 32px;
     height: 32px;
+    border-radius: 2px;
     background-color: var(--thirdaryBgColor);
+    border: 1px solid rgba(63, 63, 63, 0.2);
+    transition: background-color 0.1s ease-in;
 
     &:hover {
       background-color: var(--iconsColor);
@@ -41,14 +46,8 @@
     }
   }
 
-  &__img {
-    width: 16px;
-    height: 16px;
-    margin: 8px;
-  }
-
   &.scrolling {
     opacity: 1;
-    box-shadow: 1px 1px 26px rgba(241, 242, 249, 0.64);
+    box-shadow: 0 0 28px rgba(241, 242, 249, 0.44);
   }
 }

@@ -30,11 +30,9 @@ export const Breadcrumbs: React.FC = () => {
 
   return (
     <div className={styles.location}>
-      <div className={styles['location__icon-home']}>
-        <Link to="/home" className={styles['location__icon-home-link']}>
-          <HomeIcon />
-        </Link>
-      </div>
+      <Link to="/home" className={styles['location__icon-home-link']}>
+        <HomeIcon />
+      </Link>
       {pathnames.map((name, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
         let linkName = paths.find(x => x.url === routeTo)?.label || name;

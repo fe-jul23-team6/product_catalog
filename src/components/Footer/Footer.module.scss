@@ -91,18 +91,14 @@
     }
 
     &_block {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 32px;
       height: 32px;
+      border-radius: 2px;
       background-color: var(--thirdaryBgColor);
-
-      &:hover {
-        background-color: var(--iconsColor) !important;
-      }
-
-      &:hover:active {
-        background-color: var(--primeAccentColor) !important;
-      }
+      border: 1px solid rgba(63, 63, 63, 0.2);
     }
 
     &_img {

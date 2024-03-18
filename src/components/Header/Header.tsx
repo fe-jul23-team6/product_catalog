@@ -158,7 +158,6 @@ export const Header: React.FC<Props> = ({
               <NavLink
                 to="/favourites"
                 className={getIconClass}
-
               >
                 <Heart />
                 {!!favItemCount && (
@@ -185,7 +184,7 @@ export const Header: React.FC<Props> = ({
               <NavLink
                 to="#"
                 onClick={toggleMenu}
-                className={getIconClass}
+                className={styles.header__icon}
               >
                 <Burger />
               </NavLink>

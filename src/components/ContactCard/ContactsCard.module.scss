@@ -1,5 +1,5 @@
 .card {
-  background: #323542;
+  background-color: var(--thirdaryBgColor);
   width: 200px;
   padding: 25px 20px;
   border-radius: 10px;
@@ -27,7 +27,7 @@
     align-items: center;
     margin: auto;
     transition: 0.3s;
-    box-shadow: 0px 5px 25px #0f1121;
+    box-shadow: 0px 5px 25px var(--contactShadow);
 
     &:hover {
       border-radius: 10px;
@@ -40,17 +40,19 @@
     padding-top: 20px;
     font-weight: 600;
     font-size: 18px;
+    color: var(--primeTextColor);
+    white-space: pre-wrap;
   }
 
   &__dev {
-    margin: 0;
-    font-size: 14px;
+    padding-top: 10px;
     font-weight: 600;
-    color: #75767f
+    color: var(--secondaryTextColor);
+    white-space: pre-wrap;
   }
 
   &__links {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -63,6 +65,6 @@
   }
 
   &__svg {
-    fill: #fff;
+    fill: var(--primeTextColor);
   }
 }

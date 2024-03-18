@@ -3,14 +3,9 @@
   align-items: center;
   gap: 10px;
 
-  &__icon-home {
+  &__icon-home-link {
     max-width: 16px;
     max-height: 16px;
-
-    &-link {
-      max-width: 16px;
-      max-height: 16px;
-    }
   }
 
   &__icon-chevron {

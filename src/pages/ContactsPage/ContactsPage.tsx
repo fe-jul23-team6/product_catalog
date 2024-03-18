@@ -14,7 +14,7 @@ export const ContactsPage = () => {
       <div className={styles.contacts__wrapper}>
         <div className={styles.contacts__content}>
           {contactsData.map(dev => (
-            <ContactsCard dev={dev} />
+            <ContactsCard key={dev.name} dev={dev} />
           ))}
         </div>
       </div>

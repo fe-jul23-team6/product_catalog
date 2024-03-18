@@ -1,4 +1,4 @@
-import OlyaPhoto from '../assets/img/devs/dev-olya.jpg';
+import OlgaPhoto from '../assets/img/devs/dev-olya.jpg';
 import JennyPhoto from '../assets/img/devs/dev-jenny.jpg';
 import DianaPhoto from '../assets/img/devs/dev-diana.jpg';
 import OleksiiPhoto from '../assets/img/devs/dev-oleksii.jpg';
@@ -8,7 +8,7 @@ export const contactsData = [
   {
     photo: DianaPhoto,
     name: 'Diana Honcharova',
-    position: 'Team-Lead | Full-stack Developer',
+    position: 'Team Lead,\nFull-stack Developer',
     linkedIn: 'https://www.linkedin.com/in/diana-honcharova-08a2131a7',
     gitHub: 'https://github.com/polinavafik',
     telegram: 'https://t.me/polinavafik',
@@ -24,8 +24,8 @@ export const contactsData = [
     email: 'yevheniia.sidanchenko@gmail.com',
   },
   {
-    photo: OlyaPhoto,
-    name: 'Olya Katiushyna',
+    photo: OlgaPhoto,
+    name: 'Olga\nKatiushyna',
     position: 'Full-stack Developer',
     linkedIn: 'https://www.linkedin.com/in/ola-katiushyna-katolista/',
     gitHub: 'https://github.com/KatOlista',
@@ -36,7 +36,7 @@ export const contactsData = [
     photo: OleksiiPhoto,
     name: 'Oleksii Andriushyn',
     position: 'Full-stack Developer',
-    linkedIn: 'https://www.linkedin.com/in/oleksii-andriushyn-859907192/',
+    linkedIn: 'https://www.linkedin.com/in/oleksii-andriushyn/',
     gitHub: 'https://github.com/Orpheus29',
     telegram: 'https://t.me/orpheus29',
     email: 'oleksii.andriushyn.dev@gmail.com',
