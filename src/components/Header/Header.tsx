@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -142,10 +143,12 @@ export const Header: React.FC<Props> = ({
           </div>
 
           <div className={styles.header__icons}>
-            <div className={styles['header__icons-theme']}>
+            <div
+              className={styles['header__icons-theme']}
+              onClick={toggleTheme}
+            >
               <NavLink
                 to="#"
-                onClick={toggleTheme}
                 className={classNames(
                   styles['header__icons-theme-icon'], {
                     [styles['header__icons-theme-icon-light']]: theme === 'light',
@@ -159,7 +162,7 @@ export const Header: React.FC<Props> = ({
                 to="/favourites"
                 className={getIconClass}
               >
-                <Heart />
+                <Heart className={styles['header__icon-svg']} />
                 {!!favItemCount && (
                   <div className={styles['header__icon-count']}>
                     {favItemCount}
@@ -171,7 +174,7 @@ export const Header: React.FC<Props> = ({
                 to="/cart"
                 className={getIconClass}
               >
-                <Cart />
+                <Cart className={styles['header__icon-svg']} />
                 {!!cartItemCount && (
                   <div className={styles['header__icon-count']}>
                     {cartItemCount}

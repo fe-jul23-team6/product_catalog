@@ -12,6 +12,7 @@
     padding: 0 12px;
     background: var(--thirdaryBgColor);
     border: 1px solid rgba(63, 63, 63, 0.1);
+    cursor: pointer;
 
     font-family: Mont;
     font-size: 14px;
@@ -23,6 +24,7 @@
     &:hover {
       border: 1px solid var(--iconsColor);
     }
+
     &:focus {
       border: 1px solid var(--primeAccentColor);
     }
@@ -55,7 +57,7 @@
 
   &__item {
     height: 32px;
-    color: var( --secondaryTextColor);
+    color: var(--secondaryTextColor);
     padding: 0 12px;
     display: flex;
     align-items: center;

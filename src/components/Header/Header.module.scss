@@ -64,6 +64,7 @@
 
   &__icons {
     display: flex;
+    cursor: pointer;
 
     &-theme {
       position: relative;
@@ -74,9 +75,25 @@
       padding: 16px;
       border-left: 1px solid var(--secondaryTextColor);
 
+      &:hover {
+        .header__icons-theme-icon {
+          animation: pulse 1s infinite alternate;
+
+          @keyframes pulse {
+            0% {
+              transform: scale(1);
+            }
+
+            100% {
+              transform: scale(1.4);
+            }
+          }
+        }
+      }
+
       &-icon {
         line-height: 100%;
-        background-image: url('../../assets/img/icons/theme_icon-2.png');
+        background-image: url('../../assets/img/icons/theme_icon.png');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: right center;
@@ -116,8 +133,25 @@
     border-left: 1px solid var(--secondaryTextColor);
     transition: 0.3s;
 
+    &:hover {
+      .header__icon-svg,
+      .header__icon-count {
+        animation: pulse 1s infinite alternate;
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+
+          100% {
+            transform: scale(1.4);
+          }
+        }
+      }
+    }
+
     &--active {
-      background-color: var(--thirdaryBgColor);
+      background-color: var(--elementsColor);
     }
   }
 
