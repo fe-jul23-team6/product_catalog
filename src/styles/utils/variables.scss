@@ -23,6 +23,7 @@
   --desktopUW-min-width: 1200px;
   --desktop-min-width: 640px;
   --tablet-min-width: 320px;
+  --thirdaryTextColor: #f0f0f0;
 }
 
 :root[data-theme='dark'] {
@@ -36,15 +37,10 @@
   --primeBgColor: #0f1121;
   --secondaryBGColor: #161827;
   --thirdaryBgColor: #323542;
+
   --elementsColor: #3b3e4a;
   --iconsColor: #4a4d58;
-
   --contactShadow: #0f1121;
-
-  --phoneColor1: #fcdbc1;
-  --phoneColor2: #5f7170;
-  --phoneColor3: #4c4c4c;
-  --phoneColor4: #f0f0f0;
 }
 
 :root[data-theme='light'] {
@@ -58,13 +54,8 @@
   --primeBgColor: #fafbfc;
   --secondaryBGColor: #ffffff;
   --thirdaryBgColor: #ffffff;
+
   --elementsColor: #e2e6e9;
   --iconsColor: #f0f0f0;
-
   --contactShadow: #4c4c4c;
-
-  --phoneColor1: #fcdbc1;
-  --phoneColor2: #5f7170;
-  --phoneColor3: #4c4c4c;
-  --phoneColor4: #f0f0f0;
 }

@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 60px 30px;
+    padding: 60px 30px 30px;
   }
 
   &__title {
@@ -40,6 +40,7 @@
     transition: 0.5s;
 
     padding: 5px 50px;
+    margin-top: 10px;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 500% 500%;
     color: white;

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 
 import { BASE_URL } from 'utils/fetchProducts';

@@ -1,7 +1,7 @@
 .button {
   width: 32px;
   height: 32px;
-  color: var(--phoneColor4);
+  color: var(--thirdaryTextColor);
   font-family: var(--font-family);
   display: flex;
   justify-content: center;
@@ -118,22 +118,6 @@
     &:hover {
       outline: 1px solid var(--secondaryTextColor);
     }
-  }
-
-  &__beige {
-    background-color: var(--phoneColor1);
-  }
-
-  &__green {
-    background-color: var(--phoneColor2);
-  }
-
-  &__grey {
-    background-color: var(--phoneColor3);
-  }
-
-  &__white {
-    background-color: var(--phoneColor4);
   }
 
   &__active-color {
