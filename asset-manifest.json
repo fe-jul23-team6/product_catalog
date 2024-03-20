@@ -1,12 +1,8 @@
 {
   "files": {
-    "main.css": "/product_catalog/static/css/main.95fcea1d.css",
-    "main.js": "/product_catalog/static/js/main.229887c5.js",
+    "main.css": "/product_catalog/static/css/main.078656d5.css",
+    "main.js": "/product_catalog/static/js/main.e4c67254.js",
     "static/media/category-tablets.png": "/product_catalog/static/media/category-tablets.51782e18205a1ca01ce8.png",
-    "static/media/dev-oleksii.jpg": "/product_catalog/static/media/dev-oleksii.f70e16a2e2287e9d9950.jpg",
-    "static/media/dev-jenny.jpg": "/product_catalog/static/media/dev-jenny.b434ac28bcb8b347d31f.jpg",
-    "static/media/dev-diana.jpg": "/product_catalog/static/media/dev-diana.b01efe622c633352cdff.jpg",
-    "static/media/dev-olya.jpg": "/product_catalog/static/media/dev-olya.dbd2489432df4d12b254.jpg",
     "static/media/404.svg": "/product_catalog/static/media/404.f8b99bd3578de82595aa.svg",
     "static/media/logo.svg": "/product_catalog/static/media/logo.60452a9bbce10e5af2c113c33085de5e.svg",
     "static/media/logo-light.svg": "/product_catalog/static/media/logo-light.92ae4770f37b88296ea0ac926eec3a07.svg",
@@ -14,8 +10,12 @@
     "static/media/Mont-Regular.otf": "/product_catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/product_catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/product_catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
-    "static/media/dev-roma.jpg": "/product_catalog/static/media/dev-roma.9724299ed6abbf0f3ae1.jpg",
+    "static/media/dev-jenny.jpg": "/product_catalog/static/media/dev-jenny.c8849f7e7db55a6a1a66.jpg",
+    "static/media/dev-diana.jpg": "/product_catalog/static/media/dev-diana.cd1e6ce12350f712f8d2.jpg",
+    "static/media/dev-oleksii.jpg": "/product_catalog/static/media/dev-oleksii.5d51c099e4a406de3221.jpg",
     "static/media/accessory-bg.png": "/product_catalog/static/media/accessory-bg.c075af441cb53f5e8d3a.png",
+    "static/media/dev-roma.jpg": "/product_catalog/static/media/dev-roma.c4c72c391636fe4b92ac.jpg",
+    "static/media/dev-olya.jpg": "/product_catalog/static/media/dev-olya.25a70a391dde7954f428.jpg",
     "static/media/shopping-bag_icon.svg": "/product_catalog/static/media/shopping-bag_icon.74767d3277610d55de2d534b31ba2d8a.svg",
     "static/media/favourites-default_icon.svg": "/product_catalog/static/media/favourites-default_icon.6cc41b3f2b86f63f1bc5ae0e3467b2d5.svg",
     "static/media/home_icon.svg": "/product_catalog/static/media/home_icon.f3ee0a32aa0bf2d1d503904691397fcf.svg",
@@ -26,11 +26,11 @@
     "static/media/chevron-up_icon.svg": "/product_catalog/static/media/chevron-up_icon.3a9a426450eb3ffd8466584a5ff4b598.svg",
     "index.html": "/product_catalog/index.html",
     "static/media/minus_icon.svg": "/product_catalog/static/media/minus_icon.0eab8a0278f654b73cc4372b163ddabd.svg",
-    "main.95fcea1d.css.map": "/product_catalog/static/css/main.95fcea1d.css.map",
-    "main.229887c5.js.map": "/product_catalog/static/js/main.229887c5.js.map"
+    "main.078656d5.css.map": "/product_catalog/static/css/main.078656d5.css.map",
+    "main.e4c67254.js.map": "/product_catalog/static/js/main.e4c67254.js.map"
   },
   "entrypoints": [
-    "static/css/main.95fcea1d.css",
-    "static/js/main.229887c5.js"
+    "static/css/main.078656d5.css",
+    "static/js/main.e4c67254.js"
   ]
 }
