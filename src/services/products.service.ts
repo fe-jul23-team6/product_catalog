@@ -79,8 +79,8 @@ export function getAccessories(
   return client.getAll<DataFromServer>(path);
 }
 
-export function getPhoneById(phoneId: string) {
-  return client.getAll<FullPhoneWithId>(`/products/${phoneId}`);
+export function getPhoneById(itemId: string) {
+  return client.getAll<FullPhoneWithId>(`/products/${itemId}`);
 }
 
 export function getPhonesByIds(ids: number[]) {
@@ -95,6 +95,6 @@ export function getDiscountedPhones() {
   return client.getAll<Phone[]>('/products/discount');
 }
 
-export function getRecommendedProducts(phoneId: string) {
-  return client.getAll<Phone[]>(`/products/${phoneId}/recommended`);
+export function getRecommendedProducts(itemId: string) {
+  return client.getAll<Phone[]>(`/products/${itemId}/recommended`);
 }

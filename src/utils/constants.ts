@@ -31,7 +31,7 @@ export const PHONE_COLORS: Colors = {
   rosegold: '#eecfc8',
   sierrablue: '#69abce',
   silver: '#deded7',
-  skyblue: '#4fdbfd',
+  skyblue: '#bffcfe',
   spaceblack: '#505150',
   spacegray: '#62605f',
   starlight: '#f0eae5',
@@ -40,15 +40,15 @@ export const PHONE_COLORS: Colors = {
 };
 
 export const LONG_BANNERS = {
-  slide1: `${BASE_URL}/img/rectangle/banner-dark.png`,
-  slide2: `${BASE_URL}/img/rectangle/banner-phones-dark.png`,
-  slide3: `${BASE_URL}/img/rectangle/banner-tablets-dark.jpg`,
-  slide4: `${BASE_URL}/img/rectangle/banner-accessories-dark.png`,
+  slide1: `${BASE_URL}/img/rectangle/banner-main.png`,
+  slide2: `${BASE_URL}/img/rectangle/banner-phones.png`,
+  slide3: `${BASE_URL}/img/rectangle/banner-tablets.png`,
+  slide4: `${BASE_URL}/img/rectangle/banner-accessories.png`,
 };
 
 export const SQUARE_BANNERS = {
-  slide1: `${BASE_URL}/img/square/square-banner-dark.png`,
-  slide2: `${BASE_URL}/img/square/square-banner-phones-dark.png`,
-  slide3: `${BASE_URL}/img/square/square-banner-tablets-dark.jpg`,
-  slide4: `${BASE_URL}/img/square/square-banner-accessories-dark.png`,
+  slide1: `${BASE_URL}/img/square/square-banner-main.png`,
+  slide2: `${BASE_URL}/img/square/square-banner-phones.png`,
+  slide3: `${BASE_URL}/img/square/square-banner-tablets.png`,
+  slide4: `${BASE_URL}/img/square/square-banner-accessories.png`,
 };
