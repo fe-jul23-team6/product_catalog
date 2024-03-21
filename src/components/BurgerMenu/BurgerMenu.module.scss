@@ -11,6 +11,9 @@
   &__content {
     flex-grow: 1;
     overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
   &__top-bar {
@@ -21,7 +24,7 @@
   }
 
   &__nav {
-    padding-top: 60px;
+    padding-block: 60px;
   }
 
   &__bottom-bar {
@@ -62,7 +65,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 36px;
+    gap: 28px;
   }
 
   &__link {
