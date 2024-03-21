@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/product_catalog/static/css/main.8464a5d1.css",
+    "main.css": "/product_catalog/static/css/main.4fecc74d.css",
     "main.js": "/product_catalog/static/js/main.79f27758.js",
     "static/media/category-tablets.png": "/product_catalog/static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/404.svg": "/product_catalog/static/media/404.f8b99bd3578de82595aa.svg",
@@ -26,11 +26,11 @@
     "static/media/chevron-up_icon.svg": "/product_catalog/static/media/chevron-up_icon.3a9a426450eb3ffd8466584a5ff4b598.svg",
     "index.html": "/product_catalog/index.html",
     "static/media/minus_icon.svg": "/product_catalog/static/media/minus_icon.0eab8a0278f654b73cc4372b163ddabd.svg",
-    "main.8464a5d1.css.map": "/product_catalog/static/css/main.8464a5d1.css.map",
+    "main.4fecc74d.css.map": "/product_catalog/static/css/main.4fecc74d.css.map",
     "main.79f27758.js.map": "/product_catalog/static/js/main.79f27758.js.map"
   },
   "entrypoints": [
-    "static/css/main.8464a5d1.css",
+    "static/css/main.4fecc74d.css",
     "static/js/main.79f27758.js"
   ]
 }
