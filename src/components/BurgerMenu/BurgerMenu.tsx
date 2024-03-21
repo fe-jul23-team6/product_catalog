@@ -15,9 +15,18 @@ import styles from './BurgerMenu.module.scss';
 type Props = {
   theme: string;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
+  favItemCount: number | null;
+  cartItemCount: number | null;
 };
 
-export const BurgerMenu: React.FC<Props> = ({ theme, setIsMenuOpen }) => {
+export const BurgerMenu: React.FC<Props> = (
+  {
+    theme,
+    setIsMenuOpen,
+    favItemCount,
+    cartItemCount,
+  },
+) => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
     styles.nav__link, {
       [styles['nav__link--active']]: isActive,
@@ -54,62 +63,73 @@ export const BurgerMenu: React.FC<Props> = ({ theme, setIsMenuOpen }) => {
           </NavLink>
         </div>
 
-        <div className={styles.menu__list}>
-          <nav className={styles.menu__nav}>
-            <ul
-              className={styles.nav__list}
-            >
-              <li className={styles.nav__item}>
-                <NavLink
-                  className={getLinkClass}
-                  to="/"
-                >
-                  Home
-                </NavLink>
-              </li>
+        <nav className={styles.menu__nav}>
+          <ul
+            className={styles.nav__list}
+          >
+            <li className={styles.nav__item}>
+              <NavLink
+                className={getLinkClass}
+                to="/"
+              >
+                Home
+              </NavLink>
+            </li>
 
-              <li className={styles.nav__item}>
-                <NavLink
-                  className={getLinkClass}
-                  to="/phones"
-                >
-                  Phones
-                </NavLink>
-              </li>
+            <li className={styles.nav__item}>
+              <NavLink
+                className={getLinkClass}
+                to="/phones"
+              >
+                Phones
+              </NavLink>
+            </li>
 
-              <li className={styles.nav__item}>
-                <NavLink
-                  className={getLinkClass}
-                  to="/tablets"
-                >
-                  Tablets
-                </NavLink>
-              </li>
+            <li className={styles.nav__item}>
+              <NavLink
+                className={getLinkClass}
+                to="/tablets"
+              >
+                Tablets
+              </NavLink>
+            </li>
 
-              <li className={styles.nav__item}>
-                <NavLink
-                  className={getLinkClass}
-                  to="/accessories"
-                >
-                  Accessories
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
+            <li className={styles.nav__item}>
+              <NavLink
+                className={getLinkClass}
+                to="/accessories"
+              >
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
 
         <div
           className={styles['menu__bottom-bar']}
         >
-          <NavLink to="/favourites" className={styles['bottom-bar__link']}>
-            <FavSvg className={styles['bottom-bar__link-img']} />
+          <NavLink
+            to="/favourites"
+            className={styles['bottom-bar__link']}
+          >
+            <FavSvg className={styles['bottom-bar__img']} />
+            {!!favItemCount && (
+              <div className={styles['bottom-bar__count']}>
+                {favItemCount}
+              </div>
+            )}
           </NavLink>
 
           <NavLink
             to="/cart"
             className={`${styles['bottom-bar__link']} ${styles['bottom-bar__link--border-left']}`}
           >
-            <CartSvg className={styles['bottom-bar__link-img']} />
+            <CartSvg className={styles['bottom-bar__img']} />
+            {!!cartItemCount && (
+              <div className={styles['bottom-bar__count']}>
+                {cartItemCount}
+              </div>
+            )}
           </NavLink>
         </div>
       </div>

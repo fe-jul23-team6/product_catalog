@@ -91,6 +91,8 @@ export const Header: React.FC<Props> = ({
         <BurgerMenu
           theme={theme}
           setIsMenuOpen={setIsMenuOpen}
+          favItemCount={favItemCount}
+          cartItemCount={cartItemCount}
         />
       )
       : (

@@ -1,11 +1,11 @@
 .menu {
   display: flex;
   flex-direction: column;
-  // height: 100vh;
+  height: 100vh;
 
   font-family: var(--font-family);
+  font-size: 16px;
   font-weight: 800;
-  font-size: 12px;
   background-color: var(--#{primeBgColor});
   text-transform: uppercase;
 
@@ -15,11 +15,6 @@
   }
 
   &__top-bar {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    margin-bottom: 24px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,11 +22,7 @@
   }
 
   &__nav {
-    padding-top: 24px;
-    padding-left: 16px;
-    padding-right: 16px;
-    display: flex;
-    justify-content: center;
+    padding-top: 60px;
   }
 
   &__bottom-bar {
@@ -42,7 +33,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--#{primeBgColor});
   }
 }
 
@@ -73,7 +63,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 28px;
   }
 
   &__link {
@@ -103,15 +93,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    position: relative;
 
     &--border-left {
       border-left: 1px solid var(--secondaryTextColor);
     }
+  }
 
-    &-img {
-      padding: 24px;
-      box-sizing: content-box;
-    }
+  &__img {
+    padding: 24px;
+    box-sizing: content-box;
+  }
+
+  &__count {
+    position: absolute;
+    transform: translate(50%, -50%);
+    width: 14px;
+    height: 14px;
+    background-color: var(--selectedFavoriteColor);
+    border-radius: 50%;
+    color: var(--thirdaryTextColor);
+    text-align: center;
+    line-height: 15px;
+    font-size: 9px;
   }
 }
