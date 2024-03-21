@@ -11,7 +11,7 @@
 
   &__content {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   &__top-bar {
@@ -29,7 +29,7 @@
     border-top: 1px solid var(--secondaryTextColor);
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
