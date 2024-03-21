@@ -1,10 +1,9 @@
 .menu {
   display: flex;
   flex-direction: column;
-  height: 100vh;
 
   font-family: var(--font-family);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   background-color: var(--#{primeBgColor});
   text-transform: uppercase;
@@ -63,7 +62,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 28px;
+    gap: 36px;
   }
 
   &__link {
