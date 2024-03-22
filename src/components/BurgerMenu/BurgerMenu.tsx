@@ -99,7 +99,7 @@ export const BurgerMenu: React.FC<Props> = (
                 className={getLinkClass}
                 to="/accessories"
               >
-                Accessories
+                Watches
               </NavLink>
             </li>
           </ul>

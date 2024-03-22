@@ -18,13 +18,16 @@ export const DEFAULT_SORT_BY = 'Newest' as keyof typeof SortOption;
 
 export const PHONE_COLORS: Colors = {
   black: '#221f27',
+  blacktitanium: '#f2f1eb',
   blue: '#2a7ba7',
+  bluetitanium: '#2f3c4d',
   coral: '#e76752',
   gold: '#eacfB8',
   graphite: '#251607',
   green: '#bde7b7',
   midnight: '#191f28',
   midnightgreen: '#676e66',
+  naturaltitanium: '#e8e3d5',
   red: '#ca243c',
   pink: '#fec2df',
   purple: '#b49cd9',
@@ -36,6 +39,7 @@ export const PHONE_COLORS: Colors = {
   spacegray: '#62605f',
   starlight: '#f0eae5',
   white: '#fbf7f2',
+  whitetitanium: '#f2f1eb',
   yellow: '#f2d365',
 };
 

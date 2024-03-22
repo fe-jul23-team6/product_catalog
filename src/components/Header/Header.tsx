@@ -139,7 +139,7 @@ export const Header: React.FC<Props> = ({
                 to="/accessories"
                 className={getLinkClass}
               >
-                Accessories
+                Watches
               </NavLink>
             </nav>
           </div>

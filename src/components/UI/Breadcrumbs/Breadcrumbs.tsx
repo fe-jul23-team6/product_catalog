@@ -13,7 +13,7 @@ import styles from './Breadcrumbs.module.scss';
 const paths = [
   { label: 'Phones', url: '/phones' },
   { label: 'Tablets', url: '/tablets' },
-  { label: 'Accessories', url: '/accessories' },
+  { label: 'Watches', url: '/accessories' },
   { label: 'Contacts', url: '/contacts' },
   { label: 'Favourites', url: '/favourites' },
 ];

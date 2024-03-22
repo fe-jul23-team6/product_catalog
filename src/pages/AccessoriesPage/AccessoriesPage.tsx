@@ -64,7 +64,7 @@ export const AccessoriesPage = () => {
     <section className={styles.catalog}>
       <Breadcrumbs />
 
-      <PageTitle title="Accessories" />
+      <PageTitle title="Watches" />
 
       {isLoading && (<Loader />)}
 
