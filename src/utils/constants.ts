@@ -18,7 +18,7 @@ export const DEFAULT_SORT_BY = 'Newest' as keyof typeof SortOption;
 
 export const PHONE_COLORS: Colors = {
   black: '#221f27',
-  blacktitanium: '#f2f1eb',
+  blacktitanium: '#525252',
   blue: '#2a7ba7',
   bluetitanium: '#2f3c4d',
   coral: '#e76752',
