@@ -47,12 +47,12 @@ export const LONG_BANNERS = {
   slide1: `${BASE_URL}/img/rectangle/banner-main.png`,
   slide2: `${BASE_URL}/img/rectangle/banner-phones.png`,
   slide3: `${BASE_URL}/img/rectangle/banner-tablets.png`,
-  slide4: `${BASE_URL}/img/rectangle/banner-accessories.png`,
+  slide4: `${BASE_URL}/img/rectangle/banner-watches.png`,
 };
 
 export const SQUARE_BANNERS = {
   slide1: `${BASE_URL}/img/square/square-banner-main.png`,
   slide2: `${BASE_URL}/img/square/square-banner-phones.png`,
   slide3: `${BASE_URL}/img/square/square-banner-tablets.png`,
-  slide4: `${BASE_URL}/img/square/square-banner-accessories.png`,
+  slide4: `${BASE_URL}/img/square/square-banner-watches.png`,
 };

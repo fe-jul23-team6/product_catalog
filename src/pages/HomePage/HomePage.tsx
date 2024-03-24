@@ -90,7 +90,7 @@ export const HomePage = () => {
 
       <div className={styles.home__wrapper}>
         <PageTitle
-          title="Welcome to Nice Gadgets store!"
+          title="Welcome to Nice Gadgets!"
         />
       </div>
 
