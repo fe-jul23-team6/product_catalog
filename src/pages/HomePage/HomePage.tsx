@@ -214,14 +214,14 @@ export const HomePage = () => {
         </div>
 
         <div className={styles['home__category-item']}>
-          <div className={`${styles['home__img-container']} ${styles['accessory-bg']}`}>
+          <div className={`${styles['home__img-container']} ${styles['watch-bg']}`}>
             <Link
               to="/accessories"
-              className={`${styles['home__item-img']} ${styles['accessory-img']}`}
+              className={`${styles['home__item-img']} ${styles['watch-img']}`}
             />
           </div>
 
-          <h3 className={styles['home__item-title']}>Accessories</h3>
+          <h3 className={styles['home__item-title']}>Watches</h3>
 
           <p className={styles['home__item-count']}>{`${accessoriesCount} models`}</p>
         </div>
