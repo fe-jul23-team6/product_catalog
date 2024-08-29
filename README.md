@@ -4,7 +4,7 @@ Nice Gadgets is a website developed using modern technologies such as: React, Ty
 
 # Description
 
-The "Nice Gadgets" project aimed to create a user-friendly platform where customers could explore and purchase a wide range of Apple products, including smartphones, tablets, and accessories. This project featured robust shopping functionality, enabling users to effortlessly add items to their shopping carts or save them to their favorites list.
+The "Nice Gadgets" project aimed to create a user-friendly platform where customers could explore and purchase a wide range of Apple products, including smartphones, tablets, and watches. This project featured robust shopping functionality, enabling users to effortlessly add items to their shopping carts or save them to their favorites list.
 
 On the Products Page, users had the flexibility to sort products according to different criteria such as Newest, Cheapest, or Alphabetically. Additionally, users could control how many items were displayed on the page, with options ranging from 4, 8, 16, or viewing all products at once.
 
